@@ -1,0 +1,73 @@
+body {
+	width: 1900px;
+	height: 1080px;
+}
+
+.wrapper {
+	width: 100%;
+	height: 100%;
+}
+
+.header {
+	width: 100%;
+	height: 20%;
+}
+
+.header .header_logo {
+	width: 20%;
+	height: 100%;
+	float: left;
+}
+
+.header .header_nav {
+	width: 80%;
+	height: 30%;
+	float: right;
+	text-align: right;
+}
+
+.header .header_menu {
+	width: 80%;
+	height: 70%;
+	float: right;
+}
+
+.main_content {
+	width: 100%;
+	height: 65%;
+}
+
+.main_image {
+	width: 100%;
+	height: 50%;
+}
+.main_image img{
+	width: 100%;
+	height: 100%;
+}
+
+.main_items {
+	width: 100%;
+	height: 50%;
+}
+
+.main_items_title {
+	width: 100%;
+	height: 10%;
+	float: left;
+}
+
+.main_item {
+	width: 33.33%;
+	height: 90%;
+	float: left;
+}
+
+.footer {
+	width: 100%;
+	height: 15%;
+}
+
+h2 {
+	display: none;
+}
