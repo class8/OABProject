@@ -10,6 +10,7 @@
 <link href="/resources/include/css/reset.css" rel="stylesheet">
 <link href="/resources/include/css/mainLayout.css" rel="stylesheet">
 <link href="/resources/include/css/header.css" rel="stylesheet">
+<link href="/resources/include/css/footer.css" rel="stylesheet">
 </head>
 <body>
 	<div class="wrapper">
@@ -19,7 +20,7 @@
 		<div class="main_content">
 			<article class="main_image">
 				<h2>메인이미지</h2>
-				<img src="/resources/images/main_image.jpg">
+				<img src="/resources/images/main_image.png">
 			</article>
 			<section class="main_items">
 				<h2>추천상품리스트</h2>

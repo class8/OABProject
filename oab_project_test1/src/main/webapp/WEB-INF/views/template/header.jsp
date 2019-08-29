@@ -4,13 +4,15 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <div class="header_logo">
 	<h2>메인로고</h2>
-	<a href="/"><img src="/resources/images/logo.png"></a>
+	<a href="/"><img src="/resources/images/main_logo.png"></a>
 </div>	
 <nav class="header_nav">
 	<h2>상단네비</h2>
+	<div class="header_nav2">
 	<a href="/member/memberLogin"><span>로그인|</span></a>
 	<a href="#"><span>로그아웃|</span></a>
 	<a href="/member/memberJoin"><span>회원가입</span></a>
+	</div>
 </nav>
 <nav class="header_menu">
 	<h2>메인메뉴</h2>
