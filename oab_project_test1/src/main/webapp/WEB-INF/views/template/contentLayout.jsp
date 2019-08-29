@@ -17,8 +17,11 @@
 		<header class="header">
 			<tiles:insertAttribute name="header" />
 		</header>
+		<div class="main_aside">
+			<tiles:insertAttribute name="aside" />
+		</div>
 		<div class="main_content">
-		
+			<tiles:insertAttribute name="body" />
 		</div>
 		<footer class="footer">
 			<tiles:insertAttribute name="footer" />
