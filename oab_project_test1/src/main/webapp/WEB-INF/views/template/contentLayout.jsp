@@ -17,11 +17,13 @@
 		<header class="header">
 			<tiles:insertAttribute name="header" />
 		</header>
-		<div class="main_aside">
-			<tiles:insertAttribute name="aside" />
-		</div>
 		<div class="main_content">
-			<tiles:insertAttribute name="body" />
+			<div class="main_aside">
+				<tiles:insertAttribute name="main_aside" />
+			</div>
+			<div class="main_body">
+				<tiles:insertAttribute name="main_body" />
+			</div>
 		</div>
 		<footer class="footer">
 			<tiles:insertAttribute name="footer" />
