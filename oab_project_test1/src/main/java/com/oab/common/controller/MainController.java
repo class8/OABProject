@@ -1,4 +1,4 @@
-package com.oab.common.controller;
+package com.oab.client.common.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,5 +9,25 @@ public class MainController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main() {
 		return "index";
+	}
+	@RequestMapping(value = "/greeting/greetingPage", method = RequestMethod.GET)
+	public String greeting() {
+		return "greeting/greetingPage";
+	}
+	@RequestMapping(value = "/branch/branchPage", method = RequestMethod.GET)
+	public String branch() {
+		return "branch/branchPage";
+	}
+	@RequestMapping(value = "/faq/faqPage", method = RequestMethod.GET)
+	public String faq() {
+		return "faq/faqPage";
+	}
+	@RequestMapping(value = "/terms/termsPage", method = RequestMethod.GET)
+	public String terms() {
+		return "terms/termsPage";
+	}
+	@RequestMapping(value = "/policy/policyPage", method = RequestMethod.GET)
+	public String policy() {
+		return "policy/policyPage";
 	}
 }
