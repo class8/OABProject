@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+section {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	text-decoration: none;
+}
+
+#branch_text1 {
+	margin-top: 20px;
+	margin-bottom: 50px;
+	font-size: 16pt;
+}
+
+.article1 {
+	width: 33%;
+	height: 100%;
+	float: left;
+}
+
+.article2 {
+	width: 34%;
+	height: 100%;
+	float: left;
+}
+
+.article3 {
+	width: 33%;
+	height: 100%;
+	float: left;
+}
+
+/* 점포명 */
+#branch_title {
+	margin-top : 30px;
+	font-size: 25px;
+	margin-left: 360px;
+
+}
+
+/* 점포 소개 */
+#branch_content {
+	
+	margin-top: 30px;
+	font-size: 15px;
+	text-align : right;
+	margin-right: 20px;
+	/* 줄간격 */
+	line-height: 180%
+	
+}
+
+#branch_img {
+	width: 450px;
+	height: 320px;
+}

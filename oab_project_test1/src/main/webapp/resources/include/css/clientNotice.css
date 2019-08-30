@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+/* 사용자 공지사항 css 2019.08.30 작성자 김은수 */
+.contentTit {
+	margin-top: 30px;
+	font-size: 30pt;
+	text-align: center;
+	font-size: 30pt;
+}
+
+#noticeList {
+	margin-top: 50px;
+	margin-left: 150px;
+	width: 80%;
+	border: 1px solid #008040; /*공지사항 선임*/
+	text-align: center;
+	/* 줄간격 */
+	line-height: 200%
+}

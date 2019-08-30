@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+#greeting_title {
+	margin-top: 50px;
+	margin-left : 100px;
+	text-align: left;
+	font-size: 22px;
+	/* 줄간격 */
+	line-height: 180%;
+}
+
+#greeting_text {
+	margin-top : 20px;
+	margin-left : 100px;
+	text-align: left;
+	font-size: 16px;
+	/* 줄간격 */
+	line-height: 200%;
+}
