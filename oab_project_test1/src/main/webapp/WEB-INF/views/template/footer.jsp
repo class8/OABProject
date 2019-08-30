@@ -5,9 +5,9 @@
 <div class="footer_menuList">
 	<ul>
 		<li class="footer_menu"><a href="/">Home</a></li>
-		<li class="footer_menu"><a href="#">개인정보취급방침</a></li>
-		<li class="footer_menu"><a href="#">이용약관</a></li>
-		<li class="footer_menu"><a href="#">지점안내</a></li>
+		<li class="footer_menu"><a href="policy/policyPage">개인정보취급방침</a></li>
+		<li class="footer_menu"><a href="terms/termsPage">이용약관</a></li>
+		<li class="footer_menu"><a href="branch/branchPage">지점안내</a></li>
 	</ul>
 </div>
 <div class="footer_text">
