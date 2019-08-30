@@ -9,7 +9,7 @@
 <nav class="header_nav">
 	<h2>상단네비</h2>
 	<div class="header_nav2">
-	<a href="/login/loginPage"><span>로그인|</span></a>
+	<a href="/member/memberLogin"><span>로그인|</span></a>
 	<a href="#"><span>로그아웃|</span></a>
 	<a href="/member/memberJoin"><span>회원가입</span></a>
 	</div>
