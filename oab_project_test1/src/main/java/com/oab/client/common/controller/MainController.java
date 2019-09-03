@@ -16,12 +16,6 @@ public class MainController {
 		return "greeting/greetingPage"; // 인사말
 	}
 
-	// 공지사항
-	@RequestMapping(value = "/notice/noticeList", method = RequestMethod.GET)
-	public String notice() {
-		return "notice/noticeList";
-	}
-
 	@RequestMapping(value = "/branch/branchPage", method = RequestMethod.GET)
 	public String branch() {
 		return "branch/branchPage"; // 지점안내

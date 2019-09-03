@@ -10,7 +10,10 @@
 <link href="/resources/include/css/reset.css" rel="stylesheet">
 <link href="/resources/include/css/contentLayout.css" rel="stylesheet">
 <link href="/resources/include/css/header.css" rel="stylesheet">
+<link href="/resources/include/css/aside.css" rel="stylesheet">
 <link href="/resources/include/css/footer.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="/resources/include/css/common.css" />
 </head>
 <body>
 	<div class="wrapper">

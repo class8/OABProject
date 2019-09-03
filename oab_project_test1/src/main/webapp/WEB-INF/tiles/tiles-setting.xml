@@ -32,7 +32,7 @@
 	<definition name="greeting/greetingPage" extends="content">
 		<put-attribute name="title" value="인사말" />
 		<put-attribute name="main_aside"
-			value="/WEB-INF/views/template/aside.jsp" />
+			value="/WEB-INF/views/template/aside1.jsp" />
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/greeting/greetingPage.jsp" />
 	</definition>
@@ -40,7 +40,7 @@
 	<definition name="notice/noticeList" extends="content">
 		<put-attribute name="title" value="공지사항" />
 		<put-attribute name="main_aside"
-			value="/WEB-INF/views/template/aside.jsp" />
+			value="/WEB-INF/views/template/aside1.jsp" />
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/notice/noticeList.jsp"></put-attribute>
 	</definition>
@@ -48,7 +48,7 @@
 	<definition name="branch/branchPage" extends="content">
 		<put-attribute name="title" value="지점안내" />
 		<put-attribute name="main_aside"
-			value="/WEB-INF/views/template/aside.jsp" />
+			value="/WEB-INF/views/template/aside1.jsp" />
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/branch/branchPage.jsp"></put-attribute>
 	</definition>
@@ -56,7 +56,7 @@
 	<definition name="faq/faqPage" extends="content">
 		<put-attribute name="title" value="자주묻는질문" />
 		<put-attribute name="main_aside"
-			value="/WEB-INF/views/template/aside.jsp" />
+			value="/WEB-INF/views/template/aside4.jsp" />
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/faq/faqPage.jsp"></put-attribute>
 	</definition>
@@ -64,7 +64,7 @@
 	<definition name="terms/termsPage" extends="content">
 		<put-attribute name="title" value="이용약관" />
 		<put-attribute name="main_aside"
-			value="/WEB-INF/views/template/aside.jsp" />
+			value="/WEB-INF/views/template/aside5.jsp" />
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/terms/termsPage.jsp"></put-attribute>
 	</definition>
@@ -72,9 +72,17 @@
 	<definition name="policy/policyPage" extends="content">
 		<put-attribute name="title" value="개인정보취급방침" />
 		<put-attribute name="main_aside"
-			value="/WEB-INF/views/template/aside.jsp" />
+			value="/WEB-INF/views/template/aside5.jsp" />
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/policy/policyPage.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="product/*" extends="content">
+		<put-attribute name="title" value="상품소개" />
+		<put-attribute name="main_aside"
+			value="/WEB-INF/views/template/aside2.jsp" />
+		<put-attribute name="main_body"
+			value="/WEB-INF/views/product/{1}.jsp"></put-attribute>
 	</definition>
 
 </tiles-definitions>
