@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+.main_content {
+	text-align: center;
+	padding-top: 30px;
+	color: #800040;
+}
+
+#noticeList {
+	border: 3px solid black;
+	width: 1000px;
+	margin: 50px;
+	margin-left: 120px;
+}
+
+#n_list {
+	color: black;
+}
+
+#insertFormBtn {
+	background-color: #008080;
+	color: #800040;
+	width: 180px;
+	height: 30px;
+	font-size: 15px;
+	font-weight: bold;
+	margin-left: 700px;
+}
+
+#noticeInsertBtn {
+	background-color: #008080;
+	color: #800040;
+	width: 100px;
+	height: 30px;
+	font-size: 15px;
+	font-weight: bold;
+	margin-left: 700px;
+}
+
+#noticeListBtn {
+	background-color: #008080;
+	color: #800040;
+	width: 100px;
+	height: 30px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.contentTB {
+	border: 2px solid black;
+	width: 1000px;
+	margin: 50px;
+	margin-left: 120px;
+}
+
+#noticeWrite {
+	color: black;
+	font-weight: bold;
+	border: 1px solid black;
+	width: 96%;
+	margin: 20px;
+}
+
+#noticeWrite th {
+	color: #800040;
+	width: 60px;
+	padding: 5px;
+	text-align: center;
+}
