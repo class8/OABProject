@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oab.client.login.dao.LoginDao">
+	<select id="mt_idSelect" parameterType="String"
+		resultType="login">
+		select
+		mt_id,
+		mt_pw,
+		mt_name
+		from member_tbl
+		where mt_id = #{mt_id}
+	</select>
+
+	<select id="loginSelect" parameterType="login"
+		resultType="login">
+		/* 로그인 처리 쿼리 */
+		select
+		mt_id,
+		mt_pw,
+		mt_name
+		from member_tbl
+		where mt_id = #{mt_id} and mt_pw = #{mt_pw}
+	</select>
+<insert id="loginHistory2Insert" parameterType="login">
+		insert into login_history2(
+			idx, mt_id, retry, lastFailedLogin, lastSuccessedLogin, clientIP)
+		values(
+			login_history_seq2.nextval, #{mt_id}, #{retry,jdbcType=INTEGER}, 
+			#{lastFailedLogin,jdbcType=INTEGER}, 
+            #{lastSuccessedLogin,jdbcType=INTEGER}, 
+			#{clientIP,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<update id="loginHistory2Update" parameterType="login">
+		update  login_history2  
+		set retry = #{retry},
+			lastFailedLogin = #{lastFailedLogin},
+			lastSuccessedLogin = #{lastSuccessedLogin},
+			clientIP = #{clientIP,jdbcType=VARCHAR}
+		 where idx = #{idx} and mt_id = #{mt_id}
+	</update>	
+	
+	<select id="loginHistory2Select" parameterType="String" resultType="login">
+		select 
+		    idx,
+		    mt_id,
+	            retry,
+	            lastFailedLogin,
+	            lastSuccessedLogin,
+	            clientIP
+		from login_history2
+		where mt_id = #{mt_id}
+	</select>
+
+</mapper>
+

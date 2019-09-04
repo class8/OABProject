@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oab.client.member.dao.MemberDao">
+	<select id="securitySelect" parameterType="String"
+		resultType="security">
+		select mt_id, salt from SECURITY_TBL
+		where mt_id=#{mt_id}
+	</select>
+
+	<insert id="securityInsert" parameterType="security">
+		insert into
+		SECURITY_TBL(mt_id, salt)
+		values(#{mt_id}, #{salt})
+	</insert>
+
+	<delete id="securityDelete" parameterType="String">
+		delete from SECURITY_TBL
+		where mt_id = #{mt_id}
+	</delete>
+
+	<select id="memberSelect" parameterType="String"
+		resultType="member">
+		select mt_number, mt_id, mt_pw, mt_name, mt_birth, mt_gender, mt_email, mt_phone
+		from MEMBER_TBL
+		where mt_id = #{mt_id}
+	</select>
+
+	<insert id="memberInsert" parameterType="member">
+		
+		<selectKey keyProperty="mt_number" resultType="int" order="BEFORE">
+			select
+			MEMBER_SEQ.nextval from dual
+		</selectKey>
+		insert into MEMBER_TBL(mt_number, mt_id, mt_pw, mt_name, mt_birth, mt_gender, mt_email,
+		mt_phone)
+		values(#{mt_number}, #{mt_id}, #{mt_pw}, #{mt_name}, #{mt_birth}, #{mt_gender}, #{mt_email}, #{mt_phone})
+	</insert>
+
+	<update id="memberUpdate" parameterType="member">
+		update MEMBER_TBL set
+		<if test="mt_pw != null and mt_pw != ''">
+			mt_pw=#{mt_pw},
+		</if>
+		mt_phone=#{mt_phone}, mt_email=#{mt_email}
+		where mt_id=#{mt_id}
+	</update>
+
+	<delete id="memberDelete" parameterType="String">
+		delete from
+		MEMBER_TBL where mt_id = #{mt_id}
+	</delete>
+</mapper>
