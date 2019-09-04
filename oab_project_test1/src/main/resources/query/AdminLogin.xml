@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oab.admin.login.dao.AdminLoginDao">
+	<!-- resultTpye 반환 타입 이라 생각하면 편함. --><!-- parameterType 내가 어느 클래스의 변수에 이 쿼리문 값을 넣어 전달할지 설정이라 생각. -->
+	<select id="adminLoginSelect" parameterType="admin" resultType="admin">
+		<!--로그인 처리 쿼리 -->
+		SELECT 
+		adminID, 
+		adminPW 
+		FROM oab_admin
+		WHERE adminID=#{adminID} and adminPW=#{adminPW}
+	</select>
+</mapper>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oab.admin.product.dao.AdminProductDao">
+
+	<sql id="adminProductCommon">
+		SELECT *
+		FROM product_tbl
+		<where>
+			<if test="search == 'pt_name'">
+   <![CDATA[pt_name LIKE '%' || #{keyword} || '%']]>
+			</if>
+			<if test="search == 'pt_type'">
+   <![CDATA[pt_type LIKE '%' || #{keyword} || '%']]>
+			</if>
+		</where>
+	</sql>
+
+
+	<select id="adminProductList" parameterType="product" resultType="product">
+		SELECT pt_number, pt_name, pt_type, pt_price, pt_explain,
+			TO_CHAR(pt_regdate, 'YYYY-MM-DD') AS pt_regdate, pt_status,
+			pt_thumb, pt_image1, pt_image2, pt_image3
+		FROM (SELECT list.*, ROWNUM AS RNUM
+		FROM(
+		<include refid="adminProductCommon"></include>
+		<choose>
+			<when test="order_by=='pt_type'">
+				ORDER BY pt_type
+			</when>
+		</choose>
+		<choose>
+			<when test="order_sc=='ASC'">
+				ASC
+			</when>
+			<when test="order_sc=='DESC'">
+				DESC
+			</when>
+		</choose>
+		) list)
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					rnum BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where>
+	</select>
+                
+	<select id="adminProductListCnt" parameterType="product" resultType="int">
+		<!-- Board - boardListCnt -->
+		SELECT NVL(count(1), 0)
+		
+		FROM (
+		<include refid="adminProductCommon"></include>
+		ORDER BY pt_number desc
+		) list
+		
+	</select>
+
+	<!-- 상세 페이지를 위한 게시물 조회 -->
+	<select id="adminProductDetail" parameterType="int" resultType="product">
+		<!-- Board - boardDetail -->
+		SELECT
+		pt_number,pt_name,pt_type,pt_price,pt_explain,
+		to_char(pt_regdate,'YYYY-MM-DD') AS pt_regdate,
+		pt_status,pt_thumb,pt_image1,pt_image2,pt_image3
+		FROM product_tbl
+		WHERE pt_number = #{pt_number}
+	</select>
+
+	<!-- 상품 등록 -->
+	<insert id="adminProductWrite" parameterType="product">
+		<selectKey keyProperty="pt_number" resultType="int"
+			order="BEFORE">
+			select product_seq.nextval from dual
+		</selectKey>
+		INSERT INTO product_tbl(
+			pt_number,pt_name,pt_type,pt_price,pt_explain,pt_regdate,pt_status,pt_thumb
+			<if test="pt_image1 != '' and pt_image1 != null" >
+				,pt_image1
+			</if>
+			<if test="pt_image2 != '' and pt_image2 != null ">
+				,pt_image2
+			</if>
+			<if test="pt_image3 != '' and pt_image3 != null ">
+				,pt_image3
+			</if>
+			)
+		VALUES(
+		#{pt_number},
+		#{pt_name},
+		#{pt_type},
+		#{pt_price},
+		#{pt_explain},
+		sysdate,
+		#{pt_status},
+		#{pt_thumb}
+		<if test="pt_image1 != '' and pt_image1 != null">
+		,#{pt_image1}
+		</if>
+		<if test="pt_image2 != '' and pt_image2 != null">
+		,#{pt_image2}
+		</if>
+		<if test="pt_image3 != '' and pt_image3 != null">
+		,#{pt_image3}
+		</if>
+		)
+	</insert>
+
+	<!-- 게시물 수정 -->
+	<update id="adminProductModify" parameterType="product">
+		<!-- Board - boardUpdate -->
+		UPDATE product_tbl
+		SET pt_type = #{pt_type}
+		, pt_name = #{pt_name}
+		<if test="pt_thumb != '' and pt_thumb != null">
+		,pt_thumb = #{pt_thumb}
+		</if>
+		<if test="pt_image1 != '' and pt_image1 != null">
+		,pt_image1 = #{pt_image1}
+		</if>
+		<if test="pt_image2 != '' and pt_image2 != null">
+		,pt_image2 = #{pt_image2}
+		</if>
+		<if test="pt_image3 != '' and pt_image3 != null">
+		,pt_image3 = #{pt_image3}
+		</if>
+		,pt_explain = #{pt_explain}
+		,pt_price = #{pt_price}
+		,pt_status = #{pt_status}
+		WHERE pt_number = #{pt_number}
+	</update>
+
+	<!-- 게시물 삭제 -->
+	<delete id="adminProductDelete" parameterType="product">
+		<!-- Board-boardDelete -->
+		DELETE FROM product_tbl WHERE pt_number = #{pt_number}
+	</delete>
+</mapper>

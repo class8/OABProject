@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title><tiles:getAsString name="title" /></title>
+<title>관리자 로그인 페이지</title>
 <link rel="stylesheet" type="text/css"
 	href="/resources/admin/include/css/login.css" />
 <script type="text/javascript"
@@ -15,7 +15,7 @@
 	src="/resources/admin/include/js/login.js"></script>
 </head>
 <body>
-
+	<c:if test="${adminLogin.adminID == null}">
 	<div class="main_content">
 
 		<form id="loginForm">
@@ -33,11 +33,11 @@
 							<td colspan="3">관리자 로그인</td>
 						</tr>
 						<tr>
-							<th><input type="text" id="adminID" size="40"
+							<th><input type="text" id="adminID" name="adminID" size="40"
 								placeholder="관리자 아이디 입력"></th>
 						</tr>
 						<tr>
-							<th><input type="password" id="adminPW" size="40"
+							<th><input type="password" id="adminPW" name="adminPW" size="40"
 								placeholder="관리자 비밀번호 입력"></th>
 						</tr>
 						<tr>
@@ -50,6 +50,12 @@
 			</div>
 		</form>
 	</div>
-
+	</c:if>
+	<c:if test="${adminLogin.adminID != null}">
+		<script type="text/javascript">
+			location.href="/admin/main";
+		</script>
+	</c:if>
+	
 </body>
 </html>

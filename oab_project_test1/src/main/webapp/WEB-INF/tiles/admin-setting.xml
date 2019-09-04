@@ -2,7 +2,7 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
-	<definition name="intro"
+	<!-- <definition name="admin"
 		template="/WEB-INF/views/admin/template/login.jsp">
 		<put-attribute name="title" value="관리자 시작페이지" />
 		<put-attribute name="header"
@@ -18,7 +18,7 @@
 		<put-attribute name="main" value="" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/template/mainLayout.jsp"></put-attribute>
-	</definition>
+	</definition> -->
 
 	<definition name="notice/*" extends="main">
 		<put-attribute name="title" value="공지사항리스트" />
@@ -40,4 +40,32 @@
 		<put-attribute name="title" value="공지사항 페이지" /> <put-attribute name="header" 
 		value="/WEB-INF/views/template/header.jsp" /> <put-attribute name="body" 
 		value="/WEB-INF/views/notice/writeForm.jsp"></put-attribute> </definition> -->
+		
+		
+	<!-- 최대근 -->
+	<definition name="admin/template/mainLayout"
+		template="/WEB-INF/views/admin/template/contentLayout.jsp">
+		<put-attribute name="title" value="관리자 메인페이지 페이지" />
+		<put-attribute name="header"
+			value="/WEB-INF/views/admin/template/header.jsp" />
+		<put-attribute name="left"
+			value="/WEB-INF/views/admin/template/mainLeft.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/template/mainLayout.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="admin/login" 
+		template="/WEB-INF/views/admin/login/adminLoginPage.jsp">
+	</definition>
+	
+	<definition name="admin/product/*" extends="admin/template/mainLayout">
+		<put-attribute name="title" value="상품관련 페이지" />
+		<put-attribute name="left"
+			value="/WEB-INF/views/admin/template/productLeft.jsp" />
+		<put-attribute name="main" value="" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/product/{1}.jsp" />
+	</definition>
+	
+	
 </tiles-definitions>
