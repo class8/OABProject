@@ -3,17 +3,59 @@
 /* 사용자 공지사항 css 2019.08.30 작성자 김은수 */
 .contentTit {
 	margin-top: 30px;
-	font-size: 30pt;
+	font-size: 25pt;
 	text-align: center;
-	font-size: 30pt;
 }
 
 #noticeList {
 	margin-top: 50px;
-	margin-left: 150px;
-	width: 80%;
-	border: 1px solid #008040; /*공지사항 선임*/
+	width: 100%;
+	margin-left: 250px;
+	border: 0px; /*공지사항 선임*/
 	text-align: center;
 	/* 줄간격 */
 	line-height: 200%
+}
+
+#noticeList tr {
+	padding: 0px;
+}
+
+#noticeList th, #noticeList td {
+	padding: 8px;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+/*공지사항 상세 보기 CSS 2019.09.03 작성자 김은수*/
+.contentTB {
+	margin-top: 50px;
+	width: 80%;
+	margin-left: 250px;
+	border: 0px; /*공지사항 선임*/
+	text-align: center;
+	/* 줄간격 */
+	line-height: 200%;
+}
+
+#content22 {
+	text-align: left;
+	margin-top: 50px;
+}
+
+.contentTB th, .contentTB td {
+	padding: 8px;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+/* 목록으로 돌아가기 버튼 */
+#back_noticeListBtn {
+	margin: auto;
+	margin-top: 50px;
+}
+
+/* 페이징 css */
+#noticePage {
+	margin: auto;
+	margin-top : 40px;
+	text-align: center;
 }

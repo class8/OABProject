@@ -20,7 +20,7 @@
 		<div class="main_content">
 			<article class="main_image">
 				<h2>메인이미지</h2>
-				<img src="/resources/images/main_image.png">
+				<img src="/resources/images/main_img.PNG">
 			</article>
 			<section class="main_items">
 				<h2>추천상품리스트</h2>

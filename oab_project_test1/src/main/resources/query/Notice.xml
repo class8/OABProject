@@ -1,59 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.oab.admin.notice.dao.NoticeDao">
+
+<mapper namespace="com.oab.client.notice.dao.NoticeDao">
 
 
-	<!-- 공지사항 기본 조회 -->
-	<select id="noticeList" parameterType="notice"
-		resultType="notice">
-		select
-		nt_number, nt_title,
-		nt_writer, nt_content,
-		to_char(nt_regdate,
-		'YYYY-MM-DD') as nt_regdate, nt_readcnt
-		from
-		notice_tbl order by
-		nt_number desc
+	<!-- 게시물 기본 조회 2019.09.02 -->
+	<select id="noticeList" resultType="notice">
+
+		SELECT
+		nt_number, nt_writer,
+		nt_title, nt_content, to_char(nt_regdate, 'YYYY-MM-DD') as
+		nt_regdate
+		FROM (select list.* , rownum as rnum from(select * from NOTICE_TBL) list)
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					rnum BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where>
+
 	</select>
 
-	<!-- 상세 페이지를 위한 게시물 조회 -->
+	<!-- 게시물의 상세보기를 위한 select문입니다. -->
+
 	<select id="noticeDetail" parameterType="int"
 		resultType="notice">
-		select
-		nt_number, nt_title,
-		nt_writer, nt_content,
-		to_char(nt_regdate,
-		'YYYY-MM-DD') as nt_regdate, nt_readcnt
-		from
-		notice_tbl where nt_number = #{nt_number}
+
+		<!-- notice - noticeDetail -->
+
+		SELECT
+
+		nt_number, nt_writer, nt_title, nt_content, to_char(nt_regdate,
+		'YYYY-MM-DD') as nt_regdate
+		FROM NOTICE_TBL
+		WHERE nt_number
+		=#{nt_number}
+
 	</select>
 
-	<!-- 게시물 등록 -->
-	<insert id="noticeInsert" parameterType="notice">
-		<selectKey keyProperty="nt_number" resultType="int"
-			order="BEFORE">
-			select notice_tbl_seq.nextval from dual
-		</selectKey>
-		insert into notice_tbl(nt_number, nt_title, nt_writer, nt_content)
-		values( #{nt_title}, #{nt_writer}, #{nt_content})
-	</insert>
+	<!-- 게시물 카운트 페이징 -->
 
-	<!-- 게시물 수정 -->
-	<update id="noticeUpdate" parameterType="notice">
-		update notice_tbl
-		set
-		nt_title = #{nt_title}
-		, nt_content = #{nt_content}
-		, nt_regdate =
-		sysdate
-		where nt_number = #{nt_number}
-	</update>
+	<select id="noticeListCnt" parameterType="notice"
+		resultType="int">
 
-	<!-- 게시물 삭제 -->
-	<delete id="noticeDelete" parameterType="notice">
-		delete from notice_tbl where nt_number = #{nt_number}
-	</delete>
+		<!-- notice - noticeListcnt -->
+		SELECT NVL (count(1), 0 )
+		FROM (
+		SELECT list.*, ROWNUM AS RNUM
+
+		FROM (
+
+		NOTICE_TBL
+		)
+		list
+
+		)
+
+
+	</select>
+
 
 
 </mapper>
