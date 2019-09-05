@@ -59,14 +59,12 @@ $(function() {
 				},
 				success : function(resultData) {
 					console.log("resultData : " + resultData);
-					if (resultData == "1") {
-						// $("#mt_Id").find(".error").html("현재 사용 중인 아이디입니다.");
-						$(".Iderror").html("현재 사용 중인 아이디입니다.");
-					} else if (resultData == "2") {
-						// $("#mt_Id").find(".error").html("사용 가능한 아이디입니다.");
-						$(".Iderror").html("사용가능한 아이디 입니다.");
+					if(resultData=="1"){
+						$("#mt_id").parents(".form-group").find(".error").html("현재 사용 중인 아이디입니다.");
+					}else if(resultData=="2"){
+						$("#mt_id").parents(".form-group").find(".error").html("사용 가능한 아이디입니다.");
 						idConfirm = 2;
-					}
+					} 
 				}
 			});
 		}
@@ -125,14 +123,14 @@ $(function() {
 			$("#mt_birth").val($("#mt_birth").val());
 			$("#memberForm").attr({
 				"method" : "post",
-				"action" : "/member/join.do"
+				"action" : "/member/join"
 			});
 			$("#memberForm").submit();
 		}
 	});
 
 	$("#joinCancel").click(function() {
-		location.href = "/login/login.do";
+		location.href = "/login/login";
 	});
 
 	$("#joinReset").click(function() {
