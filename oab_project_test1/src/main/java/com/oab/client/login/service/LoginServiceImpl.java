@@ -43,14 +43,14 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public int loginHistory2Insert(LoginVO lvo) {
+	public int history_tblInsert(LoginVO lvo) {
 		int result;
 		if (mt_idSelect(lvo.getMt_id()) == null) {
 			result = 1;
 		} else {
-			LoginVO vo = loginHistory2Select(lvo.getMt_id());
+			LoginVO vo = history_tblSelect(lvo.getMt_id());
 			if (vo == null) {
-				loginDao.loginHistory2Insert(lvo);
+				loginDao.history_tblInsert(lvo);
 			}
 			result = 2;
 		}
@@ -58,17 +58,17 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public LoginVO loginHistory2Select(String mt_id) {
+	public LoginVO history_tblSelect(String mt_id) {
 		
-		return loginDao.loginHistory2Select(mt_id);
+		return loginDao.history_tblSelect(mt_id);
 	}
 
 
 
 	@Override
-	public int loginHistory2Update(LoginVO lvo) {
+	public int history_tblUpdate(LoginVO lvo) {
 		// TODO Auto-generated method stub
-		return loginDao.loginHistory2Update(lvo);
+		return loginDao.history_tblUpdate(lvo);
 	}
 
 

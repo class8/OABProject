@@ -41,14 +41,14 @@ public class LoginController {
 		ModelAndView mav = new ModelAndView();
 		String mt_Id = lvo.getMt_id();
 
-		int resultData = loginService.loginHistory2Insert(lvo);
+		int resultData = loginService.history_tblInsert(lvo);
 
 		if (resultData == 1) {
 			mav.addObject("errCode", 1);
 			mav.setViewName("login/login");
 			return mav;
 		} else {
-			LoginVO vo = loginService.loginHistory2Select(mt_Id);
+			LoginVO vo = loginService.history_tblSelect(mt_Id);
 			log.info("최근 로그인 일시:" + new SimpleDateFormat("YYYY-MM-dd").format(vo.getHt_lastSuccess()));
 			log.info("retry:" + vo.getHt_retry());
 
@@ -61,14 +61,14 @@ public class LoginController {
 				} else {
 					vo.setHt_retry(0);
 					vo.setHt_lastSuccess(0);
-					loginService.loginHistory2Update(vo);
+					loginService.history_tblUpdate(vo);
 				}
 			}
 			LoginVO loginCheckResult = loginService.loginSelect(lvo.getMt_id(), lvo.getMt_pw());
 			if (loginCheckResult == null) {
 				vo.setHt_retry(vo.getHt_retry() + 1);
 				vo.setHt_lastFail(new Date().getTime());
-				loginService.loginHistory2Update(vo);
+				loginService.history_tblUpdate(vo);
 
 				mav.addObject("retry", vo.getHt_retry());
 				mav.addObject("errCode", 1);
@@ -83,7 +83,7 @@ public class LoginController {
 				vo.setHt_lastFail(0);
 				vo.setHt_lastSuccess(new Date().getTime());
 				vo.setHt_Ip(request.getRemoteAddr());
-				loginService.loginHistory2Update(vo);
+				loginService.history_tblUpdate(vo);
 
 				session.setAttribute("login", loginCheckResult);
 				mav.setViewName("intro");

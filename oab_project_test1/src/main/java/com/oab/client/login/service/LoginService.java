@@ -7,9 +7,9 @@ public interface LoginService {
 
 	public LoginVO loginSelect(String mt_id, String mt_pw);
 
-	public int loginHistory2Insert(LoginVO lvo);
+	public int history_tblInsert(LoginVO lvo);
 
-	public int loginHistory2Update(LoginVO lvo);
+	public int history_tblUpdate(LoginVO lvo);
 
-	public LoginVO loginHistory2Select(String mt_id);
+	public LoginVO history_tblSelect(String mt_id);
 }

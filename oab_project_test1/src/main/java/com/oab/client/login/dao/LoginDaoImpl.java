@@ -23,21 +23,21 @@ public class LoginDaoImpl implements LoginDao{
 	}
 
 	@Override
-	public int loginHistory2Insert(LoginVO lvo) {
+	public int history_tblInsert(LoginVO lvo) {
 		// TODO Auto-generated method stub
-		return session.insert("loginHistoryInsert",lvo);
+		return session.insert("history_tblInsert",lvo);
 	}
 
 	@Override
-	public int loginHistory2Update(LoginVO lvo) {
+	public int history_tblUpdate(LoginVO lvo) {
 		// TODO Auto-generated method stub
-		return session.update("loginHistoryUpdate", lvo);
+		return session.update("history_tblUpdate", lvo);
 	}
 
 	@Override
-	public LoginVO loginHistory2Select(String mt_id) {
+	public LoginVO history_tblSelect(String mt_id) {
 		// TODO Auto-generated method stub
-		return (LoginVO)session.selectOne("loginHistorySelect", mt_id);
+		return (LoginVO)session.selectOne("history_tblSelect", mt_id);
 	}
 
 

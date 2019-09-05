@@ -23,37 +23,37 @@
 		from member_tbl
 		where mt_id = #{mt_id} and mt_pw = #{mt_pw}
 	</select>
-<insert id="loginHistory2Insert" parameterType="login">
-		insert into login_history2(
-			idx, mt_id, retry, lastFailedLogin, lastSuccessedLogin, clientIP)
+<insert id="history_tblInsert" parameterType="login">
+		insert into history_tbl(
+			ht_number, mt_id, ht_retry, ht_lastFail, ht_lastSuccess, ht_Ip)
 		values(
-			login_history_seq2.nextval, #{mt_id}, #{retry,jdbcType=INTEGER}, 
-			#{lastFailedLogin,jdbcType=INTEGER}, 
-            #{lastSuccessedLogin,jdbcType=INTEGER}, 
-			#{clientIP,jdbcType=VARCHAR}
+			history_tbl_seq.nextval, #{mt_id}, #{ht_retry,jdbcType=INTEGER}, 
+			#{ht_lastFail,jdbcType=INTEGER}, 
+            #{ht_lastSuccess,jdbcType=INTEGER}, 
+			#{ht_Ip,jdbcType=VARCHAR}
 		)
 	</insert>	
 	
-	<update id="loginHistory2Update" parameterType="login">
-		update  login_history2  
-		set retry = #{retry},
-			lastFailedLogin = #{lastFailedLogin},
-			lastSuccessedLogin = #{lastSuccessedLogin},
-			clientIP = #{clientIP,jdbcType=VARCHAR}
-		 where idx = #{idx} and mt_id = #{mt_id}
+	<update id="history_tblUpdate" parameterType="login">
+		update  history_tbl 
+		set ht_retry = #{ht_retry},
+			ht_lastFail = #{ht_lastFail},
+			ht_lastSuccess = #{ht_lastSuccess},
+			ht_Ip = #{ht_Ip,jdbcType=VARCHAR}
+		 where ht_number = #{ht_number} and mt_id = #{mt_id}
 	</update>	
 	
-	<select id="loginHistory2Select" parameterType="String" resultType="login">
+	<select id="history_tblSelect" parameterType="String" resultType="login">
 		select 
-		    idx,
+		    ht_number,
 		    mt_id,
-	            retry,
-	            lastFailedLogin,
-	            lastSuccessedLogin,
-	            clientIP
-		from login_history2
+	            ht_retry,
+	            ht_lastFail,
+	            ht_lastSuccess,
+	            ht_Ip
+		from history_tbl
 		where mt_id = #{mt_id}
 	</select>
 
-</mapper>
 
+</mapper>
