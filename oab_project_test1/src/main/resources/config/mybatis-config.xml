@@ -6,7 +6,15 @@
 	<typeAliases>
 		<typeAlias type="com.oab.client.product.vo.ProductVO"
 			alias="product" />
-			<typeAlias type="com.oab.client.common.vo.CommonVO"
+		<typeAlias type="com.oab.client.login.vo.LoginVO"
+			alias="login" />
+		<typeAlias type="com.oab.client.member.vo.MemberSecurity"
+			alias="security" />
+		<typeAlias type="com.oab.client.member.vo.MemberVO"
+			alias="member" />
+		<typeAlias type="com.oab.client.notice.vo.NoticeVO"
+			alias="notice" />
+		<typeAlias type="com.oab.client.common.vo.CommonVO"
 			alias="common" />
 		<typeAlias type="com.oab.admin.login.vo.AdminLoginVO"
 			alias="admin" />

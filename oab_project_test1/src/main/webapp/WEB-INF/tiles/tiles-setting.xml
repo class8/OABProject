@@ -23,10 +23,16 @@
 			value="/WEB-INF/views/template/footer.jsp" />
 	</definition>
 
-	<definition name="login/loginPage" extends="content">
+	<definition name="login/login" extends="content">
 		<put-attribute name="title" value="로그인" />
 		<put-attribute name="main_body"
-			value="/WEB-INF/views/login/loginPage.jsp" />
+			value="/WEB-INF/views/login/login.jsp" />
+	</definition>
+
+	<definition name="member/join" extends="content">
+		<put-attribute name="title" value="회원가입" />
+		<put-attribute name="main_body"
+			value="/WEB-INF/views/member/join.jsp" />
 	</definition>
 
 	<definition name="greeting/greetingPage" extends="content">
@@ -76,7 +82,7 @@
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/policy/policyPage.jsp"></put-attribute>
 	</definition>
-	
+
 	<definition name="product/*" extends="content">
 		<put-attribute name="title" value="상품소개" />
 		<put-attribute name="main_aside"

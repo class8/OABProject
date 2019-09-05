@@ -67,12 +67,12 @@ ul {
 
 .product_article .product_thumb img {
 	width: 98%;
-	height: 50%;
+	height: 300px;
 }
 
 .product_article .product_images img {
 	width: 29%;
-	height: 20%;
+	height: 100px;
 }
 /* 페이징 출력 div 부분 */
 #productContainer #productPage {
@@ -95,31 +95,4 @@ ul {
 
 .paginate a.on {
 	color: #FF3300;
-}
-/**/
-#lightbox {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	width: 400px;
-	height: 200px;
-	margin-left: -200px;
-	background: #fff;
-	z-index: 1001;
-	display: none;
-}
-
-#lightbox-shadow {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: #000;
-	filter: alpha(opacity = 75);
-	-moz-opacity: 0.75;
-	-khtml-opacity: 0.75;
-	opacity: 0.75;
-	z-index: 1000;
-	display: none;
 }

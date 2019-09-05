@@ -11,7 +11,7 @@
 		pt_image3
 		from product_tbl
 		<where>
-		 pt_status = '상태' 
+		 pt_status = '대여가능' 
 			<if test="search == 'pt_name'">
    <![CDATA[and pt_name LIKE '%' || #{keyword} || '%']]>
 			</if>

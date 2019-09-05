@@ -1,5 +1,11 @@
 
 /* 상단에 위치한 로그인, 로그아웃, 회원가입 */
+.header_logo a img {
+	width: 100%;
+	height: 100%;
+}
+
+/* 상단에 위치한 로그인, 로그아웃, 회원가입 */
 .header_nav2 {
    font-size: 90%;
    margin-right : 220px; 

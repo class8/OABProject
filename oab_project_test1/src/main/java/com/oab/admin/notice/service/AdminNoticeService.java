@@ -2,9 +2,9 @@ package com.oab.admin.notice.service;
 
 import java.util.List;
 
-import com.oab.admin.notice.vo.NoticeVO;
+import com.oab.client.notice.vo.NoticeVO;
 
-public interface NoticeService {
+public interface AdminNoticeService {
 
 	public List<NoticeVO> noticeList();
 

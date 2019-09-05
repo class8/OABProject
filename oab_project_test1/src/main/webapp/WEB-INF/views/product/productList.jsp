@@ -6,7 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="stylesheet" type="text/css"
+	href="/resources/include/css/common.css" />
 <link rel="stylesheet" type="text/css"
 	href="/resources/include/css/product.css" />
 <link rel="stylesheet" type="text/css"
@@ -25,25 +26,6 @@
 		if (word != "") {
 			$("#keyword").val("<c:out value='${data.keyword}' />");
 			$("#search").val("<c:out value='${data.search}' />");
-
-			if ($("#search").val() != 'b_content') {
-				// :contains()는 특정 텍스트를 포함한 요소 반환
-				if ($("#search").val() == 'b_title') {
-					value = "#list tr td.goDetail";
-				} else if ($("#search").val() == 'pt_name') {
-					value = "#list tr td.name";
-				}
-
-				$(value + ":contains('" + word + "')").each(
-						function() {
-							var regex = new RegExp(word, 'gi');
-							$(this).html(
-									$(this).text().replace(
-											regex,
-											"<span class='required'>" + word
-													+ "</span>"));
-						});
-			}
 		}
 
 		// 한페이지에 보여줄 레코드 수 조회 후 선택한 값 그대로 유지하기 위한 설정 
@@ -69,37 +51,6 @@
 				}
 			}
 			goPage(1);
-		});
-
-		$(".order").click(function() {
-			var order_by = $(this).attr("data-value");
-			console.log("선택값 : " + order_by);
-			$("#order_by").val(order_by);
-			if ($("#order_sc").val() == 'DESC') {
-				$("#order_sc").val('ASC');
-			} else {
-				$("#order_sc").val('DESC');
-			}
-			goPage(1);
-		});
-
-		// 한페이지에 보여줄 레코드 수가 변경될 때마다 처리 이벤터 
-		$("#pageSize").change(function() {
-			goPage(1);
-		});
-
-		/* 제목 클릭시 상세 페이지 이동을 위한 처리 이벤트 */
-		$(".goDetail").click(function() {
-			/* 
-			var b_num = $(this).parents("tr").attr("data-num");
-			$("#b_num").val(b_num);
-			console.log("글번호 : " + b_num);
-			//상세 페이지로 이동하기 위해 form 추가 (id : detailForm)
-			$("#detailForm").attr({
-			  "method" : "get",
-			  "action" : "/product/productDetail.do"
-			});
-			$("#detailForm").submit(); */
 		});
 	});
 
@@ -132,9 +83,9 @@
 		<form id="f_search" name="f_search">
 			<!--    추가부분 -->
 			<input type="hidden" id="page" name="page" value="${data.page }">
-			<input type="hidden" id="order_by" name="order_by"
+			<%-- 			<input type="hidden" id="order_by" name="order_by"
 				value="${data.order_by}" /> <input type="hidden" id="order_sc"
-				name="order_sc" value="${data.order_sc}" />
+				name="order_sc" value="${data.order_sc}" /> --%>
 			<table summary="검색">
 				<colgroup>
 					<col width="70" />
@@ -144,8 +95,9 @@
 					<td id="btd1"><label>검색조건</label> <select id="search"
 						name="search">
 							<option value="pt_name">상품명</option>
-					</select> <input type="text" name="keyword" id="keyword" value="검색어를 입력하세요" />
-						<input type="button" value="검색" id="searchData"></td>
+					</select> <input type="text" name="keyword" id="keyword"
+						placeholder="검색어를 입력하세요" /> <input type="button" value="검색"
+						id="searchData"></td>
 				</tr>
 			</table>
 		</form>
@@ -158,22 +110,35 @@
 			<c:when test="${not empty productList}">
 				<c:forEach var="product" items="${productList}" varStatus="status">
 					<div class="product_article">
-						<div class="product_images">
-								<a data-lightbox="roadtrip" href="/uploadStorage/product/${product.pt_thumb}">
-								<img class="product_thumbnail" src="/uploadStorage/product/${product.pt_thumb}">
-								</a> 
-								<a data-lightbox="roadtrip"	href="/uploadStorage/product/${product.pt_image1}">
-								<img
-								src="/uploadStorage/product/${product.pt_image1}"> 
-								</a>
-								<a data-lightbox="roadtrip"	href="/uploadStorage/product/${product.pt_image2}">
-								<img
-								src="/uploadStorage/product/${product.pt_image2}"> 
-								</a>
-								<a data-lightbox="roadtrip"	href="/uploadStorage/product/${product.pt_image3}">
-								<img
-								src="/uploadStorage/product/${product.pt_image3}">
-								</a>
+						<div class="product_thumb">
+							<a data-lightbox="roadtrip"
+								href="/uploadStorage/thumb/${product.pt_thumb}"> <img
+								class="product_thumbnail"
+								src="/uploadStorage/thumb/${product.pt_thumb}">
+							</a>
+							<div class="product_images">
+								<c:if
+									test="${product.pt_image1 != null && product.pt_image1 != ''}">
+									<a data-lightbox="roadtrip"
+										href="/uploadStorage/image1/${product.pt_image1}"> <img
+										src="/uploadStorage/image1/${product.pt_image1}">
+									</a>
+								</c:if>
+								<c:if
+									test="${product.pt_image2 != null && product.pt_image1 != ''}">
+									<a data-lightbox="roadtrip"
+										href="/uploadStorage/image2/${product.pt_image2}"> <img
+										src="/uploadStorage/image2/${product.pt_image2}">
+									</a>
+								</c:if>
+								<c:if
+									test="${product.pt_image3 != null && product.pt_image1 != ''}">
+									<a data-lightbox="roadtrip"
+										href="/uploadStorage/image3/${product.pt_image3}"> <img
+										src="/uploadStorage/image3/${product.pt_image3}">
+									</a>
+								</c:if>
+							</div>
 						</div>
 						<div class="product_content">
 							<p>${product.pt_name}</p>
@@ -192,10 +157,9 @@
 	<%-- ====================== 리스트 종료 ========================= --%>
 	<!-- 추가 부분 -->
 	<%-- ================= 페이지 네비게이션 시작 ==================== --%>
-<%-- 	<div id="productPage">
-		<tag:paging page="${param.page}" total="${total}"
-			list_size="${data.pageSize}" />
-	</div> --%>
+	<div id="productPaging">
+		<tag:paging page="${param.page}" total="${total}" list_size="6" />
+	</div>
 	<%-- ================= 페이지 네비게이션 종료 ==================== --%>
 </body>
 </html>

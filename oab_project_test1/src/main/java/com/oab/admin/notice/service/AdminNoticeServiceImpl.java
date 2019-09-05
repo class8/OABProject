@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.oab.admin.notice.dao.NoticeDao;
-import com.oab.admin.notice.vo.NoticeVO;
+import com.oab.client.notice.dao.NoticeDao;
+import com.oab.client.notice.vo.NoticeVO;
 
 @Service
 @Transactional
-public class NoticeServiceImpl implements NoticeService {
+public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 	@Autowired
 	private NoticeDao noticeDao;

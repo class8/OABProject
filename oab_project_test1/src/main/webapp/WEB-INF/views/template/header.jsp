@@ -9,9 +9,10 @@
 <nav class="header_nav">
 	<h2>상단네비</h2>
 	<div class="header_nav2">
-	<a href="/login/loginPage"><span>로그인|</span></a>
+	<a href="/login/login"><span>로그인|</span></a>
 	<a href="#"><span>로그아웃|</span></a>
-	<a href="/member/memberJoin"><span>회원가입</span></a>
+	<a href="/member/join"><span>회원가입</span></a>
+	<a href="/admin/login"><span>관리자 페이지</span></a>
 	</div>
 </nav>
 <nav class="header_menu">
@@ -27,7 +28,7 @@
 		<li>이용안내
 			<ul>
 				<li><a href="/product/productList">상품소개</a></li>
-				<li><a href="/reservation/reservationList">예약하기</a></li>
+				<li><a href="/reservation/reservationReg">예약하기</a></li>
 				<li><a href="/review/reviewList">포토후기</a></li>
 			</ul>
 		</li>

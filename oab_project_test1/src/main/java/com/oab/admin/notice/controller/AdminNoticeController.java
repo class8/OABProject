@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.oab.admin.notice.service.NoticeService;
-import com.oab.admin.notice.vo.NoticeVO;
+import com.oab.admin.notice.service.AdminNoticeService;
+import com.oab.client.notice.vo.NoticeVO;
 
 import org.slf4j.LoggerFactory;
 
@@ -18,12 +18,12 @@ import org.slf4j.Logger;
 
 @Controller
 @RequestMapping(value = "/admin/notice")
-public class NoticeController {
+public class AdminNoticeController {
 
-	private Logger log = LoggerFactory.getLogger(NoticeController.class);
+	private Logger log = LoggerFactory.getLogger(AdminNoticeController.class);
 
 	@Autowired
-	private NoticeService noticeService;
+	private AdminNoticeService adminnoticeService;
 
 	// 글목록 구현하기
 
@@ -33,7 +33,7 @@ public class NoticeController {
 		log.info("noticeList Controller 호출 성공");
 		System.out.println("공지사항컨트롤러 호출 성공");
 
-		List<NoticeVO> noticeList = noticeService.noticeList();
+		List<NoticeVO> noticeList = adminnoticeService.noticeList();
 
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("data");
@@ -59,7 +59,7 @@ public class NoticeController {
 		int result = 0;
 		String url = "";
 
-		result = noticeService.noticeInsert(nvo);
+		result = adminnoticeService.noticeInsert(nvo);
 
 		if (result == 1) {
 			url = "/notice/noticeList";
@@ -78,7 +78,7 @@ public class NoticeController {
 		log.info("noticeDetail 호출 성공");
 
 		NoticeVO detail = new NoticeVO();
-		detail = noticeService.noticeDetail(nvo);
+		detail = adminnoticeService.noticeDetail(nvo);
 
 		if (detail != null && (!detail.equals(""))) {
 			detail.setNt_content(detail.getNt_content().toString().replaceAll("\n", "<br>"));
@@ -97,7 +97,7 @@ public class NoticeController {
 		log.info("updateForm 호출 성공");
 
 		NoticeVO updateData = new NoticeVO();
-		updateData = noticeService.noticeDetail(nvo);
+		updateData = adminnoticeService.noticeDetail(nvo);
 
 		model.addAttribute("updateData", updateData);
 		return "notice/updateForm";

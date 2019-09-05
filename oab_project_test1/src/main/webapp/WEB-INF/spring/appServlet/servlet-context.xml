@@ -47,7 +47,7 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 			<beans:list>
 				<beans:value>/WEB-INF/tiles/tiles-setting.xml</beans:value>
 				<!-- 관리자 페이지를 위해서 주석해제 -->
-			<!--<beans:value>/WEB-INF/tiles/admin-setting.xml</beans:value> -->
+			<beans:value>/WEB-INF/tiles/admin-setting.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
