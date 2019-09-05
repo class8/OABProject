@@ -5,14 +5,20 @@
 <div class="header_logo">
 	<h2>메인로고</h2>
 	<a href="/"><img src="/resources/images/main_logo.png"></a>
-</div>	
+</div>
 <nav class="header_nav">
 	<h2>상단네비</h2>
 	<div class="header_nav2">
-	<a href="/login/login"><span>로그인|</span></a>
-	<a href="#"><span>로그아웃|</span></a>
-	<a href="/member/join"><span>회원가입</span></a>
-	<a href="/admin/login"><span>관리자 페이지</span></a>
+		<c:choose>
+			<c:when test="${login.mt_id == null or login.mt_id == ''}">
+				<a href="/login/login"><span>로그인|</span></a>
+			</c:when>
+			<c:when test="${login.mt_id != null or login.mt_id != ''}">
+				<a href="/login/logout"><span>로그아웃|</span></a>
+			</c:when>
+		</c:choose>
+		<a href="/member/join"><span>회원가입|</span></a> <a href="/admin/login"><span>관리자
+				페이지</span></a>
 	</div>
 </nav>
 <nav class="header_menu">

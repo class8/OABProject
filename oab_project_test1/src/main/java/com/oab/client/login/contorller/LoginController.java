@@ -99,11 +99,11 @@ public class LoginController {
 	}
 	
 	// 로그아웃 처리 메소드
-	@RequestMapping("/logout.do")
+	@RequestMapping("/logout")
 	public String logout(HttpSession session, HttpServletRequest request) {
 		session.invalidate();
 		session = request.getSession(true);
-		return "redirect:/login/login";
+		return "redirect:/";
 	}
 
 }

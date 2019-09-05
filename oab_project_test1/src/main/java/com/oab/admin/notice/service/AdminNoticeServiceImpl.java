@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.oab.client.notice.dao.NoticeDao;
+import com.oab.admin.notice.dao.AdminNoticeDao;
 import com.oab.client.notice.vo.NoticeVO;
 
 @Service
@@ -16,7 +16,7 @@ import com.oab.client.notice.vo.NoticeVO;
 public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 	@Autowired
-	private NoticeDao noticeDao;
+	private AdminNoticeDao adminNoticeDao;
 
 	// 글 목록 구현
 
@@ -27,7 +27,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		int result = 0;
 		try {
 
-			result = noticeDao.noticeInsert(nvo);
+			result = adminNoticeDao.adminNoticeInsert(nvo);
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = 0;
@@ -40,7 +40,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	@Override
 	public NoticeVO noticeDetail(NoticeVO nvo) {
 		NoticeVO detail = null;
-		detail = noticeDao.noticeDetail(nvo);
+		detail = adminNoticeDao.adminNoticeDetail(nvo);
 		return detail;
 	}
 
@@ -51,7 +51,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		int result = 0;
 		try {
 
-			result = noticeDao.noticeUpdate(nvo);
+			result = adminNoticeDao.adminNoticeUpdate(nvo);
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = 0;
@@ -67,7 +67,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		int result = 0;
 		try {
 
-			result = noticeDao.noticeDelete(nt_number);
+			result = adminNoticeDao.adminNoticeDelete(nt_number);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -80,7 +80,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 		List<NoticeVO> myList = null;
 
-		myList = noticeDao.noticeList();
+		myList = adminNoticeDao.adminNoticeList();
 		System.out.println(myList);
 		return myList;
 	}

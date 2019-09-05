@@ -49,7 +49,7 @@
 	<div class="contentContainer">
 
 		<div class="well">
-			<c:if test="${login.mt_Id == null or login.mt_Id == ''}">
+			<c:if test="${login.mt_id == null or login.mt_id == ''}">
 				<form id="loginForm" class="form-horizontal">
 					<div class="form-group">
 						<label for="mt_id" class="col-sm-2 control-label">아 이 디 </label>
