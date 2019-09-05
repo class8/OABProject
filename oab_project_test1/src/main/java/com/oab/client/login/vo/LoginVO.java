@@ -1,6 +1,6 @@
 package com.oab.client.login.vo;
 
-public class LoginVO extends LoginHistory2{
+public class LoginVO extends LoginHistory{
 	private String mt_id="";//회원 아이디
 	private String mt_pw="";//회원 비밀번호
 	private String mt_name="";//회원 이름
@@ -54,10 +54,11 @@ public class LoginVO extends LoginHistory2{
 
 	@Override
 	public String toString() {
-		return "LoginVO [mt_id=" + mt_id + ", mt_pw=" + mt_pw + ", mt_name=" + mt_name + ", getIdx()=" + getIdx()
-				+ ", getRetry()=" + getRetry() + ", getLastFailedLogin()=" + getLastFailedLogin()
-				+ ", getLastSuccessedLogin()=" + getLastSuccessedLogin() + ", getClientIP()=" + getClientIP() + "]";
+		return "LoginVO [mt_id=" + mt_id + ", mt_pw=" + mt_pw + ", mt_name=" + mt_name + ", getHt_number()="
+				+ getHt_number() + ", getHt_retry()=" + getHt_retry() + ", getHt_lastFail()=" + getHt_lastFail()
+				+ ", getHt_lastSuccess()=" + getHt_lastSuccess() + ", getHt_Ip()=" + getHt_Ip() + "]";
 	}
+
 
 
 

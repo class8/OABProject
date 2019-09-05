@@ -49,28 +49,28 @@ public class LoginController {
 			return mav;
 		} else {
 			LoginVO vo = loginService.loginHistory2Select(mt_Id);
-			log.info("최근 로그인 일시:" + new SimpleDateFormat("YYYY-MM-dd").format(vo.getLastSuccessedLogin()));
-			log.info("retry:" + vo.getRetry());
+			log.info("최근 로그인 일시:" + new SimpleDateFormat("YYYY-MM-dd").format(vo.getHt_lastSuccess()));
+			log.info("retry:" + vo.getHt_retry());
 
 			// 로그인 시도횟수가 5회가 넘으면 30초간 로그인 잠금
-			if (vo.getRetry() >= 5) {
-				if (new Date().getTime() - vo.getLastFailedLogin() > 30000) {
+			if (vo.getHt_retry() >= 5) {
+				if (new Date().getTime() - vo.getHt_lastFail() > 30000) {
 					mav.addObject("errCode", 6);// 30초 동안 로그인 잠금 알림
 					mav.setViewName("login/login");
 					return mav;
 				} else {
-					vo.setRetry(0);
-					vo.setLastFailedLogin(0);
+					vo.setHt_retry(0);
+					vo.setHt_lastSuccess(0);
 					loginService.loginHistory2Update(vo);
 				}
 			}
 			LoginVO loginCheckResult = loginService.loginSelect(lvo.getMt_id(), lvo.getMt_pw());
 			if (loginCheckResult == null) {
-				vo.setRetry(vo.getRetry() + 1);
-				vo.setLastFailedLogin(new Date().getTime());
+				vo.setHt_retry(vo.getHt_retry() + 1);
+				vo.setHt_lastFail(new Date().getTime());
 				loginService.loginHistory2Update(vo);
 
-				mav.addObject("retry", vo.getRetry());
+				mav.addObject("retry", vo.getHt_retry());
 				mav.addObject("errCode", 1);
 				mav.setViewName("login/login");
 				return mav;
@@ -79,10 +79,10 @@ public class LoginController {
 // 마지막으로 로그인 실패 시간 0으로 reset, 
 			// 성공한 클라이언트 IP를 DB에 업데이트,로그인 성공시간 DB에 업데이트
 			else {
-				vo.setRetry(0);
-				vo.setLastFailedLogin(0);
-				vo.setLastSuccessedLogin(new Date().getTime());
-				vo.setClientIP(request.getRemoteAddr());
+				vo.setHt_retry(0);
+				vo.setHt_lastFail(0);
+				vo.setHt_lastSuccess(new Date().getTime());
+				vo.setHt_Ip(request.getRemoteAddr());
 				loginService.loginHistory2Update(vo);
 
 				session.setAttribute("login", loginCheckResult);
@@ -92,12 +92,18 @@ public class LoginController {
 		}
 	}
 
+	//아이디 찾기 
+	@RequestMapping(value = "/find_md_idform.do")
+	public String fine_mt_idform() throws Exception{
+		return "/member/find_mt_idform";
+	}
+	
 	// 로그아웃 처리 메소드
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session, HttpServletRequest request) {
 		session.invalidate();
 		session = request.getSession(true);
-		return "redirect:/login/login.do";
+		return "redirect:/login/login";
 	}
 
 }
