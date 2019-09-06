@@ -41,9 +41,25 @@
 			$("#noticeDetailForm").submit();
 
 		});
-	});
 
-	/* 한페이지에 보여줄 레코드 수 조회 후 선택한 값 그대로를 유지하기 위한 설정  */
+		// 한페이지에 보여줄 레코드 수가 변경될 때마다 처리 이벤터 
+		$("#pageSize").change(function() {
+			goPage(1);
+		});
+	});
+	//이거고쳐
+	/* 검색과 한 페이지에 보여줄 레코드 수 처리 및 페이징을 위한 실직적인 처리 함수 */
+	function goPage(page) {
+		if ($("#search").val() == "all") {
+			$("#keyword").val("");
+		}
+		$("#page").val(page);
+		$("#notice_search").attr({
+			"method" : "get",
+			"action" : "/notice/noticeList"
+		});
+		$("#notice_search").submit();
+	}
 </script>
 
 </head>
@@ -65,6 +81,10 @@
 
 		<%--============================ 리스트 시작 ============================== --%>
 		<div id="noticeList">
+
+			<form id="notice_search" name="notice_search">
+				<input type="hidden" id="page" name="page" value="${data.page}">
+			</form>
 			<table summary="공지사항 리스트" id="noticeListTable">
 				<colgroup>
 					<col width="10%" />
@@ -120,7 +140,7 @@
 		</div>
 		<%-- ================= 페이지 네비게이션 시작 ==================== --%>
 		<div id="noticePage">
-			<tag:paging page="${param.page}" total="${total}" list_size="5"></tag:paging>
+			<tag:paging page="${param.page}" total="${total}" list_size="10"></tag:paging>
 		</div>
 		<%-- ================= 페이지 네비게이션 종료 ==================== --%>
 	</div>

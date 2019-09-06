@@ -18,10 +18,10 @@ public class NoticeServiceImpl implements NoticeService{
 
 	//글 목록을 구현한다
 	@Override
-	public List<NoticeVO> noticeList() {
+	public List<NoticeVO> noticeList(NoticeVO nvo) {
 		
 		List<NoticeVO> mynotice = null;
-		mynotice = noticeDao.noticeList();
+		mynotice = noticeDao.noticeList(nvo);
 		return mynotice;
 	
 	

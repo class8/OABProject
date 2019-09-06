@@ -43,7 +43,7 @@ public class NoticeController {
 		log.info("count = " + count);
 		
 		
-		List<NoticeVO> noticeList = noticeService.noticeList();
+		List<NoticeVO> noticeList = noticeService.noticeList(nvo);
 		
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("count", count);

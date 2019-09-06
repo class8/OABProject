@@ -16,7 +16,7 @@ public class NoticeDaoImpl implements NoticeDao {
 
 	// 글 목록 구현
 	@Override
-	public List<NoticeVO> noticeList() {
+	public List<NoticeVO> noticeList(NoticeVO nvo) {
 		return session.selectList("noticeList");
 	}
 
