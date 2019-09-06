@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+/* 문의게시판 css 2019.09.05 작성자 김은수 */
+
+
+/* 제목 */
+.contnetTit {
+	margin-top: 30px;
+	font-size: 25pt;
+	text-align: center;
+	text-align: center;
+}
+
+
+.ContentTB {
+	/* 줄간격 */
+	line-height: 250%;
+	margin-top: 50px;
+	margin-left: 300px;
+}
+
+
+/* 텍스트 박스 */
+#qt_writer {
+	width: 300px;
+}
+
+#qt_pw {
+	width: 300px;
+}
+
+#qt_title {
+	width: 750px;
+}
+
+#qt_textcontent {
+	width: 750px;
+	height: 250px;
+	resize: none;
+}
+
+#qt_addfile {
+	width: 750px;
+}
+
+
+/* 버튼 CSS */
+.buttoncss {
+
+	margin-top : 70px;
+	margin : 0;
+	text-align: center;
+	margin-right: 50px;
+
+}
+
+
