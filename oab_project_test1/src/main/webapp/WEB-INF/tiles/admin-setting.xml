@@ -20,7 +20,7 @@
 			value="/WEB-INF/views/admin/template/mainLayout.jsp"></put-attribute>
 	</definition> -->
 
-	<definition name="notice/*" extends="main">
+	<definition name="admin/notice/*" extends="main">
 		<put-attribute name="title" value="공지사항리스트" />
 		<put-attribute name="left"
 			value="/WEB-INF/views/admin/template/serviceCenterLeft.jsp" />

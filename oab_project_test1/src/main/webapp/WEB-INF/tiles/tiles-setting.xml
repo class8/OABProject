@@ -43,12 +43,12 @@
 			value="/WEB-INF/views/greeting/greetingPage.jsp" />
 	</definition>
 
-	<definition name="notice/noticeList" extends="content">
+	<definition name="notice/*" extends="content">
 		<put-attribute name="title" value="공지사항" />
 		<put-attribute name="main_aside"
 			value="/WEB-INF/views/template/aside1.jsp" />
 		<put-attribute name="main_body"
-			value="/WEB-INF/views/notice/noticeList.jsp"></put-attribute>
+			value="/WEB-INF/views/notice/{1}.jsp"></put-attribute>
 	</definition>
 
 	<definition name="branch/branchPage" extends="content">
