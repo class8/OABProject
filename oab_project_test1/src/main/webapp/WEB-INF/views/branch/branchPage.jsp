@@ -23,7 +23,7 @@
 		<div>
 
 			<article class="article1">
-				<img src="/resources/images/branch_img1.jpg" alt="여의도점"
+				<img src="/resources/images/branch/branch_img1.PNG" alt="여의도점"
 					id="branch_img">
 				<p id="branch_title">
 					여의도점 <br>
@@ -35,7 +35,7 @@
 			</article>
 
 			<article class="article2">
-				<img src="/resources/images/branch_img2.jpg" alt="여의도점"
+				<img src="/resources/images/branch/branch_img2.PNG" alt="뚝섬"
 					id="branch_img">
 				<p id="branch_title">
 					뚝섬점 <br>
@@ -49,7 +49,7 @@
 
 			</article>
 			<article class="article3">
-				<img src="/resources/images/branch_img3.jpg" alt="여의도점"
+				<img src="/resources/images/branch/branch_img3.PNG" alt="잠원점"
 					id="branch_img">
 				<p id="branch_title">
 					잠원점<br>
