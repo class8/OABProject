@@ -27,7 +27,7 @@
 		insert into history_tbl(
 			ht_number, mt_id, ht_retry, ht_lastFail, ht_lastSuccess, ht_Ip)
 		values(
-			history_tbl_seq.nextval, #{mt_id}, #{ht_retry,jdbcType=INTEGER}, 
+			history_seq.nextval, #{mt_id}, #{ht_retry,jdbcType=INTEGER}, 
 			#{ht_lastFail,jdbcType=INTEGER}, 
             #{ht_lastSuccess,jdbcType=INTEGER}, 
 			#{ht_Ip,jdbcType=VARCHAR}
