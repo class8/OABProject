@@ -23,6 +23,9 @@ public class CommonVO {
 	private String result_cd;
 	private String result_msg;
 
+	// 상품 카테고리 선택시 사용 하는 필드
+	private String select_type = "세트상품";
+
 	// 접근자와 설정자
 	public String getPage() {
 		return page;
@@ -118,6 +121,14 @@ public class CommonVO {
 
 	public void setResult_msg(String result_msg) {
 		this.result_msg = result_msg;
+	}
+
+	public String getSelect_type() {
+		return select_type;
+	}
+
+	public void setSelect_type(String select_type) {
+		this.select_type = select_type;
 	}
 
 }

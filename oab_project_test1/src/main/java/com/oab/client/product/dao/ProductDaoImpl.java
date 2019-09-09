@@ -25,4 +25,28 @@ public class ProductDaoImpl implements ProductDao {
 	public int productListCnt(ProductVO pvo) {
 		return (Integer) session.selectOne("productListCnt");
 	}
+
+	// 세트 레코드 건수 구현
+	@Override
+	public int setListCnt(ProductVO pvo) {
+		return (Integer) session.selectOne("setListCnt");
+	}
+
+	// 추가 레코드 건수 구현
+	@Override
+	public int addListCnt(ProductVO pvo) {
+		return (Integer) session.selectOne("addListCnt");
+	}
+
+	// 글 목록 구현
+	@Override
+	public List<ProductVO> setList(ProductVO pvo) {
+		return session.selectList("setList", pvo);
+	}
+
+	// 글 목록 구현
+	@Override
+	public List<ProductVO> addList(ProductVO pvo) {
+		return session.selectList("addList", pvo);
+	}
 }

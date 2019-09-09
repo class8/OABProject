@@ -105,10 +105,15 @@
 	<%--============================ 검색기능 종료 ============================== --%>
 	<%--============================ 리스트 시작 ============================== --%>
 	<div id="productList">
+		<div>
+			<input type="hidden" id="select_type" name="select_type" value="세트상품">
+			<a href="/product/productList?select_type=세트상품&page=1">세트상품</a> <a
+				href="/product/productList?select_type=추가상품&page=1">추가상품</a>
+		</div>
 		<!-- 데이터 출력 -->
 		<c:choose>
-			<c:when test="${not empty productList}">
-				<c:forEach var="product" items="${productList}" varStatus="status">
+			<c:when test="${not empty setList && data.select_type eq '세트상품'}">
+				<c:forEach var="product" items="${setList}" varStatus="status">
 					<div class="product_article">
 						<div class="product_thumb">
 							<a data-lightbox="roadtrip"
@@ -125,14 +130,54 @@
 									</a>
 								</c:if>
 								<c:if
-									test="${product.pt_image2 != null && product.pt_image1 != ''}">
+									test="${product.pt_image2 != null && product.pt_image2 != ''}">
 									<a data-lightbox="roadtrip"
 										href="/uploadStorage/image2/${product.pt_image2}"> <img
 										src="/uploadStorage/image2/${product.pt_image2}">
 									</a>
 								</c:if>
 								<c:if
-									test="${product.pt_image3 != null && product.pt_image1 != ''}">
+									test="${product.pt_image3 != null && product.pt_image3 != ''}">
+									<a data-lightbox="roadtrip"
+										href="/uploadStorage/image3/${product.pt_image3}"> <img
+										src="/uploadStorage/image3/${product.pt_image3}">
+									</a>
+								</c:if>
+							</div>
+						</div>
+						<div class="product_content">
+							<p>${product.pt_name}</p>
+							<p>${product.pt_price}원</p>
+						</div>
+					</div>
+				</c:forEach>
+			</c:when>
+			<c:when test="${not empty addList && data.select_type eq '추가상품'}">
+				<c:forEach var="product" items="${addList}" varStatus="status">
+					<div class="product_article">
+						<div class="product_thumb">
+							<a data-lightbox="roadtrip"
+								href="/uploadStorage/thumb/${product.pt_thumb}"> <img
+								class="product_thumbnail"
+								src="/uploadStorage/thumb/${product.pt_thumb}">
+							</a>
+							<div class="product_images">
+								<c:if
+									test="${product.pt_image1 != null && product.pt_image1 != ''}">
+									<a data-lightbox="roadtrip"
+										href="/uploadStorage/image1/${product.pt_image1}"> <img
+										src="/uploadStorage/image1/${product.pt_image1}">
+									</a>
+								</c:if>
+								<c:if
+									test="${product.pt_image2 != null && product.pt_image2 != ''}">
+									<a data-lightbox="roadtrip"
+										href="/uploadStorage/image2/${product.pt_image2}"> <img
+										src="/uploadStorage/image2/${product.pt_image2}">
+									</a>
+								</c:if>
+								<c:if
+									test="${product.pt_image3 != null && product.pt_image3 != ''}">
 									<a data-lightbox="roadtrip"
 										href="/uploadStorage/image3/${product.pt_image3}"> <img
 										src="/uploadStorage/image3/${product.pt_image3}">
@@ -158,7 +203,8 @@
 	<!-- 추가 부분 -->
 	<%-- ================= 페이지 네비게이션 시작 ==================== --%>
 	<div id="productPaging">
-		<tag:paging page="${param.page}" total="${total}" list_size="6" />
+		<tag:paging page="${param.page}" total="${total}"
+			list_size="${data.pageSize}" />
 	</div>
 	<%-- ================= 페이지 네비게이션 종료 ==================== --%>
 </body>

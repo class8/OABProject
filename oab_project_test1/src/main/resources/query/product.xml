@@ -5,13 +5,10 @@
 <mapper namespace="com.oab.client.product.dao.ProductDao">
 	<!-- 관리자 페이지 추가 -->
 	<sql id="productCommon">
-		SELECT pt_number, pt_name,
-		pt_price, pt_thumb, pt_image1,
-		pt_image2,
-		pt_image3
+		SELECT *
 		from product_tbl
 		<where>
-		 pt_status = '대여가능' 
+			pt_status = '대여가능'
 			<if test="search == 'pt_name'">
    <![CDATA[and pt_name LIKE '%' || #{keyword} || '%']]>
 			</if>
@@ -58,6 +55,7 @@
 		</where>
 	</select>
 
+	<!-- 전체 컬럼 수 조회 -->
 	<select id="productListCnt" parameterType="product"
 		resultType="int">
 		<!-- Board - boardListCnt -->
@@ -68,5 +66,104 @@
 		) list ORDER BY pt_number desc
 		)
 	</select>
+
+	<!-- 세트 컬럼 수 조회 -->
+	<select id="setListCnt" parameterType="product" resultType="int">
+		<!-- Board - boardListCnt -->
+		SELECT NVL(count(1), 0) FROM
+		(SELECT list.*, ROWNUM AS RNUM
+		FROM (
+		<include refid="productCommon"></include>
+		and pt_type='세트상품') list ORDER BY pt_number desc
+		)
+	</select>
+
+	<!-- 추가 컬럼 수 조회 -->
+	<select id="addListCnt" parameterType="product" resultType="int">
+		<!-- Board - boardListCnt -->
+		SELECT NVL(count(1), 0) FROM
+		(SELECT list.*, ROWNUM AS RNUM
+		FROM (
+		<include refid="productCommon"></include>
+		and pt_type='추가상품') list ORDER BY pt_number desc
+		)
+	</select>
+
+	<!-- 세트 전체 조회 -->
+	<select id="setList" parameterType="product"
+		resultType="product">
+		<!-- product - productList -->
+		SELECT *
+		from
+		(SELECT list.*, ROWNUM AS RNUM
+		FROM (
+		<include refid="productCommon"></include>
+		and pt_type='세트상품'
+		<!-- 상품 목록에 보여질 조건 -->
+		<choose>
+			<when test="order_by=='pt_name'">
+				ORDER BY pt_name
+			</when>
+			<when test="order_by=='pt_price'">
+				ORDER BY pt_price
+			</when>
+		</choose>
+		<choose>
+			<when test="order_sc=='ASC'">
+				ASC
+			</when>
+			<when test="order_sc=='DESC'">
+				DESC
+			</when>
+		</choose>
+		) list
+		)
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					RNUM BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where>
+	</select>
+
+	<!-- 추가 전체 조회 -->
+	<select id="addList" parameterType="product"
+		resultType="product">
+		<!-- product - productList -->
+		SELECT *
+		from
+		(SELECT list.*, ROWNUM AS RNUM
+		FROM (
+		<include refid="productCommon"></include>
+		and pt_type='추가상품'
+		<!-- 상품 목록에 보여질 조건 -->
+		<choose>
+			<when test="order_by=='pt_name'">
+				ORDER BY pt_name
+			</when>
+			<when test="order_by=='pt_price'">
+				ORDER BY pt_price
+			</when>
+		</choose>
+		<choose>
+			<when test="order_sc=='ASC'">
+				ASC
+			</when>
+			<when test="order_sc=='DESC'">
+				DESC
+			</when>
+		</choose>
+		) list
+		)
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					RNUM BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where>
+	</select>
+
 
 </mapper>

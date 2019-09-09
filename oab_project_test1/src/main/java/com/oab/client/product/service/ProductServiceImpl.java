@@ -39,4 +39,46 @@ public class ProductServiceImpl implements ProductService {
 	public int productListCnt(ProductVO pvo) {
 		return productDao.productListCnt(pvo);
 	}
+
+	// 세트 레코드 수 구현
+	@Override
+	public int setListCnt(ProductVO pvo) {
+		return productDao.setListCnt(pvo);
+	}
+
+	// 추가 레코드 수 구현
+	@Override
+	public int addListCnt(ProductVO pvo) {
+		return productDao.addListCnt(pvo);
+	}
+
+	// 세트 목록 구현
+	@Override
+	public List<ProductVO> setList(ProductVO pvo) {
+		List<ProductVO> myList = null;
+		// 정렬에 대한 기본값 설정
+		if (pvo.getOrder_by() == null) {
+			pvo.setOrder_by("pt_name");
+		}
+		if (pvo.getOrder_sc() == null) {
+			pvo.setOrder_sc("DESC");
+		}
+		myList = productDao.setList(pvo);
+		return myList;
+	}
+
+	// 추가 목록 구현
+	@Override
+	public List<ProductVO> addList(ProductVO pvo) {
+		List<ProductVO> myList = null;
+		// 정렬에 대한 기본값 설정
+		if (pvo.getOrder_by() == null) {
+			pvo.setOrder_by("pt_name");
+		}
+		if (pvo.getOrder_sc() == null) {
+			pvo.setOrder_sc("DESC");
+		}
+		myList = productDao.addList(pvo);
+		return myList;
+	}
 }

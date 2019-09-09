@@ -91,4 +91,12 @@
 			value="/WEB-INF/views/product/{1}.jsp"></put-attribute>
 	</definition>
 
+	<definition name="reservation/*" extends="content">
+		<put-attribute name="title" value="예약하기" />
+		<put-attribute name="main_aside"
+			value="/WEB-INF/views/template/aside2.jsp" />
+		<put-attribute name="main_body"
+			value="/WEB-INF/views/reservation/{1}.jsp"></put-attribute>
+	</definition>
+
 </tiles-definitions>

@@ -37,19 +37,33 @@ public class ProductController {
 		log.info("productList 호출 성공");
 
 		// 페이지 세팅
+		pvo.setPageSize("6");
 		Paging.setPage(pvo);
 
-		// 전체 레코드수 구현
-		int total = productService.productListCnt(pvo);
-		log.info("total = " + total);
+		// 레코드수
+		int total = 0;
 
+		// 전체 레코드수 구현
+		// int total = productService.productListCnt(pvo);
+		// log.info("total = " + total);
+
+		if (pvo.getSelect_type().equals("세트상품")) {
+			List<ProductVO> setList = productService.setList(pvo);
+			// 세트 레코드수 구현
+			total = productService.setListCnt(pvo);
+			log.info("total = " + total);
+			model.addAttribute("setList", setList);
+		} else if (pvo.getSelect_type().equals("추가상품")) {
+			List<ProductVO> addList = productService.addList(pvo);
+			// 추가 레코드수 구현
+			total = productService.addListCnt(pvo);
+			log.info("total = " + total);
+			model.addAttribute("addList", addList);
+		}
 		// 글번호 재설정
 		int count = total - (Util.nvl(pvo.getPage()) - 1) * Util.nvl(pvo.getPageSize());
 		log.info("count = " + count);
 
-		List<ProductVO> productList = productService.productList(pvo);
-
-		model.addAttribute("productList", productList);
 		model.addAttribute("count", count);
 		model.addAttribute("total", total);
 		model.addAttribute("data", pvo);
@@ -62,11 +76,12 @@ public class ProductController {
 	 * 글 상세보기 구현
 	 **************************************/
 	/*
-	 * @RequestMapping(value = "/productDetail.do", method = RequestMethod.GET) public
-	 * String productDetail(@ModelAttribute productVO pvo, Model model) {
+	 * @RequestMapping(value = "/productDetail.do", method = RequestMethod.GET)
+	 * public String productDetail(@ModelAttribute productVO pvo, Model model) {
 	 * log.info("productDetail 호출 성공"); log.info("b_num = " + pvo.getB_num());
 	 * 
-	 * productVO detail = new productVO(); detail = productService.productDetail(pvo);
+	 * productVO detail = new productVO(); detail =
+	 * productService.productDetail(pvo);
 	 * 
 	 * if (detail != null && (!detail.equals(""))) {
 	 * detail.setB_content(detail.getB_content().toString().replaceAll("\n",

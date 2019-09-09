@@ -1,0 +1,27 @@
+.reservation_calendar {
+	width: 40%;
+	height: 100%;
+	float: left;
+}
+
+.reservation_select {
+	width: 90%;
+	height: 100%;
+	float: left;
+}
+
+.reservation_select table {
+	align-content: center;
+}
+
+.reservation_select tr {
+	border: 1px solid black;
+	font-size: 28px;
+	height: 50px;
+}
+
+.reservation_select td {
+	height: 50px;
+	font-size: 14px;
+	text-align: center;
+}
