@@ -16,26 +16,42 @@
 	</insert>
 
 	<delete id="securityDelete" parameterType="String">
-		delete from SECURITY_TBL
+		delete from
+		SECURITY_TBL
 		where mt_id = #{mt_id}
 	</delete>
+	<!--아이디 찾기위한 select -->
+	<select id="memberIdselect" parameterType="String"
+		resultType="member">
+		select mt_id, mt_email
+		from MEMBER_TBL
+		where mt_email =
+		#{mt_email} and mt_name = #{mt_name}
+	</select>
 
 	<select id="memberSelect" parameterType="String"
 		resultType="member">
-		select mt_number, mt_id, mt_pw, mt_name, mt_birth, mt_gender, mt_email, mt_phone
+		select mt_number, mt_id, mt_pw, mt_name, mt_birth,
+		mt_gender, mt_email, mt_phone
 		from MEMBER_TBL
 		where mt_id = #{mt_id}
 	</select>
 
+	<!-- <update id="memberPwUpdate" parameterType="member"> update member_tbl 
+		set mt_pw=#{mt_pw} where mt_number=#{mt_number} </update> -->
+
 	<insert id="memberInsert" parameterType="member">
-		
-		<selectKey keyProperty="mt_number" resultType="int" order="BEFORE">
+
+		<selectKey keyProperty="mt_number" resultType="int"
+			order="BEFORE">
 			select
 			MEMBER_SEQ.nextval from dual
 		</selectKey>
-		insert into MEMBER_TBL(mt_number, mt_id, mt_pw, mt_name, mt_birth, mt_gender, mt_email,
+		insert into MEMBER_TBL(mt_number, mt_id, mt_pw, mt_name, mt_birth,
+		mt_gender, mt_email,
 		mt_phone)
-		values(#{mt_number}, #{mt_id}, #{mt_pw}, #{mt_name}, #{mt_birth}, #{mt_gender}, #{mt_email}, #{mt_phone})
+		values(#{mt_number}, #{mt_id}, #{mt_pw},
+		#{mt_name}, #{mt_birth}, #{mt_gender}, #{mt_email}, #{mt_phone})
 	</insert>
 
 	<update id="memberUpdate" parameterType="member">
@@ -43,12 +59,27 @@
 		<if test="mt_pw != null and mt_pw != ''">
 			mt_pw=#{mt_pw},
 		</if>
-		mt_phone=#{mt_phone}, mt_email=#{mt_email}
+		mt_name=#{mt_name}, mt_birth=#{mt_birth}, mt_gender=#{mt_gender},
+		mt_email=#{mt_email}, mt_phone=#{mt_phone}
 		where mt_id=#{mt_id}
 	</update>
 
 	<delete id="memberDelete" parameterType="String">
 		delete from
-		MEMBER_TBL where mt_id = #{mt_id}
+		MEMBER_TBL
+		where mt_id = #{mt_id}
 	</delete>
+
+	<update id="memberPwUpdate" parameterType="member">
+		update MEMBER_TBL set
+		mt_pw=#{mt_pw}
+		where mt_id=#{mt_id}
+	</update>
+
+	<update id="securityPwUpdate" parameterType="member">
+		update security_tbl set
+		salt=#{salt}
+		where mt_id=#{mt_id}
+	</update>
+
 </mapper>
