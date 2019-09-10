@@ -8,14 +8,11 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
-
-	<!-- DataSource 설정 -->
 	<bean id="dataSource"
 		class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName"
 			value="java:comp/env/jdbc/Oracle11g" />
 	</bean>
-
 	<!-- Mybatis Setting -->
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -32,7 +29,6 @@
 		<constructor-arg name="sqlSessionFactory"
 			ref="sqlSessionFactory" />
 	</bean>
-
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
@@ -43,5 +39,25 @@
 			<value>com.oab.**.**.dao</value>
 		</property>
 	</bean>
+
+	<!-- 정효성 이메일 관련 dependency 추가 -->
+	<!-- 회원가입 메일 인증 -->
+	<!-- Mail 인증 관련 -->
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="oabtent123@gmail.com" />
+		<property name="password" value="tenttent12 " />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 정효성 이메일 관련 dependency 추가완료 -->
 
 </beans>

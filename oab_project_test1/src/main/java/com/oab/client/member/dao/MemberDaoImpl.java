@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.oab.client.login.vo.LoginVO;
 import com.oab.client.member.vo.MemberSecurity;
 import com.oab.client.member.vo.MemberVO;
 
@@ -53,6 +54,24 @@ public class MemberDaoImpl implements MemberDao {
 	public int memberDelete(String mt_id) {
 		// TODO Auto-generated method stub
 		return session.delete("memberDelete", mt_id);
+	}
+
+	@Override
+	public int memberPwUpdate(LoginVO lvo) {
+		// TODO Auto-generated method stub
+		return session.update("memberPwUpdate", lvo);
+	}
+
+	@Override
+	public MemberVO memberIdselect(MemberVO mvo) {
+		// TODO Auto-generated method stub
+		return (MemberVO) session.selectOne("memberIdselect", mvo);
+	}
+
+	@Override
+	public int securityPwUpdate(MemberSecurity sec) {
+		// TODO Auto-generated method stub
+		return session.update("securityPwUpdate", sec);
 	}
 
 }
