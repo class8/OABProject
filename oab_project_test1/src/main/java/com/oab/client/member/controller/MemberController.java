@@ -1,8 +1,9 @@
 package com.oab.client.member.controller;
 
-
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,26 +14,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.oab.admin.login.controller.AdminLoginController;
 import com.oab.client.login.service.LoginService;
 import com.oab.client.login.vo.LoginVO;
 import com.oab.client.member.service.MemberService;
-import com.oab.client.member.service.UserMailSendService;
 import com.oab.client.member.vo.MemberVO;
-
-import lombok.extern.java.Log;
 
 @Controller
 @RequestMapping(value = "/member")
-@Log
 public class MemberController {
+	private Logger log = LoggerFactory.getLogger(AdminLoginController.class);
+	
 	@Autowired
 	private MemberService memberService;
 
 	@Autowired
 	private LoginService loginService;
-	
-	@Autowired
-	private UserMailSendService sendService;
 
 	// 회원가입 폼
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
@@ -50,7 +47,7 @@ public class MemberController {
 	}
 
 	// 회원가입 처리
-	@RequestMapping(value = "/join", method = RequestMethod.POST, produces = "text/plain; charset=UTF-8")
+	@RequestMapping(value = "/join", method = RequestMethod.POST,  produces = "text/plain; charset=UTF-8")
 	public ModelAndView memberInsert(@ModelAttribute MemberVO mvo) {
 		log.info("join.do post 방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
@@ -76,7 +73,7 @@ public class MemberController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/MemberModify", method = RequestMethod.GET)
+	@RequestMapping(value = "/modify.do", method = RequestMethod.GET)
 	public ModelAndView memberModify(HttpSession session) {
 		log.info("modify.do get 방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
@@ -90,11 +87,11 @@ public class MemberController {
 
 		MemberVO vo = memberService.memberSelect(login.getMt_id());
 		mav.addObject("member", vo);
-		mav.setViewName("member/MemberModify");
+		mav.setViewName("member/modify");
 		return mav;
 	}
 
-	@RequestMapping(value = "/MemberModify", method = RequestMethod.POST)
+	@RequestMapping(value = "/modify.do", method = RequestMethod.POST)
 	public ModelAndView memberModifyProcess(@ModelAttribute("MemberVO") MemberVO mvo, HttpSession session) {
 		log.info("modify.do post 방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
@@ -109,16 +106,16 @@ public class MemberController {
 		if (loginService.loginSelect(mvo.getMt_id(), mvo.getOldmt_pw()) == null) {
 			mav.addObject("errCode", 1);
 			mav.addObject("member", vo);
-			mav.setViewName("member/MemberModify");
+			mav.setViewName("member/modify");
 			return mav;
 		}
 		if (memberService.memberUpdate(mvo)) {
-			mav.setViewName("redirect:/login/login");
+			mav.setViewName("redirect:/member/logout.do");
 			return mav;
 		} else {
 			mav.addObject("errCode", 2);
 			mav.addObject("member", vo);
-			mav.setViewName("member/MemberModify");
+			mav.setViewName("member/modify");
 			return mav;
 		}
 	}
@@ -145,27 +142,6 @@ public class MemberController {
 			mav.setViewName("login/login");
 			break;
 		}
-		return mav;
-	}
-
-	@RequestMapping("/memberPwUpdate.do")
-	public ModelAndView memberPwUpdate(HttpSession session, LoginVO lvo) throws Exception {
-		log.info("delete.do get방식에 의한 메서드 호출 성공");
-		ModelAndView mav = new ModelAndView();
-
-		sendService.sendMailPassword(lvo);
-		mav.setViewName("login/login");
-		return mav;
-	}
-	
-	@RequestMapping("/memberIdselect.do")
-	public ModelAndView memberIdselect(HttpSession session, MemberVO mvo) throws Exception {
-		log.info("memberIdselect.do get방식에 의한 메서드 호출 성공");
-		ModelAndView mav = new ModelAndView();
-
-		sendService.sendMailId(mvo);
-		
-		mav.setViewName("login/login");
 		return mav;
 	}
 
