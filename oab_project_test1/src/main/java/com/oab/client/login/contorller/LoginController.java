@@ -6,7 +6,8 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.oab.admin.product.controller.AdminProductController;
 import com.oab.client.login.service.LoginService;
 import com.oab.client.login.vo.LoginVO;
 
@@ -24,6 +26,8 @@ import lombok.extern.java.Log;
 @RequestMapping(value = "/login")
 @Log
 public class LoginController {
+	private Logger log = LoggerFactory.getLogger(AdminProductController.class);
+	
 	@Autowired
 	private LoginService loginService;
 

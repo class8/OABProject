@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oab.client.reservation.dao.ReservationDao">
+	<!-- 관리자 페이지 추가 -->
+	<sql id="reservationCommon">
+		SELECT *
+		from reservation_tbl
+	</sql>
+
+	<!-- 게시물 전체 조회 -->
+	<select id="reservationList" parameterType="reservation"
+		resultType="reservation">
+		<!-- reservation - reservationList -->
+		SELECT pt_number, pt_name,
+		pt_price, pt_thumb, pt_image1,
+		pt_image2,
+		pt_image3
+		from
+		(SELECT list.*, ROWNUM AS RNUM
+		FROM (
+		<include refid="reservationCommon"></include>
+		<!-- 상품 목록에 보여질 조건 -->
+		<choose>
+			<when test="order_by=='pt_name'">
+				ORDER BY pt_name
+			</when>
+			<when test="order_by=='pt_price'">
+				ORDER BY pt_price
+			</when>
+		</choose>
+		<choose>
+			<when test="order_sc=='ASC'">
+				ASC
+			</when>
+			<when test="order_sc=='DESC'">
+				DESC
+			</when>
+		</choose>
+		) list
+		)
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					RNUM BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where>
+	</select>
+
+	<insert id="reservationInsert" parameterType="reservation">
+		<selectKey keyProperty="rest_number" resultType="int"
+			order="BEFORE">
+			select reservation_seq.nextval from dual
+		</selectKey>
+		INSERT INTO reservation_tbl(
+		rest_number,mt_id,pt_number,rest_bnumber,rest_bname,rest_name,rest_phone,rest_status,rest_total,rest_exprent,rest_payoption,rest_regdate,rest_count)
+		VALUES(
+		#{rest_number},
+		#{mt_id},
+		#{pt_number},
+		#{rest_bnumber},
+		#{rest_bname},
+		#{rest_name},
+		#{rest_phone},
+		#{rest_status},
+		#{rest_total},
+		TO_DATE(#{rest_exprent},'YY-MM-DD HH24:MI'),
+		#{rest_payoption},
+		sysdate,
+		#{rest_count}
+		)
+	</insert>
+
+<!-- 게시물 전체 조회 -->
+	<select id="reservationBnumber" resultType="int">
+	select nvl(max(rest_bnumber),0)+1 AS rest_bnumber
+			from reservation_tbl
+	</select>
+
+</mapper>
