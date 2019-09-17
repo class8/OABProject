@@ -2,18 +2,20 @@ package com.oab.admin.notice.service;
 
 import java.util.List;
 
-import com.oab.client.notice.vo.NoticeVO;
+import com.oab.admin.notice.vo.AdminNoticeVO;
 
 public interface AdminNoticeService {
 
-	public List<NoticeVO> noticeList();
+	public List<AdminNoticeVO> adminNoticeList(AdminNoticeVO nvo);
 
-	public int noticeInsert(NoticeVO nvo);
+	public int adminNoticeListCnt(AdminNoticeVO nvo);
 
-	public NoticeVO noticeDetail(NoticeVO nvo);
+	public int adminNoticeInsert(AdminNoticeVO nvo);
 
-	public int noticeUpdate(NoticeVO nvo);
+	public AdminNoticeVO adminNoticeDetail(AdminNoticeVO nvo);
 
-	public int noticeDelete(int nt_number);
+	public int adminNoticeUpdate(AdminNoticeVO nvo);
+
+	public int adminNoticeDelete(int nt_number);
 
 }

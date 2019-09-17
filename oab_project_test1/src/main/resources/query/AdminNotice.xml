@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oab.admin.notice.dao.AdminNoticeDao">
+
+
+	<!-- 공지사항 기본 조회 -->
+	<!-- <select id="noticeList" parameterType="notice" resultType="notice"> 
+		select nt_number, nt_title, nt_writer, nt_content, to_char(nt_regdate, 'YYYY-MM-DD') 
+		as nt_regdate, nt_readcnt from notice_tbl order by nt_number desc </select> -->
+	<sql id="adminNoticeCommon">
+		SELECT *
+		FROM notice_tbl
+		<where>
+			<if test="search == 'nt_title'">
+               <![CDATA[ nt_title LIKE '%' || #{keyword} || '%']]>
+			</if>
+			<if test="search == 'nt_content'">
+               <![CDATA[ nt_content LIKE '%' || #{keyword} || '%']]>
+			</if>
+		</where>
+	</sql>
+
+	<!-- 게시물 전체 조회 -->
+	<select id="adminNoticeList" parameterType="notice"
+		resultType="notice">
+		SELECT nt_number, nt_title, nt_writer, nt_content,
+		TO_CHAR(nt_regdate,
+		'YYYY-MM-DD') AS nt_regdate, nt_readcnt
+		FROM
+		(SELECT list.*, ROWNUM AS
+		RNUM
+		FROM (
+		<include refid="adminNoticeCommon"></include>
+		<choose>
+			<when test="order_by == 'nt_regdate'">
+				ORDER BY nt_regdate
+			</when>
+		</choose>
+		<choose>
+			<when test="order_sc=='ASC'">
+				ASC
+			</when>
+			<when test="order_sc=='DESC'">
+				DESC
+			</when>
+		</choose>
+		) list
+		)
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					RNUM BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where>
+	</select>
+
+	<!-- 게시물 카운트 페이징 -->
+	<select id="adminNoticeListCnt" parameterType="notice"
+		resultType="int">
+		SELECT NVL(count(1), 0) FROM
+		(SELECT list.*, ROWNUM AS RNUM
+		FROM (
+		<include refid="adminNoticeCommon"></include>
+		ORDER BY nt_number desc
+		) list
+		)
+	</select>
+
+	<!-- 조회 수 증가 -->
+	<!-- <update id="adminUpdatecnt"> update notice_tbl set nt_readcnt = nt_readcnt 
+		+ 1 where nt_number = #{nt_number} </update> -->
+
+	<!-- 상세 페이지를 위한 게시물 조회 -->
+	<select id="adminNoticeDetail" parameterType="int"
+		resultType="adminNotice">
+		select
+		nt_number, nt_title,
+		nt_writer, nt_content,
+		to_char(nt_regdate,
+		'YYYY-MM-DD') as nt_regdate, nt_readcnt
+		from
+		notice_tbl where nt_number = #{nt_number}
+	</select>
+
+	<!-- 게시물 등록 -->
+	<insert id="adminNoticeInsert" parameterType="notice">
+		<selectKey keyProperty="nt_number" resultType="int"
+			order="BEFORE">
+			select notice_tbl_seq.nextval from dual
+		</selectKey>
+		insert into notice_tbl(nt_number, nt_title, nt_writer, nt_content,
+		nt_regdate, nt_readcnt)
+		values( notice_tbl_seq.nextval, #{nt_title},
+		#{nt_writer}, #{nt_content},
+		sysdate, 0)
+	</insert>
+
+
+	<!-- 게시물 수정 -->
+	<update id="adminNoticeUpdate" parameterType="notice">
+		update notice_tbl
+		set
+		nt_title = #{nt_title}
+		, nt_content = #{nt_content}
+		, nt_regdate =
+		sysdate
+		where nt_number = #{nt_number}
+	</update>
+
+	<!-- 게시물 삭제 -->
+	<delete id="adminNoticeDelete" parameterType="notice">
+		delete from
+		notice_tbl
+		where nt_number = #{nt_number}
+	</delete>
+
+
+</mapper>

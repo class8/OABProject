@@ -18,6 +18,8 @@
 			alias="common" />
 		<typeAlias type="com.oab.admin.login.vo.AdminLoginVO"
 			alias="admin" />
+                <typeAlias type="com.oab.admin.notice.vo.AdminNoticeVO"
+			alias="adminNotice" />
 		<typeAlias type="com.oab.client.question.vo.QuestionVO"
 			alias="question" />
 		<typeAlias type="com.oab.client.reservation.vo.ReservationVO"

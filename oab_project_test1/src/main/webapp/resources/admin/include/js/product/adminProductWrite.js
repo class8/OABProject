@@ -15,7 +15,7 @@ $(function() {
 		}); 
 		//취소
 		$("#productWriteCancel").click(function() {
-			location.href="/admin/product/productList";
+			location.href="/admin/product/adminProductList?page=1";
 		});
 	});
 	

@@ -28,9 +28,10 @@
 
 .left ul li a {
 	text-decoration: none;
-	color: #800040;
+	color: #008080;
 	font-weight: bold;
 	font-size: 20px;
+	padding-bottom: 10px;
 }
 
 .left ul {
@@ -40,9 +41,12 @@
 .left ul li {
 	list-style: none;
 	width: 90%;
-	height: 30px;
+	height: 50px;
 	text-align: center;
 	padding-top: 10px;
-	background-color: #56abab;
+	background-color: #d7ffff;
 	border-bottom: 7px solid #008080;
+	border-bottom-left-radius: 30px;
+	border-top-right-radius: 30px;
+	margin-top: 5px;
 }

@@ -6,15 +6,8 @@
 	color: #800040;
 }
 
-#noticeList {
-	border: 3px solid black;
-	width: 1000px;
-	margin: 50px;
-	margin-left: 120px;
-}
-
-#n_list {
-	color: black;
+#nt_list {
+	border-bottom: 1px solid black;
 }
 
 #insertFormBtn {
@@ -37,6 +30,46 @@
 	margin-left: 700px;
 }
 
+#noticeUpdateBtn {
+	background-color: #008080;
+	color: #800040;
+	width: 100px;
+	height: 30px;
+	font-size: 15px;
+	font-weight: bold;
+	margin-left: 400px;
+}
+
+#questionDeleteBtn {
+	background-color: #008080;
+	color: #800040;
+	width: 100px;
+	height: 30px;
+	font-size: 15px;
+	font-weight: bold;
+	margin-left: 400px;
+}
+
+#questionListBtn {
+	background-color: #008080;
+	color: #800040;
+	width: 100px;
+	height: 30px;
+	font-size: 15px;
+	font-weight: bold;
+	margin-left: 400px;
+}
+
+#noticeDeleteBtn {
+	background-color: #008080;
+	color: #800040;
+	width: 100px;
+	height: 30px;
+	font-size: 15px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+
 #noticeListBtn {
 	background-color: #008080;
 	color: #800040;
@@ -46,11 +79,40 @@
 	font-weight: bold;
 }
 
+/* .contentBtn {
+	background-color: #008080;
+	color: #800040;
+	width: 100px;
+	height: 30px;
+	font-size: 15px;
+	font-weight: bold;
+} */
+#search_deco {
+	color: #008080;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#search_tbl {
+	margin-left: 500px;
+}
+
+#searchData {
+	background-color: #008080;
+	color: #800040;
+	width: 80px;
+	height: 25px;
+	font-size: 11px;
+	font-weight: bold;
+}
+
 .contentTB {
 	border: 2px solid black;
 	width: 1000px;
 	margin: 50px;
-	margin-left: 120px;
+	float: right;
+	margin-bottom: 20px;
+	margin-right: 140px;
 }
 
 #noticeWrite {
@@ -66,4 +128,92 @@
 	width: 60px;
 	padding: 5px;
 	text-align: center;
+}
+
+#keyword {
+	color: #800040;
+	width: 150px;
+	border: 1px solid #008080;
+	height: 20px;
+	text-align: center;
+}
+
+/* #search_text {
+	color: #800040;
+	width: 150px;
+	border: 1px solid #008080;
+	height: 20px;
+	text-align: center;
+}
+ */
+select {
+	color: #800040;
+	width: 80px;
+	border: 1px solid #008080;
+	height: 25px;
+	text-align: center;
+	margin-left: 10px;
+}
+
+#list_td td {
+	color: #000000;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#list_th th {
+	color: #008080;
+	font-weight: bold;
+	background-color: #caffff;
+	height: 30px;
+	font-size: 18px;
+}
+
+#detail_th th, #update_th th {
+	color: #008080;
+	font-weight: bold;
+	background-color: #caffff;
+}
+
+#detail_th td, #update_th td {
+	color: #000000;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#content_size {
+	height: 300px;
+}
+
+#title_size {
+	height: 40px;
+}
+
+#write_tbl th {
+	color: #008080;
+	font-weight: bold;
+	background-color: #caffff;
+}
+
+#write_tbl td {
+	color: #000000;
+	font-size: 15px;
+}
+
+#nt_title, #nt_writer {
+	color: #000000;
+	font-size: 15px;
+	width: 250px;
+	height: 30px;
+	text-align: center;
+	font-weight: bold;
+}
+
+#nt_content {
+	color: #000000;
+	font-size: 15px;
+	width: 770px;
+	height: 320px;
+	text-align: left;
+	font-weight: bold;
 }

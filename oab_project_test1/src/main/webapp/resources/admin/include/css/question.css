@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+.main_content {
+	text-align: center;
+	padding-top: 5px;
+	color: #800040;
+}
+
+#nt_list {
+	border-bottom: 1px solid black;
+}
+
+#insertFormBtn {
+	background-color: #008080;
+	color: #800040;
+	width: 180px;
+	height: 20px;
+	font-size: 15px;
+	font-weight: bold;
+	margin-left: 700px;
+}
+
+.contentTB {
+	border: 2px solid black;
+	width: 1000px;
+	float: right;
+	margin-bottom: 10px;
+	margin-right: 140px;
+}
+
+#questionDeleteBtn {
+	background-color: #008080;
+	color: #800040;
+	width: 70px;
+	height: 25px;
+	font-size: 10px;
+	font-weight: bold;
+	margin-left: 600px;
+}
+
+#questionListBtn {
+	background-color: #008080;
+	color: #800040;
+	width: 70px;
+	height: 25px;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+#replyWriteBtn {
+	background-color: #008080;
+	color: #800040;
+	width: 70px;
+	height: 25px;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+#detail_th td {
+	color: #000000;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#detail_th th {
+	color: #008080;
+	font-weight: bold;
+	background-color: #caffff;
+	height: 20px;
+	font-size: 18px;
+}
+
+#content_size {
+	height: 200px;
+}

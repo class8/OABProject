@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oab.admin.question.dao.AdminQuestionDao">
+
+	<!-- 게시물 기본 조회 -->
+
+	<select id="adminQuestionList" resultType="adminQuestion">
+		SELECT QT_NUMBER,
+		MT_ID, QT_TITLE, QT_CONTENT, QT_STATUS, QT_PW,
+		TO_CHAR(QT_REGDATE,
+		'YYYY-MM-DD') AS QT_REGDATE, QT_WRITER, QT_FILE, QT_ROOT, QT_STEP,
+		QT_LEVEL
+		FROM QUESTION_TBL
+		ORDER
+		BY QT_NUMBER desc
+	</select>
+
+	<!-- 상세 페이지를 위한 게시물 조회 -->
+	<select id="adminQuestionDetail" parameterType="int"
+		resultType="adminQuestion">
+		SELECT QT_NUMBER,
+		MT_ID, QT_TITLE, QT_CONTENT, QT_STATUS,
+		QT_PW,
+		TO_CHAR(QT_REGDATE,
+		'YYYY-MM-DD') AS QT_REGDATE, QT_WRITER,
+		QT_FILE, QT_ROOT, QT_STEP, QT_LEVEL
+		FROM QUESTION_TBL
+		WHERE QT_NUMBER =
+		#{qt_number}
+	</select>
+
+	<!-- 게시물 삭제 -->
+	<delete id="adminQuestionDelete" parameterType="adminQuestion">
+		DELETE FROM
+		QUESTION_TBL WHERE QT_NUMBER = #{qt_number}
+	</delete>
+
+	<!-- 댓글 입력하기 -->
+	<!-- 게시물 등록 -->
+	<insert id="adminReplyInsert" parameterType="adminQuestion">
+		<selectKey keyProperty="qt_number" resultType="int"
+			order="BEFORE">
+			select notice_tbl_seq.nextval from dual
+		</selectKey>
+		insert into question_tbl(QT_NUMBER, MT_ID, QT_TITLE, QT_CONTENT,
+		QT_STATUS, QT_PW, QT_REGDATE, QT_WRITER, QT_ROOT, QT_STEP, QT_LEVEL)
+		values(
+		QUESTION_SEQ.nextval, #{mt_id}, #{qt_title}, #{qt_content},
+		#{qt_status}, 1234, sysdate, '관리자', #{qt_root}, #{qt_step} + 1,
+		#{qt_level}+1)
+	</insert>
+
+	<!-- <select id="adminQuestionList" parameterType="AdminQuestion" resultType="AdminQuestion"> 
+		SELECT QT_NUMBER, MT_ID, QT_TITLE, QT_CONTENT, QT_STATUS, QT_PW, TO_CHAR(QT_REGDATE, 
+		'YYYY-MM-DD') AS QT_REGDATE, QT_WRITER, QT_FILE FROM (SELECT list.*, ROWNUM 
+		AS RNUM FROM ( <include refid="adminNoticeCommon"></include> <choose> <when 
+		test="order_by == 'qt_regdate'"> ORDER BY QT_REGDATE </when> </choose> <choose> 
+		<when test="order_sc=='ASC'"> ASC </when> <when test="order_sc=='DESC'"> 
+		DESC </when> </choose> ) list ) <where> <if test="start_row != null and start_row 
+		!= ''"> <if test="end_row != null and end_row != ''"> RNUM BETWEEN #{start_row} 
+		AND #{end_row} </if> </if> </where> </select> -->
+
+</mapper>
