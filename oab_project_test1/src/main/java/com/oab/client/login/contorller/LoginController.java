@@ -6,25 +6,24 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.oab.admin.login.controller.AdminLoginController;
 import com.oab.client.login.service.LoginService;
 import com.oab.client.login.vo.LoginVO;
 
+import lombok.extern.java.Log;
 
 @Controller
 @RequestMapping(value = "/login")
+@Log
 public class LoginController {
-	private Logger log = LoggerFactory.getLogger(AdminLoginController.class);
-	
 	@Autowired
 	private LoginService loginService;
 
@@ -34,6 +33,13 @@ public class LoginController {
 		log.info("login.do get 호출 성공");
 		return "login/login";
 	}
+	
+	// 아이디비밀번호 화면 보여주기 위한 메서드
+		@RequestMapping(value = "/find")
+		public String idfind() {
+			log.info("login.do get 호출 성공");
+			return "login/find";
+		}
 
 	// 로그인 처리 메서드
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -56,8 +62,8 @@ public class LoginController {
 
 			// 로그인 시도횟수가 5회가 넘으면 30초간 로그인 잠금
 			if (vo.getHt_retry() >= 5) {
-				if (new Date().getTime() - vo.getHt_lastFail() > 30000) {
-					mav.addObject("errCode", 6);// 30초 동안 로그인 잠금 알림
+				if (new Date().getTime() - vo.getHt_lastFail() > 60000 * 30) {
+					mav.addObject("errCode", 6);// 30분 동안 로그인 잠금 알림
 					mav.setViewName("login/login");
 					return mav;
 				} else {
@@ -94,18 +100,13 @@ public class LoginController {
 		}
 	}
 
-	//아이디 찾기 
-	@RequestMapping(value = "/find_md_idform.do")
-	public String fine_mt_idform() throws Exception{
-		return "/member/find_mt_idform";
-	}
 	
 	// 로그아웃 처리 메소드
 	@RequestMapping("/logout")
 	public String logout(HttpSession session, HttpServletRequest request) {
 		session.invalidate();
 		session = request.getSession(true);
-		return "redirect:/";
+		return "redirect:/login/login";
 	}
 
 }

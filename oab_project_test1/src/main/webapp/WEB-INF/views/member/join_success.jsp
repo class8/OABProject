@@ -7,7 +7,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<meta http-equiv="refresh" content="8; url=/login/login.do">
+		<meta http-equiv="refresh" content="3; url=/login/login.do">
 				
 		<title>회원가입 완료 화면</title> 
 
@@ -28,7 +28,7 @@
 			<div class="well">
 				<div class="tac">
 					OAB	한강 텐트 사이트에 회원 가입해 주셔서 감사합니다.<br />
-					<span id="text">(8초후에 자동으로 로그인 화면으로 이동합니다.)</span>
+					<span id="text">(3초후에 자동으로 로그인 화면으로 이동합니다.)</span>
 				</div>
 			</div>
 		</div>

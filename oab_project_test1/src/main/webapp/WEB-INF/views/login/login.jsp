@@ -42,8 +42,20 @@
 			}
 		}
 	}
+	function enterkey() {
+		if(window.event.keyCode == 13){
+			//엔터키가 눌렀을때 실행할 내용
+			$("#loginForm").attr({
+				"method" : "POST",
+				"action" : "/login/login"
+			});
+			$("#loginForm").submit();
+		}
+		
+	}
 </script>
-<link type="text/css" rel="stylesheet" href="/resources/include/css/login.css">
+<link type="text/css" rel="stylesheet"
+	href="/resources/include/css/login.css">
 </head>
 <body>
 	<div class="contentContainer">
@@ -62,7 +74,7 @@
 					<div class="form-group">
 						<label for="mt_pw" class="col-sm-2 control-label">비밀번호 </label>
 						<div class="col-sm-4">
-							<input type="password" id="mt_pw" name="mt_pw"
+							<input onkeyup="enterkey();" type="password" id="mt_pw" name="mt_pw"
 								class="form-control" placeholder="Password">
 						</div>
 						<p class="form-control-static error"></p>
@@ -74,6 +86,9 @@
 								id="joinBtn" class="btn btn-default" />
 						</div>
 					</div>
+				
+					<p><a href="/login/find">아이디/비밀번호 찾기</a>
+					</p>
 				</form>
 			</c:if>
 		</div>
