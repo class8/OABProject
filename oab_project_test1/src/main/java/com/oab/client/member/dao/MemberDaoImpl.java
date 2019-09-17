@@ -50,11 +50,6 @@ public class MemberDaoImpl implements MemberDao {
 		return session.update("memberUpdate", mvo);
 	}
 
-	@Override
-	public int memberDelete(String mt_id) {
-		// TODO Auto-generated method stub
-		return session.delete("memberDelete", mt_id);
-	}
 
 	@Override
 	public int memberPwUpdate(LoginVO lvo) {
@@ -73,5 +68,13 @@ public class MemberDaoImpl implements MemberDao {
 		// TODO Auto-generated method stub
 		return session.update("securityPwUpdate", sec);
 	}
+
+	@Override
+	public int memberSecede(MemberVO mvo) {
+		return session.update("memberSecede", mvo);
+	}
+	
+	
+
 
 }

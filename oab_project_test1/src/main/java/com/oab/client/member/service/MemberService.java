@@ -1,5 +1,6 @@
 package com.oab.client.member.service;
 
+
 import com.oab.client.member.vo.MemberVO;
 
 public interface MemberService {
@@ -12,6 +13,8 @@ public interface MemberService {
 
 	public boolean memberUpdate(MemberVO mvo);
 
-	public int memberDelete(String mt_id);
+	public int memberSecede(MemberVO mvo);
+	
+	//public int memberUpdate2(MemberVO mvo);
 
 }

@@ -47,7 +47,7 @@ public class MemberServiceImpl implements MemberService {
 				sCode = memberDao.securityInsert(sec);
 				if (sCode == 1) {
 					mvo.setMt_pw(new String(BCrypt.getSHA256(mvo.getMt_pw(), sec.getSalt())));
-					
+
 					System.out.println(mvo.getMt_name());
 					memberDao.memberInsert(mvo);
 					return 3;
@@ -77,22 +77,16 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int memberDelete(String mt_id) {
-		int mCode, sCode, isSucessCode = 3;
+	public int memberSecede(MemberVO mvo) {
+		int result = 0;
 		try {
-			mCode = memberDao.memberDelete(mt_id);
-			if (mCode == 1) {
-				sCode = memberDao.securityDelete(mt_id);
-				if (sCode == 1) {
-					isSucessCode = 2;
-				}
-			}
+			result = memberDao.memberSecede(mvo);
 		} catch (Exception e) {
 			e.printStackTrace();
-			isSucessCode = 3;
+			result = 0;
 		}
-		return isSucessCode;
-
+		return result;
 	}
+
 
 }

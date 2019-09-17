@@ -86,7 +86,7 @@ public class UserMailSendService {
 		System.out.println("이메일 보내기");
 		sendMail.setSubject("[OAB TENT] 임시 비밀번호 발급 이메일 발송");
 		sendMail.setText(new StringBuffer().append("<h1>[이메일 발송]</h1>")
-				.append("<p>임시 비밀번호를 보내드렸습니다. 본인이 아닌경우 관리자 문의를 통해 연락 바랍니다.</p>")
+				.append("<p>임시 비밀번호를 보내드렸습니다. 본인이 아닌 경우 신속하게 관리자 문의를 통해 연락 바랍니다.</p>")
 				.append("<p>")
 				.append(prePw)
 				.append("</p>").toString());
@@ -106,7 +106,7 @@ public class UserMailSendService {
 		System.out.println("이메일 보내기");
 		sendMail.setSubject("[OAB TENT] 아이디 찾기 이메일 발송");
 		sendMail.setText(new StringBuffer().append("<h1>[이메일 발송]</h1>")
-				.append("<p>메일로 고객님의 아이디를 발송하였습니다. 본인 경우 신속하게 관리자 문의로 연락 바랍니다.</p>")
+				.append("<p>메일로 고객님의 아이디를 발송하였습니다. 본인이 아닌 경우 신속하게 관리자 문의를 통해 연락 바랍니다.</p>")
 				.append("<p>")
 				.append(mvo.getMt_id())
 				.append("</p>").toString());

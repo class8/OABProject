@@ -17,13 +17,15 @@ public interface MemberDao {
 
 	public int memberUpdate(MemberVO mvo);
 
-	public int memberDelete(String mt_id);
+	public int memberSecede(MemberVO mvo);
 	
 	public int memberPwUpdate(LoginVO lvo);
 	
 	public MemberVO memberIdselect(MemberVO mvo);
 
 	public int securityPwUpdate(MemberSecurity sec);
+	
+
 	
 	}
 
