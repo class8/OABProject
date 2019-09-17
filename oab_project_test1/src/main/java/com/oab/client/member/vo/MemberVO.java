@@ -1,9 +1,5 @@
 package com.oab.client.member.vo;
 
-
-
-import java.sql.Timestamp;
-
 import com.oab.client.login.vo.LoginVO;
 
 public class MemberVO extends LoginVO{
@@ -15,7 +11,7 @@ public class MemberVO extends LoginVO{
 	private String mt_gender;//회원 성별
 	private String mt_email;//회원 이메일
 	private String mt_phone;//회원 전화번호
-	private Timestamp mt_regdate;//회원 등록 일자
+	private String mt_regdate;//회원 등록 일자
 	private String mt_disabled;//회원 탈퇴 유무
 	
 	
@@ -63,10 +59,10 @@ public class MemberVO extends LoginVO{
 	public void setMt_phone(String mt_phone) {
 		this.mt_phone = mt_phone;
 	}
-	public Timestamp getMt_regdate() {
+	public String getMt_regdate() {
 		return mt_regdate;
 	}
-	public void setMt_regdate(Timestamp mt_regdate) {
+	public void setMt_regdate(String mt_regdate) {
 		this.mt_regdate = mt_regdate;
 	}
 	public String getMt_disabled() {

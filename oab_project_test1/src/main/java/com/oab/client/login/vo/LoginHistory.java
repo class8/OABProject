@@ -1,6 +1,8 @@
 package com.oab.client.login.vo;
 
-public class LoginHistory {
+import com.oab.client.common.vo.CommonVO;
+
+public class LoginHistory extends CommonVO{
 	
 	private int ht_number;//순번
 	private int ht_retry;//로그인 시도횟수
