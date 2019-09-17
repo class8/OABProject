@@ -49,9 +49,9 @@
 		</selectKey>
 		insert into MEMBER_TBL(mt_number, mt_id, mt_pw, mt_name, mt_birth,
 		mt_gender, mt_email,
-		mt_phone)
+		mt_phone, mt_disabled)
 		values(#{mt_number}, #{mt_id}, #{mt_pw},
-		#{mt_name}, #{mt_birth}, #{mt_gender}, #{mt_email}, #{mt_phone})
+		#{mt_name}, #{mt_birth}, #{mt_gender}, #{mt_email}, #{mt_phone}, 'able')
 	</insert>
 
 	<update id="memberUpdate" parameterType="member">
@@ -64,11 +64,18 @@
 		where mt_id=#{mt_id}
 	</update>
 
-	<delete id="memberDelete" parameterType="String">
-		delete from
-		MEMBER_TBL
-		where mt_id = #{mt_id}
-	</delete>
+<!-- 	<update id="memberSecede" parameterType="member">
+		update MEMBER_TBL set
+		mt_MT_DISABLED=#{MT_DISABLED}
+		where mt_id=#{mt_id}
+	</update> -->
+
+
+	<update id="memberSecede" parameterType="member">
+		update MEMBER_TBL set
+		mt_DISABLED = 'disable'
+		where mt_id=#{mt_id}
+	</update>
 
 	<update id="memberPwUpdate" parameterType="member">
 		update MEMBER_TBL set
@@ -77,7 +84,8 @@
 	</update>
 
 	<update id="securityPwUpdate" parameterType="member">
-		update security_tbl set
+		update security_tbl
+		set
 		salt=#{salt}
 		where mt_id=#{mt_id}
 	</update>
