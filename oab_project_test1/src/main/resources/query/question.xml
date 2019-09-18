@@ -6,33 +6,50 @@
 
 
 	<!-- 게시물 기본 조회 2019.09.02 -->
-	<select id="questionList" resultType="question">
+	<select id="questionList" resultType="question"
+		parameterType="String">
+
+		<!-- <selectKey keyProperty="MT_ID1" resultType="String" order="BEFORE"> 
+			SELECT mt_id from QUESTION_TBL WHERE mt_id = MT_ID1 </selectKey> -->
 
 		SELECT
-		qt_status, qt_number,
-		qt_title, mt_number, qt_content,
-		to_char(nt_regdate,
+		qt_number,
+		mt_id,
+		qt_title,
+		to_char(qt_regdate,
 		'YYYY-MM-DD') as
-		qt_regdate
+		qt_regdate,
+		qt_writer,
+		qt_status
 		FROM (select list.* ,
 		rownum as rnum
-		from(select * from QUESTION_TBL) list)
-		<where>
-			<if test="start_row != null and start_row != ''">
-				<if test="end_row != null and end_row != ''">
-					rnum BETWEEN #{start_row} AND #{end_row}
-				</if>
+		from(select * from
+		QUESTION_TBL) list)
+		where mt_id=#{mt_id}
+		<if test="start_row != null and start_row != ''">
+			<if test="end_row != null and end_row != ''">
+				and rnum BETWEEN #{start_row} AND #{end_row}
 			</if>
-		</where>
+		</if>
 
 	</select>
 
 	<!-- 게시물의 상세보기를 위한 select문입니다. -->
 
-	<!-- <select id="noticeDetail" parameterType="int" resultType="notice"> 
-		notice - noticeDetail SELECT nt_number, nt_writer, nt_title, nt_content, 
-		to_char(nt_regdate, 'YYYY-MM-DD') as nt_regdate FROM QUESTION_TBL WHERE nt_number 
-		=#{nt_number} </select> -->
+	<select id="questionDetail" parameterType="int"
+		resultType="question">
+
+		<!-- question - questionDetail -->
+
+		SELECT
+
+		qt_number, qt_title, qt_content, qt_status, to_char(qt_regdate,
+		'YYYY-MM-DD') as qt_regdate, qt_writer
+		FROM QUESTION_TBL
+		WHERE qt_number
+		=#{qt_number}
+
+	</select>
 
 	<!-- 문의글 등록 -->
 
@@ -40,37 +57,41 @@
 		<!-- *question - questionInsert -->
 		<selectKey keyProperty="qt_number" resultType="int"
 			order="BEFORE">
-
 			SELECT QUESTION_SEQ.nextval from dual
-
 		</selectKey>
 
 		Insert INTO QUESTION_TBL (
 
 		qt_number,
-		mt_number,
+		mt_id,
 		qt_title,
 		qt_content,
 		qt_status,
 		qt_pw,
 		qt_regdate,
 		qt_writer,
-		qt_file
+		qt_file,
+		qt_step,
+		qt_level
 
 		)
 
 		VALUES (
 
 		#{qt_number},
-		#{mt_number},
+		#{mt_id},
 		#{qt_title},
 		#{qt_content},
-		#{qt_status},
+		'미답변',
 		#{qt_pw},
-		#{qt_regdate},
+		sysdate,
 		#{qt_writer},
-		#{qt_file},
+		#{qt_file,
+		jdbcType=VARCHAR},
+		0,
+		0
 		)
+
 	</insert>
 
 	<!-- 문의 게시물 카운트 페이징 -->
@@ -78,6 +99,40 @@
 	<!-- <select id="noticeListCnt" parameterType="notice" resultType="int"> 
 		notice - noticeListcnt SELECT NVL (count(1), 0 ) FROM ( SELECT list.*, ROWNUM 
 		AS RNUM FROM ( QUESTION_TBL ) list ) </select> -->
+
+	<!-- <update id="qusetionUpdate" parameterType="question"> UPDATE QUESTION_TBL 
+		SET qt_title =#{qt_title}, qt_content = #{qt_content}, qt_status = #{qt_status}, 
+		qt_pw = #{qt_pw}, qt_regdate = sysdate, qt_writer = #{qt_writer}, qt_file 
+		= #{qt_file, jdbcType=VARCHAR} WHERE qt_number = #{qt_number} </update> -->
+	<update id="qusetionUpdate" parameterType="question">
+		<!-- 게시물 수정하기 -->
+		UPDATE QUESTION_TBL
+		SET
+		qt_title =#{qt_title},
+		qt_content =
+		#{qt_content},
+		qt_status = #{qt_status},
+		qt_pw = #{qt_pw},
+		qt_regdate =
+		sysdate,
+		qt_writer =#{qt_writer},
+		qt_file = #{qt_file, jdbcType=VARCHAR}
+		WHERE qt_number =
+		#{qt_number}
+	</update>
+
+	<!-- <update id="qusetionUpdate" parameterType="question"> UPDATE QUESTION_TBL 
+		SET <if test="qt_file != '' and qt_file != null "> qt_file = #{qt_file}, 
+		</if> qt_writer = #{qt_writer}, qt_content = #{qt_content} WHERE qt_number 
+		= #{qt_number} </update> -->
+
+
+
+	<delete id="questionDelete" parameterType="question">
+		<!-- 문의 게시글 삭제 -->
+		DELETE FROM QUESTION_TBL
+		WHERE qt_number = #{qt_number}
+	</delete>
 
 
 </mapper>

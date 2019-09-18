@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+/* 제목 */
+.contentsTit {
+	margin-top: 30px;
+	font-size: 25pt;
+	text-align: center;
+}
+
+.ContentTB {
+	/* 줄간격 */
+	line-height: 250%;
+	margin-top: 50px;
+	margin-left: 300px;
+}
+
+/* 텍스트 박스 */
+#qt_writer {
+	width: 300px;
+}
+
+#qt_pw {
+	width: 300px;
+}
+
+#qt_title {
+	width: 750px;
+}
+
+#qt_content {
+	width: 750px;
+	height: 250px;
+	resize: none;
+}
+
+#qt_file {
+	width: 750px;
+}
+
+/* 버튼 CSS */
+.buttoncss {
+	margin-top: 70px;
+	margin: 0;
+	text-align: center;
+	margin-right: 50px;
+}
+
+#content22 { /* detail */
+	text-align: left;
+	margin-top: 50px;
+}
+
+.ContentTB th, .ContentTB td {
+	padding: 8px;
+	border-bottom: 1px solid #c0c0c0;
+}

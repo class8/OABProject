@@ -2,15 +2,12 @@
 
 /* 문의게시판 css 2019.09.05 작성자 김은수 */
 
-
 /* 제목 */
-.contnetTit {
+.contentsTit {
 	margin-top: 30px;
 	font-size: 25pt;
 	text-align: center;
-	text-align: center;
 }
-
 
 .ContentTB {
 	/* 줄간격 */
@@ -18,7 +15,6 @@
 	margin-top: 50px;
 	margin-left: 300px;
 }
-
 
 /* 텍스트 박스 */
 #qt_writer {
@@ -33,25 +29,75 @@
 	width: 750px;
 }
 
-#qt_textcontent {
+#qt_content {
 	width: 750px;
 	height: 250px;
 	resize: none;
 }
 
-#qt_addfile {
+#qt_file {
 	width: 750px;
 }
 
-
 /* 버튼 CSS */
 .buttoncss {
-
-	margin-top : 70px;
-	margin : 0;
+	margin-top: 70px;
+	margin: 0;
 	text-align: center;
 	margin-right: 50px;
-
 }
 
+#pleaseLogin {
+	margin-top: 280px;
+	margin: auto;
+	margin-left: 600px;
+	font-size: 20px;
+	/* 줄간격 */
+	line-height: 180%;
+}
 
+#textlogin {
+	color: blue;
+}
+
+/* 리스트 출력 */
+#questionList {
+	margin-top: 50px;
+	width: 90%;
+	margin-left: 100px;
+	border: 0px; /*공지사항 선임*/
+	text-align: center;
+	/* 줄간격 */
+	line-height: 200%;
+}
+
+#qt_title {
+	text-align: center;
+}
+
+#questionList tr {
+	padding: 0px;
+}
+
+#questionList th, #questionList td {
+	padding: 8px;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+/* 상세보기 css */
+
+#content22 { /* detail */
+ 	text-align: left;
+	margin-top: 50px;
+}
+.ContentTB th, .ContentTB td {
+	padding: 8px;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+/* 페이징 css */
+#questionPage {
+	margin: auto;
+	margin-top : 40px;
+	text-align: center;
+}
