@@ -64,4 +64,19 @@ public class AdminQuestionServiceImpl implements AdminQuestionService {
 
 		return result;
 	}
+
+	@Override
+	public int adminStatusUpdate(QuestionVO qvo) {
+		
+		int result = 0;
+		try {
+			result = adminQuestionDao.adminStatusUpdate(qvo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		return result;
+
+	}
+
 }

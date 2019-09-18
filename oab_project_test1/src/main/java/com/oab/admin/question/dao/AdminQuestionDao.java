@@ -14,4 +14,6 @@ public interface AdminQuestionDao {
 
 	public int adminReplyInsert(QuestionVO qvo);
 
+	public int adminStatusUpdate(QuestionVO qvo);
+
 }

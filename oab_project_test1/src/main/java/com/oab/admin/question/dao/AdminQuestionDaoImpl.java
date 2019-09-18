@@ -40,4 +40,10 @@ public class AdminQuestionDaoImpl implements AdminQuestionDao {
 		return session.insert("adminReplyInsert", qvo);
 	}
 
+	// 카테고리 업데이트
+	@Override
+	public int adminStatusUpdate(QuestionVO qvo) {
+		return session.update("adminStatusUpdate", qvo);
+	}
+
 }

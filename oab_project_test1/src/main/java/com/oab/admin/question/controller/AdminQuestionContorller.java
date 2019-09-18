@@ -59,6 +59,8 @@ public class AdminQuestionContorller {
 			detail.setQt_content(detail.getQt_content().toString().replaceAll("\n", "<br>"));
 		}
 
+		System.out.println(qvo.getQt_level());
+
 		model.addAttribute("detail", detail);
 		return "admin/question/adminQuestionDetail";
 
@@ -108,9 +110,12 @@ public class AdminQuestionContorller {
 		String url = "";
 
 		result = adminQuestionService.adminReplyInsert(qvo);
+		// result2 = adminQuestionService.adminStatusUpdate(qvo);
 
 		if (result == 1) {
+			adminQuestionService.adminStatusUpdate(qvo);
 			url = "/admin/question/questionList";
+			System.out.println(qvo.getQt_root());
 
 		} else {
 			model.addAttribute("code", 1);

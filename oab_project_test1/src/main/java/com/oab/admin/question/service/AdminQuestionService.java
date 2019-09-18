@@ -14,4 +14,6 @@ public interface AdminQuestionService {
 
 	public int adminReplyInsert(QuestionVO qvo);
 
+	public int adminStatusUpdate(QuestionVO qvo);
+
 }

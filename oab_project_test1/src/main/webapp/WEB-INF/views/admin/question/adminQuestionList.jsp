@@ -92,10 +92,10 @@
 
 				<thead>
 					<tr id="list_th">
+						<th>카테고리</th>
 						<th data-value="qt_number" class="order">글 번호</th>
 						<th>회원아이디</th>
 						<th>제 목</th>
-						<th>카테고리</th>
 						<th data-value="qt_regdate" class="order">작성일<c:choose>
 								<c:when test="${ data.order_sc=='ASC'}">▲</c:when>
 								<c:when test="${ data.order_sc=='DESC'}">▼</c:when>
@@ -115,10 +115,10 @@
 
 								<tr id="list_td" class="tac"
 									data-num="${adminQuestion.qt_number }">
+									<td>${adminQuestion.qt_status }</td>
 									<td>${adminQuestion.qt_number }</td>
 									<td>${adminQuestion.mt_id }</td>
 									<td class="goDetail tal">${adminQuestion.qt_title }</td>
-									<td>${adminQuestion.qt_status }</td>
 									<td>${adminQuestion.qt_regdate }</td>
 									<td>${adminQuestion.qt_writer }</td>
 									<td>${adminQuestion.qt_file }</td>

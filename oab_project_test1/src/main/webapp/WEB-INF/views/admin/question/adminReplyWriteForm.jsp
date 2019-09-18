@@ -68,17 +68,17 @@
 					<tr id="write_tbl">
 						<th class="ac">원글번호</th>
 						<td><input type="text" name="qt_number" id="qt_number"
-							value="${question.qt_number }"></td>
+							value="${question.qt_root }"></td>
 						<th class="ac">원글작성자</th>
 						<td><input type="text" name="mt_id" id="mt_id"
 							value="${question.mt_id }"></td>
 						<th class="ac">글제목</th>
-						<td><input type="text" name="qt_title" id="qt_title"></td>
+						<td><input type="text" name="qt_title" id="qt_title"
+							value="---▶"></td>
 					</tr>
 					<tr id="write_tbl">
 						<th class="ac">카테고리</th>
-						<td><input type="text" name="qt_status" id="qt_status"
-							value="답변"></td>
+						<td><input type="text" name="qt_status" id="qt_status" value=" "></td>
 						<th class="ac">작성자</th>
 						<td><input type="text" name="qt_writer" id="qt_writer"
 							value="관리자"></td>
