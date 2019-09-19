@@ -2,7 +2,7 @@
 
 .main_content {
 	text-align: center;
-	padding-top: 30px;
+	padding-top: 10px;
 	color: #800040;
 }
 
@@ -79,14 +79,6 @@
 	font-weight: bold;
 }
 
-/* .contentBtn {
-	background-color: #008080;
-	color: #800040;
-	width: 100px;
-	height: 30px;
-	font-size: 15px;
-	font-weight: bold;
-} */
 #search_deco {
 	color: #008080;
 	font-weight: bold;
@@ -109,10 +101,10 @@
 .contentTB {
 	border: 2px solid black;
 	width: 1000px;
-	margin: 50px;
 	float: right;
-	margin-bottom: 20px;
 	margin-right: 140px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 #noticeWrite {
@@ -138,14 +130,6 @@
 	text-align: center;
 }
 
-/* #search_text {
-	color: #800040;
-	width: 150px;
-	border: 1px solid #008080;
-	height: 20px;
-	text-align: center;
-}
- */
 select {
 	color: #800040;
 	width: 80px;

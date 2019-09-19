@@ -6,7 +6,9 @@ import com.oab.client.question.vo.QuestionVO;
 
 public interface AdminQuestionDao {
 
-	public List<QuestionVO> adminQuestionList();
+	public List<QuestionVO> adminQuestionList(QuestionVO qvo);
+
+	public int adminQuestionListCnt(QuestionVO qvo);
 
 	public QuestionVO adminQuestionDetail(QuestionVO qvo);
 
@@ -15,5 +17,7 @@ public interface AdminQuestionDao {
 	public int adminReplyInsert(QuestionVO qvo);
 
 	public int adminStatusUpdate(QuestionVO qvo);
+
+	public int adminReplyUpdate(QuestionVO qvo);
 
 }

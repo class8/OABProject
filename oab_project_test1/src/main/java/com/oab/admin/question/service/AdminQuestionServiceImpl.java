@@ -18,11 +18,17 @@ public class AdminQuestionServiceImpl implements AdminQuestionService {
 
 	// 글 목록 구현
 	@Override
-	public List<QuestionVO> adminQuestionList() {
+	public List<QuestionVO> adminQuestionList(QuestionVO qvo) {
 
 		List<QuestionVO> questionList = null;
 
-		questionList = adminQuestionDao.adminQuestionList();
+		// 정렬에 대한 기본값 설정
+		if (qvo.getOrder_by() == null)
+			qvo.setOrder_by("qt_level");
+		if (qvo.getOrder_sc() == null)
+			qvo.setOrder_by("DESC");
+
+		questionList = adminQuestionDao.adminQuestionList(qvo);
 		return questionList;
 	}
 
@@ -67,7 +73,7 @@ public class AdminQuestionServiceImpl implements AdminQuestionService {
 
 	@Override
 	public int adminStatusUpdate(QuestionVO qvo) {
-		
+
 		int result = 0;
 		try {
 			result = adminQuestionDao.adminStatusUpdate(qvo);
@@ -77,6 +83,29 @@ public class AdminQuestionServiceImpl implements AdminQuestionService {
 		}
 		return result;
 
+	}
+
+	// 전체 레코드 수 구현
+	@Override
+	public int adminQuestionListCnt(QuestionVO qvo) {
+		return adminQuestionDao.adminQuestionListCnt(qvo);
+
+	}
+
+	// 글 수정 구현
+	@Override
+	public int adminReplyUpdate(QuestionVO qvo) {
+
+		int result = 0;
+		try {
+
+			result = adminQuestionDao.adminReplyUpdate(qvo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+
+		return result;
 	}
 
 }

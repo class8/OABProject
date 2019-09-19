@@ -19,6 +19,13 @@
 <script type="text/javascript">
 	$(function() {
 
+		// 해당 1:1문의 글이 답글일 경우에만 수정 버튼을 보여줌 
+		if ($("#qt_writer").val() == "관리자") {
+			document.getElementById("replyUpdateBtn").style.display = "block";
+		} else {
+			document.getElementById("replyUpdateBtn").style.display = "none";
+		}
+
 		/* 첨부파일 이미지 보여주기 위한 속성 추가 */
 		var file = "<c:out value='${detail.qt_file}'/>";
 		if (file != "") {
@@ -48,10 +55,23 @@
 			location.href = "/admin/question/questionList";
 		});
 
+		// 답글쓰기 버튼 클릭 시 처리 이벤트
+		$("#replyUpdateBtn").click(function() {
+
+			$("#f_data").attr({
+				"methode" : "post",
+				"action" : "/admin/question/replyUpdateForm"
+			});
+
+			$("#f_data").submit();
+		});
+
 	});
 </script>
 </head>
 <body>
+	<input type="hidden" id="qt_writer" value="${detail.qt_writer }">
+	<input type="hidden" id="qt_status" value="${detail.qt_status }">
 	<div class="main_content">
 
 		<div class="contentTit">
@@ -77,7 +97,7 @@
 				</colgroup>
 
 				<tbody>
-					<tr id="detail_th">
+					<tr id="detail">
 						<th class="ac">글번호</th>
 						<td id="number">${detail.qt_number }</td>
 						<th class="ac">작성자</th>
@@ -85,11 +105,11 @@
 						<th class="ac">작성일</th>
 						<td>${detail.qt_regdate }</td>
 					</tr>
-					<tr id="detail_th">
+					<tr id="detail">
 						<th class="ac" id="title_size">제목</th>
 						<td colspan="5" id="title_size">${detail.qt_title }</td>
 					</tr>
-					<tr id="detail_th">
+					<tr id="detail">
 						<th class="ac" id="content_size">내용</th>
 						<td colspan="3" id="content_size">${detail.qt_content }</td>
 						<th>첨부파일 이미지</th>
@@ -107,6 +127,7 @@
 			<input type="button" value="삭제" class="but" id="questionDeleteBtn">
 			<input type="button" value="목록" class="but" id="questionListBtn">
 			<input type="button" value="답글쓰기" class="but" id="replyWriteBtn">
+			<input type="button" value="글 수정" class="but" id="replyUpdateBtn">
 		</div>
 
 	</div>

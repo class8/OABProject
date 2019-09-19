@@ -34,10 +34,23 @@ public class AdminQuestionContorller {
 
 		System.out.println("1:1 문의 컨트롤러 호출 성공");
 
-		List<QuestionVO> questionList = adminQuestionService.adminQuestionList();
+		// 페이지 세팅
+		Paging.setPage(qvo);
+
+		// 전체 레코드 수 구현
+		int total = adminQuestionService.adminQuestionListCnt(qvo);
+		log.info("total = " + total);
+
+		// 글 번호 재설정
+		int count = total - (Util.nvl(qvo.getPage()) - 1) * Util.nvl(qvo.getPageSize());
+		log.info("count = " + count);
+
+		List<QuestionVO> questionList = adminQuestionService.adminQuestionList(qvo);
 
 		model.addAttribute("questionList", questionList);
-		model.addAttribute("data");
+		model.addAttribute("count", count);
+		model.addAttribute("total", total);
+		model.addAttribute("data", qvo);
 
 		System.out.println(questionList);
 
@@ -78,7 +91,7 @@ public class AdminQuestionContorller {
 
 		result = adminQuestionService.adminQuestionDelete(qvo.getQt_number());
 
-		if (result == 1) {
+		if (result >= 1) {
 			url = "/admin/question/questionList";
 
 		} else {
@@ -125,4 +138,38 @@ public class AdminQuestionContorller {
 		return "redirect:" + url;
 
 	}
+
+	// 댓글 수정 폼 불러 오기
+	@RequestMapping(value = "/replyUpdateForm", method = RequestMethod.POST)
+	public String updateForm(@ModelAttribute QuestionVO qvo, Model model) {
+
+		log.info("replyUpdateForm 호출 성공");
+
+		QuestionVO replyUpdateForm = new QuestionVO();
+		replyUpdateForm = adminQuestionService.adminQuestionDetail(qvo);
+
+		model.addAttribute("replyUpdateForm", replyUpdateForm);
+		return "admin/question/adminReplyUpdateForm";
+	}
+
+	// 글 수정 구현하기
+	@RequestMapping(value = "/replyUpdate", method = RequestMethod.POST)
+	public String noticeUpdate(@ModelAttribute QuestionVO qvo, Model model) {
+
+		System.out.println("replyUpdate 호출성공");
+
+		int result = 0;
+		String url = "";
+
+		result = adminQuestionService.adminReplyUpdate(qvo);
+
+		if (result == 1) {
+			url = "/admin/question/questionList";
+		} else {
+			url = "/admin/question/adminReplyUpdateForm?qt_number=" + qvo.getQt_number();
+		}
+
+		return "redirect:" + url;
+	}
+
 }

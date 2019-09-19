@@ -5,17 +5,48 @@
 <mapper namespace="com.oab.admin.question.dao.AdminQuestionDao">
 
 	<!-- 게시물 기본 조회 -->
+	<sql id="adminQuestionCommon">
+		SELECT *
+		FROM question_tbl
+		<where>
+			<if test="search == 'qt_writer'">
+		<![CDATA[ qt_writer LIKE '%' || #{keyword} || '%']]>
+			</if>
+			<if test="search == 'qt_title'">
+		<![CDATA[ qt_title LIKE '%' || #{keyword} || '%']]>
+			</if>
+			<if test="search == 'qt_status'">
+		<![CDATA[ qt_status LIKE '%' || #{keyword} || '%']]>
+			</if>
+		</where>
+	</sql>
 
-	<select id="adminQuestionList" resultType="adminQuestion">
-		SELECT QT_NUMBER,
-		MT_ID, QT_TITLE, QT_CONTENT, QT_STATUS, QT_PW,
-		TO_CHAR(QT_REGDATE,
-		'YYYY-MM-DD') AS QT_REGDATE, QT_WRITER, QT_FILE, QT_ROOT, QT_STEP,
-		QT_LEVEL
-		FROM QUESTION_TBL
-		ORDER
-		BY QT_level
+	<!-- 게시물 전체 조회 -->
+	<select id="adminQuestionList" parameterType="adminQuestion"
+		resultType="adminQuestion">
+		SELECT qt_number, mt_id, qt_title, qt_content, qt_status, qt_pw,
+		TO_CHAR(qt_regdate,
+		'YYYY-MM-DD') AS qt_regdate, qt_writer, qt_file,
+		qt_root, qt_step, qt_level
+		FROM
+		(SELECT list.*, ROWNUM AS
+		RNUM
+		FROM (
+		<include refid="adminQuestionCommon"></include>
+
+		order by qt_level
+		) list
+		)
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					RNUM BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where>
 	</select>
+
+
 
 	<!-- 상세 페이지를 위한 게시물 조회 -->
 	<select id="adminQuestionDetail" parameterType="int"
@@ -35,7 +66,12 @@
 	<!-- 게시물 삭제 -->
 	<delete id="adminQuestionDelete" parameterType="adminQuestion">
 		DELETE FROM
-		QUESTION_TBL WHERE QT_NUMBER = #{qt_number}
+		QUESTION_TBL
+		<if test="qt_writer.equals('관리자')">
+			WHERE QT_NUMBER = #{qt_number}
+		</if>
+		WHERE QT_NUMBER = #{qt_number}
+		OR QT_ROOT = #{qt_number}
 	</delete>
 
 	<!-- 댓글 입력하기 -->
@@ -58,21 +94,32 @@
 		(select max(qt_level) from question_tbl)+1)
 	</insert>
 
-
+	<!-- 원글에 댓글이 달리면 카테고리 상태를 '답변완료'로 업데이트 시켜줌 -->
 	<update id="adminStatusUpdate" parameterType="adminQuestion">
 		update question_tbl
 		set qt_status = '답변완료'
 		where qt_number = #{qt_root}
 	</update>
 
-	<!-- <select id=" adminQuestionList " parameterType="AdminQuestion" resultType="AdminQuestion"> 
-		SELECT QT_NUMBER, MT_ID, QT_TITLE, QT_CONTENT, QT_STATUS, QT_PW, TO_CHAR(QT_REGDATE, 
-		'YYYY-MM-DD') AS QT_REGDATE, QT_WRITER, QT_FILE FROM (SELECT list.*, ROWNUM 
-		AS RNUM FROM ( <include refid="adminNoticeCommon"></include> <choose> <when 
-		test="order_by == 'qt_regdate'"> ORDER BY QT_REGDATE </when> </choose> <choose> 
-		<when test="order_sc=='ASC'"> ASC </when> <when test="order_sc=='DESC'"> 
-		DESC </when> </choose> ) list ) <where> <if test="start_row != null and start_row 
-		!= ''"> <if test="end_row != null and end_row != ''"> RNUM BETWEEN #{start_row} 
-		AND #{end_row} </if> </if> </where> </select> -->
+	<!-- 게시물 카운트 페이징 -->
+	<select id="adminQuestionListCnt" parameterType="adminQuestion"
+		resultType="int">
+		SELECT NVL(count(1), 0) FROM
+		( SELECT list.*, ROWNUM AS RNUM
+		FROM (
+		<include refid="adminQuestionCommon"></include>
+		ORDER BY qt_level desc
+		) list
+		)
+	</select>
+
+	<!-- 댓글 수정 -->
+	<update id="adminReplyUpdate" parameterType="adminQuestion">
+		update Question_tbl
+		set
+		qt_content = #{qt_content}
+
+		where qt_number = #{qt_number}
+	</update>
 
 </mapper>

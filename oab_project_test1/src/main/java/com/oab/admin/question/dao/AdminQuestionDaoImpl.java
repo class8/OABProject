@@ -17,8 +17,8 @@ public class AdminQuestionDaoImpl implements AdminQuestionDao {
 
 	// 글 목록 구현
 	@Override
-	public List<QuestionVO> adminQuestionList() {
-		return session.selectList("adminQuestionList");
+	public List<QuestionVO> adminQuestionList(QuestionVO qvo) {
+		return session.selectList("adminQuestionList", qvo);
 	}
 
 	// 글 상세보기 구현
@@ -44,6 +44,18 @@ public class AdminQuestionDaoImpl implements AdminQuestionDao {
 	@Override
 	public int adminStatusUpdate(QuestionVO qvo) {
 		return session.update("adminStatusUpdate", qvo);
+	}
+
+	// 페이징처리를 위한 리스트 갯수
+	@Override
+	public int adminQuestionListCnt(QuestionVO qvo) {
+		return session.selectOne("adminQuestionListCnt");
+	}
+
+	// 글 수정 구현
+	@Override
+	public int adminReplyUpdate(QuestionVO qvo) {
+		return session.update("adminReplyUpdate", qvo);
 	}
 
 }

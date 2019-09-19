@@ -10,8 +10,6 @@
 <title>1:1문의 목록</title>
 <script type="text/javascript"
 	src="/resources/admin/include/js/jquery-1.12.4.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="/resources/admin/include/css/notice.css" />
 <script type="text/javascript">
 	$(function() {
 
@@ -28,8 +26,78 @@
 			$("#detailForm").submit();
 		});
 
+		// 검색 후 검색 대상과 검색 단어 출력 
+		var word = "<c:out value='${data.keyword}'/>";
+
+		var value = "";
+
+		if (word != "") {
+			$("#keyword").val("<c:out value = '${data.keyword}'/>");
+			$("#search").val("<c:out value='${data.search}'/>");
+
+			if ($("#search").val() != 'qt_title') {
+				if ($("#search").val() == 'qt_status') {
+					value = "#list tr td.goDetail";
+				} else if ($("#search").val() == 'qt_writer') {
+					value = "#list tr td.title";
+				}
+
+				$(value + ":contains('" + word + "')").each(
+						function() {
+							var regex = new RegExp(word, 'gi');
+							$(this).html(
+									$(this).text().replace(
+											regex,
+											"<span class='required'>" + word
+													+ "</span>"));
+						});
+			}
+		}
+
+		// 한페이지에 보여줄 레코드 수 조회 후 선택한 값 그대로 유지하기 위한 설정 
+		if ("<c:out value='${data.pageSize}'/>" != "") {
+			$("#pageSize").val("<c:out value = '${data.pageSize}'/>");
+		}
+
+		// 검색 대상이 변경될 때마다 처리하는 이벤트 
+		$("#search").change(function() {
+			if ($("#search").val() == "all") {
+				$("#keyword").val("전체 데이터를 조회 합니다.");
+			} else if ($("#search").val() != "all") {
+				$("#keyword").val("");
+				$("#keyword").focus();
+			}
+		});
+
+		// 검색 버튼 클릭 시 처리 이벤트 
+		$("#searchData").click(function() {
+			goPage(1);
+		});
+
 	});
+
+	// 한페이지에 보여줄 레코드 수가 변경될 때마다 처리하는 이벤트 
+	$("#pageSize").change(function() {
+		goPage(1);
+	});
+
+	// 검색과 한 페이지에 보여줄 레코드 수 처리 및 페이징을 위한 실질적인 처리 함수 
+	function goPage(page) {
+		if ($("#search").val() == "all") {
+			$("#keyword").val("");
+		}
+
+		$("#page").val(page);
+		$("#f_search").attr({
+			"method" : "get",
+			"action" : "/admin/question/questionList"
+		});
+
+		$("#f_search").submit();
+	}
 </script>
+<link rel="stylesheet" type="text/css"
+	href="/resources/admin/include/css/question.css" />
 </head>
 <body>
 	<div class="main_content">
@@ -40,11 +108,14 @@
 
 		<!-- 상세페이지 이동을 위한 Form -->
 		<form name="detailForm" id="detailForm">
-			<input type="hidden" name="qt_number" id="qt_number">
+			<input type="hidden" name="qt_number" id="qt_number"> <input
+				type="hidden" name="qt_writer" id="qt_writer"> <input
+				type="hidden" name="page" value="${data.page }"> <input
+				type="hidden" name="pageSize" value="${data.pageSize }">
 		</form>
 
 		<!-- 검색 기능 시작 -->
-		<%-- <div class="questionSearch">
+		<div class="questionSearch">
 			<form id="f_search" name="f_search">
 				<input type="hidden" id="page" name="page" value="${data.page }" />
 				<input type="hidden" id="order_by" name="order_by"
@@ -60,23 +131,15 @@
 						<td><label>검색조건</label><select id="search" name="search"><option
 									value="all" id="search_text">전체</option>
 								<option value="qt_title" id="search_text">제목</option>
-								<option value="qt_content" id="search_text">내용</option></select> <input
+								<option value="qt_status" id="search_text">카테고리</option>
+								<option value="qt_writer" id="search_text">작성자</option></select> <input
 							type="text" name="keyword" id="keyword" value="검색어를 입력하세요" /> <input
 							type="button" value="검색" id="searchData" /></td>
-						<td>한페이지에<select id="pageSize" name="pageSize">
-								<option value="1">1줄</option>
-								<option value="2">2줄</option>
-								<option value="3">3줄</option>
-								<option value="5">5줄</option>
-								<option value="7">7줄</option>
-								<option value="10">10줄</option>
-						</select>
-						</td>
 					</tr>
 				</table>
 			</form>
 		</div>
- --%>
+
 		<!-- 공지사항 리스트 시작  -->
 		<div id="noticeList" class="contentTB">
 			<table summary="공지사항 리스트" id="nt_list" border="1">
@@ -94,15 +157,11 @@
 					<tr id="list_th">
 						<th>카테고리</th>
 						<th data-value="qt_number" class="order">글 번호</th>
-						<th>회원아이디</th>
 						<th>제 목</th>
-						<th data-value="qt_regdate" class="order">작성일<c:choose>
-								<c:when test="${ data.order_sc=='ASC'}">▲</c:when>
-								<c:when test="${ data.order_sc=='DESC'}">▼</c:when>
-								<c:otherwise>▲</c:otherwise>
-							</c:choose></th>
+						<th>회원아이디</th>
 						<th>작성자</th>
 						<th>첨부파일</th>
+						<th data-value="qt_regdate" class="order">작성일</th>
 					</tr>
 				</thead>
 
@@ -117,11 +176,11 @@
 									data-num="${adminQuestion.qt_number }">
 									<td>${adminQuestion.qt_status }</td>
 									<td>${adminQuestion.qt_number }</td>
-									<td>${adminQuestion.mt_id }</td>
 									<td class="goDetail tal">${adminQuestion.qt_title }</td>
-									<td>${adminQuestion.qt_regdate }</td>
+									<td>${adminQuestion.mt_id }</td>
 									<td>${adminQuestion.qt_writer }</td>
 									<td>${adminQuestion.qt_file }</td>
+									<td>${adminQuestion.qt_regdate }</td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -135,6 +194,12 @@
 					</c:choose>
 				</tbody>
 			</table>
+		</div>
+
+		<!-- 페이지 네비게이션  -->
+		<div id="noticePage">
+			<tag:paging page="${param.page }" total="${total }"
+				list_size="${data.pageSize}" />
 		</div>
 
 	</div>
