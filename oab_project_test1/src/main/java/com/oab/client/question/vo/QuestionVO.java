@@ -1,5 +1,7 @@
 package com.oab.client.question.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.oab.client.login.vo.LoginVO;
 
 //사용자 1:1 문의 게시판
@@ -16,6 +18,15 @@ public class QuestionVO extends LoginVO {
 	private int qt_root;
 	private int qt_step;
 	private int qt_level;
+	private MultipartFile file; // 파일업로드
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 
 	public int getQt_root() {
 		return qt_root;
