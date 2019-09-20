@@ -4,12 +4,22 @@
 
 <mapper namespace="com.oab.admin.login.dao.AdminLoginDao">
 	<!-- resultTpye 반환 타입 이라 생각하면 편함. --><!-- parameterType 내가 어느 클래스의 변수에 이 쿼리문 값을 넣어 전달할지 설정이라 생각. -->
-	<select id="adminLoginSelect" parameterType="admin" resultType="admin">
+	<select id="adminLoginSelect" parameterType="admin"
+		resultType="admin">
 		<!--로그인 처리 쿼리 -->
-		SELECT 
-		adminID, 
-		adminPW 
+		SELECT
+		adminID,
+		adminPW
 		FROM oab_admin
 		WHERE adminID=#{adminID} and adminPW=#{adminPW}
+	</select>
+
+	<select id="mainQuestionList" parameterType="int"
+		resultType="adminQuestion">
+		select QT_NUMBER, MT_ID, QT_TITLE, QT_CONTENT, QT_STATUS,
+		QT_PW, TO_CHAR(QT_REGDATE, 'YYYY-MM-DD') AS QT_REGDATE, QT_WRITER,
+		QT_FILE, QT_ROOT, QT_STEP,
+		QT_LEVEL from question_tbl where QT_STATUS =
+		'미답변'
 	</select>
 </mapper>
