@@ -99,7 +99,6 @@
 						<th>글 제 목</th>
 						<th data-value="nt_regdate" class="order">작 성 일</th>
 						<th class="borcle">작 성 자</th>
-						<th class="readcnt">조 회 수</th>
 					</tr>
 				</thead>
 
@@ -117,7 +116,6 @@
 									<td class="goDetail tal">${notice.nt_title }</td>
 									<td id="nt_regdate_1">${notice.nt_regdate }</td>
 									<td class="writer">${notice.nt_writer }</td>
-									<td class="readcnt">${notice.nt_readcnt }</td>
 								</tr>
 							</c:forEach>
 						</c:when>

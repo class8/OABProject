@@ -66,7 +66,7 @@
 		<label>${login.mt_id} 님이 작성하신 문의게시글 목록입니다. </label>
 		<div class="contentContainer">
 			<div class="contentsTit">
-				<h3>내 문의 리스트</h3>
+				<h3>1:1 문의 리스트 확인</h3>
 				<br>
 				<hr>
 			</div>

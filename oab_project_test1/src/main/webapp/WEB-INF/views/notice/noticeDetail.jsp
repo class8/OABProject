@@ -67,8 +67,6 @@
 					<tr>
 						<td class="ac" colspan="1">작 성 일</td>
 						<td>${detail.nt_regdate}</td>
-						<td class="ac" id="readcnt">조 회 수</td>
-						<td>${detail.nt_readcnt}</td>
 					</tr>
 					<tr>
 					</tr>
