@@ -162,12 +162,12 @@
 							type="text" name="keyword" id="keyword" value="검색어를 입력하세요" /> <input
 							type="button" value="검색" id="searchData" /></td>
 						<td>한페이지에<select id="pageSize" name="pageSize">
-								<option value="1">1줄</option>
-								<option value="2">2줄</option>
-								<option value="3">3줄</option>
-								<option value="5">5줄</option>
-								<option value="7">7줄</option>
-								<option value="10">10줄</option>
+								<option value="1" id="text">1줄</option>
+								<option value="2" id="text">2줄</option>
+								<option value="3" id="text">3줄</option>
+								<option value="5" id="text">5줄</option>
+								<option value="7" id="text">7줄</option>
+								<option value="10" id="text">10줄</option>
 						</select>
 						</td>
 					</tr>
@@ -208,11 +208,11 @@
 							<c:forEach var="notice" items="${noticeList }" varStatus="status">
 
 								<tr id="list_td" class="tac" data-num="${notice.nt_number }">
-									<td>${notice.nt_number }</td>
+									<td class="goDetail tal">${notice.nt_number }</td>
 									<td class="goDetail tal">${notice.nt_title }</td>
-									<td class="writer">${notice.nt_writer }</td>
-									<td>${notice.nt_regdate}</td>
-									<td>${notice.nt_readcnt}</td>
+									<td class="goDetail tal">${notice.nt_writer }</td>
+									<td class="goDetail tal">${notice.nt_regdate}</td>
+									<td class="goDetail tal">${notice.nt_readcnt}</td>
 								</tr>
 							</c:forEach>
 						</c:when>

@@ -62,8 +62,8 @@
 						<th class="ac">글제목</th>
 						<td><input type="text" name="nt_title" id="nt_title"></td>
 						<th class="ac">작성자</th>
-						<td><input type="text" name="nt_writer" id="nt_writer"
-							value="관리자"></td>
+						<td><input type="hidden" name="nt_writer" id="nt_writer"
+							value="관리자">관리자</td>
 					</tr>
 					<tr id="write_tbl">
 						<th class="ac vm">내용</th>

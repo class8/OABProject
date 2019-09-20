@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.oab.admin.login.vo.AdminLoginVO;
 import com.oab.client.question.vo.QuestionVO;
+import com.oab.client.reservation.vo.ReservationVO;
 
 @Repository
 public class AdminLoginDaoImpl implements AdminLoginDao {
@@ -25,6 +26,11 @@ public class AdminLoginDaoImpl implements AdminLoginDao {
 	@Override
 	public List<QuestionVO> mainQuestionList() {
 		return session.selectList("mainQuestionList");
+	}
+
+	@Override
+	public List<ReservationVO> mainReservationList() {
+		return session.selectList("mainReservationList");
 	}
 
 }

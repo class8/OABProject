@@ -86,7 +86,7 @@
 }
 
 #search_tbl {
-	margin-left: 500px;
+	margin-left: 400px;
 }
 
 #searchData {
@@ -200,4 +200,12 @@ select {
 	height: 320px;
 	text-align: left;
 	font-weight: bold;
+}
+
+#pageSize {
+	margin: 10px;
+}
+
+#text {
+	margin-right: 10px;
 }

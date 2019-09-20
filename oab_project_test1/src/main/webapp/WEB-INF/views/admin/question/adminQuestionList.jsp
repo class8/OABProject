@@ -174,13 +174,13 @@
 
 								<tr id="list_td" class="tac"
 									data-num="${adminQuestion.qt_number }">
-									<td>${adminQuestion.qt_status }</td>
-									<td>${adminQuestion.qt_number }</td>
+									<td class="goDetail tal">${adminQuestion.qt_status }</td>
+									<td class="goDetail tal">${adminQuestion.qt_number }</td>
 									<td class="goDetail tal">${adminQuestion.qt_title }</td>
-									<td>${adminQuestion.mt_id }</td>
-									<td>${adminQuestion.qt_writer }</td>
-									<td>${adminQuestion.qt_file }</td>
-									<td>${adminQuestion.qt_regdate }</td>
+									<td class="goDetail tal">${adminQuestion.mt_id }</td>
+									<td class="goDetail tal">${adminQuestion.qt_writer }</td>
+									<td class="goDetail tal">${adminQuestion.qt_file }</td>
+									<td class="goDetail tal">${adminQuestion.qt_regdate }</td>
 								</tr>
 							</c:forEach>
 						</c:when>

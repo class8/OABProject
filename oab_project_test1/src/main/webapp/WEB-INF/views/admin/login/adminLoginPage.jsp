@@ -13,6 +13,19 @@
 	src="/resources/admin/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"
 	src="/resources/admin/include/js/adminLogin.js"></script>
+<script type="text/javascript">
+	function enterkey() {
+		if (window.event.keyCode == 13) {
+			//엔터키가 눌렀을때 실행할 내용
+			$("#loginForm").attr({
+				"method" : "POST",
+				"action" : "/admin/login"
+			});
+			$("#loginForm").submit();
+		}
+
+	}
+</script>
 </head>
 <body>
 	<c:if test="${adminLogin.adminID == null}">
@@ -38,7 +51,7 @@
 							</tr>
 							<tr>
 								<th><input type="password" id="adminPW" name="adminPW"
-									size="40" placeholder="관리자 비밀번호 입력"></th>
+									size="40" placeholder="관리자 비밀번호 입력" onkeyup="enterkey();"></th>
 							</tr>
 							<tr>
 								<td colspan="3"><input type="button" id="loginBtn"

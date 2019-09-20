@@ -22,7 +22,7 @@
 			} else if ($("#qt_content").val() == "") {
 				alert("내용을 입력하세요");
 				$("#qt_content").focus();
-			} else if (confirm(" 해당 공지사항을 등록하시겠습니까?")) {
+			} else if (confirm(" 해당 답글을 등록하시겠습니까?")) {
 				$("#f_writeForm").attr({
 					"method" : "POST",
 					"action" : "/admin/question/replyInsert"
@@ -69,16 +69,15 @@
 						<th class="ac">글제목</th>
 						<td><input type="text" name="qt_title" id="qt_title"></td>
 						<th class="ac">원글 작성자</th>
-						<td><input type="text" name="mt_id" id="mt_id"
-							value="${question.mt_id }"></td>
+						<td><input type="hidden" name="mt_id" id="mt_id"
+							value="${question.mt_id }">${question.mt_id }</td>
 					</tr>
 					<tr id="reply">
 						<th class="ac">카테고리</th>
-						<td><input type="text" name="qt_status" id="qt_status"
-							value="★★★"></td>
+						<td><input type="hidden" name="qt_status" id="qt_status"
+							value="→→→">→→→</td>
 						<th class="ac">답글 작성자</th>
-						<td><input type="text" name="qt_writer" id="qt_writer"
-							value="관리자"></td>
+						<td><input type="hidden" name="qt_writer" id="qt_writer">관리자</td>
 					</tr>
 					<tr id="reply">
 						<th class="ac vm">내용</th>
