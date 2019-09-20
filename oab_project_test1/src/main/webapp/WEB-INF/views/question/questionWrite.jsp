@@ -48,7 +48,7 @@
 						</tr>
 						<tr>
 							<td class="ac">비밀번호 *</td>
-							<td><input type="text" name="qt_pw" id="qt_pw" placeholder="비밀번호는 숫자만, 5자리까지 입력이 가능합니다." maxlength="5" onkeyPress="InpuOnlyNumber(this);"></td>
+							<td><input type="password" name="qt_pw" id="qt_pw" placeholder="비밀번호는 숫자만, 5자리까지 입력이 가능합니다." maxlength="5" onkeyPress="InpuOnlyNumber(this);"></td>
 						</tr>
 						<tr>
 							<td class="ac">제목 *</td>

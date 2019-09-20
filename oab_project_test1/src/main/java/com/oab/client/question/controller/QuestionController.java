@@ -180,6 +180,7 @@ public class QuestionController {
 	public String questionDelete(@ModelAttribute QuestionVO qvo, Model model, HttpSession session,
 			HttpServletRequest request) throws IOException {
 
+		System.out.println("1");
 		log.info("questionDelete 호출성공");
 
 		int result = 0;
@@ -192,12 +193,18 @@ public class QuestionController {
 
 		result = questionService.questionDelete(qvo.getQt_number());
 
-		if (result == 1) {
-			url = "/question/questionList?page=" + qvo.getPage() + "&pageSize=" + qvo.getPageSize();
+		/*
+		 * if (result == 1) { log.info("55"); url = "/question/questionList?page=" +
+		 * qvo.getPage() + "&pageSize=" + qvo.getPageSize(); }
+		 */
+		System.out.println("삭제");
+
+		if(result == 1) {
+			url = "/question/questionList?page=" +qvo.getPage()+"&pageSize="+qvo.getPageSize();
+		}else {
+			url = "/question/questionList?qt_number="+qvo.getQt_number()+"&page="+qvo.getPage()+"&pageSize="+qvo.getPageSize();
 		}
-
-		return "redirect:" + url;
-
+		return "redirect:"+url;
 	}
 
 }

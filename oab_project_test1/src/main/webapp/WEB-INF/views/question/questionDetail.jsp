@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+
 <%@ page trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
 <html>
@@ -42,15 +43,40 @@
 			});
 		}
 	})
+
+
 	//삭제버튼
 	$(function name() {
 		$("#delete_questionBtn").click(function() {
-			if (confirm("${detail.qt_title}" + "작성하신 문의 글을 정말 삭제하시겠습니까?")) {
-				$("#qt_data").attr("action", "/question/questionList");
+			
+			var qt_writerPwCheck = $("#qt_writerPwCheck").val(); //삭제 시 비밀번호 확인을 위한 비밀번호
+			var qt_pw = $("#qt_pw").val(); //원글의 비밀번호
+
+			alert($("#qt_pw"));
+			
+			if(!($("#qt_writerPwCheck").val())){ //비밀번호란이 공백일경우
+				alert("비밀번호를 입력해주세요");
+				$("#qt_writerPwCheck").val("");
+				$("#qt_writerPwCheck").focus();
+			}
+			
+			else if ($("#qt_pw").val() != $("#qt_writerPwCheck").val()) { //입력한 비밀번호와 DB의 비밀번호가 틀리다면
+				alert("입력하신 비밀번호가 일치하지 않습니다.");
+				$("#delete_questionBtn").focus();
+				$("#delete_questionBtn").val("");
+			
+			} else if (confirm("[${detail.qt_title}]" + " 작성하신 문의 글을 정말 삭제하시겠습니까?")) { //입력한 비밀번호가 맞을경우
+				
+				$("#qt_data").attr("action", "/question/questionDelete");
 				$("#qt_data").submit();
 			}
+			
+		
 		});
-	});
+
+		
+		});
+
 </script>
 </head>
 <body>
@@ -60,12 +86,15 @@
 		<div class="contentsTit">
 			<h3>내 문의글 상세보기</h3>
 		</div>
+			
 		<form name="qt_data" id="qt_data">
 			<input type="hidden" name="qt_number" value="${detail.qt_number}" />
-			<input type="hidden" name="page" id="page" value="${param.page}" />
-			<input type="hidden" name="pageSize" id="pageSize"
+			<input type="hidden" id="qt_pw" name="qt_pw" value="${detail.qt_pw}" /> <input
+				type="hidden" name="page" id="page" value="${param.page}" /> <input
+				type="hidden" name="pageSize" id="pageSize"
 				value="${param.pageSize}" /> <input type="hidden" name="qt_file"
 				id="qt_file" value="${detail.qt_file}" />
+			
 		</form>
 
 		<%-- =========== 상세 정보 보여주기 시작 =========== --%>
@@ -85,7 +114,11 @@
 
 					<tr>
 						<td class="ac" id="qt_writer">작 성 자</td>
-						<td colspan="3">${detail.qt_writer}</td>
+						<td>${detail.qt_writer}</td>
+						<td class="ac" id="qt_pw">비밀번호</td>
+						<td colspan="2"><input type="password" id="qt_writerPwCheck"
+							maxlength="5" placeholder="삭제를 원하신다면 작성하실 때 입력한 비밀번호를 기입해주세요">
+						</td>
 					</tr>
 					<tr>
 						<td class="ac" colspan="1">작 성 일</td>
@@ -103,8 +136,8 @@
 				</tbody>
 			</table>
 			<div id="buttoncss">
-				<input type="button" value="목록" id="back_questionListBtn"> 
-				<input type="button" value="삭제" id="delete_questionBtn">
+				<input type="button" value="목록" id="back_questionListBtn"> <input type="button" value="삭제"
+					id="delete_questionBtn">
 			</div>
 		</div>
 		<%-- =========== 상세 정보 보여주기 종료 =========== --%>

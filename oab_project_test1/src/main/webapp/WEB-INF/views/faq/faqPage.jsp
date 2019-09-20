@@ -22,11 +22,9 @@
 				<h3>자 주 묻 는 질 문</h3>
 				<hr>
 			</div>
-
-
 			<div id="allcontent">
+				<p>제목을 클릭하면 상세 내용이 보입니다.</p>
 				<div>
-
 					<p>
 						<a href="#" class="question_title" id="btnAll" mode="hide"
 							style="text-decoration: none">[1] <span id="Question_Q">
@@ -39,9 +37,7 @@
 							됩니다.<br> 서울 시내에 한강 이용 법규에 따라 텐트를 고정핀은 대여해드리고 있지 않습니다.
 						<p>
 					</div>
-
 				</div>
-
 				<div>
 					<p>
 						<a href="#" class="question_title" id="btnAll2" mode="hide"
@@ -55,9 +51,7 @@
 							감사합니다.
 						<p>
 					</div>
-
 				</div>
-
 				<div>
 					<p>
 						<a href="#" class="question_title" id="btnAll3" mode="hide"
@@ -68,20 +62,10 @@
 						<p>
 							고객님, 안녕하세요. OAB텐트입니다. <br> 잊어버린 아이디는 아이디 찾기에서 가입한 아이디를 찾을 수
 							있습니다. <br> <a href="/">아이디 찾기</a> 를 이용해주세요. <br> 감사합니다.
-
-
-
-
-
-
-
-
 						
 						<p>
 					</div>
-
 				</div>
-
 				<div>
 					<p>
 						<a href="#" class="question_title" id="btnAll4" mode="hide"
@@ -94,9 +78,7 @@
 							바랍니다. <br> <img src="/resources/images/faq/faq1.PNG" /> <br>
 							감사합니다.
 					</div>
-
 				</div>
-
 				<div>
 					<p>
 						<a href="#" class="question_title" id="btnAll5" mode="hide"
@@ -110,13 +92,8 @@
 							감사합니다.
 						<p>
 					</div>
-
 				</div>
-
 			</div>
-
-
-
 		</article>
 	</section>
 

@@ -43,7 +43,7 @@
 
 		SELECT
 
-		qt_number, qt_title, qt_content, qt_status, to_char(qt_regdate,
+		qt_number, qt_title, qt_content, qt_status, qt_pw ,to_char(qt_regdate,
 		'YYYY-MM-DD') as qt_regdate, qt_writer
 		FROM QUESTION_TBL
 		WHERE qt_number

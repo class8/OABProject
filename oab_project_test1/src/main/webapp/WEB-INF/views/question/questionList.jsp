@@ -123,8 +123,8 @@
 							</c:when>
 							<c:otherwise>
 								<tr>
-									<td colspan="5" class="tac">등록된 문의 사항이 존재하지 않습니다. <br>
-										<a href="/question/questionWrite">문의 사항 등록하기</a> : 감사합니다 !
+									<td colspan="5" class="tac"> 등록된 문의 사항이 존재하지 않습니다. <br>
+										<a href="/question/questionWrite" display="none">문의 사항 등록하기</a> : 감사합니다 !
 									</td>
 								</tr>
 							</c:otherwise>

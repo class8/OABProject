@@ -29,6 +29,10 @@
 	width: 750px;
 }
 
+#qt_title:hover{
+	color: green;
+}
+
 #qt_content {
 	width: 750px;
 	height: 250px;
