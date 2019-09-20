@@ -1,13 +1,29 @@
 package com.oab.client.common.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.oab.client.product.service.ProductService;
+import com.oab.client.product.vo.ProductVO;
+
 @Controller
 public class MainController {
+	
+	@Autowired
+	private ProductService productService;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String main() {
+	public String main(@ModelAttribute ProductVO pvo, Model model) {
+		System.out.println("main page");
+		List<ProductVO> setList = productService.mainList();
+		model.addAttribute("setList", setList);
+		
 		return "index";
 	}
 

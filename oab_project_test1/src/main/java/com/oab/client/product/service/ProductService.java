@@ -8,13 +8,15 @@ public interface ProductService {
 	public List<ProductVO> productList(ProductVO pvo);
 
 	public int productListCnt(ProductVO pvo);
-	
+
 	public int setListCnt(ProductVO pvo);
-	
+
 	public int addListCnt(ProductVO pvo);
-	
+
 	public List<ProductVO> setList(ProductVO pvo);
 
 	public List<ProductVO> addList(ProductVO pvo);
+
+	public List<ProductVO> mainList();
 
 }

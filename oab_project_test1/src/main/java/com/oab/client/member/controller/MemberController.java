@@ -2,6 +2,8 @@ package com.oab.client.member.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.oab.admin.product.controller.AdminProductController;
 import com.oab.client.login.service.LoginService;
 import com.oab.client.login.vo.LoginVO;
 import com.oab.client.member.service.MemberService;
@@ -28,6 +31,8 @@ import lombok.extern.java.Log;
 @RequestMapping(value = "/member")
 @Log
 public class MemberController {
+	private Logger log = LoggerFactory.getLogger(AdminProductController.class);
+	
 	@Autowired
 	private MemberService memberService;
 

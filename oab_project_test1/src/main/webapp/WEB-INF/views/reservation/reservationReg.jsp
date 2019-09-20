@@ -14,6 +14,86 @@
 <link href="/resources/include/css/footer.css" rel="stylesheet">
 <link href="/resources/include/css/reservation.css" rel="stylesheet">
 <link href="/resources/include/css/jquery-ui.min.css" rel="stylesheet">
+<!--  -->
+<link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css'
+	rel='stylesheet'>
+<link
+	href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+	rel='stylesheet' />
+<!--  -->
+<link href='/resources/include/fullcalendar/core/main.css'
+	rel='stylesheet' />
+<link href='/resources/include/fullcalendar/daygrid/main.css'
+	rel='stylesheet' />
+<link href='/resources/include/fullcalendar/bootstrap/main.css'
+	rel='stylesheet' />
+<!--  -->
+<script src='/resources/include/fullcalendar/core/main.js'></script>
+<script src='/resources/include/fullcalendar/daygrid/main.js'></script>
+<script src='/resources/include/fullcalendar/bootstrap/main.js'></script>
+<script src='/resources/include/fullcalendar/google-calendar/main.js'></script>
+<script>
+	document
+			.addEventListener(
+					'DOMContentLoaded',
+					function() {
+						var calendarEl = document.getElementById('calendar');
+
+						var calendar = new FullCalendar.Calendar(
+								calendarEl,
+								{
+									plugins : [ 'dayGrid', 'bootstrap',
+											'googleCalendar' ],
+									header : {
+										left : '',
+										center : 'title',
+										right : 'today,prevYear,prev,next,nextYear'
+									},
+									titleFormat : { // will produce something like "Tuesday, September 18, 2018"
+										month : 'long',
+										year : 'numeric',
+									},
+									themeSystem : 'bootstrap',
+									locale : 'ko',
+									googleCalendarApiKey : 'AIzaSyArnJqCak6gfWlux_SnVtEIo2UgeOshR1U',
+									eventSources : [
+						                // 대한민국의 공휴일
+						                {
+						                      googleCalendarId : "ko.south_korea#holiday@group.v.calendar.google.com"
+						                    , className : "koHolidays"
+						                    , color : "#ff4242"
+						                    , textColor : "#FFFFFF"
+						                }
+						                , {
+						                      googleCalendarId : "deecnlqcgl5raoa3rda5ot81a0@group.calendar.google.com"
+						                    , className : "OAB"
+						                    , color : "#0000FF"
+						                    , textColor : "#FFFF00"
+						                }
+						            ]
+								/* events: {
+									googleCalendarId: 'eu86uop7je06p27uoolvohcaec@group.calendar.google.com',
+								} */
+								});
+						calendar.render();
+
+					});
+</script>
+<!--  -->
+<style type="text/css">
+.fc-sat {
+	background-color: #cae4ff;
+}
+
+.fc-sun {
+	background-color: #ffcece;
+}
+
+.fc-today {
+	background-color: #aaffaa;
+}
+</style>
+<!--  -->
 <script type="text/javascript"
 	src="/resources/include/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript"
@@ -21,13 +101,14 @@
 <script type="text/javascript"
 	src="/resources/include/js/jquery-ui.min.js"></script>
 <script type="text/javascript"
-	src="/resources/include/js/reservationReg.js"></script>
-<script type="text/javascript"
 	src="/resources/include/js/reservationReg_logic.js"></script>
 <script type="text/javascript" src="/resources/include/js/datepicker.js"></script>
 </head>
 <body>
-	<div class="reservation_calendar">일정달력</div>
+	<div class="reservation_calendar">
+		<h4 style="display: block; text-align: center">영업 일정</h4>
+		<div id="calendar"></div>
+	</div>
 	<div class="reservation_select">
 		<form id="reservation_form">
 			<table>
@@ -141,7 +222,8 @@
 					<td colspan="2"><c:if test="${login.mt_id != null }">
 							<input type="button" class="btn_reservation" value="예약신청">
 						</c:if> <c:if test="${login.mt_id == null }">
-							<input type="button" value="예약신청" onclick="alert('예약은 로그인후에 가능합니다.')">
+							<input type="button" value="예약신청"
+								onclick="alert('예약은 로그인후에 가능합니다.')">
 						</c:if></td>
 				</tr>
 			</table>

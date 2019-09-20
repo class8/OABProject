@@ -49,4 +49,10 @@ public class ProductDaoImpl implements ProductDao {
 	public List<ProductVO> addList(ProductVO pvo) {
 		return session.selectList("addList", pvo);
 	}
+
+	// 글 목록 구현
+	@Override
+	public List<ProductVO> mainList() {
+		return session.selectList("mainList");
+	}
 }

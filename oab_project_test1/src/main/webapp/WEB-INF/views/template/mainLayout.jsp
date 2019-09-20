@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
@@ -20,21 +21,25 @@
 		<div class="main_content">
 			<article class="main_image">
 				<h2>메인이미지</h2>
-				<img src="/resources/images/main_img.PNG">
+				<img class="main_img" src="/resources/images/main_img.png">
 			</article>
-			<section class="main_items">
+			<div class="main_items">
 				<h2>추천상품리스트</h2>
-				<div class="main_items_title">추천상품리스트</div>
-				<article class="main_item">
-					<h2>추천상품1</h2>
-				</article>
-				<article class="main_item">
-					<h2>추천상품1</h2>
-				</article>
-				<article class="main_item">
-					<h2>추천상품1</h2>
-				</article>
-			</section>
+				<div class="main_items_title">신상품 리스트</div>
+				<!--  -->
+				<c:if test="${not empty setList}">
+					<c:forEach var="product" items="${setList}" varStatus="status">
+						<article class="main_item">
+							<p>${product.pt_name}</p>
+							<a href="/product/productList"> <img
+								class="product_thumbnail"
+								src="/uploadStorage/thumb/${product.pt_thumb}">
+							</a>
+						</article>
+					</c:forEach>
+				</c:if>
+				<!--  -->
+			</div>
 		</div>
 		<footer class="footer">
 			<tiles:insertAttribute name="footer" />

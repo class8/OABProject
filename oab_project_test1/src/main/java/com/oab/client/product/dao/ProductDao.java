@@ -17,4 +17,6 @@ public interface ProductDao {
 
 	public List<ProductVO> addList(ProductVO pvo);
 
+	public List<ProductVO> mainList();
+
 }

@@ -63,7 +63,8 @@ $(function() {
 		//기존 선택항목에 있는지 검증하여 없을경우에만 실행
 		if(!compareTo(arr, str)){
 			//선택항목에 label추가
-			$(".select_product").append("<label class='choice_item' value='1234'><br>"+$(".set_choice").val()+" </label>");
+			$(".select_product").append("<br>");
+			$(".select_product").append("<label class='choice_item' value='1234'>"+$(".set_choice").val()+" </label>");
 			//선택값 옆에 -버튼,수량,+버튼추가
 			$(".select_product").append("<input class='btn_minus' type='button' value='-'></input>");
 			$(".select_product").append("<input type='text' name='num' value='1' class='num'>");

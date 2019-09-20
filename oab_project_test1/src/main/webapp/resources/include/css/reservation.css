@@ -1,11 +1,13 @@
 .reservation_calendar {
-	width: 40%;
+	margin-left:2%;
+	width: 48%;
 	height: 100%;
 	float: left;
 }
 
 .reservation_select {
-	width: 90%;
+	margin-left:2%;
+	width: 48%;
 	height: 100%;
 	float: left;
 }
