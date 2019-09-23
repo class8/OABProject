@@ -40,16 +40,16 @@
 		</li>
 		<li>마이페이지
 			<ul>
-				<li><a href="/member/memberUseInfo">내 이용정보</a></li>
-				<li><a href="/member/memberInfo">내 정보수정</a></li>
+				<li><a href="/member/memberUserInfo">내 이용정보</a></li>
+				<li><a href="/member/memberModify">내 정보수정</a></li>
 				<li><a href="/member/memberSecede">회원 탈퇴</a></li>
 			</ul>
 		</li>
 		<li>고객센터
 			<ul>
 				<li><a href="/faq/faqPage">자주묻는질문</a></li>
-				<li><a href="/question/questionWrite">1:1 문의 게시글 작성</a></li>
-				<li><a href="/question/questionList">1:1 문의 리스트 확인</a></li>
+				<li><a href="/question/questionWrite">1:1 문의</a></li>
+				<li><a href="/question/questionList">내가 한 문의</a></li>
 				<li><a href="/member/memberIdSearch">ID/PW찾기</a></li>
 			</ul>
 		</li>

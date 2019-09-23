@@ -29,12 +29,27 @@
 			value="/WEB-INF/views/login/login.jsp" />
 	</definition>
 
+
 	<definition name="member/join" extends="content">
 		<put-attribute name="title" value="회원가입" />
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/member/join.jsp" />
 	</definition>
-
+	<definition name="member/memberModify" extends="content">
+		<put-attribute name="title" value="회원정보 수정" />
+		<put-attribute name="main_body"
+			value="/WEB-INF/views/member/memberModify.jsp" />
+	</definition>
+	<definition name="member/memberSecede" extends="content">
+		<put-attribute name="title" value="회원 탈퇴" />
+		<put-attribute name="main_body"
+			value="/WEB-INF/views/member/memberSecede.jsp" />
+	</definition>
+	<definition name="member/memberUserInfo" extends="content">
+		<put-attribute name="title" value="내 이용 내역" />
+		<put-attribute name="main_body"
+			value="/WEB-INF/views/member/memberUserInfo.jsp" />
+	</definition>
 	<definition name="greeting/greetingPage" extends="content">
 		<put-attribute name="title" value="인사말" />
 		<put-attribute name="main_aside"
@@ -49,14 +64,6 @@
 			value="/WEB-INF/views/template/aside1.jsp" />
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/notice/{1}.jsp"></put-attribute>
-	</definition>
-	
-	<definition name="question/*" extends="content">
-		<put-attribute name="title" value="1:1 문의사항" />
-		<put-attribute name="main_aside"
-			value="/WEB-INF/views/template/aside1.jsp" />
-		<put-attribute name="main_body"
-			value="/WEB-INF/views/question/{1}.jsp"></put-attribute>
 	</definition>
 
 	<definition name="branch/branchPage" extends="content">
