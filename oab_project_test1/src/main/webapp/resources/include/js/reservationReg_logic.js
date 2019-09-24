@@ -4,25 +4,6 @@ var count = []; //선택한 상품의 개수가 들어갈 배열
 $(function() {
 	$(".btn_reservation").click(function() {
 		if (FormCheck()) { //유효성 검사
-			 //ajax 호출
-            /*$.ajax({
-                url         :   "/reservation/reservationReg",
-                contentType :   "application/x-www-form-urlencoded; charset=UTF-8",
-                type        :   "post",
-                data        :   data,
-                success     :   function(retVal){
-
-                    if(retVal.code == "OK") {
-                        alert(retVal.message);
-                    } else {
-                        alert(retVal.message);
-                    }
-                     
-                },
-                error       :   function(request, status, error){
-                    console.log("AJAX_ERROR");
-                }
-            });*/
 			$(".rest_exprent").val($(".reservation_date").val()+" "+$(".rest_exptime").val());
 			$("#reservation_form").attr({
 				"method" : "post",
@@ -30,6 +11,11 @@ $(function() {
 			});
 			$("#reservation_form").submit();
 		}
+	});
+});
+
+$(function() {
+	$(".rest_name").click(function() {
 	});
 });
 
@@ -48,6 +34,7 @@ function FormCheck() {
 		return false;
 	}else if(!$(".agree").prop("checked")){
 		alert("약관동의를 체크해주세요.");
+		$(".agree").focus();
 		return false;
 	}
 	return true;
@@ -62,25 +49,27 @@ $(function() {
 		var str = $(".set_number:eq("+q+")").val(); //선택 상품의 상품번호
 		//기존 선택항목에 있는지 검증하여 없을경우에만 실행
 		if(!compareTo(arr, str)){
+			//인덱스에 맞는 가격값
+			var price = parseInt($(".set_price:eq("+q+")").val()); //선택상품 가격
+			
 			//선택항목에 label추가
-			$(".select_product").append("<br>");
-			$(".select_product").append("<label class='choice_item' value='1234'>"+$(".set_choice").val()+" </label>");
+			var choice_item = ("<label class='choice_item'>"+$(".set_choice").val()+" </label>");
+			
 			//선택값 옆에 -버튼,수량,+버튼추가
-			$(".select_product").append("<input class='btn_minus' type='button' value='-'></input>");
-			$(".select_product").append("<input type='text' name='num' value='1' class='num'>");
-			$(".select_product").append("<input class='btn_plus' type='button' value='+'></input>");
+			var btn_minus = ("<input class='btn_minus' type='button' value='-'></input>");
+			var cnt_num = ("<input type='text' name='num' value='1' class='num' readonly style='width:30px'>");
+			var btn_plus = ("<input class='btn_plus' type='button' value='+'></input>");
 
 			//선택한 상품번호
-			$(".select_product").append("<input name='pt_num' class='pt_num' type='hidden' value='"+str+"'></input>");
-			$(".select_product").append("<input name='pt_cnt' class='pt_cnt' type='hidden' value='1'></input>");
+			var pt_num = ("<input name='pt_num' class='pt_num' type='hidden' value='"+str+"'></input>");
+			var pt_cnt = ("<input name='pt_cnt' class='pt_cnt' type='hidden' value='1'></input>");
 			
-			
-			//인덱스에 맞는 가격값
-			var q = $(".set_choice .item").index($(".set_choice .item:selected")); //선택상품 인덱스값
-			var price = parseInt($(".set_price:eq("+q+")").val()); //선택상품 가격
-			$(".select_product").append("<input type='text' name='price' value='"+price+"' class='price'>");
+			var total = ("<input type='text' name='price' value='"+price+"' class='price' readonly style='width:100px'>");
 			//X종료버튼 추가
-			$(".select_product").append("<input class='btn_close' type='button' value='X'></input>");
+			var cancel = ("<input class='btn_close' type='button' value='X'></input></div>");
+
+			$(".select_product").append("<div class='select'><br>"+choice_item+btn_minus+cnt_num+btn_plus+pt_num+pt_cnt+total+cancel+"</div>");
+			
 			//검증시 사용하는 선택한 항목 배열에 값 추가
 			arr.push(str);
 			}
@@ -95,23 +84,27 @@ $(function() {
 		var str = $(".add_number:eq("+q+")").val(); //선택 상품의 상품번호
 		//기존 선택항목에 있는지 검증하여 없을경우에만 실행
 		if(!compareTo(arr, str)){
-			//선택항목에 label추가
-			$(".select_product").append("<label class='choice_item'><br>"+$(".add_choice").val()+" </label>");
-			//선택값 옆에 -버튼,수량,+버튼추가
-			$(".select_product").append("<input class='btn_minus' type='button' value='-'></input>");
-			$(".select_product").append("<input type='text' name='num' value='1' class='num'>");
-			$(".select_product").append("<input class='btn_plus' type='button' value='+'></input>");
-			
-			//선택한 상품번호
-			$(".select_product").append("<input name='pt_num' class='pt_num' type='hidden' value='"+str+"'></input>");
-			$(".select_product").append("<input name='pt_cnt' class='pt_cnt' type='hidden' value='1'></input>");
-			
 			//인덱스에 맞는 가격값
-			var q = $(".add_choice .item").index($(".add_choice .item:selected")); //선택상품 인덱스값
-			var price = parseInt($(".add_price:eq("+q+")").val()); //선택상품 가격
-			$(".select_product").append("<input type='text' name='price' value='"+price+"' class='price'>");
+			var price = parseInt($(".add_price:eq("+q+")").val()); //추가상품 가격
+			
+			//선택항목에 label추가
+			var choice_item = ("<label class='choice_item'>"+$(".add_choice").val()+" </label>");
+			
+			//선택값 옆에 -버튼,수량,+버튼추가
+			var btn_minus = ("<input class='btn_minus' type='button' value='-'></input>");
+			var cnt_num = ("<input type='text' name='num' value='1' class='num' readonly style='width:30px'>");
+			var btn_plus = ("<input class='btn_plus' type='button' value='+'></input>");
+
+			//선택한 상품번호
+			var pt_num = ("<input name='pt_num' class='pt_num' type='hidden' value='"+str+"'></input>");
+			var pt_cnt = ("<input name='pt_cnt' class='pt_cnt' type='hidden' value='1'></input>");
+			
+			var total = ("<input type='text' name='price' value='"+price+"' class='price' readonly style='width:100px'>");
 			//X종료버튼 추가
-			$(".select_product").append("<input class='btn_close' type='button' value='X'></input>");
+			var cancel = ("<input class='btn_close' type='button' value='X'></input></div>");
+
+			$(".select_product").append("<div class='select'><br>"+choice_item+btn_minus+cnt_num+btn_plus+pt_num+pt_cnt+total+cancel+"</div>");
+			
 			//검증시 사용하는 선택한 항목 배열에 값 추가
 			arr.push(str);
 			}
@@ -158,12 +151,14 @@ $(function() {
 	$(document).on("click",".btn_close",function(){
 	    var n = $('.btn_close').index(this);
 	    var num = $(".num:eq("+n+")").val();
+	    $(".select:eq("+n+")").remove();
+	   /* $("br:eq("+n+")").remove();
 	    $(".choice_item:eq("+n+")").remove();
 	    $(".btn_minus:eq("+n+")").remove();
 	    $(".num:eq("+n+")").remove();
 	    $(".btn_plus:eq("+n+")").remove();
 	    $(".price:eq("+n+")").remove();
-	    $(".btn_close:eq("+n+")").remove();
+	    $(".btn_close:eq("+n+")").remove();*/
 	    arr.splice(n,1);
 	    calculation_total();
 	  });

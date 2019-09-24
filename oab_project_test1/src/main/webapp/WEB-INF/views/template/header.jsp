@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page trimDirectiveWhitespaces="true"%>
@@ -50,7 +50,7 @@
 				<li><a href="/faq/faqPage">자주묻는질문</a></li>
 				<li><a href="/question/questionWrite">1:1 문의</a></li>
 				<li><a href="/question/questionList">내가 한 문의</a></li>
-				<li><a href="/member/memberIdSearch">ID/PW찾기</a></li>
+				<li><a href="/member/memberIdselect">ID/PW찾기</a></li>
 			</ul>
 		</li>
 	</ul>
