@@ -8,8 +8,8 @@
 	<ul class="aside_ul">
 		<li>마이페이지
 			<ul>
-				<a href="/member/memberUseInfo"><li>내 이용정보</li></a>
-				<a href="/member/memberInfo"><li>내 정보수정</li></a>
+				<a href="/member/memberUserInfo"><li>내 이용정보</li></a>
+				<a href="/member/memberModify"><li>내 정보수정</li></a>
 				<a href="/member/memberSecede"><li>회원 탈퇴</li></a>
 			</ul>
 		</li>

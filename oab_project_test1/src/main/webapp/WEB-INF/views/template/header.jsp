@@ -50,7 +50,7 @@
 				<li><a href="/faq/faqPage">자주묻는질문</a></li>
 				<li><a href="/question/questionWrite">1:1 문의</a></li>
 				<li><a href="/question/questionList">내가 한 문의</a></li>
-				<li><a href="/member/memberIdselect">ID/PW찾기</a></li>
+				<li><a href="/login/find">ID/PW찾기</a></li>
 			</ul>
 		</li>
 	</ul>

@@ -29,6 +29,11 @@
 			value="/WEB-INF/views/login/login.jsp" />
 	</definition>
 
+	<definition name="login/find" extends="content">
+		<put-attribute name="title" value="아이디/비밀번호 찾기" />
+		<put-attribute name="main_body"
+			value="/WEB-INF/views/login/find.jsp" />
+	</definition>
 
 	<definition name="member/join" extends="content">
 		<put-attribute name="title" value="회원가입" />
@@ -112,6 +117,22 @@
 			value="/WEB-INF/views/template/aside2.jsp" />
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/reservation/{1}.jsp"></put-attribute>
+	</definition>
+
+	<definition name="question/*" extends="content">
+		<put-attribute name="title" value="1:1 문의사항" />
+		<put-attribute name="main_aside"
+			value="/WEB-INF/views/template/aside4.jsp" />
+		<put-attribute name="main_body"
+			value="/WEB-INF/views/question/{1}.jsp"></put-attribute>
+	</definition>
+
+	<definition name="review/*" extends="content">
+		<put-attribute name="title" value="포토후기" />
+		<put-attribute name="main_aside"
+			value="/WEB-INF/views/template/aside2.jsp" />
+		<put-attribute name="main_body"
+			value="/WEB-INF/views/review/{1}.jsp"></put-attribute>
 	</definition>
 
 </tiles-definitions>

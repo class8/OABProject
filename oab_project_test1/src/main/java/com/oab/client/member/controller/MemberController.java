@@ -51,7 +51,7 @@ public class MemberController {
 
 	// 사용자 아이디 중복 체크 메서드
 	@ResponseBody
-	@RequestMapping(value = "/mt_IdConfirm.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/mt_IdConfirm", method = RequestMethod.POST)
 	public String mt_IdConfirm(@RequestParam("mt_id") String mt_id) {
 		int result = memberService.mt_IdConfirm(mt_id);
 		return result + "";
@@ -84,7 +84,7 @@ public class MemberController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/MemberModify", method = RequestMethod.GET)
+	@RequestMapping(value = "/memberModify", method = RequestMethod.GET)
 	public ModelAndView memberModify(HttpSession session) {
 		log.info("modify.do get 방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
@@ -98,11 +98,11 @@ public class MemberController {
 
 		MemberVO vo = memberService.memberSelect(login.getMt_id());
 		mav.addObject("member", vo);
-		mav.setViewName("member/MemberModify");
+		mav.setViewName("member/memberModify");
 		return mav;
 	}
 
-	@RequestMapping(value = "/MemberModify", method = RequestMethod.POST)
+	@RequestMapping(value = "/memberModify", method = RequestMethod.POST)
 	public ModelAndView memberModifyProcess(@ModelAttribute("MemberVO") MemberVO mvo, HttpSession session) {
 		log.info("modify.do post 방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
@@ -117,7 +117,7 @@ public class MemberController {
 		if (loginService.loginSelect(mvo.getMt_id(), mvo.getOldmt_pw()) == null) {
 			mav.addObject("errCode", 1);
 			mav.addObject("member", vo);
-			mav.setViewName("member/MemberModify");
+			mav.setViewName("member/memberModify");
 			return mav;
 		}
 		if (memberService.memberUpdate(mvo)) {
@@ -126,7 +126,7 @@ public class MemberController {
 		} else {
 			mav.addObject("errCode", 2);
 			mav.addObject("member", vo);
-			mav.setViewName("member/MemberModify");
+			mav.setViewName("member/memberModify");
 			return mav;
 		}
 	}
@@ -171,9 +171,9 @@ public class MemberController {
 	}
 
 	// 임시 비밀번호 발급
-	@RequestMapping("/memberPwUpdate.do")
+	@RequestMapping("/memberPwUpdate")
 	public ModelAndView memberPwUpdate(HttpSession session, LoginVO lvo) throws Exception {
-		log.info("memberPwUpdate.do get방식에 의한 메서드 호출 성공");
+		log.info("memberPwUpdate get방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
 
 		sendService.sendMailPassword(lvo);
@@ -182,9 +182,9 @@ public class MemberController {
 	}
 
 	// 아이디 찾기
-	@RequestMapping("/memberIdselect.do")
+	@RequestMapping("/memberIdselect")
 	public ModelAndView memberIdselect(HttpSession session, MemberVO mvo) throws Exception {
-		log.info("memberIdselect.do get방식에 의한 메서드 호출 성공");
+		log.info("memberIdselect get방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
 
 		sendService.sendMailId(mvo);
