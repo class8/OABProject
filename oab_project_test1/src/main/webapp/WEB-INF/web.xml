@@ -51,12 +51,22 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	<!-- 에러 발생 시 보여주고자 하는 파일 설정 (게시판이 다 작성되고 난 후 주석 해제한다) <error-page> <error-code>403</error-code> 
-		<location>/common/error/error.html</location> </error-page> <error-page> 
-		<error-code>404</error-code> <location>/common/error/error.html</location> 
-		</error-page> <error-page> <error-code>405</error-code> <location>/common/error/error.html</location> 
-		</error-page> <error-page> <error-code>500</error-code> <location>/common/error/error.html</location> 
-		</error-page> -->
+	<error-page>
+		<error-code>403</error-code>
+		<location>/error/error</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/error</location>
+	</error-page>
+	<error-page>
+		<error-code>405</error-code>
+		<location>/error/error</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/error</location>
+	</error-page>
 
 	<!-- 메서드 처리 -->
 	<filter>

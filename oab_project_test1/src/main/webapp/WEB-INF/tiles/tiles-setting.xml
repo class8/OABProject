@@ -135,4 +135,10 @@
 			value="/WEB-INF/views/review/{1}.jsp"></put-attribute>
 	</definition>
 
+	<definition name="error/error" extends="content">
+		<put-attribute name="title" value="에러페이지" />
+		<put-attribute name="main_body"
+			value="/WEB-INF/views/error/error.jsp"></put-attribute>
+	</definition>
+
 </tiles-definitions>

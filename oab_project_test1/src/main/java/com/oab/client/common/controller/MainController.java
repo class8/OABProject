@@ -51,4 +51,9 @@ public class MainController {
 	public String policy() {
 		return "policy/policyPage";
 	}
+	
+	@RequestMapping(value = "/error/error", method = RequestMethod.GET)
+	public String error() {
+		return "error/error";
+	}
 }
