@@ -78,9 +78,6 @@
 
 					});
 </script>
-<script type="text/javascript">
-
-</script>
 <!--  -->
 <style type="text/css">
 .fc-sat {
@@ -113,6 +110,7 @@
 	</div>
 	<div class="reservation_select">
 		<form id="reservation_form">
+		<p>${code}</p>
 			<table>
 				<tr>
 					<td colspan="2"><select class="select_bname">

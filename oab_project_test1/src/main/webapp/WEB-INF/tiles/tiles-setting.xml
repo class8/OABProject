@@ -55,6 +55,13 @@
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/member/memberUserInfo.jsp" />
 	</definition>
+	
+	<definition name="member/join_success" extends="content">
+		<put-attribute name="title" value="회원가입 성공" />
+		<put-attribute name="main_body"
+			value="/WEB-INF/views/member/join_success.jsp" />
+	</definition>
+	
 	<definition name="greeting/greetingPage" extends="content">
 		<put-attribute name="title" value="인사말" />
 		<put-attribute name="main_aside"

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.oab.client.common.page.Paging;
 import com.oab.client.common.util.Util;
@@ -69,24 +70,32 @@ public class ReservationController {
 	@RequestMapping(value = "/reservationReg", method = RequestMethod.POST)
 	public String reservationInsert(@ModelAttribute ReservationVO rvo, Model model, HttpServletRequest request,
 			HttpSession session, @RequestParam(value = "pt_num", required = false, defaultValue = "0") String[] pt_num,
-			@RequestParam(value = "pt_cnt", required = false, defaultValue = "0") String[] pt_cnt,@RequestParam(value = "price", required = false, defaultValue = "0") String[] price)
-			throws IllegalStateException, IOException{
+			@RequestParam(value = "pt_cnt", required = false, defaultValue = "0") String[] pt_cnt,
+			@RequestParam(value = "price", required = false, defaultValue = "0") String[] price, RedirectAttributes redirectAttributes)
+			throws IllegalStateException, IOException {
 		log.info("reservationInsert 호출 성공");
 		System.out.println("예약삽입 컨트롤러 호출 성공");
-		LoginVO login = (LoginVO)session.getAttribute("login");
+		LoginVO login = (LoginVO) session.getAttribute("login");
 		rvo.setMt_id(login.getMt_id());
 		int bnumber = reservationService.reservationBnumber();
 		rvo.setRest_bnumber(bnumber);
-		
+
 		int result = 0;
 		String url = "";
 		result = reservationService.reservationInsert(rvo, pt_num, pt_cnt, price);
 		if (result == 1) { // 성공시
-			url = "/reservation/reservationReg";
+			redirectAttributes.addFlashAttribute("code", 1);
+			url = "/reservation/reservationResult";
 		} else {
-			model.addAttribute("code", 1);
-			url = "/reservation/reservationReg";
+			redirectAttributes.addFlashAttribute("code", 2);
+			url = "/reservation/reservationResult";
 		}
 		return "redirect:" + url;
 	}
+
+	@RequestMapping(value = "/reservationResult")
+	public String reservationResult() {
+		return "reservation/reservationResult";
+	}
+
 }

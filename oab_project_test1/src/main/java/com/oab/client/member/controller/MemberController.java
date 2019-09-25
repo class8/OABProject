@@ -72,7 +72,7 @@ public class MemberController {
 			mav.setViewName("member/join");
 			break;
 		case 3:
-			mav.addObject("errCode", 3);
+			mav.addObject("code", 1);
 			mav.setViewName("member/join_success");
 // success to add new member; move to login page
 			break;
