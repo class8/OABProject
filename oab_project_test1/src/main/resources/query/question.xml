@@ -5,7 +5,7 @@
 <mapper namespace="com.oab.client.question.dao.QuestionDao">
 
 
-	<!-- 게시물 기본 조회 2019.09.02 -->
+	<!-- 게시물 기본 조회 2019.09.20 -->
 	<select id="questionList" resultType="question"
 		parameterType="String">
 
@@ -31,7 +31,7 @@
 				and rnum BETWEEN #{start_row} AND #{end_row}
 			</if>
 		</if>
-
+		order by qt_number desc
 	</select>
 
 	<!-- 게시물의 상세보기를 위한 select문입니다. -->
@@ -43,9 +43,11 @@
 
 		SELECT
 
-		qt_number, qt_title, qt_content, qt_status, qt_pw ,to_char(qt_regdate,
+		qt_number, qt_title, qt_content, qt_status, qt_pw
+		,to_char(qt_regdate,
 		'YYYY-MM-DD') as qt_regdate, qt_writer
-		FROM QUESTION_TBL
+		FROM
+		QUESTION_TBL
 		WHERE qt_number
 		=#{qt_number}
 
