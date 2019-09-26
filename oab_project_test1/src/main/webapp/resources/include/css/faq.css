@@ -12,12 +12,14 @@
 	font-size: 25pt;
 	text-align: center;
 }
+.pTag {
+	margin-left: 100px;
+	margin-bottom: 10px;
+}
 
 #Question_Q {
-	
 	color: green;
 	font-size: 23px;
-	
 }
 
 .question_title {

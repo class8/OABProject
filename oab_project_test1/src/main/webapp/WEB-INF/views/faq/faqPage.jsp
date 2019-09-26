@@ -5,10 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>자주 묻는 질문</title>
-<link href="/resources/include/css/reset.css" rel="stylesheet">
-<link href="/resources/include/css/contentLayout.css" rel="stylesheet">
-<link href="/resources/include/css/header.css" rel="stylesheet">
-<link href="/resources/include/css/footer.css" rel="stylesheet">
 <link href="/resources/include/css/faq.css" rel="stylesheet">
 <script type="text/javascript"
 	src="/resources/include/js/jquery-1.12.4.min.js"></script>
@@ -23,7 +19,7 @@
 				<hr>
 			</div>
 			<div id="allcontent">
-				<p>제목을 클릭하면 상세 내용이 보입니다.</p>
+				<p class="pTag">제목을 클릭하면 상세 내용이 보입니다.</p>
 				<div>
 					<p>
 						<a href="#" class="question_title" id="btnAll" mode="hide"
