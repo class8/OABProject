@@ -10,14 +10,7 @@
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript" src="/resources/include/js/find.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$("#resetBtn").click(function() {
-			location.href = "/login/login";
-		});
-		$("#reset").click(function() {
-			location.href = "/login/login";
-		});
-	});
+
 </script>
 </head>
 <body>
@@ -66,8 +59,7 @@
 					<div class="btn-area">
 						<button type="submit" class="btn join" id="mt_idemail">이메일
 							전송</button>
-						<input type="button" value="취소" id="resetBtn"
-							class="btn btn-default" />
+						
 					</div>
 				</div>
 			</div>
@@ -126,8 +118,7 @@
 						<div class="btn-area">
 							<button type="submit" class="btn join" id="mt_pwemail">임시
 								비밀번호 발급</button>
-							<input type="button" value="취소" id="reset"
-								class="btn btn-default" />
+							
 						</div>
 					</div>
 				</div>
