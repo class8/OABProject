@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.oab.client.common.page.Paging;
 import com.oab.client.common.util.Util;
@@ -29,13 +30,8 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	/**************************************
-	 * 글목록 구현하기
-	 **************************************/
-	@RequestMapping(value = "/productList", method = RequestMethod.GET)
-	public String productList(@ModelAttribute ProductVO pvo, Model model) {
-		log.info("productList 호출 성공");
-
+	@RequestMapping(value = "/productSetList", method = RequestMethod.GET)
+	public String productSetList(@ModelAttribute ProductVO pvo, Model model) {
 		// 페이지 세팅
 		pvo.setPageSize("6");
 		Paging.setPage(pvo);
@@ -47,19 +43,12 @@ public class ProductController {
 		// int total = productService.productListCnt(pvo);
 		// log.info("total = " + total);
 
-		if (pvo.getSelect_type().equals("세트상품")) {
-			List<ProductVO> setList = productService.setList(pvo);
-			// 세트 레코드수 구현
-			total = productService.setListCnt(pvo);
-			log.info("total = " + total);
-			model.addAttribute("setList", setList);
-		} else if (pvo.getSelect_type().equals("추가상품")) {
-			List<ProductVO> addList = productService.addList(pvo);
-			// 추가 레코드수 구현
-			total = productService.addListCnt(pvo);
-			log.info("total = " + total);
-			model.addAttribute("addList", addList);
-		}
+		List<ProductVO> setList = productService.setList(pvo);
+		// 세트 레코드수 구현
+		total = productService.setListCnt(pvo);
+		log.info("total = " + total);
+		model.addAttribute("setList", setList);
+
 		// 글번호 재설정
 		int count = total - (Util.nvl(pvo.getPage()) - 1) * Util.nvl(pvo.getPageSize());
 		log.info("count = " + count);
@@ -68,27 +57,36 @@ public class ProductController {
 		model.addAttribute("total", total);
 		model.addAttribute("data", pvo);
 
-		return "product/productList";
-
+		return "product/productSetList";
 	}
 
-	/**************************************
-	 * 글 상세보기 구현
-	 **************************************/
-	/*
-	 * @RequestMapping(value = "/productDetail.do", method = RequestMethod.GET)
-	 * public String productDetail(@ModelAttribute productVO pvo, Model model) {
-	 * log.info("productDetail 호출 성공"); log.info("b_num = " + pvo.getB_num());
-	 * 
-	 * productVO detail = new productVO(); detail =
-	 * productService.productDetail(pvo);
-	 * 
-	 * if (detail != null && (!detail.equals(""))) {
-	 * detail.setB_content(detail.getB_content().toString().replaceAll("\n",
-	 * "<br>")); }
-	 * 
-	 * model.addAttribute("detail", detail);
-	 * 
-	 * return "product/productDetail"; }
-	 */
+	@RequestMapping(value = "/productAddList", method = RequestMethod.GET)
+	public String productAddList(@ModelAttribute ProductVO pvo, Model model) {
+		// 페이지 세팅
+		pvo.setPageSize("6");
+		Paging.setPage(pvo);
+
+		// 레코드수
+		int total = 0;
+
+		// 전체 레코드수 구현
+		// int total = productService.productListCnt(pvo);
+		// log.info("total = " + total);
+
+		List<ProductVO> addList = productService.addList(pvo);
+		// 추가 레코드수 구현
+		total = productService.addListCnt(pvo);
+		log.info("total = " + total);
+		model.addAttribute("addList", addList);
+
+		// 글번호 재설정
+		int count = total - (Util.nvl(pvo.getPage()) - 1) * Util.nvl(pvo.getPageSize());
+		log.info("count = " + count);
+
+		model.addAttribute("count", count);
+		model.addAttribute("total", total);
+		model.addAttribute("data", pvo);
+
+		return "product/productAddList";
+	}
 }

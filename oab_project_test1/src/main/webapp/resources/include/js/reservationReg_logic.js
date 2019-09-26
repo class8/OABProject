@@ -14,19 +14,20 @@ $(function() {
 	});
 });
 
-$(function() {
-	$(".rest_name").click(function() {
-	});
-});
-
 //등록 필수입력 체크
 function FormCheck() {
+	var expPhone = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/; //연락처 정규식
+	
 	if($(".rest_name").val() == null || $(".rest_name").val() ==''){
-		alert("이름을 입력하세요.");
+		alert("이름을 입력해주세요.");
 		$(".rest_name").focus();
 		return false;
 	}else if($(".rest_phone").val() == null || $(".rest_phone").val() ==''){
-		alert("연락처를 입력하세요.");
+		alert("연락처를 입력해주세요.");
+		$(".rest_phone").focus();
+		return false;
+	}else if(!/^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/.test($(".rest_phone").val())){
+		alert("연락처 형식이 다릅니다.");
 		$(".rest_phone").focus();
 		return false;
 	}else if(arr.length==0){
@@ -39,7 +40,6 @@ function FormCheck() {
 	}
 	return true;
 }
-
 //////////////////////////////////////////////////////////////
 $(function() {
 	//세트상품을 선택하여 값이 변할경우 이벤트
@@ -176,4 +176,40 @@ function compareTo(arr, str){
 		}
 	}
 	return false;
+}
+//숫자만	 받는 함수
+function onlyNumber(event) {
+	event = event || window.event;
+	var keyID = (event.which) ? event.which : event.keyCode;
+	if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 )
+	{
+		return;
+	}
+	else
+	{
+		return false;
+	}
+}
+//문자 삭제 함수
+function removeChar(event) {
+	event = event || window.event;
+	var keyID = (event.which) ? event.which : event.keyCode;
+	if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+		return;
+	else
+		event.target.value = event.target.value.replace(/[^0-9]/g, "");
+}
+
+//문자만	 받는 함수
+function onlyString(event) {
+	event = event || window.event;
+	var keyID = (event.which) ? event.which : event.keyCode;
+	if( ( keyID >=65 && keyID <= 90 ) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 )
+	{
+		return;
+	}
+	else
+	{
+		return false;
+	}
 }
