@@ -46,13 +46,11 @@
 
 
 	//삭제버튼
-	$(function name() {
+	$(function () {
 		$("#delete_questionBtn").click(function() {
 			
 			var qt_writerPwCheck = $("#qt_writerPwCheck").val(); //삭제 시 비밀번호 확인을 위한 비밀번호
 			var qt_pw = $("#qt_pw").val(); //원글의 비밀번호
-
-			alert($("#qt_pw"));
 			
 			if(!($("#qt_writerPwCheck").val())){ //비밀번호란이 공백일경우
 				alert("비밀번호를 입력해주세요");
