@@ -13,9 +13,20 @@
 	/* 줄간격 */
 	line-height: 250%;
 	margin-top: 50px;
-	margin-left: 300px;
+	margin-bottom: 200px;
+	width: 100%;
+	text-align: center;
 }
 
+#questionWriteTable {
+	width: 100%;
+}
+
+#wrtTbl {
+	width: 80%;
+	text-align: left;
+	margin-left: 150px;
+}
 /* 텍스트 박스 */
 #qt_writer {
 	width: 300px;
@@ -29,7 +40,7 @@
 	width: 750px;
 }
 
-#qt_title:hover{
+#qt_title:hover {
 	color: green;
 }
 
@@ -89,11 +100,11 @@
 }
 
 /* 상세보기 css */
-
 #content22 { /* detail */
- 	text-align: left;
+	text-align: left;
 	margin-top: 50px;
 }
+
 .ContentTB th, .ContentTB td {
 	padding: 8px;
 	border-bottom: 1px solid #c0c0c0;
@@ -102,6 +113,6 @@
 /* 페이징 css */
 #questionPage {
 	margin: auto;
-	margin-top : 40px;
+	margin-top: 40px;
 	text-align: center;
 }

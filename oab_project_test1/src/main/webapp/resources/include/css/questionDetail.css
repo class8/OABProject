@@ -5,16 +5,37 @@
 	margin-top: 30px;
 	font-size: 25pt;
 	text-align: center;
+	margin: auto;
 }
 
 .ContentTB {
 	/* 줄간격 */
 	line-height: 250%;
 	margin-top: 50px;
-	margin-left: 300px;
+}
+
+.questionTable {
+	margin-top: 50px;
+	width: 80%;
+	margin-left: 100px;
+	border: 0px; /*공지사항 선임*/
+	text-align: center;
+	/* 줄간격 */
+	line-height: 200%;
+}
+
+.ContentTB th, .ContentTB td {
+	padding: 8px;
+	border-bottom: 1px solid #c0c0c0;
 }
 
 /* 텍스트 박스 */
+#qt_title_2 {
+	/* 게시글 제목색 */
+	color: green;
+	font-weight: bold;
+}
+
 #qt_writer {
 	width: 300px;
 }
@@ -37,20 +58,15 @@
 	width: 750px;
 }
 
+.fileImage {
+	width: 80% ;
+	height: 200px;
+	color : #bbf1b1;
+}
+
 /* 버튼 CSS */
 .buttoncss {
 	margin-top: 70px;
-	margin: 0;
 	text-align: center;
-	margin-right: 50px;
-}
-
-#content22 { /* detail */
-	text-align: left;
-	margin-top: 50px;
-}
-
-.ContentTB th, .ContentTB td {
-	padding: 8px;
-	border-bottom: 1px solid #c0c0c0;
+	width: 100%;
 }

@@ -10,10 +10,6 @@
 <head>
 <meta charset="UTF-8">
 <title>문의 글 목록을 불러오는 곳</title>
-<link href="/resources/include/css/reset.css" rel="stylesheet">
-<link href="/resources/include/css/contentLayout.css" rel="stylesheet">
-<link href="/resources/include/css/header.css" rel="stylesheet">
-<link href="/resources/include/css/footer.css" rel="stylesheet">
 <link href="/resources/include/css/question.css" rel="stylesheet">
 
 <script type="text/javascript"
@@ -45,7 +41,6 @@
 			goPage(1);
 		});
 	});
-	//이거고쳐
 	/* 검색과 한 페이지에 보여줄 레코드 수 처리 및 페이징을 위한 실직적인 처리 함수 */
 	function goPage(page) {
 		if ($("#search").val() == "all") {
@@ -66,7 +61,7 @@
 		<label>${login.mt_id} 님이 작성하신 문의게시글 목록입니다. </label>
 		<div class="contentContainer">
 			<div class="contentsTit">
-				<h3>1:1 문의 리스트 확인</h3>
+				<h3>내 문의 리스트</h3>
 				<br>
 				<hr>
 			</div>
@@ -143,7 +138,7 @@
 	<c:if test="${empty login.mt_id}">
 		<!-- 회원이 아닐 경우에! 로그인 하세요.  -->
 		<div class="contentsTit">
-			<h3>1:1 문의 확인</h3>
+			<h3>1:1 문의 리스트</h3>
 			<hr>
 		</div>
 		<div id="pleaseLogin">

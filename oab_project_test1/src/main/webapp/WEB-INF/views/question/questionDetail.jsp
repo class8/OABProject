@@ -44,37 +44,36 @@
 		}
 	})
 
-
 	//삭제버튼
-	$(function () {
-		$("#delete_questionBtn").click(function() {
-			
-			var qt_writerPwCheck = $("#qt_writerPwCheck").val(); //삭제 시 비밀번호 확인을 위한 비밀번호
-			var qt_pw = $("#qt_pw").val(); //원글의 비밀번호
-			
-			if(!($("#qt_writerPwCheck").val())){ //비밀번호란이 공백일경우
-				alert("비밀번호를 입력해주세요");
-				$("#qt_writerPwCheck").val("");
-				$("#qt_writerPwCheck").focus();
-			}
-			
-			else if ($("#qt_pw").val() != $("#qt_writerPwCheck").val()) { //입력한 비밀번호와 DB의 비밀번호가 틀리다면
-				alert("입력하신 비밀번호가 일치하지 않습니다.");
-				$("#delete_questionBtn").focus();
-				$("#delete_questionBtn").val("");
-			
-			} else if (confirm("[${detail.qt_title}]" + " 작성하신 문의 글을 정말 삭제하시겠습니까?")) { //입력한 비밀번호가 맞을경우
-				
-				$("#qt_data").attr("action", "/question/questionDelete");
-				$("#qt_data").submit();
-			}
-			
-		
-		});
+	$(function() {
+		$("#delete_questionBtn")
+				.click(
+						function() {
 
-		
-		});
+							var qt_writerPwCheck = $("#qt_writerPwCheck").val(); //삭제 시 비밀번호 확인을 위한 비밀번호
+							var qt_pw = $("#qt_pw").val(); //원글의 비밀번호
 
+							if (!($("#qt_writerPwCheck").val())) { //비밀번호란이 공백일경우
+								alert("비밀번호를 입력해주세요");
+								$("#qt_writerPwCheck").val("");
+								$("#qt_writerPwCheck").focus();
+							}
+
+							else if ($("#qt_pw").val() != $("#qt_writerPwCheck")
+									.val()) { //입력한 비밀번호와 DB의 비밀번호가 틀리다면
+								alert("입력하신 비밀번호가 일치하지 않습니다.");
+								$("#delete_questionBtn").focus();
+								$("#delete_questionBtn").val("");
+
+							} else if (confirm("[${detail.qt_title}]"
+									+ " 작성하신 문의 글을 정말 삭제하시겠습니까?")) { //입력한 비밀번호가 맞을경우
+
+								$("#qt_data").attr("action",
+										"/question/questionDelete");
+								$("#qt_data").submit();
+							}
+						});
+	});
 </script>
 </head>
 <body>
@@ -84,20 +83,20 @@
 		<div class="contentsTit">
 			<h3>내 문의글 상세보기</h3>
 		</div>
-			
+
 		<form name="qt_data" id="qt_data">
 			<input type="hidden" name="qt_number" value="${detail.qt_number}" />
-			<input type="hidden" id="qt_pw" name="qt_pw" value="${detail.qt_pw}" /> <input
-				type="hidden" name="page" id="page" value="${param.page}" /> <input
-				type="hidden" name="pageSize" id="pageSize"
+			<input type="hidden" id="qt_pw" name="qt_pw" value="${detail.qt_pw}" />
+			<input type="hidden" name="page" id="page" value="${param.page}" />
+			<input type="hidden" name="pageSize" id="pageSize"
 				value="${param.pageSize}" /> <input type="hidden" name="qt_file"
 				id="qt_file" value="${detail.qt_file}" />
-			
+
 		</form>
 
 		<%-- =========== 상세 정보 보여주기 시작 =========== --%>
 		<div class="ContentTB">
-			<table>
+			<table class="questionTable">
 				<colgroup>
 					<col width="20%" />
 					<col width="30%" />
@@ -107,12 +106,12 @@
 				<tbody id="content22">
 					<tr>
 						<td class="ac" id="qt_title">제목</td>
-						<td colspan="3" id="qt_title_2">${detail.qt_title}</td>
+						<td colspan="3" id="qt_title_2"><strong>${detail.qt_title}</strong></td>
 					</tr>
 
 					<tr>
 						<td class="ac" id="qt_writer">작 성 자</td>
-						<td>${detail.qt_writer}</td>
+						<td id="qt_writer_val">${detail.qt_writer}</td>
 						<td class="ac" id="qt_pw">비밀번호</td>
 						<td colspan="2"><input type="password" id="qt_writerPwCheck"
 							maxlength="5" placeholder="삭제를 원하신다면 작성하실 때 입력한 비밀번호를 기입해주세요">
@@ -129,13 +128,15 @@
 					</tr>
 					<tr>
 						<td class="ac" id="qt_file">첨부파일</td>
-						<td><img id="fileImage"></td>
+						<td><label>${detail.qt_file}</label> <img class="fileImage"
+							src="/uploadStorage/qt_file/${detail.qt_file}"
+							onerror="this.style.display='none'"></td>
 					</tr>
 				</tbody>
 			</table>
-			<div id="buttoncss">
-				<input type="button" value="목록" id="back_questionListBtn"> <input type="button" value="삭제"
-					id="delete_questionBtn">
+			<div class="buttoncss">
+				<input type="button" value="목록" id="back_questionListBtn"> <input
+					type="button" value="삭제" id="delete_questionBtn">
 			</div>
 		</div>
 		<%-- =========== 상세 정보 보여주기 종료 =========== --%>

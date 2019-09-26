@@ -48,8 +48,8 @@
 		<li>고객센터
 			<ul>
 				<li><a href="/faq/faqPage">자주묻는질문</a></li>
-				<li><a href="/question/questionWrite">1:1 문의</a></li>
-				<li><a href="/question/questionList">내가 한 문의</a></li>
+				<li><a href="/question/questionWrite">1:1 문의 하기</a></li>
+				<li><a href="/question/questionList">내 문의 리스트</a></li>
 				<li><a href="/login/find">ID/PW찾기</a></li>
 			</ul>
 		</li>
