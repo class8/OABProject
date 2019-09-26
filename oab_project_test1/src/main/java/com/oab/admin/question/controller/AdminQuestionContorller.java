@@ -43,7 +43,6 @@ public class AdminQuestionContorller {
 
 		// 글 번호 재설정
 		int count = total - (Util.nvl(qvo.getPage()) - 1) * Util.nvl(qvo.getPageSize());
-		log.info("count = " + count);
 
 		List<QuestionVO> questionList = adminQuestionService.adminQuestionList(qvo);
 
@@ -51,8 +50,6 @@ public class AdminQuestionContorller {
 		model.addAttribute("count", count);
 		model.addAttribute("total", total);
 		model.addAttribute("data", qvo);
-
-		System.out.println(questionList);
 
 		return "admin/question/adminQuestionList";
 
@@ -63,7 +60,6 @@ public class AdminQuestionContorller {
 	public String adminQuestionDetail(@ModelAttribute QuestionVO qvo, Model model) {
 
 		System.out.println("문의 디테일 호출 성공");
-		log.info("qt_number = " + qvo.getQt_number());
 
 		QuestionVO detail = new QuestionVO();
 		detail = adminQuestionService.adminQuestionDetail(qvo);
@@ -71,8 +67,6 @@ public class AdminQuestionContorller {
 		if (detail != null && (!detail.equals(""))) {
 			detail.setQt_content(detail.getQt_content().toString().replaceAll("\n", "<br>"));
 		}
-
-		System.out.println(qvo.getQt_level());
 
 		model.addAttribute("detail", detail);
 		return "admin/question/adminQuestionDetail";
@@ -128,7 +122,6 @@ public class AdminQuestionContorller {
 		if (result == 1) {
 			adminQuestionService.adminStatusUpdate(qvo);
 			url = "/admin/question/questionList";
-			System.out.println(qvo.getQt_root());
 
 		} else {
 			model.addAttribute("code", 1);

@@ -42,15 +42,15 @@
 	<div class="main_content">
 
 		<div class="contentTit">
-			<h3>공지사항 상세보기</h3>
+			<h2>상세보기</h2>
 		</div>
 
 		<form name="f_data" id="f_data" method="post">
 			<input type="hidden" name="nt_number" value="${detail.nt_number }" />
 		</form>
 
-		<div class="contentTB">
-			<table id="notice_detail" border="1">
+		<div class="contentTB_D">
+			<table id="notice_detail">
 				<colgroup>
 					<col width="150px" />
 					<col width="150px" />
@@ -62,7 +62,7 @@
 
 				<tbody>
 					<tr id="detail_th">
-						<th class="ac">글번호</th>
+						<th class="ac" height="30px">글번호</th>
 						<td id="number">${detail.nt_number }</td>
 						<th class="ac">작성자</th>
 						<td>${detail.nt_writer }</td>
@@ -70,11 +70,11 @@
 						<td>${detail.nt_regdate }</td>
 					</tr>
 					<tr id="detail_th">
-						<th class="ac" id="title_size">제목</th>
+						<th class="ac" id="title_size" height="30px">제목</th>
 						<td colspan="5" id="title_size">${detail.nt_title }</td>
 					</tr>
 					<tr id="detail_th">
-						<th class="ac" id="content_size">내용</th>
+						<th class="ac" id="content_size" height="350px">내용</th>
 						<td colspan="5" id="content_size">${detail.nt_content }</td>
 					</tr>
 				</tbody>

@@ -18,4 +18,6 @@ public interface AdminNoticeService {
 
 	public int adminNoticeDelete(int nt_number);
 
+	public int adminReadCntUpdate(AdminNoticeVO nvo);
+
 }

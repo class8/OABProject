@@ -20,7 +20,7 @@
 	<select id="adminProductList" parameterType="product" resultType="product">
 		SELECT pt_number, pt_name, pt_type, pt_price, pt_explain,
 			TO_CHAR(pt_regdate, 'YYYY-MM-DD') AS pt_regdate, pt_status,
-			pt_thumb, pt_image1, pt_image2, pt_image3
+			substr(pt_thumb,21) as pt_thumb, substr(pt_image1,22) as pt_image1,substr(pt_image2,22) as pt_image2 ,substr(pt_image3,22) as pt_image3
 		FROM (SELECT list.*, ROWNUM AS RNUM
 		FROM(
 		<include refid="adminProductCommon"></include>

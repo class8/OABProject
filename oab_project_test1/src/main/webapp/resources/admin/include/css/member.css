@@ -1,65 +1,108 @@
 @charset "UTF-8";
 
-.main_content {
-	text-align: center;
-	padding-top: 30px;
-	color: #800040;
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-#search_deco {
-	color: #008080;
-	font-weight: bold;
-	font-size: 20px;
+.main_content {
+	text-align: left;
+	padding-top: 15px;
+	padding-bottom: 20px;
+	color: #804040;
 }
 
 #search_tbl {
-	margin-left: 500px;
+	width: 540px;
+	height: 30px;
+	float: left;
+	margin-top: 5px;
+	margin-left: 200px;
+}
+
+#productWrite {
+	background-color: #804040;
+	width: 110px;
+	height: 33px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #ffffff;
+	float: right;
+	margin-top: 8px;
+	margin-right: 80px;
 }
 
 #searchData {
-	background-color: #008080;
-	color: #800040;
-	width: 80px;
-	height: 25px;
-	font-size: 11px;
+	color: #ffffff;
+	width: 100px;
+	height: 27px;
+	font-size: 15px;
 	font-weight: bold;
+	background-color: #804040;
 }
 
 .contentTB {
-	border: 2px solid black;
 	width: 1000px;
-	margin-left: 350px;
-	margin-bottom: 10px;
+	float: left;
 	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	border-top: 1px solid #808080;
 }
 
 #keyword {
-	color: #800040;
-	width: 150px;
-	border: 1px solid #008080;
+	color: #808080;
+	width: 300px;
 	height: 20px;
 	text-align: center;
+	margin-left: 10px;
+	border: 1px solid #ffffff;
+	font-size: 15px;
+	font-weight: bold;
+	border: 1px solid #808080;
 }
 
 select {
-	color: #800040;
-	width: 80px;
-	border: 1px solid #008080;
+	color: #808080;
+	font-size: 15px;
+	width: 100px;
 	height: 25px;
 	text-align: center;
-	margin-left: 10px;
+	text-decoration: none;
+	border: 1px solid #ffffff;
+	font-weight: bold;
+	border: 1px solid #808080;
 }
 
-#list_td td {
-	color: #000000;
+#list_th td {
+	color: #6a6a6a;
 	font-size: 15px;
-	font-weight: bold;
+	height: 30px;
+	border-bottom: 1px solid #808080;
 }
 
 #list_th th {
-	color: #008080;
+	color: #000000;
 	font-weight: bold;
-	background-color: #caffff;
 	height: 30px;
-	font-size: 18px;
+	font-size: 15px;
+	border-bottom: 1px solid #808080;
+	background-color: #d1d1d1;
+}
+
+.memberSearch {
+	width: 1000px;
+	height: 50px;
+	border-bottom: 1px solid #804040;
+	border-top: 1px solid #804040;
+	float: left;
+	margin-right: 140px;
+	margin-top: 20px;
+}
+
+#adminMemberPage {
+	float: left;
+	margin-left: 450px;
+	margin-top: 20px;
+	font-size: 20xp;
 }

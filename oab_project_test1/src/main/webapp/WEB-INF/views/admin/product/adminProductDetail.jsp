@@ -88,50 +88,46 @@
 				name="pt_image3" id="pt_image3" value="${detail.pt_image3}" />
 		</form>
 		<%-- =========== 상세 정보 보여주기 시작 =========== --%>
-		<div class="contentTB">
+		<div class="contentTB_D">
 			<table>
 				<tbody>
 					<tr id="Pdetail_th">
-						<th>상품 종류</th>
-						<td>${detail.pt_type}</td>
+						<th height="40px">종류</th>
+						<td height="40px">${detail.pt_type}</td>
+						<th height="40px">상품명</th>
+						<td height="40px">${detail.pt_name}</td>
 					</tr>
 					<tr id="Pdetail_th">
-						<th>상품명</th>
-						<td>${detail.pt_name}</td>
-					</tr>
-					<tr id="Pdetail_th">
-						<th>썸네일 이미지</th>
-						<td><img id="fileImage"></td>
+						<th height="40px">썸네일 이미지</th>
+						<td height="40px"><img id="fileImage"></td>
 						<c:if test="${detail.pt_image1 != ''}">
-							<th>이미지1</th>
-							<td><img id="fileImage1"></td>
+							<th height="40px">이미지1</th>
+							<td height="40px"><img id="fileImage1"></td>
 						</c:if>
 					</tr>
 					<tr id="Pdetail_th">
 						<c:if test="${detail.pt_image2 != ''}">
-							<th>이미지2</th>
-							<td><img id="fileImage2"></td>
+							<th height="40px">이미지2</th>
+							<td height="40px"><img id="fileImage2"></td>
 						</c:if>
 						<c:if test="${detail.pt_image3 != ''}">
-							<th>이미지3</th>
-							<td><img id="fileImage3"></td>
+							<th height="40px">이미지3</th>
+							<td height="40px"><img id="fileImage3"></td>
 						</c:if>
 					</tr>
 					<tr id="Pdetail_th">
-						<th>상품 상세 설명</th>
-						<td>${detail.pt_explain}</td>
+						<th height="100px">상세 설명</th>
+						<td height="100px">${detail.pt_explain}</td>
 					</tr>
 					<tr id="Pdetail_th">
-						<th>상품 가격</th>
-						<td>${detail.pt_price}</td>
+						<th height="40px">가격</th>
+						<td height="40px">${detail.pt_price}</td>
+						<th height="40px">등록일자</th>
+						<td height="40px">${detail.pt_regdate}</td>
 					</tr>
 					<tr id="Pdetail_th">
-						<th>상품 등록일자</th>
-						<td>${detail.pt_regdate}</td>
-					</tr>
-					<tr id="Pdetail_th">
-						<th>상품 대여가능 유무</th>
-						<td>${detail.pt_status}</td>
+						<th height="40px">대여가능 유무</th>
+						<td colspan="3" height="40px">${detail.pt_status}</td>
 					</tr>
 				</tbody>
 			</table>

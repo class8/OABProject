@@ -48,7 +48,7 @@
 			<h3>공지사항 등록하기</h3>
 		</div>
 
-		<div class="contentTB">
+		<div class="contentTB_D">
 			<form id="f_writeForm" name="f_writeForm">
 				<table id="noticeWrite" border="1">
 

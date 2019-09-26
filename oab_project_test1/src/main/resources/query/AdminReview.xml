@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oab.admin.review.dao.AdminReviewDao">
+
+	<!-- 리뷰 기본 조회 -->
+	<sql id="adminReviewCommon">
+		SELECT *
+		from REVIEW_TBL
+		<where>
+			<if test="search == 'revt_title'">
+   <![CDATA[and revt_title LIKE '%' || #{keyword} || '%']]>
+			</if>
+			<if test="search == 'revt_writer'">
+   <![CDATA[and revt_writer LIKE '%' || #{keyword} || '%']]>
+			</if>
+		</where>
+	</sql>
+
+	<!-- 게시물 전체 조회 -->
+	<select id="adminReviewList" parameterType="adminReview"
+		resultType="adminReview">
+		SELECT *
+		FROM
+		(SELECT list.*, ROWNUM AS RNUM
+		FROM (
+		<include refid="adminReviewCommon"></include>
+		<!-- 포토 후기 목록에 보여질 조건 -->
+		<choose>
+			<when test="order_by=='revt_regdate'">
+				ORDER BY revt_regdate desc
+			</when>
+			<when test="order_by=='revt_readcnt'">
+				ORDER BY revt_readcnt desc
+			</when>
+		</choose>
+		) list
+		)
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					RNUM BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+			order by revt_regdate desc
+		</where>
+	</select>
+
+	<!-- 게시물 카운트 페이징 -->
+	<select id="adminReviewListCnt" parameterType="adminReview"
+		resultType="int">
+		SELECT NVL(count(1), 0) FROM
+		(SELECT list.*, ROWNUM AS RNUM
+		FROM (
+		<include refid="adminReviewCommon"></include>
+		) list ORDER BY revt_number desc
+		)
+
+	</select>
+
+	<!-- 상세 페이지를 위한 게시물 조회 -->
+	<select id="adminReviewDetail" parameterType="int"
+		resultType="adminReview">
+		<!-- Board - boardDetail -->
+		SELECT
+		REVT_NUMBER, MT_ID, REVT_TITLE, REVT_WRITER, REVT_CONTENT,
+		TO_CHAR(REVT_REGDATE,'YYYY-MM-DD') REVT_REGDATE,
+		REVT_THUMBNAIL,
+		REVT_IMAGE1, REVT_IMAGE2, REVT_IMAGE3, REVT_PW, REVT_READCNT,
+		REVT_BRANCH
+		FROM review_tbl
+		WHERE
+		REVT_NUMBER = #{revt_number}
+	</select>
+
+	<!-- 게시물 삭제 -->
+	<delete id="adminReviewDelete" parameterType="adminReview">
+		delete from
+		review_tbl
+		where revt_number = #{revt_number}
+	</delete>
+
+	<!-- 게시글 작성 -->
+	<insert id="reviewInsert" parameterType="adminReview">
+		<selectKey keyProperty="revt_number" resultType="int"
+			order="BEFORE">
+			select REVIEW_SEQ.nextval from dual
+		</selectKey>
+		INSERT INTO REVIEW_TBL(
+		revt_number,
+		mt_id,
+		revt_title,
+		revt_writer,
+		revt_content,
+		revt_regdate,
+		revt_thumbnail,
+		revt_image1,
+		revt_image2,
+		revt_image3,
+		revt_pw,
+		revt_readcnt,
+		revt_branch
+		)
+		VALUES(
+		#{revt_number},
+		#{mt_id},
+		#{revt_title},
+		#{revt_writer},
+		#{revt_content},
+		sysdate,
+		#{revt_thumbnail},
+		#{revt_image1, jdbcType=VARCHAR},
+		#{revt_image2,
+		jdbcType=VARCHAR},
+		#{revt_image3, jdbcType=VARCHAR},
+		#{revt_pw}
+		,0
+		,#{revt_branch}
+		)
+	</insert>
+
+
+</mapper>

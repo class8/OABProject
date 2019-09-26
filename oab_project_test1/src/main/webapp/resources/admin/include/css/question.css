@@ -1,181 +1,250 @@
 @charset "UTF-8";
 
-.contentTit {
-	margin-bottom: 30px;
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 .main_content {
-	text-align: center;
-	padding-top: 5px;
-	color: #800040;
-}
-
-#nt_list {
-	border-bottom: 1px solid black;
-}
-
-.contentTB {
-	border: 2px solid black;
-	width: 1000px;
-	margin-left: 350px;
-	margin-bottom: 10px;
-}
-
-.questionSearch {
-	margin-left: 100px;
-	margin-bottom: 10px;
-}
-
-#search_deco {
-	color: #008080;
-	font-weight: bold;
-	font-size: 20px;
+	padding-top: 15px;
+	padding-bottom: 20px;
+	color: #804040;
+	padding-left: 30px;
 }
 
 #search_tbl {
-	margin-left: 500px;
+	width: 540px;
+	height: 30px;
+	float: left;
+	margin-top: 5px;
+	margin-left: 200px;
 }
 
 #searchData {
-	background-color: #008080;
-	color: #800040;
-	width: 80px;
-	height: 27px;
-	font-size: 11px;
-	font-weight: bold;
-}
-
-#list_td td {
-	color: #000000;
-	font-size: 15px;
-	font-weight: bold;
-}
-
-#list_th th {
-	color: #008080;
-	font-weight: bold;
-	background-color: #caffff;
-	height: 30px;
-	font-size: 18px;
-}
-
-#detail th {
-	color: #008080;
-	font-weight: bold;
-	background-color: #caffff;
-	height: 30px;
-	font-size: 18px;
-}
-
-#detail td {
-	color: #000000;
-	font-size: 15px;
-	font-weight: bold;
-}
-
-#content_size {
-	height: 400px;
-}
-
-#qt_content {
-	height: 300px;
-	width: 800px;
-	text-align: center;
-}
-
-#questionDeleteBtn {
-	background-color: #008080;
-	color: #800040;
+	color: #ffffff;
 	width: 100px;
-	height: 30px;
+	height: 29px;
 	font-size: 15px;
 	font-weight: bold;
-	margin-left: 400px;
+	margin-left: 10px;
+	background-color: #804040;
 }
 
-#questionListBtn {
-	background-color: #008080;
-	color: #800040;
-	width: 100px;
-	height: 30px;
-	font-size: 15px;
-	font-weight: bold;
-}
-
-#replyUpdateBtn {
-	background-color: #008080;
-	color: #800040;
-	width: 100px;
-	height: 30px;
-	font-size: 15px;
-	font-weight: bold;
+.contentTB {
+	width: 1000px;
 	float: right;
-	margin-right: 300px;
+	margin-right: 140px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	border-top: 1px solid #808080;
 }
 
-#updateBtn {
-	background-color: #008080;
-	color: #800040;
-	width: 100px;
-	height: 30px;
-	font-size: 15px;
-	font-weight: bold;
-	margin-left: 450px;
-}
-
-#replyInsertBtn {
-	background-color: #008080;
-	color: #800040;
-	width: 100px;
-	height: 30px;
-	font-size: 15px;
-	font-weight: bold;
-}
-
-#replyListBtn {
-	background-color: #008080;
-	color: #800040;
-	width: 100px;
-	height: 30px;
-	font-size: 15px;
-	font-weight: bold;
-}
-
-#replyWriteBtn {
-	background-color: #008080;
-	color: #800040;
-	width: 100px;
-	height: 30px;
-	font-size: 15px;
-	font-weight: bold;
-}
-
-#reply th {
-	color: #008080;
-	font-weight: bold;
-	background-color: #caffff;
-	height: 30px;
-	font-size: 18px;
-}
-
-#reply td {
-	color: #000000;
-	font-size: 15px;
-	font-weight: bold;
-}
-
-#qt_title, #mt_id, #qt_writer, #qt_status {
-	height: 25px;
-	width: 300px;
-}
-
-#search {
-	height: 25px;
-	margin: 10px;
+.contentTB_D {
+	width: 1000px;
+	float: right;
+	margin-right: 140px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	border: 1px solid #808080;
 }
 
 #keyword {
-	height: 20px;
-	color: #800040;
+	color: #808080;
+	width: 300px;
+	height: 25px;
 	text-align: center;
+	margin-left: 10px;
+	border: 1px solid #808080;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+select {
+	color: #808080;
+	font-size: 15px;
+	width: 100px;
+	height: 27px;
+	text-align: center;
+	text-decoration: none;
+	border: 1px solid #808080;
+	font-weight: bold;
+}
+
+#list_th td {
+	color: #585858;
+	font-size: 20px;
+	font-size: 15px;
+	height: 30px;
+	border-bottom: 1px solid #808080;
+}
+
+#list_th th {
+	color: #000000;
+	font-weight: bold;
+	height: 30px;
+	font-size: 18px;
+	background-color: #d1d1d1;
+	border-bottom: 1px solid #808080;
+}
+
+.questionSearch {
+	width: 1000px;
+	height: 45px;
+	border-bottom: 1px solid #804040;
+	border-top: 1px solid #804040;
+	float: right;
+	margin-right: 140px;
+	margin-top: 30px;
+	border-top: 1px solid #804040;
+}
+
+#noticePage {
+	float: left;
+	margin-left: 400px;
+	margin-top: 20px;
+}
+
+#Q_detail th {
+	color: #000000;
+	font-weight: bold;
+	font-size: 18px;
+	background-color: #dadada;
+	border-bottom: 1px solid #808080;
+}
+
+#Q_detail td {
+	color: #6a6a6a;
+	font-size: 20px;
+	font-size: 15px;
+	border-bottom: 1px solid #808080;
+}
+
+#questionDeleteBtn {
+	background-color: #804040;
+	width: 110px;
+	height: 33px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #ffffff;
+	float: left;
+	margin-top: 8px;
+	margin-left: 450px;
+}
+
+#questionListBtn {
+	background-color: #804040;
+	width: 110px;
+	height: 33px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #ffffff;
+	float: left;
+	margin-top: 8px;
+}
+
+#replyWriteBtn {
+	background-color: #804040;
+	width: 110px;
+	height: 33px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #ffffff;
+	float: left;
+	margin-top: 8px;
+}
+
+#replyUpdateBtn {
+	background-color: #804040;
+	width: 110px;
+	height: 33px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #ffffff;
+	float: left;
+	margin-top: 8px;
+}
+
+#reply th {
+	color: #000000;
+	font-weight: bold;
+	font-size: 18px;
+	background-color: #dadada;
+	border-bottom: 1px solid #808080;
+}
+
+#reply td {
+	color: #6a6a6a;
+	font-size: 20px;
+	font-size: 15px;
+	border-bottom: 1px solid #808080;
+}
+
+#qt_content {
+	height: 340px;
+	width: 790px;
+	text-align: center;
+}
+
+#updateBtn {
+	background-color: #804040;
+	width: 110px;
+	height: 33px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #ffffff;
+	float: left;
+	margin-top: 8px;
+	margin-left: 650px;
+}
+
+#replyListBtn {
+	background-color: #804040;
+	width: 110px;
+	height: 33px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #ffffff;
+	float: left;
+	margin-top: 8px;
+}
+
+#detail th {
+	color: #000000;
+	font-weight: bold;
+	font-size: 18px;
+	background-color: #dadada;
+	border-bottom: 1px solid #808080;
+}
+
+#detail td {
+	color: #6a6a6a;
+	font-size: 20px;
+	font-size: 15px;
+	border-bottom: 1px solid #808080;
+}
+
+#qt_title {
+	height: 30px;
+	width: 750px;
+}
+
+#replyInsertBtn {
+	background-color: #804040;
+	width: 110px;
+	height: 33px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #ffffff;
+	float: left;
+	margin-top: 8px;
+	marbackground-color: #804040;
+	width: 110px;
+	height: 33px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #ffffff;
+	float: left;
+	margin-left: 700px;
 }

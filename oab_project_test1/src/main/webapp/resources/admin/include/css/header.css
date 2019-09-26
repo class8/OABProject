@@ -1,55 +1,96 @@
-@charset "UTF-8";
-
-#headertop {
-	width: 100%;
-	height: 16%;
-	border-bottom: 4px solid #008080;
-	font-weight: bold;
+.header {
+	border-bottom: 1px solid #000000;
 }
 
 #logo {
-	width: 12.5%;
-	height: 90%;
+	width: 340px;
+	height: 149px;
 	float: left;
-	margin-top: 18px;
-	margin-left: 100px;
-}
-
-#nav_login {
-	width: 75%;
-	height: 28%;
-	float: right;
-}
-
-#nav_topmenu {
-	width: 50%;
-	height: 80%;
-	float: right;
-	height: 30%;
-	margin-top: 60px;
-	text-align: center;
-	margin-left: 50px;
-}
-
-#nav_topmenu ul li a {
-	text-decoration: none;
-	color: #000000;
-	font-weight: bold;
-	font-size: 25px;
-	float: left;
-	font-family: '돋움';
-	width: 20%;
-}
-
-#nav_topmenu ul li {
-	list-style: none;
-	display: inline;
+	padding-left: 20px;
 }
 
 #logout {
-	float: right;
-	width: 20%;
+	width: 10%;
 	height: 30%;
+	float: right;
+	padding: 5px;
+	padding-top: 20px;
+	margin-right: 150px;
+}
+
+#logoutBtn {
+	background-color: #804040;
+	color: #ffffff;
+	width: 80px;
+	height: 30px;
+}
+
+.nav_topmenu {
+	width: 1000px;
+	height: 40px;
+	float: left;
+	margin-top: 70px;
+}
+
+#main_menu, #sub_menu {
+	margin: 0px;
+	padding: 0;
+	list-style-type: none;
+}
+
+#main_menu>li {
+	float: left;
+	padding-right: 20px;
+	font-size: 20px;
 	font-weight: bold;
-	margin-top: 20px;
+	margin-left: 90px;
+	color: #000000;
+}
+
+#main_menu>li:hover #sub_menu {
+	opacity: 1;
+	visibility: visible;
+}
+
+#main_menu>li>a {
+	font-size: 10px;
+	color: black;
+	letter-spacing: 5px;
+	display: block;
+	padding: 12px 36px;
+	text-align: right;
+}
+
+#sub_menu {
+	position: absolute;
+	opacity: 0;
+	visibility: hidden;
+	background-color: #ffffff;
+	font-size: 15px;
+	opacity: 0;
+	width: 170px;
+	text-align: left;
+	border-left: 1px solid #c0c0c0;
+	margin-right: 20px;
+	margin-bottom: 10px;
+}
+
+#sub_menu>li {
+	margin-top: 4px;
+}
+
+#sub_menu>li:hover {
+	padding: 5px;
+	background-color: #804040;
+}
+
+#sub_menu>li>a:hover {
+	color: #ffffff;
+	font-weight: bold;
+}
+
+#sub_menu>li>a {
+	color: #808080;
+	text-decoration: none;
+	padding-left: 7px;
 }

@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oab.admin.reservation.dao.AdminReservationDao">
+	<sql id="adminRest_bname">
+		<if test="searchBox == '여의도'">
+			and rest_bname = '여의도'
+		</if>
+		<if test="searchBox == '뚝섬'">
+			and rest_bname = '뚝섬'
+		</if>
+		<if test="searchBox == '잠원'">
+			and rest_bname = '잠원'
+		</if>
+		
+	</sql>
+	
+	
+	<!-- 예약대기 -->
+	<sql id="adminReservationWaitingCommon">
+		select * 
+		from reservation_tbl
+		<where>
+			rest_status='예약대기'
+			<if test="search == 'rest_number'">
+				<![CDATA[and rest_number = #{keyword} ]]>
+				<include refid="adminRest_bname"></include>
+			</if>
+			<if test="search == 'rest_bnumber'">
+				<![CDATA[and rest_bnumber = #{keyword} ]]>
+				<include refid="adminRest_bname"></include>
+			</if>
+			<if test="search == 'mt_id'">
+				<![CDATA[and mt_id LIKE '%' || #{keyword} || '%' ]]>
+				<include refid="adminRest_bname"></include>
+			</if>
+		</where>
+	</sql>
+	
+	<select id="adminReservationWaitingList" parameterType="adminReservation" resultType="adminReservation">
+		SELECT rest_number, mt_id, pt_number, rest_bnumber, rest_bname, rest_name,
+			rest_phone, rest_status, rest_total, rest_exprent, rest_payoption, 
+			TO_CHAR(rest_regdate,'YYYY-MM-DD') AS rest_regdate, rest_count
+		FROM(SELECT list.*, ROWNUM AS RNUM 
+		FROM(
+		<include refid="adminReservationWaitingCommon"></include>
+		<choose>
+			<when test="order_by=='rest_status'">
+				ORDER BY rest_status
+			</when>
+			<when test="order_by=='rest_bnumber'">
+				ORDER BY rest_bnumber
+			</when>
+			<when test="order_by=='rest_bname'">
+				ORDER BY rest_bname
+			</when>
+			<when test="order_by=='rest_phone'">
+				ORDER BY rest_phone
+			</when>
+			<when test="order_by=='rest_exprent'">
+				ORDER BY rest_exprent
+			</when>
+			<when test="order_by=='rest_payoption'">
+				ORDER BY rest_payoption
+			</when>
+			<when test="order_by=='rest_name'">
+				ORDER BY rest_name
+			</when>
+			<when test="order_by=='rest_regdate'">
+				ORDER BY rest_regdate
+			</when>
+		</choose>
+		<choose>
+			<when test="order_sc=='ASC'">
+				ASC
+			</when>
+			<when test="order_sc=='DESC'">
+				DESC
+			</when>
+		</choose>
+		)list) 
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					rnum BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where>
+	</select>
+	
+	<select id="adminReservationWaitingListCnt" parameterType="adminReservation" resultType="int">
+		SELECT NVL(count(1), 0)
+		
+		FROM (
+			<include refid="adminReservationWaitingCommon"></include>
+		ORDER BY rest_number desc
+		) list
+		
+	</select>	
+	
+	<!-- 예약완료 -->
+	<sql id="adminReservationCompleteCommon">
+		select * 
+		from reservation_tbl
+		<where>
+			rest_status='예약완료'
+			<if test="search == 'rest_number'">
+				<![CDATA[and rest_number = #{keyword} ]]>
+				<include refid="adminRest_bname"></include>
+			</if>
+			<if test="search == 'rest_bnumber'">
+				<![CDATA[and rest_bnumber = #{keyword} ]]>
+				<include refid="adminRest_bname"></include>
+			</if>
+			<if test="search == 'mt_id'">
+				<![CDATA[and mt_id LIKE '%' || #{keyword} || '%' ]]>
+				<include refid="adminRest_bname"></include>
+			</if>
+		</where>
+	</sql>
+	
+	<select id="adminReservationCompleteList" parameterType="adminReservation" resultType="adminReservation">
+		SELECT rest_number, mt_id, pt_number, rest_bnumber, rest_bname, rest_name,
+			rest_phone, rest_status, rest_total, rest_exprent, rest_payoption, 
+			TO_CHAR(rest_regdate,'YYYY-MM-DD') AS rest_regdate, rest_count
+		FROM(SELECT list.*, ROWNUM AS RNUM 
+		FROM(
+		<include refid="adminReservationCompleteCommon"></include>
+		<choose>
+			<when test="order_by=='rest_status'">
+				ORDER BY rest_status
+			</when>
+			<when test="order_by=='rest_bnumber'">
+				ORDER BY rest_bnumber
+			</when>
+			<when test="order_by=='rest_bname'">
+				ORDER BY rest_bname
+			</when>
+			<when test="order_by=='rest_phone'">
+				ORDER BY rest_phone
+			</when>
+			<when test="order_by=='rest_exprent'">
+				ORDER BY rest_exprent
+			</when>
+			<when test="order_by=='rest_payoption'">
+				ORDER BY rest_payoption
+			</when>
+			<when test="order_by=='rest_name'">
+				ORDER BY rest_name
+			</when>
+			<when test="order_by=='rest_regdate'">
+				ORDER BY rest_regdate
+			</when>
+		</choose>
+		<choose>
+			<when test="order_sc=='ASC'">
+				ASC
+			</when>
+			<when test="order_sc=='DESC'">
+				DESC
+			</when>
+		</choose>
+		)list) 
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					rnum BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where>
+	</select>
+	
+	<select id="adminReservationCompleteListCnt" parameterType="adminReservation" resultType="int">
+		SELECT NVL(count(1), 0)
+		
+		FROM (
+			<include refid="adminReservationCompleteCommon"></include>
+		ORDER BY rest_number desc
+		) list
+		
+	</select>	
+	
+	
+	<!-- 예약취소 -->
+	<sql id="adminReservationCancelCommon">
+		select * 
+		from reservation_tbl
+		<where>
+			rest_status='예약취소'
+			<if test="search == 'rest_number'">
+				<![CDATA[and rest_number = #{keyword} ]]>
+				<include refid="adminRest_bname"></include>
+			</if>
+			<if test="search == 'rest_bnumber'">
+				<![CDATA[and rest_bnumber = #{keyword} ]]>
+				<include refid="adminRest_bname"></include>
+			</if>
+			<if test="search == 'mt_id'">
+				<![CDATA[and mt_id LIKE '%' || #{keyword} || '%' ]]>
+				<include refid="adminRest_bname"></include>
+			</if>
+		</where>
+	</sql>
+	
+	<select id="adminReservationCancelList" parameterType="adminReservation" resultType="adminReservation">
+		SELECT rest_number, mt_id, pt_number, rest_bnumber, rest_bname, rest_name,
+			rest_phone, rest_status, rest_total, rest_exprent, rest_payoption, 
+			TO_CHAR(rest_regdate,'YYYY-MM-DD') AS rest_regdate, rest_count
+		FROM(SELECT list.*, ROWNUM AS RNUM 
+		FROM(
+		<include refid="adminReservationCancelCommon"></include>
+		<choose>
+			<when test="order_by=='rest_status'">
+				ORDER BY rest_status
+			</when>
+			<when test="order_by=='rest_bnumber'">
+				ORDER BY rest_bnumber
+			</when>
+			<when test="order_by=='rest_bname'">
+				ORDER BY rest_bname
+			</when>
+			<when test="order_by=='rest_phone'">
+				ORDER BY rest_phone
+			</when>
+			<when test="order_by=='rest_exprent'">
+				ORDER BY rest_exprent
+			</when>
+			<when test="order_by=='rest_payoption'">
+				ORDER BY rest_payoption
+			</when>
+			<when test="order_by=='rest_name'">
+				ORDER BY rest_name
+			</when>
+			<when test="order_by=='rest_regdate'">
+				ORDER BY rest_regdate
+			</when>
+		</choose>
+		<choose>
+			<when test="order_sc=='ASC'">
+				ASC
+			</when>
+			<when test="order_sc=='DESC'">
+				DESC
+			</when>
+		</choose>
+		)list) 
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					rnum BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where>
+	</select>
+	
+	<select id="adminReservationCancelListCnt" parameterType="adminReservation" resultType="int">
+		SELECT NVL(count(1), 0)
+		
+		FROM (
+			<include refid="adminReservationCancelCommon"></include>
+		ORDER BY rest_number desc
+		) list
+		
+	</select>
+	
+		
+	<!-- 예약취소 -->
+	<sql id="adminReservationRefundCommon">
+		select * 
+		from reservation_tbl
+		<where>
+			rest_status='환불요청' or rest_status='환불완료'
+			<if test="search == 'rest_number'">
+				<![CDATA[and rest_number = #{keyword} ]]>
+				<include refid="adminRest_bname"></include>
+			</if>
+			<if test="search == 'rest_bnumber'">
+				<![CDATA[and rest_bnumber = #{keyword} ]]>
+				<include refid="adminRest_bname"></include>
+			</if>
+			<if test="search == 'mt_id'">
+				<![CDATA[and mt_id LIKE '%' || #{keyword} || '%' ]]>
+				<include refid="adminRest_bname"></include>
+			</if>
+		</where>
+	</sql>
+	
+	<select id="adminReservationRefundList" parameterType="adminReservation" resultType="adminReservation">
+		SELECT rest_number, mt_id, pt_number, rest_bnumber, rest_bname, rest_name,
+			rest_phone, rest_status, rest_total, rest_exprent, rest_payoption, 
+			TO_CHAR(rest_regdate,'YYYY-MM-DD') AS rest_regdate, rest_count
+		FROM(SELECT list.*, ROWNUM AS RNUM 
+		FROM(
+		<include refid="adminReservationRefundCommon"></include>
+		<choose>
+			<when test="order_by=='rest_status'">
+				ORDER BY rest_status
+			</when>
+			<when test="order_by=='rest_bnumber'">
+				ORDER BY rest_bnumber
+			</when>
+			<when test="order_by=='rest_bname'">
+				ORDER BY rest_bname
+			</when>
+			<when test="order_by=='rest_phone'">
+				ORDER BY rest_phone
+			</when>
+			<when test="order_by=='rest_exprent'">
+				ORDER BY rest_exprent
+			</when>
+			<when test="order_by=='rest_payoption'">
+				ORDER BY rest_payoption
+			</when>
+			<when test="order_by=='rest_name'">
+				ORDER BY rest_name
+			</when>
+			<when test="order_by=='rest_regdate'">
+				ORDER BY rest_regdate
+			</when>
+		</choose>
+		<choose>
+			<when test="order_sc=='ASC'">
+				ASC
+			</when>
+			<when test="order_sc=='DESC'">
+				DESC
+			</when>
+		</choose>
+		)list) 
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					rnum BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where>
+	</select>
+	
+	<select id="adminReservationRefundListCnt" parameterType="adminReservation" resultType="int">
+		SELECT NVL(count(1), 0)
+		
+		FROM (
+			<include refid="adminReservationRefundCommon"></include>
+		ORDER BY rest_number desc
+		) list
+		
+	</select>	
+	
+	
+	
+	
+	
+	<update id="adminReservationStatusUpdate" parameterType="adminReservation">
+		UPDATE reservation_tbl
+		SET rest_status = #{rest_status}
+		WHERE
+		rest_number = #{rest_number}
+	</update>
+	
+</mapper>

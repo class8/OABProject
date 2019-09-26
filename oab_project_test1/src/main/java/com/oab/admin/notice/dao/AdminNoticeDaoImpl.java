@@ -2,8 +2,6 @@ package com.oab.admin.notice.dao;
 
 import java.util.List;
 
-import javax.xml.stream.events.Namespace;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,7 +11,6 @@ import com.oab.admin.notice.vo.AdminNoticeVO;
 @Repository
 public class AdminNoticeDaoImpl implements AdminNoticeDao {
 
-	private static final String Namespace = null;
 	@Autowired
 	private SqlSession session;
 
@@ -51,6 +48,12 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 	@Override
 	public int adminNoticeDelete(int nt_number) {
 		return session.delete("adminNoticeDelete", nt_number);
+	}
+
+	// 조회수 업데이트
+	@Override
+	public int adminReadCntUpdate(AdminNoticeVO nvo) {
+		return session.update("adminReadCntUpdate", nvo);
 	}
 
 }

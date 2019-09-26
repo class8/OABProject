@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oab.admin.rental.dao.AdminRentalDao">
+	<!-- 지점선택 SELECT BOX  -->
+	<sql id="adminRest_bname">
+		<if test="searchBox == '여의도'">
+			and re.rest_bname = '여의도'
+		</if>
+		<if test="searchBox == '뚝섬'">
+			and re.rest_bname = '뚝섬'
+		</if>
+		<if test="searchBox == '잠원'">
+			and re.rest_bname = '잠원'
+		</if>
+	</sql>
+	
+	
+	<sql id="adminRentalCommon">
+		<if test="search == 'rest_name'">
+			<![CDATA[and re.rest_name = #{keyword} ]]>
+			<include refid="adminRest_bname"></include>
+		</if>
+		<if test="search == 'rest_phone'">
+			<![CDATA[and re.rest_phone = #{keyword} ]]>
+			<include refid="adminRest_bname"></include>
+		</if>
+		<if test="search == 'rest_bnumber'">
+			<![CDATA[and re.rest_bnumber = #{keyword} ]]>
+			<include refid="adminRest_bname"></include>
+		</if>
+	</sql>
+	
+	<select id="adminRentalList" parameterType="adminRental" resultType="adminRental">
+		SELECT r.rent_number,re.rest_bnumber,re.rest_number, re.rest_bname, re.rest_name,re.rest_phone,re.rest_total,re.rest_bnumber,re.rest_count,r.rent_status,r.rent_overtime
+		,to_char(r.rent_actrent,'YYYY-MM-DD HH24:MI') as rent_actrent , to_char(r.RENT_EXPRETRUN,'YYYY-MM-DD HH24:MI') as RENT_EXPRETRUN
+		,p.pt_name, m.mt_id, r.rent_addcost ,to_char(r.rent_actretrun,'YYYY-MM-DD HH24:MI') as rent_actretrun
+		FROM(SELECT list.* , ROWNUM AS RNUM 
+		FROM(
+		select * from rental_tbl
+		<choose>
+			<when test="order_by=='rent_status'">
+				ORDER BY rent_status
+			</when>
+			<when test="order_by=='rent_expretrun'">
+				ORDER BY RENT_EXPRETRUN
+			</when>
+			<when test="order_by=='rent_actretrun'">
+				ORDER BY RENT_ACTRETRUN
+			</when>
+		</choose>
+		<choose>
+			<when test="order_sc=='ASC'">
+				ASC
+			</when>
+			<when test="order_sc=='DESC'">
+				DESC
+			</when>
+		</choose>
+		)list) r , member_tbl m , product_tbl p , reservation_tbl re
+		WHERE r.mt_id = m.mt_id and r.pt_number = p.pt_number and r.rest_number = re.rest_number
+		<include refid="adminRentalCommon"></include>
+		<if test="start_row != null and start_row != ''">
+			<if test="end_row != null and end_row != ''">
+			and	rnum BETWEEN #{start_row} AND #{end_row}
+			</if>
+		</if>
+	</select>
+	
+	<select id="adminRentalListCnt" parameterType="adminRental" resultType="int">
+	SELECT nvl(count(1),0) 
+	FROM(SELECT r.rent_number,re.rest_bnumber, re.rest_bname, re.rest_name,re.rest_number,
+		re.rest_phone,re.rest_total,re.rest_bnumber,re.rest_count,r.rent_status,r.rent_overtime
+    	,to_char(r.rent_actrent,'YYYY-MM-DD HH24:MI') as rent_actrent , to_char(r.RENT_EXPRETRUN,'YYYY-MM-DD HH24:MI') as RENT_EXPRETRUN
+    	,p.pt_name, m.mt_id, r.rent_addcost ,to_char(r.rent_actretrun,'YYYY-MM-DD HH24:MI') as rent_actretrun 
+    	FROM(SELECT list.*,ROWNUM as RNUM 
+    		FROM(SELECT * FROM rental_tbl
+    		<choose>
+			<when test="order_by=='rent_status'">
+				ORDER BY rent_status
+			</when>
+			<when test="order_by=='rent_expretrun'">
+				ORDER BY RENT_EXPRETRUN
+			</when>
+			<when test="order_by=='rent_actretrun'">
+				ORDER BY RENT_ACTRETRUN
+			</when>
+			</choose>
+			<choose>
+				<when test="order_sc=='ASC'">
+					ASC
+				</when>
+				<when test="order_sc=='DESC'">
+					DESC
+				</when>
+			</choose>
+    		)list) r ,product_tbl p ,member_tbl m ,reservation_tbl re where r.mt_id = m.mt_id and r.pt_number = p.pt_number and r.rest_number = re.rest_number
+    		<include refid="adminRentalCommon"></include>
+				<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					and	rnum BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>)
+	</select>
+	
+	<insert id="adminRentalInsert" parameterType="adminRental" >
+		<selectKey keyProperty="rent_number" resultType="int"
+			order="BEFORE">
+			select rental_seq.nextval from dual
+		</selectKey>
+		INSERT INTO rental_tbl(rent_number,rest_number,mt_id,pt_number,rent_status,rent_actrent,rent_expretrun)
+		VALUES (#{rent_number},#{rest_number},#{mt_id},#{pt_number},#{rent_status},sysdate,sysdate+4/24)
+	</insert>
+	
+	<delete id="adminRentalDelete" parameterType="adminRental">
+		DELETE FROM rental_tbl WHERE rent_number = #{rent_number}
+	</delete>
+	
+	<update id="adminRentalModify" parameterType="adminRental">
+	UPDATE rental_tbl
+	SET rent_status = '반납완료', rent_actretrun = sysdate , rent_overtime = #{rent_overtime} , rent_addcost = #{rent_addcost}
+	WHERE rent_number = #{rent_number}
+	
+	</update>
+</mapper>
