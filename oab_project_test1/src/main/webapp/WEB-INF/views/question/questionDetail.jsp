@@ -83,7 +83,6 @@
 		<div class="contentsTit">
 			<h3>내 문의글 상세보기</h3>
 		</div>
-
 		<form name="qt_data" id="qt_data">
 			<input type="hidden" name="qt_number" value="${detail.qt_number}" />
 			<input type="hidden" id="qt_pw" name="qt_pw" value="${detail.qt_pw}" />
@@ -91,9 +90,7 @@
 			<input type="hidden" name="pageSize" id="pageSize"
 				value="${param.pageSize}" /> <input type="hidden" name="qt_file"
 				id="qt_file" value="${detail.qt_file}" />
-
 		</form>
-
 		<%-- =========== 상세 정보 보여주기 시작 =========== --%>
 		<div class="ContentTB">
 			<table class="questionTable">
@@ -105,7 +102,7 @@
 				</colgroup>
 				<tbody id="content22">
 					<tr>
-						<td class="ac" id="qt_title">제목</td>
+						<td class="ac" id="qt_title">글 제 목</td>
 						<td colspan="3" id="qt_title_2"><strong>${detail.qt_title}</strong></td>
 					</tr>
 
@@ -141,8 +138,5 @@
 		</div>
 		<%-- =========== 상세 정보 보여주기 종료 =========== --%>
 	</div>
-
-
-
 </body>
 </html>

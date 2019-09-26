@@ -21,7 +21,6 @@
 </head>
 <body>
 	<c:if test="${login.mt_id != null }">
-		<label>현재 접속 중 아이디 : ${login.mt_id}</label>
 		<div class="questionContentContainer">
 			<div class="contentsTit">
 				<h3>1:1 문의 하기</h3>

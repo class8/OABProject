@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oab.client.review.dao.ReviewDao">
+
+
+	<sql id="reviewCommon">
+		SELECT *
+		from REVIEW_TBL
+		<where>
+			<if test="search == 'revt_title'">
+   <![CDATA[and revt_title LIKE '%' || #{keyword} || '%']]>
+			</if>
+		</where>
+	</sql>
+
+	<!-- 전체 게시물 기본 조회 2019.09.20 -->
+
+	<select id="reviewList" resultType="review"
+		parameterType="review">
+
+		<!-- review - newestList -->
+		SELECT *
+		FROM
+		(SELECT list.*, ROWNUM AS RNUM
+		FROM (
+		<include refid="reviewCommon"></include>
+		<!-- 포토 후기 목록에 보여질 조건 -->
+		<choose>
+			<when test="order_by=='revt_regdate'">
+				ORDER BY revt_regdate desc
+			</when>
+			<when test="order_by=='revt_readcnt'">
+				ORDER BY revt_readcnt desc
+			</when>
+		</choose>
+		) list
+		)
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					RNUM BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+			order by revt_regdate desc
+		</where>
+
+	</select>
+
+	<!-- reviewListCnt 컬럼 수 조회 -->
+	<select id="reviewListCnt" parameterType="review"
+		resultType="int">
+		<!-- Board - boardListCnt -->
+		SELECT NVL(count(1), 0) FROM
+		(SELECT list.*, ROWNUM AS RNUM
+		FROM (
+		<include refid="reviewCommon"></include>
+		) list ORDER BY revt_number desc
+		)
+	</select>
+
+	<!-- 상세보기만들기 -->
+	<select id="reviewDetail" parameterType="review"
+		resultType="review">
+		<!-- review - newestList -->
+		SELECT *
+		FROM
+		REVIEW_TBL
+		WHERE revt_number = #{revt_number}
+	</select>
+
+
+
+	<!-- 게시물 조회수 -->
+	<!-- <update id="UPdateReadCnt" parameterType="review"> UPDATE REVIEW_TBL 
+		set revt_readcnt = revt_readcnt+1 WHERE revt_number = #{revt_number} </update> -->
+
+	<!-- 게시글 작성 -->
+	<insert id="reviewInsert" parameterType="review">
+		<selectKey keyProperty="revt_number" resultType="int"
+			order="BEFORE">
+			select REVIEW_SEQ.nextval from dual
+		</selectKey>
+		INSERT INTO REVIEW_TBL(
+		revt_number,
+		mt_id,
+		revt_title,
+		revt_writer,
+		revt_content,
+		revt_regdate,
+		revt_thumbnail,
+		revt_image1,
+		revt_image2,
+		revt_image3,
+		revt_pw,
+		revt_readcnt,
+		revt_branch
+		)
+		VALUES(
+		#{revt_number},
+		#{mt_id},
+		#{revt_title},
+		#{revt_writer},
+		#{revt_content},
+		sysdate,
+		#{revt_thumbnail},
+		#{revt_image1, jdbcType=VARCHAR},
+		#{revt_image2,
+		jdbcType=VARCHAR},
+		#{revt_image3, jdbcType=VARCHAR},
+		#{revt_pw}
+		,0
+		,#{revt_branch}
+		)
+	</insert>
+
+	<!-- 게시판 내용 수정하기 -->
+	<update id="reviewUpdate" parameterType="review">
+		UPDATE REVIEW_TBL
+		SET
+		revt_number = #{revt_number},
+		mt_id =#{mt_id},
+		pt_name = #{pt_name},
+		revt_title = #{revt_title},
+		revt_writer = #{revt_writer},
+		revt_content =
+		#{revt_content},
+		revt_regdate = sysdate,
+		revt_thumbnail =
+		#{revt_thumbnail},
+		revt_image1 = #{revt_image1 , jdbcType=VARCHAR },
+		revt_image2 = #{revt_image2 , jdbcType=VARCHAR },
+		revt_image3 =
+		#{revt_image3 , jdbcType=VARCHAR },
+		revt_pw = #{revt_pw},
+		revt_readcnt =
+		#{revt_readcnt},
+		revt_branch = #{revt_branch}
+		WHERE
+		revt_number = #{revt_number}
+	</update>
+
+	<!-- 게시판 삭제 -->
+
+	<delete id="reviewDelete" parameterType="review">
+		<!-- Board-boardDelete -->
+		DELETE FROM REVIEW_TBL WHERE revt_number = #{revt_number}
+	</delete>
+
+</mapper>

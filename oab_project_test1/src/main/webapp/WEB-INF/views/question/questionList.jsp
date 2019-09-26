@@ -58,7 +58,6 @@
 </head>
 <body>
 	<c:if test="${login.mt_id != null }">
-		<label>${login.mt_id} 님이 작성하신 문의게시글 목록입니다. </label>
 		<div class="contentContainer">
 			<div class="contentsTit">
 				<h3>내 문의 리스트</h3>
