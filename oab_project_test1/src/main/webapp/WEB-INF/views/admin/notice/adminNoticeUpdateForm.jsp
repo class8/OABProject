@@ -48,15 +48,15 @@
 	<div class="main_content">
 
 		<div class="contentTit">
-			<h3>공지사항 수정하기</h3>
+			<h3>수정</h3>
 		</div>
 
-		<div class="contentTB">
+		<div class="contentTB_D">
 			<form id="f_writeForm" name="f_writeForm">
 				<input type="hidden" id="nt_number" name="nt_number"
 					value="${updateData.nt_number }" />
 
-				<table id="noticeupdate" border="1">
+				<table id="noticeupdate">
 
 					<colgroup>
 						<col width="150px" />
@@ -66,7 +66,7 @@
 						<col width="150px" />
 						<col width="250px" />
 					</colgroup>
-					<tr id="update_th">
+					<tr id="update">
 						<th class="ac">글번호</th>
 						<td>${updateData.nt_number }</td>
 						<th class="ac">작성일</th>
@@ -74,12 +74,12 @@
 						<th class="ac">작성자</th>
 						<td>${updateData.nt_writer }</td>
 					</tr>
-					<tr id="update_th">
+					<tr id="update">
 						<th class="ac">글제목</th>
 						<td colspan="5"><input type="text" name="nt_title"
 							id="nt_title" value="${updateData.nt_title }" /></td>
 					</tr>
-					<tr id="update_th">
+					<tr id="update">
 						<th class="ac">내용</th>
 						<td colspan="5"><textarea name="nt_content" id="nt_content">${updateData.nt_content }</textarea></td>
 					</tr>

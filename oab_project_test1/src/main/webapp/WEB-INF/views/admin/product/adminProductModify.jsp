@@ -29,10 +29,10 @@
 
 	<div class="main_content">
 		<div>
-			<h3>상품 정보 수정</h3>
+			<h2>상품 정보 수정</h2>
 		</div>
 
-		<div class="contentTB">
+		<div class="contentTB_D">
 
 			<form id="f_writeForm" name="f_writeForm"
 				enctype="multipart/form-data">
@@ -52,74 +52,68 @@
 					type="hidden" name="pageSize" id="pageSize"
 					value="${param.pageSize }">
 				<table>
-					<colgroup>
-
-						<col width="20%" />
-						<col width="20%" />
-						<col width="15%" />
-						<col width="15%" />
-						<col width="15%" />
-						<col width="15%" />
-					</colgroup>
 					<tbody>
-						<tr>
-							<td>상품 종류 선택</td>
+						<tr id="P_update">
+							<th height="35px">상품 종류 선택</th>
 							<td><label for="pt_set">세트상품</label> <input type="radio"
 								id="pt_set" name="pt_type" value="세트상품"> <label
 								for="pt_add">추가상품</label> <input type="radio" id="pt_add"
 								name="pt_type" value="추가상품"></td>
 						</tr>
-						<tr>
-							<td>상품명</td>
+						<tr id="P_update">
+							<th height="35px">상품명</th>
 							<td><input type="text" id="pt_name" name="pt_name"
 								value="${modifyData.pt_name }"></td>
 						</tr>
-						<tr>
-							<th>기존 상품 썸네일</th>
-							<td><input type="image" id="old_thumb"
-								src="/uploadStorage/thumb/${modifyData.pt_thumb}" width="450xp"
-								height="200px"> <input type="file" id="file" name="file"
-								onchange="filetest()"></td>
-							<th>기존 상품 이미지1</th>
-							<td><input type="image" id="old_image1"
+						<tr id="P_update">
+							<th>상품 썸네일</th>
+							<td colspan="3"><input type="image" id="old_thumb"
+								src="/uploadStorage/thumb/${modifyData.pt_thumb}" height="100px">
+								<input type="file" id="file" name="file" onchange="filetest()"></td>
+						</tr>
+						<tr id="P_update">
+							<th>상품 이미지1</th>
+							<td colspan="3"><input type="image" id="old_image1"
 								src="/uploadStorage/image1/${modifyData.pt_image1}"
-								width="450xp" height="200px" value="${modifyData.pt_image1}">
+								width="350xp" height="100px" value="${modifyData.pt_image1}">
 								<input type="file" id="file1" name="file1" onchange="filetest()" />
 							</td>
 						</tr>
-						<tr>
-							<th>기존 상품 이미지2</th>
-							<td><input type="image" id="old_image2"
+						<tr id="P_update">
+							<th>상품 이미지2</th>
+							<td colspan="3"><input type="image" id="old_image2"
 								src="/uploadStorage/image2/${modifyData.pt_image2}"
-								width="450xp" height="200px" value="${modifyData.pt_image2}">
+								width="350xp" height="100px" value="${modifyData.pt_image2}">
 								<input type="file" id="file2" name="file2" onchange="filetest()" />
 							</td>
-							<th>기존 상품 이미지3</th>
-							<td><input type="image" id="old_image3"
+						</tr>
+						<tr id="P_update">
+							<th>상품 이미지3</th>
+							<td colspan="3"><input type="image" id="old_image3"
 								src="/uploadStorage/image3/${modifyData.pt_image3}"
-								width="450xp" height="200px" value="${modifyData.pt_image3}">
+								width="350xp" height="100px" value="${modifyData.pt_image3}">
 								<input type="file" id="file3" name="file3" onchange="filetest()" />
 							</td>
 						</tr>
-						<tr>
-							<td>상품 상세 설명</td>
-							<td><textarea rows="5" cols="40" id="pt_explain"
-									name="pt_explain">
+						<tr id="P_update">
+							<th>상품 상세 설명</th>
+							<td colspan="3"><textarea rows="5" cols="40"
+									id="pt_explain" name="pt_explain">
 						${modifyData.pt_explain}
                      </textarea></td>
 						</tr>
-						<tr>
-							<td>상품 가격</td>
+						<tr id="P_update">
+							<th height="35px">상품 가격</th>
 							<td><input type="text" name="pt_price" id="pt_price"
 								value="${modifyData.pt_price}" /></td>
 						</tr>
-						<tr>
-							<td>상품 등록일</td>
+						<tr id="P_update">
+							<th height="35px">상품 등록일</th>
 							<td>${modifyData.pt_regdate}</td>
 						</tr>
-						<tr>
-							<td>상품 대여 가능 유무</td>
-							<td><label for="pt_statusOk">대여가능</label> <input
+						<tr id="P_update">
+							<th height="35px">상품 대여 가능 유무</th>
+							<td colspan="3"><label for="pt_statusOk">대여가능</label> <input
 								type="radio" id="pt_statusOk" name="pt_status" value="대여가능">
 								<label for="pt_statusNo">대여불가</label> <input type="radio"
 								id="pt_statusNo" name="pt_status" value="대여불가"></td>

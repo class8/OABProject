@@ -75,7 +75,7 @@
 	<div class="main_content">
 
 		<div class="contentTit">
-			<h3>1:1 문의글 상세보기</h3>
+			<h3>1:1 문의 상세보기</h3>
 		</div>
 
 		<form name="f_data" id="f_data" method="post">
@@ -85,8 +85,8 @@
 				id="mt_id" value="${detail.mt_id}" />
 		</form>
 
-		<div class="contentTB">
-			<table id="notice_detail" border="1">
+		<div class="contentTB_D">
+			<table id="notice_detail">
 				<colgroup>
 					<col width="150px" />
 					<col width="180px" />
@@ -97,20 +97,20 @@
 				</colgroup>
 
 				<tbody>
-					<tr id="detail">
-						<th class="ac">글번호</th>
+					<tr id="Q_detail">
+						<th class="ac" height="35px">글번호</th>
 						<td id="number">${detail.qt_number }</td>
 						<th class="ac">작성자</th>
 						<td>${detail.qt_writer }</td>
 						<th class="ac">작성일</th>
 						<td>${detail.qt_regdate }</td>
 					</tr>
-					<tr id="detail">
-						<th class="ac" id="title_size">제목</th>
+					<tr id="Q_detail">
+						<th class="ac" id="title_size" height="35px">제목</th>
 						<td colspan="5" id="title_size">${detail.qt_title }</td>
 					</tr>
-					<tr id="detail">
-						<th class="ac" id="content_size">내용</th>
+					<tr id="Q_detail">
+						<th class="ac" id="content_size" height="350px">내용</th>
 						<td colspan="3" id="content_size">${detail.qt_content }</td>
 						<th>첨부파일 이미지</th>
 						<td><img id="fileImage"></td>

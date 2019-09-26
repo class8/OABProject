@@ -55,6 +55,7 @@ public class AdminLoginController {
 			System.out.println("로그인 성공");
 			// login.jsp 에서 사용할 adminLogin 객체
 			session.setAttribute("adminLogin", adminLoginCheckResult);
+			System.out.println(session.getAttribute("adminLogin").toString());
 			// 1:1 문의 리스트
 			List<QuestionVO> mainQuestionList = adminLoginService.mainQuestionList();
 			model.addAttribute("mainQuestionList", mainQuestionList);
@@ -65,7 +66,6 @@ public class AdminLoginController {
 			model.addAttribute("mainReservationList", mainReservationList);
 			model.addAttribute("data");
 
-			System.out.println(mainReservationList);
 			mav.setViewName("admin/template/mainLayout");
 			return mav;
 		}
@@ -93,19 +93,8 @@ public class AdminLoginController {
 		model.addAttribute("mainReservationList", mainReservationList);
 		model.addAttribute("data");
 
-		System.out.println(mainReservationList);
-
 		return "admin/template/mainLayout";
 
 	}
-
-	/*
-	 * @RequestMapping(value = "/main", method = RequestMethod.GET) public String
-	 * mainPage() {
-	 * 
-	 * return "admin/template/mainLayout";
-	 * 
-	 * }
-	 */
 
 }

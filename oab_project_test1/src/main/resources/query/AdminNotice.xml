@@ -116,5 +116,11 @@
 		where nt_number = #{nt_number}
 	</delete>
 
+	<!-- 공지사항 조회수 증가 -->
+	<update id="adminReadCntUpdate" parameterType="notice">
+		update notice_tbl
+		set nt_readcnt = nt_readcnt + 1
+		where nt_number = #{nt_number}
+	</update>
 
 </mapper>

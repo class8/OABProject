@@ -9,6 +9,10 @@ public class CommonVO {
 
 	// 조건 검색시 사용하는 필드입니다
 	private String search = "";
+
+	// 최대근 추가
+	private String searchBox = "";
+
 	private String keyword = "";
 
 	// 날자 검색시 사용하는 필드입니다
@@ -129,6 +133,14 @@ public class CommonVO {
 
 	public void setSelect_type(String select_type) {
 		this.select_type = select_type;
+	}
+
+	public String getSearchBox() {
+		return searchBox;
+	}
+
+	public void setSearchBox(String searchBox) {
+		this.searchBox = searchBox;
 	}
 
 }

@@ -6,6 +6,8 @@
 	<typeAliases>
 		<typeAlias type="com.oab.client.product.vo.ProductVO"
 			alias="product" />
+		<typeAlias type="com.oab.client.review.vo.ReviewVO"
+			alias="adminReview" />
 		<typeAlias type="com.oab.client.login.vo.LoginVO"
 			alias="login" />
 		<typeAlias type="com.oab.client.member.vo.MemberSecurity"
@@ -29,9 +31,14 @@
 		<typeAlias
 			type="com.oab.client.reservation.vo.ReservationVO"
 			alias="reservation" />
+		<typeAlias
+			type="com.oab.client.reservation.vo.ReservationVO"
+			alias="adminReservation" />
+		<typeAlias type="com.oab.client.rental.vo.RentalVO"
+			alias="adminRental" />
 		<typeAlias type="com.oab.client.reservation.vo.UserInfoVO"
 			alias="UserInfo" />
-			<typeAlias type="com.oab.client.rental.vo.RentalVO"
+		<typeAlias type="com.oab.client.rental.vo.RentalVO"
 			alias="Rental" />
 	</typeAliases>
 	<!-- <environments default="development"> <environment id="development"> 

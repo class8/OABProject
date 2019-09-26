@@ -5,12 +5,12 @@
 	height: 53%;
 	margin-left: 300px;
 	margin-top: 100px;
-	border: 5px solid #008080;
+	border: 1px solid #c0c0c0;
 	padding-bottom: 100px;
 }
 
 .login {
-	width: 690px;
+	width: 790px;
 	height: 300px;
 	padding-left: 120px;
 	padding-top: 130px;
@@ -29,14 +29,20 @@ table {
 	float: left;
 	font-weight: bold;
 	text-align: center;
-	color: #008080;
+	color: #804040;
 	font-size: 30px;
 	padding: 30px;
 }
 
 #loginBtn {
-	width: 290px;
-	background-color: #008080;
+	width: 330px;
+	background-color: #804040;
 	color: white;
 	height: 35px;
+}
+
+#adminID, #adminPW {
+	height: 30px;
+	text-align: center;
+	font-weight: bold;
 }

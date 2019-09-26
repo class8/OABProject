@@ -60,53 +60,31 @@
 <body>
 	<div class="main_content">
 		<div class="contentTit">
-			<h3>회원 리스트</h3>
+			<h2>회원 정보</h2>
 		</div>
 		<form id="f_test" name="f_test">
 			<input type="hidden" id="mt_number" name="mt_number" /> <input
 				type="hidden" id="mt_disabled" name="mt_disabled" />
 		</form>
 
-		<!-- 검색 기능 시작 -->
-		<div class="noticeSearch">
-			<form id="f_search" name="f_search">
-				<!--    추가부분 -->
-				<input type="hidden" id="page" name="page" value="${data.page}">
-				<input type="hidden" id="order_by" name="order_by"
-					value="${data.order_by}" /> <input type="hidden" id="order_sc"
-					name="order_sc" value="${data.order_sc}" />
-				<table summary="검색">
-					<colgroup>
-						<col width="10%" />
-						<col width="10%" />
-						<col width="10%" />
-						<col width="10%" />
-						<col width="10%" />
-						<col width="20%" />
-						<col width="10%" />
-						<col width="10%" />
-						<col width="10%" />
-					</colgroup>
-					<tr id="list_th">
-						<td><label>검색조건</label> <select id="search" name="search">
-								<option value="all">전체</option>
-								<option value="mt_name">회원이름</option>
-								<option value="mt_id">회원아이디</option>
-								<option value="mt_disabled">회원비활성화</option>
-						</select> <input type="text" name="keyword" id="keyword" value="검색어를 입력하세요" />
-							<input type="button" value="검색" id="searchData"></td>
-					</tr>
-				</table>
-			</form>
-		</div>
-
 
 		<!-- 멤버리스트 시작 -->
 		<div id="memberList" class="contentTB">
-			<table border="1">
+			<table>
+				<colgroup>
+					<col width="100px" />
+					<col width="100px" />
+					<col width="100px" />
+					<col width="100px" />
+					<col width="100px" />
+					<col width="150px" />
+					<col width="100px" />
+					<col width="100px" />
+					<col width="150px" />
+				</colgroup>
 				<thead>
 					<tr id="list_th">
-						<th data-value="mt_number" class="order">회원번호 <c:choose>
+						<th data-value="mt_number" class="order">번호 <c:choose>
 								<c:when
 									test="${data.order_by=='mt_number' and data.order_sc=='ASC'}">▲</c:when>
 								<c:when
@@ -114,19 +92,19 @@
 								<c:otherwise>▲</c:otherwise>
 							</c:choose>
 						</th>
-						<th>회원아이디</th>
-						<th>회원이름</th>
-						<th>회원생년월일</th>
-						<th data-value="mt_gender" class="order">회원성별 <c:choose>
+						<th>아이디</th>
+						<th>이름</th>
+						<th>생년월일</th>
+						<th data-value="mt_gender" class="order">성별 <c:choose>
 								<c:when
 									test="${data.order_by=='mt_gender' and data.order_sc=='ASC'}">▲</c:when>
 								<c:when
 									test="${data.order_by=='mt_gender' and data.order_sc=='DESC'}">▼</c:when>
 								<c:otherwise>▲</c:otherwise>
 							</c:choose>
-						<th>회원이메일</th>
-						<th>회원연락처</th>
-						<th data-value="mt_regdate" class="order">회원등록일 <c:choose>
+						<th>이메일</th>
+						<th>연락처</th>
+						<th data-value="mt_regdate" class="order">등록일 <c:choose>
 								<c:when
 									test="${data.order_by=='mt_regdate' and data.order_sc=='ASC'}">▲</c:when>
 								<c:when
@@ -178,7 +156,7 @@
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<tr id="list_th">
+							<tr id="list_td">
 								<td colspan="9" class="tac">등록된 게시물이 존재하지 않습니다.</td>
 							</tr>
 						</c:otherwise>
@@ -193,6 +171,41 @@
 			<tag:paging page="${param.page}" total="${total}" list_size="10" />
 		</div>
 		<%-- ================= 페이지 네비게이션 종료 ==================== --%>
+
+		<!-- 검색 기능 시작 -->
+		<div class="memberSearch">
+			<form id="f_search" name="f_search">
+				<!--    추가부분 -->
+				<input type="hidden" id="page" name="page" value="${data.page}">
+				<input type="hidden" id="order_by" name="order_by"
+					value="${data.order_by}" /> <input type="hidden" id="order_sc"
+					name="order_sc" value="${data.order_sc}" />
+				<table summary="검색" id="search_tbl">
+					<colgroup>
+						<col width="100px" />
+						<col width="100px" />
+						<col width="100px" />
+						<col width="100px" />
+						<col width="100px" />
+						<col width="150px" />
+						<col width="100px" />
+						<col width="100px" />
+						<col width="150px" />
+					</colgroup>
+					<tr id="search_deco">
+						<td><select id="search" name="search">
+								<option value="all">전체</option>
+								<option value="mt_name">이름</option>
+								<option value="mt_id">아이디</option>
+								<option value="mt_disabled">비활성화</option>
+						</select> <input type="text" name="keyword" id="keyword" value="검색어를 입력하세요" />
+							<input type="button" value="검색" id="searchData"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+
 	</div>
 </body>
 </html>

@@ -103,7 +103,7 @@
 	<div class="main_content">
 
 		<div class="contentTit">
-			<h3>1:1 문의 리스트</h3>
+			<h2>1:1 문의</h2>
 		</div>
 
 		<!-- 상세페이지 이동을 위한 Form -->
@@ -114,49 +114,24 @@
 				type="hidden" name="pageSize" value="${data.pageSize }">
 		</form>
 
-		<!-- 검색 기능 시작 -->
-		<div class="questionSearch">
-			<form id="f_search" name="f_search">
-				<input type="hidden" id="page" name="page" value="${data.page }" />
-				<input type="hidden" id="order_by" name="order_by"
-					value="${data.order_by }" /> <input type="hidden" id="order_sc"
-					name="order_sc" value="${data.order_sc }" />
-				<table summary="검색" id="search_tbl">
-					<colgroup>
-						<col width="70%"></col>
-						<col width="30%"></col>
-					</colgroup>
-
-					<tr id="search_deco">
-						<td><label>검색조건</label><select id="search" name="search"><option
-									value="all" id="search_text">전체</option>
-								<option value="qt_title" id="search_text">제목</option>
-								<option value="qt_status" id="search_text">카테고리</option>
-								<option value="qt_writer" id="search_text">작성자</option></select> <input
-							type="text" name="keyword" id="keyword" value="검색어를 입력하세요" /> <input
-							type="button" value="검색" id="searchData" /></td>
-					</tr>
-				</table>
-			</form>
-		</div>
 
 		<!-- 공지사항 리스트 시작  -->
 		<div id="noticeList" class="contentTB">
-			<table summary="공지사항 리스트" id="nt_list" border="1">
+			<table summary="공지사항 리스트" id="nt_list">
 				<colgroup>
-					<col width="10%" />
-					<col width="10%" />
-					<col width="20%" />
-					<col width="15%" />
-					<col width="15%" />
-					<col width="15%" />
-					<col width="15%" />
+					<col width="100px" />
+					<col width="80px" />
+					<col width="320px" />
+					<col width="100px" />
+					<col width="100px" />
+					<col width="200px" />
+					<col width="100px" />
 				</colgroup>
 
 				<thead>
 					<tr id="list_th">
 						<th>카테고리</th>
-						<th data-value="qt_number" class="order">글 번호</th>
+						<th data-value="qt_number" class="order">번호</th>
 						<th>제 목</th>
 						<th>회원아이디</th>
 						<th>작성자</th>
@@ -172,7 +147,7 @@
 							<c:forEach var="adminQuestion" items="${questionList }"
 								varStatus="status">
 
-								<tr id="list_td" class="tac"
+								<tr id="list_th" class="tac"
 									data-num="${adminQuestion.qt_number }">
 									<td class="goDetail tal">${adminQuestion.qt_status }</td>
 									<td class="goDetail tal">${adminQuestion.qt_number }</td>
@@ -201,6 +176,33 @@
 			<tag:paging page="${param.page }" total="${total }"
 				list_size="${data.pageSize}" />
 		</div>
+
+		<!-- 검색 기능 시작 -->
+		<div class="questionSearch">
+			<form id="f_search" name="f_search">
+				<input type="hidden" id="page" name="page" value="${data.page }" />
+				<input type="hidden" id="order_by" name="order_by"
+					value="${data.order_by }" /> <input type="hidden" id="order_sc"
+					name="order_sc" value="${data.order_sc }" />
+				<table summary="검색" id="search_tbl">
+					<colgroup>
+						<col width="70%"></col>
+						<col width="30%"></col>
+					</colgroup>
+
+					<tr id="search_deco">
+						<td><select id="search" name="search"><option
+									value="all" id="search_text">전체</option>
+								<option value="qt_title" id="search_text">제목</option>
+								<option value="qt_status" id="search_text">카테고리</option>
+								<option value="qt_writer" id="search_text">작성자</option></select> <input
+							type="text" name="keyword" id="keyword" value="검색어를 입력하세요" /> <input
+							type="button" value="검색" id="searchData" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
 
 	</div>
 </body>

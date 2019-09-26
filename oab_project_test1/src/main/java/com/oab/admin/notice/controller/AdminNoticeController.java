@@ -93,7 +93,9 @@ public class AdminNoticeController {
 		detail = adminNoticeService.adminNoticeDetail(nvo);
 
 		if (detail != null && (!detail.equals(""))) {
+			adminNoticeService.adminReadCntUpdate(nvo);
 			detail.setNt_content(detail.getNt_content().toString().replaceAll("\n", "<br>"));
+			System.out.println(detail.getNt_readcnt());
 		}
 
 		model.addAttribute("detail", detail);
@@ -146,8 +148,6 @@ public class AdminNoticeController {
 		String url = "";
 
 		result = adminNoticeService.adminNoticeDelete(nvo.getNt_number());
-
-		System.out.println(result);
 
 		if (result == 1) {
 			url = "/admin/notice/noticeList";

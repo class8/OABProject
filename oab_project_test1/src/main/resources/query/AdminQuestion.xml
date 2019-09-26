@@ -84,7 +84,7 @@
 		QT_STATUS, QT_PW, QT_REGDATE, QT_WRITER, QT_ROOT, QT_STEP, QT_LEVEL)
 		values(
 		QUESTION_SEQ.nextval, #{mt_id}, #{qt_title}, #{qt_content},
-		#{qt_status}, 1234, sysdate, '관리자', #{qt_root},
+		'답글', 1234, sysdate, '관리자', #{qt_root},
 		<if test="qt_step == 0">
 			1,
 		</if>

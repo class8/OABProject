@@ -42,46 +42,75 @@
 	href="/resources/admin/include/css/question.css" />
 </head>
 <body>
-
 	<div class="main_content">
+
 		<div class="contentTit">
-			<h3>댓글 등록하기</h3>
+			<h2>원글 정보</h2>
 		</div>
 
-		<div class="contentTB">
+		<div class="contentTB_D">
+			<table id="notice_detail">
+				<colgroup>
+					<col width="150px" />
+					<col width="180px" />
+					<col width="150px" />
+					<col width="100px" />
+					<col width="100px" />
+					<col width="320px" />
+				</colgroup>
+
+				<tbody>
+					<tr id="detail">
+						<th class="ac" height="30px">글번호</th>
+						<td id="number">${question.qt_number }</td>
+						<th class="ac">작성자</th>
+						<td>${question.qt_writer }</td>
+						<th class="ac">작성일</th>
+						<td>${question.qt_regdate }</td>
+					</tr>
+					<tr id="detail">
+						<th class="ac" id="title_size" height="30px">제목</th>
+						<td colspan="5" id="title_size">${question.qt_title }</td>
+					</tr>
+					<tr id="detail">
+						<th class="ac" id="content_size" height="250px">내용</th>
+						<td colspan="3" id="content_size">${question.qt_content }</td>
+						<th>첨부파일 이미지</th>
+						<td><img id="fileImage"></td>
+						<c:if test="${question.qt_file != ''}">
+						</c:if>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+		<div class="contentTit">
+			<h2>답글 등록</h2>
+		</div>
+
+		<div class="contentTB_D">
 			<form id="f_writeForm" name="f_writeForm">
 				<input type="hidden" name="qt_number" value="${question.qt_number }" />
 				<input type="hidden" name="qt_step" id="qt_step"
 					value="${question.qt_step}" /> <input type="hidden"
 					name="qt_level" id="qt_level" value="${question.qt_level}" /> <input
 					type="hidden" name="qt_root" id="qt_root"
-					value="${question.qt_root}" />
-
-				<table id="replyWrite" border="1">
+					value="${question.qt_root}" /> <input type="hidden" name="mt_id"
+					id="mt_id" value="${question.mt_id }">
+				<table id="replyWrite">
 
 					<colgroup>
-						<col width="200px" />
 						<col width="300px" />
-						<col width="200px" />
-						<col width="300px" />
+						<col width="700px" />
 					</colgroup>
 					<tr id="reply">
-						<th class="ac">글제목</th>
+						<th class="ac" height="30px">제목</th>
 						<td><input type="text" name="qt_title" id="qt_title"></td>
-						<th class="ac">원글 작성자</th>
-						<td><input type="hidden" name="mt_id" id="mt_id"
-							value="${question.mt_id }">${question.mt_id }</td>
 					</tr>
 					<tr id="reply">
-						<th class="ac">카테고리</th>
-						<td><input type="hidden" name="qt_status" id="qt_status"
-							value="→→→">→→→</td>
-						<th class="ac">답글 작성자</th>
-						<td><input type="hidden" name="qt_writer" id="qt_writer">관리자</td>
-					</tr>
-					<tr id="reply">
-						<th class="ac vm">내용</th>
-						<td colspan="3"><textarea name="qt_content" id="qt_content"></textarea>
+						<th class="ac vm" height="250px">내용</th>
+						<td><textarea name="qt_content" id="qt_content"></textarea>
 					</tr>
 				</table>
 			</form>

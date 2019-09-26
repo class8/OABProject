@@ -18,21 +18,18 @@
 	<!-- 1:1문의 리스트 가져오기 -->
 	<select id="mainQuestionList" parameterType="int"
 		resultType="adminQuestion">
-		select QT_NUMBER, MT_ID, QT_TITLE, QT_CONTENT, QT_STATUS,
-		QT_PW, TO_CHAR(QT_REGDATE, 'YYYY-MM-DD') AS QT_REGDATE, QT_WRITER,
-		QT_FILE, QT_ROOT, QT_STEP,
-		QT_LEVEL from question_tbl where QT_STATUS =
-		'미답변'
+		SELECT qt_number, mt_id, qt_title, qt_content, qt_status, qt_pw,
+		TO_CHAR(qt_regdate,
+		'YYYY-MM-DD') AS qt_regdate, qt_writer, substr(qt_file,21) as qt_file,
+		qt_root, qt_step, qt_level
+		from question_tbl where QT_STATUS = '미답변'
 	</select>
 
 	<!-- 예약 리스트 가져오기 -->
 	<select id="mainReservationList" parameterType="int"
 		resultType="reservation">
-		select REST_NUMBER, MT_ID, PT_NUMBER, REST_BNUMBER,
-		REST_BNAME, REST_NAME, REST_PHONE, REST_STATUS,
-		REST_TOTAL,
-		REST_EXPRENT, REST_PAYOPTION, REST_REGDATE, REST_COUNT from
-		reservation_tbl where REST_STATUS =
-		'예약완료'
+		select *
+		from
+		reservation_tbl where REST_STATUS = '예약대기'
 	</select>
 </mapper>

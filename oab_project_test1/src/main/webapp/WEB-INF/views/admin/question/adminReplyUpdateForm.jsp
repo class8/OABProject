@@ -42,7 +42,7 @@
 
 	<div class="main_content">
 		<div class="contentTit">
-			<h3>댓글 수정하기</h3>
+			<h3>1:1문의 답글 수정하기</h3>
 		</div>
 
 		<div class="contentTB">
@@ -59,19 +59,19 @@
 						<col width="300px" />
 					</colgroup>
 					<tr id="reply">
-						<th class="ac">글제목</th>
+						<th class="ac" height="30px">글제목</th>
 						<td>${replyUpdateForm.qt_title }</td>
 						<th class="ac">원글 작성자</th>
 						<td>${replyUpdateForm.mt_id }</td>
 					</tr>
 					<tr id="reply">
-						<th class="ac">카테고리</th>
+						<th class="ac" height="30px">카테고리</th>
 						<td>${replyUpdateForm.qt_status }</td>
 						<th class="ac">답글 작성자</th>
 						<td>${replyUpdateForm.qt_writer }</td>
 					</tr>
 					<tr id="reply">
-						<th class="ac vm">내용</th>
+						<th class="ac vm" height="350px">내용</th>
 						<td colspan="3"><textarea name="qt_content" id="qt_content">${replyUpdateForm.qt_content }</textarea>
 					</tr>
 				</table>

@@ -131,7 +131,7 @@
 	<div class="main_content">
 
 		<div class="contentTit">
-			<h3>공지사항 리스트</h3>
+			<h2>공 지 사 항</h2>
 		</div>
 
 		<!-- 상세페이지 이동을 위한 Form -->
@@ -140,57 +140,21 @@
 				type="hidden" name="page" value="${data.page }" /> <input
 				type="hidden" name="pageSize" value="${data.pageSize }" />
 		</form>
-
-		<!-- 검색 기능 시작 -->
-		<div class="noticeSearch">
-			<form id="f_search" name="f_search">
-				<input type="hidden" id="page" name="page" value="${data.page }" />
-				<input type="hidden" id="order_by" name="order_by"
-					value="${data.order_by }" /> <input type="hidden" id="order_sc"
-					name="order_sc" value="${data.order_sc }" />
-				<table summary="검색" id="search_tbl">
-					<colgroup>
-						<col width="70%"></col>
-						<col width="30%"></col>
-					</colgroup>
-
-					<tr id="search_deco">
-						<td><label>검색조건</label><select id="search" name="search"><option
-									value="all" id="search_text">전체</option>
-								<option value="nt_title" id="search_text">제목</option>
-								<option value="nt_content" id="search_text">내용</option></select> <input
-							type="text" name="keyword" id="keyword" value="검색어를 입력하세요" /> <input
-							type="button" value="검색" id="searchData" /></td>
-						<td>한페이지에<select id="pageSize" name="pageSize">
-								<option value="1" id="text">1줄</option>
-								<option value="2" id="text">2줄</option>
-								<option value="3" id="text">3줄</option>
-								<option value="5" id="text">5줄</option>
-								<option value="7" id="text">7줄</option>
-								<option value="10" id="text">10줄</option>
-						</select>
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
-
 		<!-- 공지사항 리스트 시작  -->
 		<div id="noticeList" class="contentTB">
-			<table summary="공지사항 리스트" id="nt_list" border="1">
+			<table summary="공지사항 리스트" id="nt_list">
 				<colgroup>
-					<col width="80px" />
-					<col width="600px" />
 					<col width="100px" />
-					<col width="140px" />
-					<col width="80px" />
+					<col width="600px" />
+					<col width="200px" />
+					<col width="100px" />
 				</colgroup>
 
 				<thead>
 					<tr id="list_th">
-						<th>글 번호</th>
-						<th>글 제목</th>
-						<th class="borcle">작성자</th>
+						<th>번호</th>
+						<th>제 목</th>
+						<!-- <th class="borcle">작성자</th> -->
 						<th data-value="nt_regdate" class="order">작성일 <c:choose>
 								<c:when test="${ data.order_sc=='ASC'}">▲</c:when>
 								<c:when test="${ data.order_sc=='DESC'}">▼</c:when>
@@ -209,8 +173,8 @@
 
 								<tr id="list_td" class="tac" data-num="${notice.nt_number }">
 									<td class="goDetail tal">${notice.nt_number }</td>
-									<td class="goDetail tal">${notice.nt_title }</td>
-									<td class="goDetail tal">${notice.nt_writer }</td>
+									<td id="title" class="goDetail tal">${notice.nt_title }</td>
+									<%-- <td class="goDetail tal">${notice.nt_writer }</td> --%>
 									<td class="goDetail tal">${notice.nt_regdate}</td>
 									<td class="goDetail tal">${notice.nt_readcnt}</td>
 								</tr>
@@ -228,16 +192,46 @@
 			</table>
 		</div>
 
-		<div class="contentBtn">
-			<input type="button" value="공지사항 등록" id="insertFormBtn">
-		</div>
-
 		<!-- 페이지 네비게이션  -->
 		<div id="noticePage">
 			<tag:paging page="${param.page }" total="${total }"
 				list_size="${data.pageSize}" />
 		</div>
 
+		<!-- <div class="contentBtn">
+			<input type="button" value="글 쓰 기" id="insertFormBtn">
+		</div>
+ -->
+
+		<!-- 검색 기능 시작 -->
+		<div class="noticeSearch">
+			<form id="f_search" name="f_search">
+				<input type="hidden" id="page" name="page" value="${data.page }" />
+				<input type="hidden" id="order_by" name="order_by"
+					value="${data.order_by }" /> <input type="hidden" id="order_sc"
+					name="order_sc" value="${data.order_sc }" />
+				<table summary="검색" id="search_tbl">
+					<colgroup>
+						<col width="70%"></col>
+						<col width="30%"></col>
+					</colgroup>
+
+					<tr id="search_deco">
+						<td><select id="search" name="search">
+								<option value="all" id="search_text">전체</option>
+								<option value="nt_title" id="search_text">제목</option>
+								<option value="nt_content" id="search_text">내용</option>
+						</select> <input type="text" name="keyword" id="keyword" value="검색어를 입력하세요" />
+							<input type="button" id="searchData" value="검색" /></td>
+					</tr>
+				</table>
+			</form>
+
+			<div class="contentBtn">
+				<input type="button" value="글 쓰 기" id="insertFormBtn">
+			</div>
+
+		</div>
 	</div>
 </body>
 </html>
