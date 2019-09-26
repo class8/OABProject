@@ -1,11 +1,15 @@
 package com.oab.client.member.service;
 
+import java.util.List;
 
 import com.oab.client.member.vo.MemberVO;
+import com.oab.client.rental.vo.RentalVO;
+import com.oab.client.reservation.vo.UserInfoVO;
 
 public interface MemberService {
 
 	public int mt_IdConfirm(String mt_id);
+	public int mt_EmailConfirm(String mt_email);
 
 	public MemberVO memberSelect(String mt_id);
 
@@ -14,7 +18,15 @@ public interface MemberService {
 	public boolean memberUpdate(MemberVO mvo);
 
 	public int memberSecede(MemberVO mvo);
+
+	public List<UserInfoVO> memberUserInfo(UserInfoVO uvo);
+
+	public int UserInfoUpdate(UserInfoVO uvo);
+
+	public int UserInfoListCnt(UserInfoVO uvo);
 	
-	//public int memberUpdate2(MemberVO mvo);
+	public List<RentalVO> memberrentalInfo(UserInfoVO uvo);
+	
+	public int RentalInfoListCnt(RentalVO revo);
 
 }

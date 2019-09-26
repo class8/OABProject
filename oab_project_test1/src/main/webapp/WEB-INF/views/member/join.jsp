@@ -78,8 +78,8 @@
 - 홈페이지, 서면양식, 팩스, 전화, 상담 게시판, 이메일, 이벤트 응모, 배송요청
 - 협력회사로부터의 제공 
 - 생성정보 수집 툴을 통한 수집
-   </textarea> <br> <br> <input type="checkbox" name="req"> 개인정보
-					수집 및 이용에 동의합니다. <br>
+   </textarea> <br> 
+   <label style="width: 700px"><input type="checkbox" name="req"><span>개인정보 수집 및 이용에 동의합니다.</span></label>
 					<hr>
 				</td>
 			</tr>

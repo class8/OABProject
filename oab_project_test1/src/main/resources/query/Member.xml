@@ -23,10 +23,14 @@
 	<!--아이디 찾기위한 select -->
 	<select id="memberIdselect" parameterType="String"
 		resultType="member">
-		select mt_id, mt_email
-		from MEMBER_TBL
+
+		select REPLACE(mt_id, substr(mt_id, 2,3), '**') as "mt_id"
+		, mt_email
+		from
+		MEMBER_TBL
 		where mt_email =
-		#{mt_email} and mt_name = #{mt_name}
+		#{mt_email} and mt_name =
+		#{mt_name}
 	</select>
 
 	<select id="memberSelect" parameterType="String"
@@ -35,6 +39,13 @@
 		mt_gender, mt_email, mt_phone
 		from MEMBER_TBL
 		where mt_id = #{mt_id}
+	</select>
+	<select id="mt_EmailConfirm" parameterType="String"
+		resultType="member">
+		select mt_number, mt_id, mt_pw, mt_name, mt_birth,
+		mt_gender, mt_email, mt_phone
+		from MEMBER_TBL
+		where mt_email = #{mt_email}
 	</select>
 
 	<!-- <update id="memberPwUpdate" parameterType="member"> update member_tbl 
@@ -50,8 +61,10 @@
 		insert into MEMBER_TBL(mt_number, mt_id, mt_pw, mt_name, mt_birth,
 		mt_gender, mt_email,
 		mt_phone, mt_disabled)
-		values(#{mt_number}, #{mt_id}, #{mt_pw},
-		#{mt_name}, #{mt_birth}, #{mt_gender}, #{mt_email}, #{mt_phone}, 'able')
+		values(#{mt_number},
+		#{mt_id}, #{mt_pw},
+		#{mt_name}, #{mt_birth}, #{mt_gender}, #{mt_email},
+		#{mt_phone}, 'able')
 	</insert>
 
 	<update id="memberUpdate" parameterType="member">
@@ -64,12 +77,86 @@
 		where mt_id=#{mt_id}
 	</update>
 
-<!-- 	<update id="memberSecede" parameterType="member">
-		update MEMBER_TBL set
-		mt_MT_DISABLED=#{MT_DISABLED}
-		where mt_id=#{mt_id}
-	</update> -->
+	<select id="UserInfoListCnt" parameterType="UserInfo"
+		resultType="int">
+		SELECT nvl(count(rest_bnumber),0) as cnt
+		from RESERVATION_TBL
+		<!-- from (SELECT list.* , ROWNUM
+		AS RNUM FROM
+		( select * from RESERVATION_TBL )
+		list)
+		<where>
+			<if test="start_row != null and start_row != ''">
+				<if test="end_row != null and end_row != ''">
+					and RNUM BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where> -->
+	</select>
+	<select id="RentalInfoListCnt" parameterType="Rental"
+		resultType="int">
+		SELECT nvl(count(rest_number),0) as cnt
+		from RENTAL_TBL
+		
+	</select>
+	
 
+	<select id="memberUserInfo" parameterType="UserInfo"
+		resultType="UserInfo">
+		select r.REST_NUMBER, r.rest_bnumber, p.PT_NAME, r.REST_COUNT,
+		r.REST_PAYOPTION, p.PT_PRICE, r.REST_REGDATE, r.REST_TOTAL,
+		r.REST_STATUS
+		FROM(SELECT list.* , ROWNUM AS RNUM FROM(select * from
+		RESERVATION_TBL)
+		list) r,
+		product_tbl p, member_tbl m WHERE r.pt_number
+		= p.pt_number and
+		r.mt_id= m.mt_id and r.mt_id = #{mt_id}
+		<if test="start_row != null and start_row != ''">
+			<if test="end_row != null and end_row != ''">
+				and RNUM BETWEEN #{start_row} AND #{end_row}
+			</if>
+		</if>
+		order by r.rest_bnumber desc
+	</select>
+
+	<select id="memberrentalInfo" parameterType="Rental"
+		resultType="Rental">
+		select re.RENT_NUMBER, r.rest_status,
+		re.rent_overtime,
+		re.rent_addcost, to_char(re.rent_actrent,
+		'YYYY/MM/DD') AS
+		rent_actrent, to_char(re.rent_expretrun,
+		'YYYY/MM/DD') AS
+		rent_expretrun, to_char(re.rent_actretrun,
+		'YYYY/MM/DD') AS
+		rent_actretrun, re.RENT_STATUS
+		FROM(SELECT list.* , ROWNUM AS RNUM FROM(select * from
+		RENTAL_TBL)
+		list) re, RESERVATION_TBL r, member_tbl m
+		WHERE r.rest_number = re.rest_number and r.mt_id= m.mt_id and r.mt_id = #{mt_id}
+		<if test="start_row != null and start_row != ''">
+			<if test="end_row != null and end_row != ''">
+				and RNUM BETWEEN #{start_row} AND #{end_row}
+			</if>
+		</if>
+		ORDER BY
+		r.rest_number desc
+	</select>
+	<update id="UserInfoUpdate" parameterType="UserInfo">
+		update RESERVATION_TBL set
+		REST_STATUS =
+		CASE
+		WHEN REST_PAYOPTION='계좌이체'
+		THEN '예약취소'
+		WHEN
+		REST_PAYOPTION='카드' THEN
+		'환불요청'
+		ELSE '처리중'
+		END
+		WHERE
+		rest_number= #{rest_number}
+	</update>
 
 	<update id="memberSecede" parameterType="member">
 		update MEMBER_TBL set

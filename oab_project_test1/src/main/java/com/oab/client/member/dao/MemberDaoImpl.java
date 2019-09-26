@@ -1,5 +1,7 @@
 package com.oab.client.member.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -7,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.oab.client.login.vo.LoginVO;
 import com.oab.client.member.vo.MemberSecurity;
 import com.oab.client.member.vo.MemberVO;
+import com.oab.client.rental.vo.RentalVO;
+import com.oab.client.reservation.vo.UserInfoVO;
 
 @Repository
 public class MemberDaoImpl implements MemberDao {
@@ -37,6 +41,12 @@ public class MemberDaoImpl implements MemberDao {
 		// TODO Auto-generated method stub
 		return (MemberVO) session.selectOne("memberSelect", mt_id);
 	}
+	@Override
+	public MemberVO mt_EmailConfirm(String mt_email) {
+		// TODO Auto-generated method stub
+		return (MemberVO) session.selectOne("mt_EmailConfirm", mt_email);
+	}
+
 
 	@Override
 	public int memberInsert(MemberVO mvo) {
@@ -49,7 +59,6 @@ public class MemberDaoImpl implements MemberDao {
 		// TODO Auto-generated method stub
 		return session.update("memberUpdate", mvo);
 	}
-
 
 	@Override
 	public int memberPwUpdate(LoginVO lvo) {
@@ -73,8 +82,35 @@ public class MemberDaoImpl implements MemberDao {
 	public int memberSecede(MemberVO mvo) {
 		return session.update("memberSecede", mvo);
 	}
-	
-	
 
+	@Override
+	public List<UserInfoVO> memberUserInfo(UserInfoVO uvo) {
+		// TODO Auto-generated method stub
+		return session.selectList("UserInfo", uvo);
+	}
+
+	@Override
+	public int UserInfoUpdate(UserInfoVO uvo) {
+		// TODO Auto-generated method stub
+		return session.update("UserInfoUpdate", uvo);
+	}
+
+	@Override
+	public int UserInfoListCnt(UserInfoVO uvo) {
+		// TODO Auto-generated method stub
+		return (Integer) session.selectOne("UserInfoListCnt");
+	}
+
+	@Override
+	public List<RentalVO> memberrentalInfo(UserInfoVO uvo) {
+		// TODO Auto-generated method stub
+		return session.selectList("RentalInfo", uvo);
+	}
+
+	@Override
+	public int RentalInfoListCnt(RentalVO revo) {
+		// TODO Auto-generated method stub
+		return (Integer) session.selectOne("RentalInfoListCnt");
+	}
 
 }

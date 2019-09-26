@@ -19,6 +19,7 @@
 			value="/WEB-INF/views/template/header.jsp" />
 		<put-attribute name="main_aside" value="" />
 		<put-attribute name="main_body" value="" />
+		<put-attribute name="body" value="" />
 		<put-attribute name="footer"
 			value="/WEB-INF/views/template/footer.jsp" />
 	</definition>
@@ -28,8 +29,9 @@
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/login/login.jsp" />
 	</definition>
-
 	<definition name="login/find" extends="content">
+		<put-attribute name="main_aside"
+			value="/WEB-INF/views/template/aside4.jsp" />
 		<put-attribute name="title" value="아이디/비밀번호 찾기" />
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/login/find.jsp" />
@@ -42,26 +44,34 @@
 	</definition>
 	<definition name="member/memberModify" extends="content">
 		<put-attribute name="title" value="회원정보 수정" />
+		<put-attribute name="main_aside"
+			value="/WEB-INF/views/template/aside3.jsp" />
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/member/memberModify.jsp" />
 	</definition>
 	<definition name="member/memberSecede" extends="content">
 		<put-attribute name="title" value="회원 탈퇴" />
+		<put-attribute name="main_aside"
+			value="/WEB-INF/views/template/aside3.jsp" />
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/member/memberSecede.jsp" />
 	</definition>
-	<definition name="member/memberUserInfo" extends="content">
+
+	<definition name="member/info/*" extends="content">
 		<put-attribute name="title" value="내 이용 내역" />
+		<put-attribute name="main_aside"
+			value="/WEB-INF/views/template/aside3.jsp" />
 		<put-attribute name="main_body"
-			value="/WEB-INF/views/member/memberUserInfo.jsp" />
+			value="/WEB-INF/views/member/info/memberUserInfo.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/info/memberRentalInfo.jsp" />
 	</definition>
-	
 	<definition name="member/join_success" extends="content">
 		<put-attribute name="title" value="회원가입 성공" />
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/member/join_success.jsp" />
 	</definition>
-	
+
 	<definition name="greeting/greetingPage" extends="content">
 		<put-attribute name="title" value="인사말" />
 		<put-attribute name="main_aside"
@@ -117,6 +127,11 @@
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/product/{1}.jsp"></put-attribute>
 	</definition>
+	<definition name="error/error" extends="content">
+		<put-attribute name="title" value="에러페이지" />
+		<put-attribute name="main_body"
+			value="/WEB-INF/views/error/error.jsp"></put-attribute>
+	</definition>
 
 	<definition name="reservation/*" extends="content">
 		<put-attribute name="title" value="예약하기" />
@@ -125,7 +140,6 @@
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/reservation/{1}.jsp"></put-attribute>
 	</definition>
-
 	<definition name="question/*" extends="content">
 		<put-attribute name="title" value="1:1 문의사항" />
 		<put-attribute name="main_aside"
@@ -140,12 +154,6 @@
 			value="/WEB-INF/views/template/aside2.jsp" />
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/review/{1}.jsp"></put-attribute>
-	</definition>
-
-	<definition name="error/error" extends="content">
-		<put-attribute name="title" value="에러페이지" />
-		<put-attribute name="main_body"
-			value="/WEB-INF/views/error/error.jsp"></put-attribute>
 	</definition>
 
 </tiles-definitions>

@@ -1,5 +1,7 @@
 package com.oab.client.member.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +11,8 @@ import com.oab.client.common.util.Util;
 import com.oab.client.member.dao.MemberDao;
 import com.oab.client.member.vo.MemberSecurity;
 import com.oab.client.member.vo.MemberVO;
+import com.oab.client.rental.vo.RentalVO;
+import com.oab.client.reservation.vo.UserInfoVO;
 
 @Service
 @Transactional
@@ -88,5 +92,57 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public List<UserInfoVO> memberUserInfo(UserInfoVO uvo) {
+		// TODO Auto-generated method stub
+		 List<UserInfoVO> uList = null;
+
+		 uList = memberDao.memberUserInfo(uvo);
+	      return uList;
+	   }
+
+	@Override
+	public int UserInfoUpdate(UserInfoVO uvo) {
+		int result = 0;
+		try {
+			result = memberDao.UserInfoUpdate(uvo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		return result;
+	}
+
+	
+	@Override
+	public int UserInfoListCnt(UserInfoVO uvo) {
+		// TODO Auto-generated method stub
+		return memberDao.UserInfoListCnt(uvo);
+	}
+
+	@Override
+	public List<RentalVO> memberrentalInfo(UserInfoVO uvo) {
+		List<RentalVO> reList = null;
+
+		reList = memberDao.memberrentalInfo(uvo);
+	      return reList;
+	}
+
+	@Override
+	public int RentalInfoListCnt(RentalVO revo) {
+		// TODO Auto-generated method stub
+		return memberDao.RentalInfoListCnt(revo);
+	}
+
+	@Override
+	public int mt_EmailConfirm(String mt_email) {
+		int result;
+		if (memberDao.mt_EmailConfirm(mt_email) != null) {
+			result = 1;
+		} else {
+			result = 2;
+		}
+		return result;
+	}
 
 }
