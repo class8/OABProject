@@ -232,7 +232,7 @@
 						<c:when test="${not empty adminReservationCancelList}">
 							<c:forEach var="reservationCancel"
 								items="${adminReservationCancelList}" varStatus="status">
-								<tr data-num="${reservationCancel.rest_number}" data-rest_status="${reservationWaiting.rest_status}" id="list_th">
+								<tr data-num="${reservationCancel.rest_number}" data-rest_status="${reservationCancel.rest_status}" id="list_th">
 									<td><input type="radio" class="updateRest_status"
 										name="updateRest_status"></td>
 									<td>${reservationCancel.rest_bnumber}</td>

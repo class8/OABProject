@@ -265,7 +265,7 @@
 								<tr data-num="${reservationComplete.rest_number}"
 									data-ptnumber="${reservationComplete.pt_number}"
 									data-value="${reservationComplete.mt_id}"
-									data-rest_status="${reservationWaiting.rest_status}" id="list_th">
+									data-rest_status="${reservationComplete.rest_status}" id="list_th">
 									<td><input type="radio" class="updateRest_status"
 										name="updateRest_status"></td>
 									<td>${reservationComplete.rest_bnumber}</td>
