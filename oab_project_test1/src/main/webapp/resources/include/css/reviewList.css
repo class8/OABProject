@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+/* 포토후기 게시판 css : 김은수 2019-09-23 */
+
+/* 제목 */
+.contentsTit {
+	margin-top: 30px;
+	font-size: 25pt;
+	text-align: center;
+}
+
+/* .photobut {
+
+	width : 100%;
+	float : right;
+	text-align: right;
+	margin-right: 50px;
+} */
+
+#reviewInsertBtn {
+	margin-top: 20px;
+	text-align: right;
+	margin-bottom: 10px;
+	display: inline-block;;
+	vertical-align: middle;
+	background-color: #42c8c5;
+	color: #fff;
+	border: none;
+	position: relative;
+	height: 30px;
+	font-size: 12pt;
+	padding: 0 2em;
+	cursor: pointer;
+	transition: 800ms ease all;
+	outline: none;
+}
+
+#reviewInsertBtn:hover {
+	background-color: #fff;
+	color: #42c8c5;
+}
+
+#reviewInsertBtn:before, #reviewInsertBtn:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: #42c8c5;
+	transition: 400ms ease all;
+}
+
+#reviewInsertBtn:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+
+#reviewInsertBtn:hover:before, #reviewInsertBtn:hover:after {
+	width: 100%;
+	transition: 800ms ease all;
+}
+
+#textlogin {
+	color: blue;
+}
+
+/* 리스트출력 */
+#selectList1 {
+	margin-top: 20px;
+	margin-bottom: 30px;
+	text-align: right;
+	margin-right: 50px;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+ul {
+	list-style: none;
+}
+
+.review_article {
+	margin: 2% 2% 2% 2%;
+	width: 29%;
+	float: left;
+	font-size: 18px;
+	text-align: center;
+}
+
+.review_article .review_tumbnail img {
+	width: 98%;
+	height: 300px;
+}
+
+/*
+ * .review_content { text-align: center; margin: 20, 0, 0, 20; 줄간격 line-height:
+ * 200%; }
+ */
+#revt_title {
+	margin-top: 9px;
+	font-size: 15pt;
+	text-align: center;
+}
+
+.img_ppp {
+	margin-top: 20px;
+	width: 100%;
+	text-align: center;
+}
+
+.img_ppp .hi {
+	margin-top: 20px;
+}
+/* #revt_title:hover {
+	margin-top: 9px;
+	font-size: 20pt;
+	color: green;
+} */
+
+/* 버튼 CSS */
+.buttoncss {
+	margin-top: 70px;
+	margin: 0;
+	text-align: center;
+	margin-right: 50px;
+}
+
+#pleaseLogin {
+	margin-top: 280px;
+	margin: auto;
+	margin-left: 600px;
+	font-size: 20px;
+	/* 줄간격 */
+	line-height: 180%;
+}
+
+/* 등록된 게시글이 없을 때 */
+#tdTag {
+	margin-top: 30px;
+}
+/* 페이징 css */
+#reviewPaging {
+	margin: auto;
+	margin-top: 40px;
+	text-align: center;
+}

@@ -27,9 +27,10 @@
 
 	<div class="contentsTit">
 		<h3>포토후기</h3>
-		<button id="reviewInsertBtn">포토후기 작성</button>
+		<button class="photowrite" id="reviewInsertBtn">포토후기 작성</button>
 		<hr>
 	</div>
+
 	<%--================== 상세 페이지 이동을 위한 FORM ===================== --%>
 	<form name="reivewDetailForm" id="reivewDetailForm">
 		<input type="hidden" name="page" value="${data.page}"> <input
@@ -61,9 +62,10 @@
 				</c:forEach>
 			</c:when>
 			<c:otherwise>
-				<tr>
-					<td id="tdTag" colspan="4" class="tac">등록된 게시물이 존재하지 않습니다.</td>
-				</tr>
+				<div class="img_ppp">
+					<img src="/resources/images/review/lala.PNG">
+					<p class="hi">우리의 첫 포토 후기를 등록해주세요 ! </p>
+				</div>
 			</c:otherwise>
 		</c:choose>
 	</div>
