@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+/* 포토후기 게시판 css : 김은수 2019-09-23 */
+
+/* 제목 */
+.contentsTit {
+	margin-top: 30px;
+	font-size: 25pt;
+	text-align: center;
+}
+
+.ContentTB {
+	/* 줄간격 */
+	line-height: 250%;
+	margin-top: 50px;
+	margin-left: 300px;
+}
+
+.reviewWrite {
+	width: 100%;
+}
+
+#reviewTBL {
+	width: 80%
+}
+
+/* 텍스트 박스 */
+#revt_writer {
+	width: 300px;
+}
+
+#revt_pw {
+	width: 300px;
+}
+
+#revt_branch {
+	width: 85px;
+}
+
+#revt_title {
+	width: 300px;
+}
+
+#revt_content {
+	width: 750px;
+	height: 250px;
+	resize: none;
+}
+
+#revt_file {
+	width: 750px;
+}
+
+#revt_file1 {
+	width: 750px;
+}
+
+#revt_file2 {
+	width: 750px;
+}
+
+#revt_file3 {
+	width: 750px;
+}
+
+/* 버튼 CSS */
+.buttoncss {
+	margin-top: 70px;
+	margin: 0;
+	text-align: center;
+	margin-right: 50px;
+}
+
+#pleaseLogin {
+	margin-top: 280px;
+	margin: auto;
+	margin-left: 600px;
+	font-size: 20px;
+	/* 줄간격 */
+	line-height: 180%;
+}
+
+#textlogin {
+	color: blue;
+}
+
+/* 페이징 css */
+#questionPage {
+	margin: auto;
+	margin-top: 40px;
+	text-align: center;
+}
