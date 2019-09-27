@@ -22,6 +22,10 @@ $(function() {
 			return;
 		else if (!inputVerify(1, '#oldmt_pw', '.error:eq(0)'))
 			return;
+		else if (!formCheck($('#mt_pw'), $('.error:eq(1)'), "변경할 비밀번호를"))
+			return;
+		else if (!formCheck($('#mt_pwCheck'), $('.error:eq(2)'), "변경할 비밀번호 확인을"))
+			return;
 		else if (!formCheck($('#mt_phone'), $('.error:eq(3)'), "전화번호를"))
 			return;
 		else if (!inputVerify(2, '#mt_phone', '.error:eq(3)'))
@@ -65,9 +69,7 @@ $(function() {
 		});
 	});
 
-	$("#modifyCancel").click(function() {
-		location.href = "/login/login";
-	});
+	
 });
 
 function passwordCheck() {
