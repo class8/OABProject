@@ -117,7 +117,6 @@ public class AdminQuestionContorller {
 		String url = "";
 
 		result = adminQuestionService.adminReplyInsert(qvo);
-		// result2 = adminQuestionService.adminStatusUpdate(qvo);
 
 		if (result == 1) {
 			adminQuestionService.adminStatusUpdate(qvo);

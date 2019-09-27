@@ -74,7 +74,7 @@
 		(SELECT list.*, ROWNUM AS RNUM
 		FROM (
 		<include refid="productCommon"></include>
-		and pt_type='세트상품') list ORDER BY pt_number desc
+		and pt_type='세트상품') list ORDER BY pt_regdate desc
 		)
 	</select>
 
@@ -85,7 +85,7 @@
 		(SELECT list.*, ROWNUM AS RNUM
 		FROM (
 		<include refid="productCommon"></include>
-		and pt_type='추가상품') list ORDER BY pt_number desc
+		and pt_type='추가상품') list ORDER BY pt_regdate desc
 		)
 	</select>
 
@@ -99,23 +99,7 @@
 		FROM (
 		<include refid="productCommon"></include>
 		and pt_type='세트상품'
-		<!-- 상품 목록에 보여질 조건 -->
-		<choose>
-			<when test="order_by=='pt_name'">
-				ORDER BY pt_name
-			</when>
-			<when test="order_by=='pt_price'">
-				ORDER BY pt_price
-			</when>
-		</choose>
-		<choose>
-			<when test="order_sc=='ASC'">
-				ASC
-			</when>
-			<when test="order_sc=='DESC'">
-				DESC
-			</when>
-		</choose>
+		ORDER BY pt_regdate DESC
 		) list
 		)
 		<where>
@@ -137,23 +121,7 @@
 		FROM (
 		<include refid="productCommon"></include>
 		and pt_type='추가상품'
-		<!-- 상품 목록에 보여질 조건 -->
-		<choose>
-			<when test="order_by=='pt_name'">
-				ORDER BY pt_name
-			</when>
-			<when test="order_by=='pt_price'">
-				ORDER BY pt_price
-			</when>
-		</choose>
-		<choose>
-			<when test="order_sc=='ASC'">
-				ASC
-			</when>
-			<when test="order_sc=='DESC'">
-				DESC
-			</when>
-		</choose>
+		ORDER BY pt_regdate DESC
 		) list
 		)
 		<where>
@@ -171,13 +139,16 @@
 		SELECT *
 		from
 		product_tbl
-		where pt_status='대여가능' and pt_type='세트상품'
+		where pt_status='대여가능' and
+		pt_type='세트상품'
 		order
 		by pt_regdate desc
-		)list where
+		)list
+		<where>
    <![CDATA[rownum < 4]]>
-		<!-- SELECT * from (SELECT list.*, ROWNUM AS RNUM FROM ( SELECT * from 
-			product_tbl where pt_status='대여가능' order by pt_regdate desc ) list ) -->
+			<!-- SELECT * from (SELECT list.*, ROWNUM AS RNUM FROM ( SELECT * from 
+				product_tbl where pt_status='대여가능' order by pt_regdate desc ) list ) -->
+		</where>
 	</select>
 
 </mapper>

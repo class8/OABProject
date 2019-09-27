@@ -91,13 +91,13 @@
 
 		<div class="contentTB_D">
 			<form id="f_writeForm" name="f_writeForm">
-				<input type="hidden" name="qt_number" value="${question.qt_number }" />
-				<input type="hidden" name="qt_step" id="qt_step"
-					value="${question.qt_step}" /> <input type="hidden"
-					name="qt_level" id="qt_level" value="${question.qt_level}" /> <input
-					type="hidden" name="qt_root" id="qt_root"
-					value="${question.qt_root}" /> <input type="hidden" name="mt_id"
-					id="mt_id" value="${question.mt_id }">
+				<input type="hidden" name="qt_number" id="qt_number"
+					value="${question.qt_number }" /> <input type="hidden"
+					name="qt_step" id="qt_step" value="${question.qt_step}" /> <input
+					type="hidden" name="qt_level" id="qt_level"
+					value="${question.qt_level}" /> <input type="hidden"
+					name="qt_root" id="qt_root" value="${question.qt_number}" /><input
+					type="hidden" name="mt_id" id="mt_id" value="${question.mt_id }">
 				<table id="replyWrite">
 
 					<colgroup>

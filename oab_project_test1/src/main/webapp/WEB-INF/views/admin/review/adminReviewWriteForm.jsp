@@ -64,7 +64,7 @@
 					</tr>
 					<tr>
 						<td><input type="hidden" name="mt_id" id="mt_id"
-							value="kkoohh319"></td>
+							value="kkoohh91"></td>
 					</tr>
 					<tr>
 						<td class="ac">비밀번호</td>

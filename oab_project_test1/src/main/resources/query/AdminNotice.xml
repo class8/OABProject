@@ -93,7 +93,7 @@
 		insert into notice_tbl(nt_number, nt_title, nt_writer, nt_content,
 		nt_regdate, nt_readcnt)
 		values( notice_tbl_seq.nextval, #{nt_title},
-		#{nt_writer}, #{nt_content},
+		'관리자', #{nt_content},
 		sysdate, 0)
 	</insert>
 

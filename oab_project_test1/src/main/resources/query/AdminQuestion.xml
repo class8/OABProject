@@ -26,10 +26,12 @@
 		resultType="adminQuestion">
 		SELECT qt_number, mt_id, qt_title, qt_content, qt_status, qt_pw,
 		TO_CHAR(qt_regdate,
-		'YYYY-MM-DD') AS qt_regdate, qt_writer, qt_file,
+		'YYYY-MM-DD') AS qt_regdate, qt_writer,
+		substr(qt_file, 23) as qt_file,
 		qt_root, qt_step, qt_level
 		FROM
-		(SELECT list.*, ROWNUM AS
+		(SELECT
+		list.*, ROWNUM AS
 		RNUM
 		FROM (
 		<include refid="adminQuestionCommon"></include>
@@ -78,7 +80,7 @@
 	<insert id="adminReplyInsert" parameterType="adminQuestion">
 		<selectKey keyProperty="qt_number" resultType="int"
 			order="BEFORE">
-			select notice_tbl_seq.nextval from dual
+			select question_seq.nextval from dual
 		</selectKey>
 		insert into question_tbl(QT_NUMBER, MT_ID, QT_TITLE, QT_CONTENT,
 		QT_STATUS, QT_PW, QT_REGDATE, QT_WRITER, QT_ROOT, QT_STEP, QT_LEVEL)

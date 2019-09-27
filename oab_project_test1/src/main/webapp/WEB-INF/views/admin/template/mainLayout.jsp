@@ -150,11 +150,7 @@
 							<th>카테고리</th>
 							<th>아이디</th>
 							<th>제 목</th>
-							<th data-value="qt_regdate" class="order">작성일<c:choose>
-									<c:when test="${ data.order_sc=='ASC'}">▲</c:when>
-									<c:when test="${ data.order_sc=='DESC'}">▼</c:when>
-									<c:otherwise>▲</c:otherwise>
-								</c:choose></th>
+							<th data-value="qt_regdate" class="order">작성일</th>
 							<th>작성자</th>
 							<th>첨부파일</th>
 						</tr>
