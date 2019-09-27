@@ -38,7 +38,8 @@
 					<div class="login">
 
 						<nav id="image">
-							<img src="/resources/admin/images/login.PNG" width="330px"
+							<img
+								src="/resources/admin/images/login.PNG" width="330px"
 								height="300px">
 						</nav>
 						<table>

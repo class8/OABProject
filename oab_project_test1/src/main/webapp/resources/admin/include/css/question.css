@@ -13,21 +13,22 @@ table {
 }
 
 #search_tbl {
+	flex: left;
 	width: 540px;
 	height: 30px;
 	float: left;
-	margin-top: 5px;
-	margin-left: 200px;
+	margin-top: 8px;
+	margin-left: 40px;
 }
 
 #searchData {
 	color: #ffffff;
 	width: 100px;
-	height: 29px;
+	height: 35px;
 	font-size: 15px;
 	font-weight: bold;
-	margin-left: 10px;
 	background-color: #804040;
+	margin-left: 10px;
 }
 
 .contentTB {
@@ -35,7 +36,7 @@ table {
 	float: right;
 	margin-right: 140px;
 	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 	text-align: center;
 	border-top: 1px solid #808080;
 }
@@ -53,7 +54,7 @@ table {
 #keyword {
 	color: #808080;
 	width: 300px;
-	height: 25px;
+	height: 30px;
 	text-align: center;
 	margin-left: 10px;
 	border: 1px solid #808080;
@@ -64,8 +65,8 @@ table {
 select {
 	color: #808080;
 	font-size: 15px;
-	width: 100px;
-	height: 27px;
+	width: 80px;
+	height: 32px;
 	text-align: center;
 	text-decoration: none;
 	border: 1px solid #808080;
@@ -90,16 +91,26 @@ select {
 }
 
 .questionSearch {
-	width: 1000px;
-	height: 45px;
-	float: left;
+	width: 600px;
+	height: 50px;
 	margin-top: 30px;
+	float: left;
+	background-color: #dadada;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color: #dadada;
+	background-color: #dadada;
+}
+
+#nt_list {
+	border: 1px solid #dadada;
 }
 
 #noticePage {
-	float: left;
-	margin-left: 400px;
-	margin-top: 20px;
+	clear: both;
+	padding-left: 520px;
 }
 
 #Q_detail th {

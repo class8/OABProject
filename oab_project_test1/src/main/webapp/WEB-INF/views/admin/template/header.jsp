@@ -10,8 +10,8 @@
 	<div class="header">
 
 		<div id="logo">
-			<a href="/"><img src="/resources/admin/images/logo.PNG"
-				width="250px" height="149px"></a>
+			<a href="/admin/login"><img
+				src="/resources/admin/images/logo.PNG" width="250px" height="149px"></a>
 		</div>
 
 		<nav id="logout">
@@ -20,10 +20,11 @@
 
 		<nav class="nav_topmenu">
 			<ul id="main_menu">
-				<li>HOME
+				<!-- <li>HOME
 					<ul id="sub_menu">
 						<li><a href="/admin/login">HOME</a></li>
 					</ul>
+				</li> -->
 				<li>상품관리
 					<ul id="sub_menu">
 						<li><a href="/admin/product/adminProductList?page=1">상품관리
@@ -34,9 +35,15 @@
 					<ul id="sub_menu">
 						<li><a href="/admin/member/adminMemberList?page=1">회원정보
 								관리</a></li>
-						<li><a href="/admin/reservation/adminReservationWaitingList?page=1&order_by=rest_status&order_sc=ASC">예약정보 관리</a></li>
-						<li><a href="/admin/reservation/adminReservationRefundList?page=1&order_by=rest_status&order_sc=DESC">환불 관리</a></li>
-						<li><a href="/admin/rental/adminRentalList?page=1&order_by=rent_status&order_sc=ASC">대여/반납 관리</a></li>
+						<li><a
+							href="/admin/reservation/adminReservationWaitingList?page=1&order_by=rest_status&order_sc=ASC">예약정보
+								관리</a></li>
+						<li><a
+							href="/admin/reservation/adminReservationRefundList?page=1&order_by=rest_status&order_sc=DESC">환불
+								관리</a></li>
+						<li><a
+							href="/admin/rental/adminRentalList?page=1&order_by=rent_status&order_sc=ASC">대여/반납
+								관리</a></li>
 					</ul>
 				</li>
 				<li>고객센터

@@ -47,7 +47,6 @@
 
 		$(".order").click(function() {
 			var order_by = $(this).attr("data-value");
-			alert("선택값 : " + order_by);
 			$("#order_by").val(order_by);
 			if ($("#order_sc").val() == 'DESC') {
 				$("#order_sc").val('ASC');
@@ -233,7 +232,7 @@
 						<c:when test="${not empty adminReservationRefundList}">
 							<c:forEach var="reservationRefund"
 								items="${adminReservationRefundList}" varStatus="status">
-								<tr data-num="${reservationRefund.rest_number}" data-rest_status="${reservationWaiting.rest_status}" id="list_th">
+								<tr data-num="${reservationRefund.rest_number}" data-rest_status="${reservationRefund.rest_status}" id="list_th">
 									<td><input type="radio" class="updateRest_status"
 										name="updateRest_status"></td>
 									<td>${reservationRefund.rest_bnumber}</td>

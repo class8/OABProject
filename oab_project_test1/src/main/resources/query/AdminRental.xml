@@ -110,7 +110,7 @@
 			select rental_seq.nextval from dual
 		</selectKey>
 		INSERT INTO rental_tbl(rent_number,rest_number,mt_id,pt_number,rent_status,rent_actrent,rent_expretrun)
-		VALUES (#{rent_number},#{rest_number},#{mt_id},#{pt_number},#{rent_status},sysdate,sysdate+4/24)
+		VALUES (#{rent_number},#{rest_number},#{mt_id},#{pt_number},'대여중',sysdate,sysdate+4/24)
 	</insert>
 	
 	<delete id="adminRentalDelete" parameterType="adminRental">

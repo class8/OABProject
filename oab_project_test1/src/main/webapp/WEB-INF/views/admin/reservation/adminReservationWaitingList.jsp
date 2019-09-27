@@ -47,7 +47,6 @@
 
       $(".order").click(function() {
          var order_by = $(this).attr("data-value");
-         alert("선택값 : " + order_by);
          $("#order_by").val(order_by);
          if ($("#order_sc").val() == 'DESC') {
             $("#order_sc").val('ASC');
@@ -116,7 +115,7 @@
    <div class="main_content">
 
       <div class="contentTit">
-         <h2>예약 정보</h2>
+         <h2>예약 대기</h2>
       </div>
 
       <form id="reservationStatusUpdate">

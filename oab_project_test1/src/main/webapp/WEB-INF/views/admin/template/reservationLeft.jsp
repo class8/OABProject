@@ -8,6 +8,7 @@
 
 	<h3 align="center">MEMBER</h3>
 	<ul>
+		<li><a href="/admin/member/adminMemberList?page=1">회원정보 관리</a></li>
 		<li><a href="/admin/reservation/adminReservationWaitingList?page=1&order_by=rest_status&order_sc=ASC">예약대기 관리</a></li>
 		<li><a href="/admin/reservation/adminReservationCompleteList?page=1&order_by=rest_status&order_sc=ASC">예약완료 관리</a></li>
 		<li><a href="/admin/reservation/adminReservationCancelList?page=1&order_by=rest_status&order_sc=ASC">예약취소 관리</a></li>

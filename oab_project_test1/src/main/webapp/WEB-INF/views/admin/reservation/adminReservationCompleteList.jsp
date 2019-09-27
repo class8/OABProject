@@ -47,7 +47,6 @@
 
 		$(".order").click(function() {
 			var order_by = $(this).attr("data-value");
-			alert("선택값 : " + order_by);
 			$("#order_by").val(order_by);
 			if ($("#order_sc").val() == 'DESC') {
 				$("#order_sc").val('ASC');

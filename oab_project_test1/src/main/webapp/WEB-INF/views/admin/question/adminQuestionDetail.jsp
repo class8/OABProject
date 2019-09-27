@@ -30,7 +30,7 @@
 		var file = "<c:out value='${detail.qt_file}'/>";
 		if (file != "") {
 			$("#fileImage").attr({
-				src : "/uploadStorage/thumb/${detail.qt_file}",
+				src : "/uploadStorage/qt_file/${detail.qt_file}",
 				width : "250px",
 				height : "100px"
 			});

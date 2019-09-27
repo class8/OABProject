@@ -61,17 +61,6 @@
 		$("#searchData").click(function() {
 			goPage(1);
 		});
-		/* $(".order").click(function() {
-			var order_by = $(this).attr("data-value");
-			console.log("선택값 : " + order_by);
-			$("#order_by").val(order_by);
-			if ($("#order_sc").val() == 'DESC') {
-				$("#order_sc").val('ASC');
-			} else {
-				$("#order_sc").val('DESC');
-			}
-			goPage(1);
-		}); */
 
 		$(".order").click(function() {
 			var order_by = $(this).attr("data-value");
@@ -132,6 +121,7 @@
 
 		<div class="contentTit">
 			<h2>공 지 사 항</h2>
+			<input type="button" value="글 쓰 기" id="insertFormBtn">
 		</div>
 
 		<!-- 상세페이지 이동을 위한 Form -->
@@ -198,10 +188,6 @@
 				list_size="${data.pageSize}" />
 		</div>
 
-		<!-- <div class="contentBtn">
-			<input type="button" value="글 쓰 기" id="insertFormBtn">
-		</div>
- -->
 
 		<!-- 검색 기능 시작 -->
 		<div class="noticeSearch">
@@ -226,12 +212,8 @@
 					</tr>
 				</table>
 			</form>
-
-			<div class="contentBtn">
-				<input type="button" value="글 쓰 기" id="insertFormBtn">
-			</div>
-
 		</div>
+
 	</div>
 </body>
 </html>

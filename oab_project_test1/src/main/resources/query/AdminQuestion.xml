@@ -35,8 +35,7 @@
 		RNUM
 		FROM (
 		<include refid="adminQuestionCommon"></include>
-
-		order by qt_level
+		order by qt_number, qt_level
 		) list
 		)
 		<where>
