@@ -119,6 +119,12 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return memberDao.UserInfoListCnt(uvo);
 	}
+	
+	@Override
+	public int UserInfoListTotal(UserInfoVO uvo) {
+		// TODO Auto-generated method stub
+		return memberDao.UserInfoListTotal(uvo);
+	}
 
 	@Override
 	public List<RentalVO> memberrentalInfo(RentalVO revo) {

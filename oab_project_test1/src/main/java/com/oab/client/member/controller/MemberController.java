@@ -214,10 +214,15 @@ public class MemberController {
 		// 페이지 세팅
 		Paging.setPage(uvo);
 		// 전체 레코드수 구현
-		int total = memberService.UserInfoListCnt(uvo);
+		int total = memberService.UserInfoListTotal(uvo);
+		int count = memberService.UserInfoListCnt(uvo);
+		
 		// 글번호 재설정
-		int count = total - (Util.nvl(uvo.getPage()) - 1) * Util.nvl(uvo.getPageSize());
-
+		/*
+		 * int count = total - (Util.nvl(uvo.getPage()) - 1) *
+		 * Util.nvl(uvo.getPageSize());
+		 */
+		
 		String id = "";
 		LoginVO login = (LoginVO) session.getAttribute("login");
 		if (login == null) {

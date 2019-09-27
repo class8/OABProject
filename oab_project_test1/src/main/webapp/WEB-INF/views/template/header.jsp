@@ -33,7 +33,7 @@
 		</li>
 		<li>이용안내
 			<ul>
-				<li><a href="/product/productList">상품소개</a></li>
+				<li><a href="/product/productSetList">상품소개</a></li>
 				<li><a href="/reservation/reservationReg">예약하기</a></li>
 				<li><a href="/review/reviewList">포토후기</a></li>
 			</ul>

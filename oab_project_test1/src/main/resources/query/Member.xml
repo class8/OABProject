@@ -77,29 +77,39 @@
 		where mt_id=#{mt_id}
 	</update>
 
-	<select id="UserInfoListCnt" parameterType="UserInfo"
+	<select id="UserInfoListTotal" parameterType="UserInfo"
 		resultType="int">
 		SELECT nvl(count(rest_bnumber),0) as cnt
-		from RESERVATION_TBL
-		<!-- from (SELECT list.* , ROWNUM
+		from (SELECT list.* , ROWNUM
 		AS RNUM FROM
 		( select * from RESERVATION_TBL )
 		list)
-		<where>
-			<if test="start_row != null and start_row != ''">
-				<if test="end_row != null and end_row != ''">
-					and RNUM BETWEEN #{start_row} AND #{end_row}
-				</if>
-			</if>
-		</where> -->
+		
 	</select>
+	
+	<select id="UserInfoListCnt" parameterType="UserInfo"
+		resultType="int">
+		SELECT nvl(count(rest_bnumber),0) as cnt
+		from (SELECT list.* , ROWNUM
+		AS RNUM FROM
+		( select * from RESERVATION_TBL )
+		list)
+		<if test="start_row != null and start_row != ''">
+			<if test="end_row != null and end_row != ''">
+				<where>
+					RNUM BETWEEN #{start_row} AND #{end_row}
+				</where>
+			</if>
+		</if>
+	</select>
+
 	<select id="RentalInfoListCnt" parameterType="Rental"
 		resultType="int">
 		SELECT nvl(count(rest_number),0) as cnt
 		from RENTAL_TBL
-		
+
 	</select>
-	
+
 
 	<select id="memberUserInfo" parameterType="UserInfo"
 		resultType="UserInfo">
@@ -134,7 +144,8 @@
 		FROM(SELECT list.* , ROWNUM AS RNUM FROM(select * from
 		RENTAL_TBL)
 		list) re, RESERVATION_TBL r, member_tbl m
-		WHERE r.rest_number = re.rest_number and r.mt_id= m.mt_id and r.mt_id = #{mt_id}
+		WHERE r.rest_number = re.rest_number and r.mt_id= m.mt_id and r.mt_id =
+		#{mt_id}
 		<if test="start_row != null and start_row != ''">
 			<if test="end_row != null and end_row != ''">
 				and RNUM BETWEEN #{start_row} AND #{end_row}
