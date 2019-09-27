@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page trimDirectiveWhitespaces="true"%>
@@ -33,14 +33,14 @@
 		</li>
 		<li>이용안내
 			<ul>
-				<li><a href="/product/productSetList">상품소개</a></li>
+				<li><a href="/product/productList">상품소개</a></li>
 				<li><a href="/reservation/reservationReg">예약하기</a></li>
 				<li><a href="/review/reviewList">포토후기</a></li>
 			</ul>
 		</li>
 		<li>마이페이지
 			<ul>
-				<li><a href="/member/memberUserInfo">내 이용정보</a></li>
+				<li><a href="/member/info/memberUserInfo">내 이용정보</a></li>
 				<li><a href="/member/memberModify">내 정보수정</a></li>
 				<li><a href="/member/memberSecede">회원 탈퇴</a></li>
 			</ul>
@@ -48,8 +48,8 @@
 		<li>고객센터
 			<ul>
 				<li><a href="/faq/faqPage">자주묻는질문</a></li>
-				<li><a href="/question/questionWrite">1:1 문의 하기</a></li>
-				<li><a href="/question/questionList">내 문의 리스트</a></li>
+				<li><a href="/question/questionWrite">1:1 문의</a></li>
+				<li><a href="/question/questionList">내가 한 문의</a></li>
 				<li><a href="/login/find">ID/PW찾기</a></li>
 			</ul>
 		</li>
