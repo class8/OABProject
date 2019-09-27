@@ -263,7 +263,7 @@
 
 
       <div class="reservationSearch">
-         <form>
+         <form id="reservationSearch">
             <input type="hidden" id="page" name="page" value="${data.page}">
             <input type="hidden" id="pageSize" name="pageSize"
                value="${data.pageSize}"> <input type="hidden"

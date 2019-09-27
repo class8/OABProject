@@ -201,6 +201,7 @@
 							</c:choose>
 						</th>
 						<th>초과시간</th>
+						<th>추가금액</th>
 						<th data-value="rent_actretrun" class="order">실반납일 <c:choose>
 								<c:when
 									test="${data.order_by=='rent_actretrun' and data.order_sc == 'ASC'}">▲</c:when>
