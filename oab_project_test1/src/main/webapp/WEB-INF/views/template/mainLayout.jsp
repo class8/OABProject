@@ -31,7 +31,7 @@
 					<c:forEach var="product" items="${setList}" varStatus="status">
 						<article class="main_item">
 							<p>${product.pt_name}</p>
-							<a href="/product/productList"> <img
+							<a href="/product/productSetList"> <img
 								class="product_thumbnail"
 								src="/uploadStorage/thumb/${product.pt_thumb}">
 							</a>
