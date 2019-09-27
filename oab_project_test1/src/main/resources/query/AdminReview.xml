@@ -19,8 +19,8 @@
 	</sql>
 
 	<!-- 게시물 전체 조회 -->
-	<select id="adminReviewList" parameterType="adminReview"
-		resultType="adminReview">
+	<select id="adminReviewList" parameterType="review"
+		resultType="review">
 		SELECT *
 		FROM
 		(SELECT list.*, ROWNUM AS RNUM
@@ -48,7 +48,7 @@
 	</select>
 
 	<!-- 게시물 카운트 페이징 -->
-	<select id="adminReviewListCnt" parameterType="adminReview"
+	<select id="adminReviewListCnt" parameterType="review"
 		resultType="int">
 		SELECT NVL(count(1), 0) FROM
 		(SELECT list.*, ROWNUM AS RNUM
@@ -61,7 +61,7 @@
 
 	<!-- 상세 페이지를 위한 게시물 조회 -->
 	<select id="adminReviewDetail" parameterType="int"
-		resultType="adminReview">
+		resultType="review">
 		<!-- Board - boardDetail -->
 		SELECT
 		REVT_NUMBER, MT_ID, REVT_TITLE, REVT_WRITER, REVT_CONTENT,
@@ -75,14 +75,14 @@
 	</select>
 
 	<!-- 게시물 삭제 -->
-	<delete id="adminReviewDelete" parameterType="adminReview">
+	<delete id="adminReviewDelete" parameterType="review">
 		delete from
 		review_tbl
 		where revt_number = #{revt_number}
 	</delete>
 
 	<!-- 게시글 작성 -->
-	<insert id="reviewInsert" parameterType="adminReview">
+	<insert id="reviewInsert" parameterType="review">
 		<selectKey keyProperty="revt_number" resultType="int"
 			order="BEFORE">
 			select REVIEW_SEQ.nextval from dual

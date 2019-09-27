@@ -95,7 +95,6 @@ public class AdminNoticeController {
 		if (detail != null && (!detail.equals(""))) {
 			adminNoticeService.adminReadCntUpdate(nvo);
 			detail.setNt_content(detail.getNt_content().toString().replaceAll("\n", "<br>"));
-			System.out.println(detail.getNt_readcnt());
 		}
 
 		model.addAttribute("detail", detail);

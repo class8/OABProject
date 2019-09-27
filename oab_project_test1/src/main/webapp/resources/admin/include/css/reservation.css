@@ -53,8 +53,6 @@ table {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	text-align: center;
-	border-bottom: 1px solid #c0c0c0;
-	border-top: 1px solid #000000;
 }
 
 .contentTB_D {
@@ -109,8 +107,6 @@ select {
 .reservationSearch {
 	width: 1400px;
 	height: 50px;
-	border-bottom: 1px solid #804040;
-	border-top: 1px solid #804040;
 	float: left;
 	margin-right: 140px;
 	margin-top: 30px;

@@ -78,7 +78,7 @@
 	<insert id="adminReplyInsert" parameterType="adminQuestion">
 		<selectKey keyProperty="qt_number" resultType="int"
 			order="BEFORE">
-			select notice_tbl_seq.nextval from dual
+			select question_seq.nextval from dual
 		</selectKey>
 		insert into question_tbl(QT_NUMBER, MT_ID, QT_TITLE, QT_CONTENT,
 		QT_STATUS, QT_PW, QT_REGDATE, QT_WRITER, QT_ROOT, QT_STEP, QT_LEVEL)
