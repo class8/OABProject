@@ -11,31 +11,22 @@
 <meta charset="UTF-8">
 <title>문의 글 목록을 불러오는 곳</title>
 <link href="/resources/include/css/question.css" rel="stylesheet">
-
 <script type="text/javascript"
 	src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-
 		/* 제목 클릭시 상세페이지 이동을 위한 처리 이벤트 */
 		$(".goDetail").click(function() {
-
 			var qt_number = $(this).parents("tr").attr("data-num");
 			$("#qt_number").val(qt_number);
 			console.log("글번호 : " + qt_number);
-
 			//상세 페이지로 이동하기 위해 form 추가하기 (id : noticeDetailForm)
 			$("#questionDetailForm").attr({
-
 				"method" : "get",
 				"action" : "/question/questionDetail"
-
 			});
-
 			$("#questionDetailForm").submit();
-
 		});
-
 		// 한페이지에 보여줄 레코드 수가 변경될 때마다 처리 이벤터 
 		$("#pageSize").change(function() {
 			goPage(1);
@@ -54,7 +45,6 @@
 		$("#notice_search").submit();
 	}
 </script>
-
 </head>
 <body>
 	<c:if test="${login.mt_id != null }">
@@ -64,74 +54,68 @@
 				<br>
 				<hr>
 			</div>
-			<%--============================ 상세 페이지 이동을 위한 FORM ============================== --%>
-
-			<form name="questionDetailForm" id="questionDetailForm">
-				<input type="hidden" name="qt_number" id="qt_number"> <input
-					type="hidden" name="page" value="${data.page}"> <input
-					type="hidden" name="pageSize" value="${data.pageSize}">
-			</form>
-
-
-
-			<%--============================ 리스트 시작 ============================== --%>
-			<div id="questionList">
-				<form id="question_search" name="question_search">
-					<input type="hidden" id="page" name="page" value="${data.page}">
+			<c:if test="${not empty questionList}">
+				<%--============================ 상세 페이지 이동을 위한 FORM ============================== --%>
+				<form name="questionDetailForm" id="questionDetailForm">
+					<input type="hidden" name="qt_number" id="qt_number"> <input
+						type="hidden" name="page" value="${data.page}"> <input
+						type="hidden" name="pageSize" value="${data.pageSize}">
 				</form>
-				<table summary="문의사항 리스트" id="questionListTable">
-					<colgroup>
-						<col width="10%" />
-						<col width="60%" />
-						<col width="10%" />
-						<col width="10%" />
-						<col width="10%" />
-					</colgroup>
-					<thead>
-						<tr>
-							<th data-value="qt_number" class="order">글 번 호</th>
-							<th data-value="qt_title" class="order">글 제 목</th>
-							<th data-value="qt_regdate" class="order">작 성 일</th>
-							<th class="qt_writer">작 성 자</th>
-							<th class="qt_status">답변 여부</th>
-						</tr>
-					</thead>
+				<%--============================ 리스트 시작 ============================== --%>
+				<div id="questionList">
+					<form id="question_search" name="question_search">
+						<input type="hidden" id="page" name="page" value="${data.page}">
+					</form>
+					<table summary="문의사항 리스트" id="questionListTable">
+						<colgroup>
+							<col width="10%" />
+							<col width="60%" />
+							<col width="10%" />
+							<col width="10%" />
+							<col width="10%" />
+						</colgroup>
+						<thead>
+							<tr>
+								<th data-value="qt_number" class="order">글 번 호</th>
+								<th data-value="qt_title" class="order">글 제 목</th>
+								<th data-value="qt_regdate" class="order">작 성 일</th>
+								<th class="qt_writer">작 성 자</th>
+								<th class="qt_status">답변 여부</th>
+							</tr>
+						</thead>
+						<%--- 데이터를 출력합니다. --%>
+						<tbody id="question_datalist">
+							<c:choose>
+								<c:when test="${not empty questionList }">
+									<c:forEach var="question" items="${questionList}"
+										varStatus="status">
+										<tr class="tac" data-num="${question.qt_number}">
+											<td>${question.qt_number}</td>
+											<td class="goDetail tal" id="qt_title">${question.qt_title }</td>
+											<td id="nt_regdate_1">${question.qt_regdate }</td>
+											<td class="writer">${question.qt_writer }</td>
+											<td class="qt_status">${question.qt_status }</td>
+										</tr>
+									</c:forEach>
+								</c:when>
+							</c:choose>
+						</tbody>
+					</table>
+				</div>
+				<%-- ================= 페이지 네비게이션 시작 ==================== --%>
+				<div id="questionPage">
+					<tag:paging page="${param.page}" total="${total}" list_size="10"></tag:paging>
+				</div>
+				<%-- ================= 페이지 네비게이션 종료 ==================== --%>
+			</c:if>
+			<c:if test="${empty questionList}">
+				<div class="img">
+					<a href="/question/questionWrite"> <img id="questionimg"
+						src="/resources/images/question/question_22.PNG">
+					</a>
+				</div>
+			</c:if>
 
-					<%--- 데이터를 출력합니다. --%>
-					<tbody id="question_datalist">
-						<c:choose>
-							<c:when test="${not empty questionList }">
-
-								<c:forEach var="question" items="${questionList}"
-									varStatus="status">
-
-									<tr class="tac" data-num="${question.qt_number}">
-
-										<td>${question.qt_number}</td>
-										<td class="goDetail tal" id="qt_title">${question.qt_title }</td>
-										<td id="nt_regdate_1">${question.qt_regdate }</td>
-										<td class="writer">${question.qt_writer }</td>
-										<td class="qt_status">${question.qt_status }</td>
-									</tr>
-								</c:forEach>
-							</c:when>
-							<c:otherwise>
-								<tr>
-									<td colspan="5" class="tac"> 등록된 문의 사항이 존재하지 않습니다. <br>
-										<a href="/question/questionWrite" display="none">문의 사항 등록하기</a> : 감사합니다 !
-									</td>
-								</tr>
-							</c:otherwise>
-						</c:choose>
-					</tbody>
-				</table>
-			</div>
-
-			<%-- ================= 페이지 네비게이션 시작 ==================== --%>
-			<div id="questionPage">
-				<tag:paging page="${param.page}" total="${total}" list_size="10"></tag:paging>
-			</div>
-			<%-- ================= 페이지 네비게이션 종료 ==================== --%>
 		</div>
 	</c:if>
 	<c:if test="${empty login.mt_id}">

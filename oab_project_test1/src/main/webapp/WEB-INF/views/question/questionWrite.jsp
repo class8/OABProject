@@ -68,7 +68,6 @@
 					</div>
 					<div class="buttoncss">
 						<input type="button" value="등록" class="but" id="questionInsertBtn">
-						<input type="button" value="돌아가기" class="but" id="questionListBtn">
 					</div>
 				</form>
 			</div>

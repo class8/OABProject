@@ -62,8 +62,7 @@
 							else if ($("#qt_pw").val() != $("#qt_writerPwCheck")
 									.val()) { //입력한 비밀번호와 DB의 비밀번호가 틀리다면
 								alert("입력하신 비밀번호가 일치하지 않습니다.");
-								$("#delete_questionBtn").focus();
-								$("#delete_questionBtn").val("");
+								$("#qt_writerPwCheck").val("");
 
 							} else if (confirm("[${detail.qt_title}]"
 									+ " 작성하신 문의 글을 정말 삭제하시겠습니까?")) { //입력한 비밀번호가 맞을경우
