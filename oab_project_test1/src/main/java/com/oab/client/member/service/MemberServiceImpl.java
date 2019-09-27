@@ -121,10 +121,10 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<RentalVO> memberrentalInfo(UserInfoVO uvo) {
+	public List<RentalVO> memberrentalInfo(RentalVO revo) {
 		List<RentalVO> reList = null;
 
-		reList = memberDao.memberrentalInfo(uvo);
+		reList = memberDao.memberrentalInfo(revo);
 	      return reList;
 	}
 

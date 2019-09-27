@@ -16,6 +16,7 @@ public interface MemberDao {
 	public int securityDelete(String mt_id);
 
 	public MemberVO memberSelect(String mt_id);
+	
 	public MemberVO mt_EmailConfirm(String mt_email);
 
 	public int memberInsert(MemberVO mvo);
@@ -36,7 +37,7 @@ public interface MemberDao {
 
 	public int UserInfoListCnt(UserInfoVO uvo);
 	
-	public List<RentalVO> memberrentalInfo(UserInfoVO uvo);
+	public List<RentalVO> memberrentalInfo(RentalVO revo);
 	
 	public int RentalInfoListCnt(RentalVO revo);
 }

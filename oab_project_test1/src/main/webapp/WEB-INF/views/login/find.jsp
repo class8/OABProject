@@ -28,8 +28,7 @@
 							<col width="20%" />
 							<col width="*" />
 						</colgroup>
-						<tr class="user-name" height="38"
-							style="border-bottom: 1px solid;">
+						<tr class="user-name">
 							<th><div>이메일</div></th>
 
 							<td><div>
@@ -42,7 +41,7 @@
 								</div></td>
 						</tr>
 						
-						<tr height="38" id="find_id_email_wrap">
+						<tr id="find_id_email_wrap">
 							<th><div>이&nbsp;&nbsp;름</div></th>
 
 							<td><div>

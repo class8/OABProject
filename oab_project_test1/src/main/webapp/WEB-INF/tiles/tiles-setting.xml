@@ -57,15 +57,22 @@
 			value="/WEB-INF/views/member/memberSecede.jsp" />
 	</definition>
 
-	<definition name="member/info/*" extends="content">
+	<definition name="member/info/memberUserInfo" extends="content">
 		<put-attribute name="title" value="내 이용 내역" />
 		<put-attribute name="main_aside"
 			value="/WEB-INF/views/template/aside3.jsp" />
 		<put-attribute name="main_body"
 			value="/WEB-INF/views/member/info/memberUserInfo.jsp" />
-		<put-attribute name="body"
+	</definition>
+	
+	<definition name="member/info/memberRentalInfo" extends="content">
+		<put-attribute name="title" value="내 대여/반납내역" />
+		<put-attribute name="main_aside"
+			value="/WEB-INF/views/template/aside3.jsp" />
+		<put-attribute name="main_body"
 			value="/WEB-INF/views/member/info/memberRentalInfo.jsp" />
 	</definition>
+	
 	<definition name="member/join_success" extends="content">
 		<put-attribute name="title" value="회원가입 성공" />
 		<put-attribute name="main_body"

@@ -102,9 +102,9 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public List<RentalVO> memberrentalInfo(UserInfoVO uvo) {
+	public List<RentalVO> memberrentalInfo(RentalVO revo) {
 		// TODO Auto-generated method stub
-		return session.selectList("RentalInfo", uvo);
+		return session.selectList("RentalInfo", revo);
 	}
 
 	@Override

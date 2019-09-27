@@ -70,20 +70,22 @@
 	<input type="hidden" id="rest_payoption" name="rest_payoption">
 	<!-- 예약상태 저장 공간  -->
 	<!-- </form> -->
-	<h2 class="sub-header">
-		내 이용리스트
-		<button type="button" class="btntest" id="refund">취소/환불요청</button>
-	</h2>
+
 	<!-- <div class="well">
 		<form class="form-inline" id="f_search" name="f_search"> -->
 	<form id="pagemoveform">
-	<input type="hidden" id="page" name="page" value="${data.page}">
-	<input type="hidden" id="pageSize" name="pageSize" value="${data.pageSize}">
-	</form>	
+		<input type="hidden" id="page" name="page" value="${data.page}">
+		<input type="hidden" id="pageSize" name="pageSize"
+			value="${data.pageSize}">
 
+	</form>
 
 	<div id="listHeader">
+		<p>내 이용 리스트</p>
+		<button type="button" class="btntest" id="refund">취소/환불요청</button>
 		<p>예약 목록(전체 예약 건:${total})</p>
+		<a href="/member/info/memberUserInfo">이용 리스트</a>
+		<a href="/member/info/memberRentalInfo">대여/반납 리스트</a>
 	</div>
 
 	<div class="table-responsive">

@@ -97,7 +97,7 @@
 					- 대여서비를 이용하고 계신 고객님은 탈퇴가 불가능하오니, 반납후 탈퇴 진행이 가능합니다.
    </textarea> <br> <br> <label style="width: 700px"><input
 						type="checkbox" name="check" class="check" id="check"><span>위
-							내용을 모두 확인s 하였으며, 탈퇴시 모든 정보가 복구 불가능함에 동의합니다. </span></label>
+							내용을 모두 확인 하였으며, 탈퇴시 모든 정보가 복구 불가능함에 동의합니다. </span></label>
 
 					<hr>
 				</td>

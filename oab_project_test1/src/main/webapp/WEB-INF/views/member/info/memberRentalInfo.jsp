@@ -16,24 +16,31 @@
 $(function() {
 	$("#pageSize").change(function() {
 		goPage(1);
-	})
+	});
+});
 	function goPage(page) {
 		$("#page").val(page);
 		$("#repagemoveform").attr({
 			"method" : "get",
-			"action" : "/member/info/memberUserInfo"
+			"action" : "/member/info/memberRentalInfo"
 		});
 		$("#repagemoveform").submit();
-	};
+	}
 </script>
 </head>
 <body>
 	<input type="hidden" id="rest_number" name="rest_number"
 		value="${Reninfo.rest_number}" />
+		
 	<h2 class="sub-header">내 대여 /반납리스트</h2>
+	
+	<a href="/member/info/memberUserInfo">이용 리스트</a>
+	<a href="/member/info/memberRentalInfo">대여/반납 리스트</a>
+	
 	<form id="repagemoveform">
-	<input type="hidden" id="page" name="page" value="${data.page}">
-	<input type="hidden" id="pageSize" name="pageSize" value="${data.pageSize}">
+		<input type="hidden" id="page" name="page" value="${data.page}">
+		<input type="hidden" id="pageSize" name="pageSize"
+			value="${data.pageSize}">
 	</form>
 	<div class="rentaltable">
 		<table class="rental">
@@ -70,7 +77,7 @@ $(function() {
 			</tbody>
 		</table>
 		<%-- ============= 페이지 네비게이션 시작 ============ --%>
-		<div id="memberUserInfoPaging">
+		<div id="memberReInfoPaging">
 			<tag:paging page="${param.page}" total="${total}"
 				list_size="${data.pageSize}" />
 		</div>

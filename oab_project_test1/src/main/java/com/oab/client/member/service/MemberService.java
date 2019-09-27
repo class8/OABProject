@@ -25,7 +25,7 @@ public interface MemberService {
 
 	public int UserInfoListCnt(UserInfoVO uvo);
 	
-	public List<RentalVO> memberrentalInfo(UserInfoVO uvo);
+	public List<RentalVO> memberrentalInfo(RentalVO revo);
 	
 	public int RentalInfoListCnt(RentalVO revo);
 
