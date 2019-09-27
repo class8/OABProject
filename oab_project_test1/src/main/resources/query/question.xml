@@ -4,14 +4,21 @@
 
 <mapper namespace="com.oab.client.question.dao.QuestionDao">
 
-
-	<!-- 게시물 기본 조회 2019.09.20 -->
+	<sql id="questionCommon">
+		SELECT *
+		FROM QUESTION_TBL
+		<where>
+			<if test="search == 'pt_name'">
+   <![CDATA[pt_name LIKE '%' || #{keyword} || '%']]>
+			</if>
+			<if test="search == 'pt_type'">
+   <![CDATA[pt_type LIKE '%' || #{keyword} || '%']]>
+			</if>
+		</where>
+	</sql>
+	<!-- 게시물 기본 조회 2019.09.02 -->
 	<select id="questionList" resultType="question"
 		parameterType="String">
-
-		<!-- <selectKey keyProperty="MT_ID1" resultType="String" order="BEFORE"> 
-			SELECT mt_id from QUESTION_TBL WHERE mt_id = MT_ID1 </selectKey> -->
-
 		SELECT
 		qt_number,
 		mt_id,
@@ -32,20 +39,29 @@
 			</if>
 		</if>
 		order by qt_number desc
+
+	</select>
+	<!-- 페이지 -->
+	<select id="questionListCnt" parameterType="question"
+		resultType="int">
+		<!-- Board - boardListCnt -->
+		SELECT NVL(count(1), 0)
+
+		FROM (
+		<include refid="questionCommon"></include>
+		ORDER BY qt_number desc
+		) list
+
 	</select>
 
 	<!-- 게시물의 상세보기를 위한 select문입니다. -->
 
 	<select id="questionDetail" parameterType="int"
 		resultType="question">
-
 		<!-- question - questionDetail -->
-
-		SELECT
-
-		qt_number, qt_title, qt_content, qt_status, qt_pw
+		SELECT qt_number, qt_title, qt_content, qt_status, qt_pw
 		,to_char(qt_regdate,
-		'YYYY-MM-DD') as qt_regdate, qt_writer
+		'YYYY-MM-DD') as qt_regdate, qt_writer , qt_file
 		FROM
 		QUESTION_TBL
 		WHERE qt_number
@@ -97,7 +113,6 @@
 		)
 
 	</insert>
-
 	<!-- 문의 게시물 카운트 페이징 -->
 
 	<!-- <select id="noticeListCnt" parameterType="notice" resultType="int"> 
@@ -124,6 +139,12 @@
 		WHERE qt_number =
 		#{qt_number}
 	</update>
+
+	<!-- <update id="qusetionUpdate" parameterType="question"> UPDATE QUESTION_TBL 
+		SET <if test="qt_file != '' and qt_file != null "> qt_file = #{qt_file}, 
+		</if> qt_writer = #{qt_writer}, qt_content = #{qt_content} WHERE qt_number 
+		= #{qt_number} </update> -->
+
 
 
 	<delete id="questionDelete" parameterType="question">

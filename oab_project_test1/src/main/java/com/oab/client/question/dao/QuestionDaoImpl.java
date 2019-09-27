@@ -43,6 +43,12 @@ public class QuestionDaoImpl implements QuestionDao {
 		return session.delete("questionDelete", qt_number);
 	}
 
+	//전체 레코드 건수를 구현한다
+	@Override
+	public int questionListCnt(QuestionVO qvo) {
+		return (Integer) session.selectOne("questionListCnt");
+	}
+
 
 
 }

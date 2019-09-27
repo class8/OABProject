@@ -80,4 +80,10 @@ public class QuestionserviceImpl implements QuestionService {
 		return 0;
 	}
 
+	//문의글 페이지 레코드 수 구현하기
+	@Override
+	public int questionListCnt(QuestionVO qvo) {
+		return questionDao.questionListCnt(qvo);
+	}
+
 }

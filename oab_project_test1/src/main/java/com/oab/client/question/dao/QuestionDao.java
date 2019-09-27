@@ -16,4 +16,6 @@ public interface QuestionDao {
 
 	public int questionDelete(int qt_number); // 문의 글 삭제
 
+	public int questionListCnt(QuestionVO qvo); //문의 글 리스트
+
 }

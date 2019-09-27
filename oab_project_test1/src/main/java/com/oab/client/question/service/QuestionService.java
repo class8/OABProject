@@ -17,4 +17,6 @@ public interface QuestionService {
 
 	public int questionDelete(int qt_number); //삭제기능
 
+	public int questionListCnt(QuestionVO qvo); //글 목록
+
 }
