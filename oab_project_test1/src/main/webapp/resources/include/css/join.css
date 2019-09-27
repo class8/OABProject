@@ -1,67 +1,93 @@
 @charset "UTF-8";
 
+#mainsize {
+	margin: 0px;
+	width: 100%;
+}
+
+div table {
+	float: left;
+	width: 40%;
+	height: 200px;
+}
+
+.contentContainer {
+	float: left;
+	width: 50%;
+}
+
+div .form-group {
+	margin-top: 25px;
+	margin-left: 30px;
+	width: 100%;
+}
+
+
+hr {
+	border-color: #deefef;
+	border-width: 4px;
+	padding-left: 160px;
+	width: 365px;
+}
 b {
 	font-size: 20px;
 	font-family: 돋음;
 	font-weight: bolder;
-	color: #0BC904;
+	color: #737373;
+	margin-left: 200px;
 }
-
-hr {
-	border-color: #0BC904;
-	border-width: 4px;
-	padding-left: 160px;
-	width: 1000px;
+#joinInsert {
+	width: 230px;
+	height: 34px;
+	text-align: center;
+	margin-top: 10px;
+	margin-left: 25px;
+	background-color: #deefef;
+	border: none;
 }
-
-#memberForm fieldset {
-	width: 58%;
-	padding: 15px;
-	border: 1px solid #7BAEB5;
+#joinReset {
+	width: 230px;
+	height: 34px;
+	text-align: center;
+	margin-top: 10px;
+	margin-left: 25px;
+	background-color: #deefef;
+	border: none;
 }
-#memberForm label, #loginForm label {
+#memberForm label {
 	display: inline-block;
 	width: 120px;
 	font-size: 14px;
 	font-weight: bold;
 	padding-left: 10px;
+	margin-right: 50px;
 	vertical-align: middle;
+	margin-bottom: 5px;
 }
-
 #memberForm input[type='text'], #memberForm input[type='password'],
 	#memberForm input[type='email'] {
 	border: 1px solid #ccc;
 	padding: 3px 3px;
-	width: 180px;
+	width: 200px;
+	height: 20px;
 	vertical-align: middle;
 	font-size: 12px;
 	line-height: 150%;
+	vertical-align: middle;
+
 }
 
-.btn {
-	width: 60px;
-	height: 24px;
-	text-align: center;
-}
-
-span#memberMenu {
-	display: block;
-	width: 94%;
-}
-
-span#text {
+.error {
 	font-size: 12px;
-	color: #7BAEB5;
+	color: #969696;
 }
-
-span.error {
-	font-size: 12px;
-	color: #db0000;
+#idConfirmBtn {
+	background-color: #deefef;
+	border: none;
+	height: 27px;
+	margin-left: 5px;
 }
-
-span.testRefer {
-	font-size: 12px;
-	display: block;
-	padding-left: 135px;
-	color: #7BAEB5;
+label#checkbox {
+	width: 700px;
+	height: 20px;
 }

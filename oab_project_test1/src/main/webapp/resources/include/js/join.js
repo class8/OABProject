@@ -129,9 +129,6 @@ $(function() {
 		}
 	});
 
-	$("#joinCancel").click(function() {
-		location.href = "/login/login";
-	});
 
 	$("#joinReset").click(function() {
 		$("#memberForm").each(function() {

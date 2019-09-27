@@ -70,11 +70,14 @@
 		}
 
 	});
-
-	$("#SecedeReset").click(function() {
-		location.href = "/login/login";
+	$(function() {
+		$("#SecedeReset").click(function() {
+			location.href = "/";
+		});
 	});
 </script>
+<link type="text/css" rel="stylesheet"
+	href="/resources/include/css/memberSecede.css">
 </head>
 <body>
 	<form name="deleteform" id="delete">
@@ -90,7 +93,7 @@
 						<span style="padding-left: 160px"> <b> OAB 텐트 회원 탈퇴</b></span>
 					</p>
 					<h4>유의사항 확인 후 탈퇴 신청을 해주세요</h4> <br> <textarea rows="7"
-						cols="130">
+						cols="130" readonly="readonly">
 					- 회원탈퇴를 하시면 OAB TENT 로 가입된 모든 서비스를 사용할 수 없습니다.
 					- 또한 OAB TENT 아이디로 서비스를 가입/사용 하면서 축적된 정보 및 기록은 
 					    모두 삭제 되며,복구가 불가능합니다.
@@ -104,25 +107,26 @@
 			</tr>
 		</table>
 
-
-		<div class="form-group">
-			<label for="mt_id" class="col-sm-2 control-label">아 이 디 </label>
-			<div class="col-sm-4">
-				<input type="text" id="mt_id" name="mt_id" class="form-control"
-					placeholder="ID">
+		<div>
+			<div class="form-group">
+				<label for="mt_id" id="mt_id" class="col-sm-2 control-label">아 이 디 </label>
+				<div class="col-sm-4">
+					<input type="text" id="mt_id" name="mt_id" class="form-control"
+						placeholder="ID">
+				</div>
+				<p class="form-control-static error"></p>
 			</div>
-			<p class="form-control-static error"></p>
-		</div>
-		<div class="form-group">
-			<label for="mt_pw" class="col-sm-2 control-label">비밀번호 </label>
-			<div class="col-sm-4">
-				<input type="password" id="mt_pw" name="mt_pw" class="form-control"
-					placeholder="Password">
+			<div class="form-group">
+				<label for="mt_pw" id="mt_pw" class="col-sm-2 control-label">비밀번호 </label>
+				<div class="col-sm-4">
+					<input type="password" id="mt_pw" name="mt_pw" class="form-control"
+						placeholder="Password">
+				</div>
+				<p class="form-control-static error"></p>
 			</div>
-			<p class="form-control-static error"></p>
+			<br> <input type="button" value="탈 &nbsp;&nbsp;퇴" id="memberSecede" /> <br><input
+				type="button" value="취 &nbsp;&nbsp;소" id="SecedeReset">
 		</div>
-		<br> <input type="button" value="탈퇴" id="memberSecede" /> <input
-			type="button" value="취소" id="SecedeReset">
 	</form>
 
 

@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+#delete label {
+	display: inline-block;
+	width: 120px;
+	font-size: 15px;
+	font-weight: bold;
+	padding-left: 10px;
+	vertical-align: middle;
+	/* margin-left: 80px;
+	margin-top: 30px; */
+	color: #828282;
+}
+
+#delete input[type='text'], #delete input[type='password'] {
+	border: 1px solid #ccc;
+	padding: 3px 3px;
+	width: 307px;
+	height: 30px;
+	vertical-align: middle;
+	font-size: 12px;
+	line-height: 150%;
+	vertical-align: middle;
+}
+
+hr {
+	border-color: #deefef;
+	border-width: 4px;
+	padding-left: 160px;
+	width: 1000px;
+}
+
+b {
+	font-size: 20px;
+	font-family: 돋음;
+	font-weight: bolder;
+	color: #737373;
+	margin-left: 350px;
+}
+
+div table {
+	margin-left: 160px;
+	width: 40%;
+	height: 200px;
+	width: 40%;
+}
+
+div .form-group {
+	margin-top: 25px;
+	margin-left: 603px;
+	width: 100%;
+}
+
+label #mt_id, #mt_pw {
+	display: inline-block;
+	font-size: 40px;
+	font-weight: bold;
+	padding-left: 10px;
+	vertical-align: middle;
+	/* margin-left: 80px;
+	margin-top: 30px; */
+	color: #828282;
+	margin-bottom: 5px;
+}
+
+#memberSecede {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	width: 312px;
+	height: 45px;
+	text-align: center;
+	margin-left: 603px;
+	background-color: #deefef;
+	border: none;
+	font-size: 15px;
+	color:#828282; 
+}
+
+#SecedeReset {
+	margin-bottom: 20px;
+	margin-top: 10px;
+	width: 312px;
+	height: 45px;
+	text-align: center;
+	margin-left: 603px;
+	background-color: #deefef;
+	border: none;
+	font-size: 15px;
+	color:#828282; 
+}
+
+.error {
+	font-size: 14px;
+	color: #ff0000;
+}

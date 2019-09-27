@@ -2,55 +2,94 @@
 
 
 
-#loginForm fieldset, #loginAfter {
-	width: 56%;
+#loginForm {
+	width: 30%;
+	height :600px;
 	padding: 15px;
 	border: 1px solid #7BAEB5;
+	float: center;
+	margin-top: 120px;
+	margin-left: 350px;
 }
 
-#memberForm label, #loginForm label {
+#loginForm label {
 	display: inline-block;
 	width: 120px;
-	font-size: 14px;
+	font-size: 15px;
 	font-weight: bold;
 	padding-left: 10px;
 	vertical-align: middle;
+	margin-left: 80px;
+	margin-top: 30px;
+	color: #828282;
+	
+}
+label #mt_id{
+	margin-top: 100px;
+}
+label #mt_pw{
+	margin-top: 5px;
 }
 
-#memberForm input[type='text'], #memberForm input[type='password'],
-	#memberForm input[type='email'] {
+#loginForm input[type='text'], #loginForm input[type='password']{
 	border: 1px solid #ccc;
 	padding: 3px 3px;
-	width: 180px;
+	width: 300px;
+	height: 35px;
 	vertical-align: middle;
 	font-size: 12px;
 	line-height: 150%;
+	margin-left: 80px;
+	margin-top: 9px;
+	
+}
+#login_img{
+	
+	margin-left: 109px;
 }
 
+#loginBtn{
+	margin-top: 40px;
+	margin-bottom: 5px;
+}
+#joinBtn{
+	margin-bottom: 20px;
+}
 .btn {
-	width: 60px;
-	height: 24px;
+	margin-top: 10px;
+	width: 307px;
+	height: 45px;
 	text-align: center;
+	margin-left: 80px;
+	background-color: #bde8ca; 
+	border: none;
+	
 }
-
+#find{
+	margin-top : 50px;
+	margin-left: 150px;
+	color: #484848;
+}
+/* 
 span#memberMenu {
 	display: block;
 	width: 94%;
-}
+} */
 
-span#text {
+span #text {
 	font-size: 12px;
 	color: #7BAEB5;
 }
 
-span.error {
-	font-size: 12px;
-	color: #db0000;
+.error {
+	font-size: 16px;
+	color: #ff0000;
+	margin-left: 80px;
 }
 
-span.testRefer {
+/* span.testRefer {
 	font-size: 12px;
 	display: block;
 	padding-left: 135px;
 	color: #7BAEB5;
-}
+} */

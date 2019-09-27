@@ -43,7 +43,7 @@
 		}
 	}
 	function enterkey() {
-		if(window.event.keyCode == 13){
+		if (window.event.keyCode == 13) {
 			//엔터키가 눌렀을때 실행할 내용
 			$("#loginForm").attr({
 				"method" : "POST",
@@ -51,7 +51,7 @@
 			});
 			$("#loginForm").submit();
 		}
-		
+
 	}
 </script>
 <link type="text/css" rel="stylesheet"
@@ -63,6 +63,9 @@
 		<div class="well">
 			<c:if test="${login.mt_id == null or login.mt_id == ''}">
 				<form id="loginForm" class="form-horizontal">
+					<div>
+						<img id="login_img" src="/resources/images/login_img.png">
+					</div>
 					<div class="form-group">
 						<label for="mt_id" class="col-sm-2 control-label">아 이 디 </label>
 						<div class="col-sm-4">
@@ -74,8 +77,8 @@
 					<div class="form-group">
 						<label for="mt_pw" class="col-sm-2 control-label">비밀번호 </label>
 						<div class="col-sm-4">
-							<input onkeyup="enterkey();" type="password" id="mt_pw" name="mt_pw"
-								class="form-control" placeholder="Password">
+							<input onkeyup="enterkey();" type="password" id="mt_pw"
+								name="mt_pw" class="form-control" placeholder="Password">
 						</div>
 						<p class="form-control-static error"></p>
 					</div>
@@ -86,8 +89,9 @@
 								id="joinBtn" class="btn btn-default" />
 						</div>
 					</div>
-				
-					<p><a href="/login/find">아이디/비밀번호 찾기</a>
+
+					<p>
+						<a id="find" href="/login/find">아이디/비밀번호 찾기</a>
 					</p>
 				</form>
 			</c:if>
