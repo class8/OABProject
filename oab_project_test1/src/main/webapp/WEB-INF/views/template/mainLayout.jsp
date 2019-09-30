@@ -18,6 +18,7 @@
 <link href="/resources/include/css/header.css" rel="stylesheet">
 <link href="/resources/include/css/footer.css" rel="stylesheet">
 <link href="/resources/include/css/mainLayout.css" rel="stylesheet">
+<link rel="shortcut icon" href="/resources/images/favicon.ico">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

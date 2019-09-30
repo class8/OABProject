@@ -14,6 +14,7 @@
 <link href="/resources/include/css/footer.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="/resources/include/css/common.css" />
+<link rel="shortcut icon" href="/resources/images/favicon.ico">
 </head>
 <body>
 	<div class="wrapper">
