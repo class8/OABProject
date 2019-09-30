@@ -52,7 +52,7 @@
 	} */
 </script>
 <link type="text/css" rel="stylesheet"
-	href="/resources/include/css/modify.css">
+	href="/resources/include/css/memberModify.css">
 </head>
 <body>
 	<div class="contentContainer">
@@ -61,7 +61,9 @@
 				<input type="hidden" id="mt_id" name="mt_id" value="${member.mt_id}">
 				<div class="form-group form-group-sm">
 					<label for="mt_id" class="col-sm-2 control-label">사용자 ID</label>
-					<div class="col-sm-3">${member.mt_id}</div>
+					<div class="col-sm-3"><input type="text" id="mt_id" name="mt_id" maxlength="20"
+							class="form-control" value="${member.mt_id}" readonly="readonly"/>
+				</div>
 				</div>
 				<div class="form-group form-group-sm">
 					<label for="oldmt_pw" class="col-sm-2 control-label">기존 비밀
@@ -86,8 +88,8 @@
 					</div>
 				</div>
 				<div class="form-group form-group-sm">
-					<label for="mt_pwCheck" class="col-sm-2 control-label">변경할
-						비밀번호 확인</label>
+					<label for="mt_pwCheck" class="col-sm-2 control-label">변경
+						비밀번호확인</label>
 					<div class="col-sm-3">
 						<input type="password" id="mt_pwCheck" name="mt_pwCheck"
 							maxlength="20" class="form-control" placeholder="변경할 비밀번호 입력 확인">
@@ -157,7 +159,7 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-6">
 						<input type="button" value="확인" id="modify"
-							class="btn btn-default" /> <input type="button" value="재작성"
+							class="btn btn-default" /> <br><input type="button" value="재작성"
 							id="modifyReset" class="btn btn-default" /> 
 					</div>
 				</div>

@@ -77,6 +77,8 @@
 		$("#pagemoveform").submit();
 	}
 </script>
+<link type="text/css" rel="stylesheet"
+	href="/resources/include/css/memberUserInfo.css">
 </head>
 <body>
 	<!-- <form id="test"> -->
@@ -88,6 +90,7 @@
 
 	<!-- <div class="well">
       <form class="form-inline" id="f_search" name="f_search"> -->
+      <div id="memberUserform">
 	<form id="pagemoveform">
 		<input type="hidden" id="page" name="page" value="${data.page}">
 		<input type="hidden" id="pageSize" name="pageSize"
@@ -96,11 +99,11 @@
 	</form>
 
 	<div id="listHeader">
-		<p>내 이용 리스트</p>
+		<p id="list1">내 이용 리스트</p>
 		<button type="button" class="btntest" id="refund">취소/환불요청</button>
-		<p>예약 목록(전체 예약 건:${total})</p>
-		<a href="/member/info/memberUserInfo">이용 리스트</a> <a
-			href="/member/info/memberRentalInfo">대여/반납 리스트</a>
+		<p id="list2">예약 목록(전체 예약 건:${total})</p>
+		<a class="style1" href="/member/info/memberUserInfo">이용 리스트</a> 
+		<a class="style2" href="/member/info/memberRentalInfo">대여/반납 리스트</a>
 	</div>
 
 	<div class="table-responsive">
@@ -167,6 +170,6 @@
 				list_size="${data.pageSize}" />
 		</div>
 	</div>
-
+</div>
 </body>
 </html>

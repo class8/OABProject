@@ -1,0 +1,83 @@
+@charset "UTF-8";
+#memberUserform {
+	width: 1200px;
+	height :800px;
+	padding: 15px;
+	border: 1px solid #7BAEB5;
+	float: center;
+	margin-top: 40px;
+	margin-left: 100px;
+}
+
+
+table {
+	width: 800px;
+	height: 600px;
+	border-collapse: collapse;
+	border-bottom: 1px solid black;
+}
+
+table, td, th {
+	margin-top: 15px;
+	padding: 5px;
+}
+
+th {
+	background-color: #dbebec;
+}
+td.b{
+	border-bottom: 1px solid #bfdcdd;
+	border-top: 1px solid #bfdcdd;
+}
+
+div.table-responsive {
+	margin-left: 240px;
+}
+
+div#listHeader {
+	margin-left: 240px;
+}
+
+#list1 {
+	font-size: 30px;
+	font-family: monospace;
+	margin-top: 20px;
+}
+
+#list2 {
+	margin-bottom: 10px;
+}
+
+#refund {
+	margin-bottom: 10px;
+	float: right;
+   text-align: right;
+   display: inline-block;;
+   vertical-align: middle;
+   background-color: #a3e4e2;
+   color: #fff;
+   border: none;
+   position: relative;
+   height: 30px;
+   font-size: 12pt;
+   padding: 0 2em;
+   cursor: pointer;
+   transition: 800ms ease all;
+   outline: none;
+   margin-right: 170px;
+}
+#memberUserInfoPaging {
+	margin-top: 50px;
+	margin-left: 350px;
+}
+
+
+a.style1:hover {
+	background-color: #a3e4e2;
+	margin-bottom: 10px;
+}
+
+a.style2:hover {
+	background-color: #a3e4e2;
+	margin-bottom: 10px;
+}
