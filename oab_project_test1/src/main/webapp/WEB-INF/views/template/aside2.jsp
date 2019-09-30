@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<script>
-
-</script>
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
 <nav class="aside">
 	<ul class="aside_ul">
-		<li>상품	
+		<li><span>대여</span>	
 			<ul>
-				<a href="/product/productList"><li>상품소개</li></a>
-				<a href="/review/reviewList"><li>포토후기</li></a>
+				<li><a href="/product/productList"> <img
+						src="/resources/images/icon/tent.jpg" class="icon"><span> 대여상품</span>
+				</a></li>
+				<li><a href="/review/reviewList"> <img
+						src="/resources/images/icon/photo.jpg" class="icon"><span> 포토후기</span>
+				</a></li>
 			</ul>
 		</li>
 	</ul>

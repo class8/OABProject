@@ -35,24 +35,17 @@
 			<div class="container">
 				<section class="background">
 					<div class="content-wrapper">
-						<p class="content-title">이미지1</p>
+						<p class="content-title"></p>
 					</div>
 				</section>
 				<section class="background">
 					<div class="content-wrapper">
-						<p class="content-title">이미지2</p>
+						<p class="content-title"></p>
 					</div>
 				</section>
 				<section class="background">
 					<div class="content-wrapper">
-						<p class="content-title">이미지3</p>
-					</div>
-				</section>
-				<section class="background">
-					<div class="content-wrapper">
-						<footer class="footer">
-							<tiles:insertAttribute name="footer" />
-						</footer>
+						<p class="content-title"></p>
 					</div>
 				</section>
 			</div>

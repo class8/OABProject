@@ -5,12 +5,12 @@
 
 <div class="footer_body">
 	<div class="footer_logo">
-		<img src="/resources/images/footer_graylogo.PNG">
+		<a href="/"><img src="/resources/images/footer_logo.png"></a>
 	</div>
 	<div class="footer_menuList">
 		<ul>
-			<li class="footer_menu"><a href="/terms/termsPage" class="linka">이용약관</a>  | </li> 
-			<li class="footer_menu"><a href="/policy/policyPage" class="linka">개인정보취급방침</a>  | </li>
+			<li class="footer_menu"><a href="/terms/termsPage" class="linka">이용약관</a></li> 
+			<li class="footer_menu"><a href="/policy/policyPage" class="linka">개인정보취급방침</a></li>
 			<li class="footer_menu"><a href="/branch/branchPage" class="linka">지점안내</a></li>
 		</ul>
 	</div>

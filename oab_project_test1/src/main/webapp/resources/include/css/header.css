@@ -6,8 +6,15 @@
 
 /* 상단에 위치한 로그인, 로그아웃, 회원가입 */
 .header_nav2 {
-	font-size: 90%;
-	margin-right: 220px;
+	margin-right: 5%;
+}
+.header_nav2 a{
+	text-decoration: none;
+}
+.header_nav2 a span{
+	font-family: "Jua", sans-serif;
+	font-size: 24px;
+	color: black;
 }
 
 /* 메뉴에 대한 css */
@@ -34,9 +41,8 @@
 
 .navi li a { /* 메뉴 항목에서도 링크에 대한 스타일 */
 	display: block; /* 영역을 만듦 */
-	font-family: "굴림"; /* 글꼴 */
-	font-weight: 600; /* 진하게 */
-	font-size: 14px; /* 글자크기 */
+	font-family: "Jua", sans-serif;
+	font-size: 35px;
 	text-align: center;
 	color: #393939; /* 메인 메뉴 글자색 */
 	text-decoration: none; /* 밑줄 없앰 */
@@ -83,9 +89,8 @@
 
 .navi li ul li a { /* 서브 메뉴 항목의 링크 스타일 */
 	background: none; /* 배경색 */
-	font-family: "굴림"; /* 글꼴 */
-	font-weight: 600; /* 진하게 */
-	font-size: 14px; /* 글자크기 */
+	font-family: "Jua", sans-serif;
+	font-size: 25px;
 	color: #393939; /* 글자색 */
 }
 

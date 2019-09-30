@@ -20,7 +20,7 @@
 <script type="text/javascript">
 	$(function() {
 		$(".return_UserInfo").click(function() {
-			location.replace("/member/memberUserInfo");
+			location.replace("/member/info/memberUserInfo");
 		});
 		$(".return_main").click(function() {
 			location.replace("/");
