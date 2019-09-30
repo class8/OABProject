@@ -115,7 +115,7 @@
 	<div class="main_content">
 
 		<div class="contentTit">
-			<h2>환불 정보</h2>
+			<h2>환 불</h2>
 		</div>
 		<form id="reservationStatusUpdate">
 			<input type="hidden" id="rest_statusCheck">
@@ -129,7 +129,7 @@
 			<label>예약상태 변경</label> <select id="selectBox" name="selectBox">
 				<option value="예약완료">환불취소</option>
 				<option value="환불완료">환불완료</option>
-			</select> <input type="button" value="선택" id="statusSelect">
+			</select> <input type="button" value="선택" id="statusSelect" class="change3">
 		</div>
 
 

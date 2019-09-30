@@ -74,7 +74,7 @@
 <body>
 	<div class="main_content">
 		<div>
-			<h3>OBA 텐트 상세보기</h3>
+			<h3>상품 상세보기</h3>
 		</div>
 		<form name="f_data" id="f_data" method="POST">
 			<input type="hidden" name="pt_number" value="${detail.pt_number}" />

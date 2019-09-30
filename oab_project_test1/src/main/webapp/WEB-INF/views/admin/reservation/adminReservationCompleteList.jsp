@@ -61,45 +61,58 @@
 		});
 		//상태변경하는select
 		//document.getElementById("updateStatus").style.display="none";
-		$(".updateRest_status").click(function() {
-			var rest_number = $(this).parents("tr").attr("data-num");
-			var pt_number = $(this).parents("tr").attr("data-ptnumber");
-			var mt_id = $(this).parents("tr").attr("data-value");
-			var rest_statusCheck = $(this).parents("tr").attr("data-rest_status");
-			$("#rest_statusCheck").val(rest_statusCheck)
-			$("#pt_number").val(pt_number);
-			$("#rest_number").val(rest_number);
-			$("#update_rest_number").val(rest_number);
-			$("#mt_id").val(mt_id);
-		});
+		$(".updateRest_status")
+				.click(
+						function() {
+							var rest_number = $(this).parents("tr").attr(
+									"data-num");
+							var pt_number = $(this).parents("tr").attr(
+									"data-ptnumber");
+							var mt_id = $(this).parents("tr")
+									.attr("data-value");
+							var rest_statusCheck = $(this).parents("tr").attr(
+									"data-rest_status");
+							$("#rest_statusCheck").val(rest_statusCheck)
+							$("#pt_number").val(pt_number);
+							$("#rest_number").val(rest_number);
+							$("#update_rest_number").val(rest_number);
+							$("#mt_id").val(mt_id);
+						});
 
-		$("#statusSelect").click(function() {
-			if ($("#rest_statusCheck").val() == null || $("#rest_statusCheck").val() == '') {
-	            alert("상태를 변경할 리스트를 선택하세요.");
-	         }else{
-	        	 
-			var rest_status = $("#selectBox").val()
-			$("#rest_status").val(rest_status);
-			$("#reservationStatusUpdate").attr({
-				"method" : "post",
-				"action" : "/admin/reservation/adminReservationStatusUpdate"
-			});
-			$("#reservationStatusUpdate").submit();
-	         }
-		});
+		$("#statusSelect")
+				.click(
+						function() {
+							if ($("#rest_statusCheck").val() == null
+									|| $("#rest_statusCheck").val() == '') {
+								alert("상태를 변경할 리스트를 선택하세요.");
+							} else {
 
-		$("#rentalBtn").click(function() {
-			if ($("#rest_statusCheck").val() == null || $("#rest_statusCheck").val() == '') {
-	            alert("상태를 변경할 리스트를 선택하세요.");
-	         }else{
-	        	 
-			$("#rentalInsert").attr({
-				"method" : "post",
-				"action" : "/admin/rental/adminRentalInsert"
-			});
-			$("#rentalInsert").submit();
-	         }
-		});
+								var rest_status = $("#selectBox").val()
+								$("#rest_status").val(rest_status);
+								$("#reservationStatusUpdate")
+										.attr(
+												{
+													"method" : "post",
+													"action" : "/admin/reservation/adminReservationStatusUpdate"
+												});
+								$("#reservationStatusUpdate").submit();
+							}
+						});
+
+		$("#rentalBtn").click(
+				function() {
+					if ($("#rest_statusCheck").val() == null
+							|| $("#rest_statusCheck").val() == '') {
+						alert("상태를 변경할 리스트를 선택하세요.");
+					} else {
+
+						$("#rentalInsert").attr({
+							"method" : "post",
+							"action" : "/admin/rental/adminRentalInsert"
+						});
+						$("#rentalInsert").submit();
+					}
+				});
 	});
 
 	function goPage(page) {
@@ -147,8 +160,8 @@
 
 
 		<form id="reservationStatusUpdate">
-		<input type="hidden" id="rest_statusCheck">
-			<input type="hidden" id="rest_number" name="rest_number"> <input
+			<input type="hidden" id="rest_statusCheck"> <input
+				type="hidden" id="rest_number" name="rest_number"> <input
 				type="hidden" id="rest_status" name="rest_status"> <input
 				type="hidden" id="url" name="url"
 				value="/admin/reservation/adminReservationCompleteList?page=1&order_by=rest_status&order_sc=ASC">
@@ -158,8 +171,8 @@
 			<label>예약상태 변경</label> <select id="selectBox" name="selectBox">
 				<option value="환불요청">환불요청</option>
 				<option value="예약대기">예약대기</option>
-			</select> <input type="button" value="선택" id="statusSelect"> <input
-				type="button" value="대여" id="rentalBtn">
+			</select> <input type="button" value="대여" id="rentalBtn"> <input
+				type="button" value="선택" id="statusSelect" class="change2">
 		</div>
 
 
@@ -264,7 +277,8 @@
 								<tr data-num="${reservationComplete.rest_number}"
 									data-ptnumber="${reservationComplete.pt_number}"
 									data-value="${reservationComplete.mt_id}"
-									data-rest_status="${reservationComplete.rest_status}" id="list_th">
+									data-rest_status="${reservationComplete.rest_status}"
+									id="list_th">
 									<td><input type="radio" class="updateRest_status"
 										name="updateRest_status"></td>
 									<td>${reservationComplete.rest_bnumber}</td>

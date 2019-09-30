@@ -18,30 +18,30 @@ table {
 	font-size: 20px;
 }
 
-#search_tbl {
-	width: 540px;
-	height: 30px;
-	float: left;
-	margin-top: 5px;
-	margin-left: 200px;
-}
-
 #productWrite {
-	background-color: #804040;
-	width: 110px;
+	background-color: #808080;
+	color: #ffffff;
+	width: 80px;
 	height: 30px;
 	font-size: 15px;
 	font-weight: bold;
-	color: #ffffff;
-	float: right;
+	float: left;
 	margin-top: 8px;
-	margin-right: 40px;
+}
+
+#search_tbl {
+	flex: left;
+	width: 540px;
+	height: 30px;
+	float: left;
+	margin-top: 8px;
+	margin-left: 40px;
 }
 
 #searchData {
 	color: #ffffff;
 	width: 100px;
-	height: 30px;
+	height: 35px;
 	font-size: 15px;
 	font-weight: bold;
 	background-color: #804040;
@@ -52,7 +52,7 @@ table {
 	width: 1200px;
 	float: left;
 	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	text-align: center;
 }
 
@@ -69,7 +69,7 @@ table {
 #keyword {
 	color: #808080;
 	width: 300px;
-	height: 24px;
+	height: 30px;
 	text-align: center;
 	margin-left: 10px;
 	border: 1px solid #808080;
@@ -81,7 +81,7 @@ select {
 	color: #808080;
 	font-size: 15px;
 	width: 80px;
-	height: 28px;
+	height: 32px;
 	text-align: center;
 	text-decoration: none;
 	border: 1px solid #808080;
@@ -124,17 +124,21 @@ select {
 }
 
 .productSearch {
-	width: 1000px;
+	width: 600px;
 	height: 50px;
-	float: left;
-	margin-right: 140px;
 	margin-top: 30px;
+	float: left;
+	margin-left: 30px;
+	border: 2px solid #804040;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 
 #productPaging {
-	float: left;
-	margin-left: 500px;
-	margin-top: 20px;
+	clear: both;
+	padding-left: 520px;
 }
 
 #productWriteCancel {

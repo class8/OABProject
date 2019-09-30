@@ -29,13 +29,13 @@
 		'YYYY-MM-DD') AS qt_regdate, qt_writer,
 		substr(qt_file, 23) as qt_file,
 		qt_root, qt_step, qt_level
-		FROM
-		(SELECT
+		FROM (SELECT
 		list.*, ROWNUM AS
 		RNUM
 		FROM (
 		<include refid="adminQuestionCommon"></include>
-		order by qt_number, qt_level
+
+		order by qt_root, qt_step, qt_level asc
 		) list
 		)
 		<where>
@@ -99,7 +99,8 @@
 	<update id="adminStatusUpdate" parameterType="adminQuestion">
 		update question_tbl
 		set qt_status = '답변완료'
-		where qt_number = #{qt_root}
+		where qt_number = #{qt_root} and qt_writer !=
+		'관리자'
 	</update>
 
 	<!-- 게시물 카운트 페이징 -->

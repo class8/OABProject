@@ -45,7 +45,7 @@
 
 	<div class="main_content">
 		<div class="contentTit">
-			<h3>공지사항 등록하기</h3>
+			<h3>공지사항 등록</h3>
 		</div>
 
 		<div class="contentTB_D">

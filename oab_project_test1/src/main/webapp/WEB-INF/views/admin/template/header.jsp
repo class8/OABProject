@@ -20,41 +20,25 @@
 
 		<nav class="nav_topmenu">
 			<ul id="main_menu">
-				<!-- <li>HOME
+				<li><a href="/admin/product/adminProductList?page=1">상 품 </a>
 					<ul id="sub_menu">
-						<li><a href="/admin/login">HOME</a></li>
-					</ul>
-				</li> -->
-				<li>상품관리
-					<ul id="sub_menu">
-						<li><a href="/admin/product/adminProductList?page=1">상품관리
+						<li><a href="/admin/product/adminProductList?page=1">상 품
 						</a></li>
-					</ul>
-				</li>
-				<li>회원정보
+					</ul></li>
+				<li><a href="/admin/member/adminMemberList?page=1">회 원 </a>
 					<ul id="sub_menu">
-						<li><a href="/admin/member/adminMemberList?page=1">회원정보
-								관리</a></li>
+						<li><a href="/admin/member/adminMemberList?page=1">회 원 </a></li>
 						<li><a
-							href="/admin/reservation/adminReservationWaitingList?page=1&order_by=rest_status&order_sc=ASC">예약정보
-								관리</a></li>
+							href="/admin/reservation/adminReservationWaitingList?page=1&order_by=rest_status&order_sc=ASC">예
+								약 </a></li>
 						<li><a
-							href="/admin/reservation/adminReservationRefundList?page=1&order_by=rest_status&order_sc=DESC">환불
-								관리</a></li>
+							href="/admin/reservation/adminReservationRefundList?page=1&order_by=rest_status&order_sc=DESC">환
+								불 </a></li>
 						<li><a
 							href="/admin/rental/adminRentalList?page=1&order_by=rent_status&order_sc=ASC">대여/반납
-								관리</a></li>
-					</ul>
-				</li>
-				<li>고객센터
-					<ul id="sub_menu">
-						<li id="link"><a href="/admin/question/questionList">1:1
-								문의 관리</a></li>
-						<li id="link"><a href="/admin/notice/noticeList">공지사항 관리</a></li>
-						<li id="link"><a href="/admin/review/reviewList">포토 후기 관리</a></li>
-					</ul>
-				</li>
-				<li>통계정보
+						</a></li>
+					</ul></li>
+				<li><a href="#">통 계</a>
 					<ul id="sub_menu">
 						<li><a href="#">일별 매출</a></li>
 						<li><a href="#">월별 매출</a></li>
@@ -63,8 +47,14 @@
 						<li><a href="#">이용 회원별 년 매출</a></li>
 						<li><a href="#">이용 회원별 월 매출</a></li>
 						<li><a href="#">이용 회원 통계</a></li>
-					</ul>
-				</li>
+					</ul></li>
+				<li><a href="/admin/question/questionList">고객센터 </a>
+					<ul id="sub_menu">
+						<li id="link"><a href="/admin/question/questionList">1:1
+								문의 </a></li>
+						<li id="link"><a href="/admin/notice/noticeList">공지사항 </a></li>
+						<li id="link"><a href="/admin/review/reviewList">포토 후기</a></li>
+					</ul></li>
 			</ul>
 		</nav>
 	</div>

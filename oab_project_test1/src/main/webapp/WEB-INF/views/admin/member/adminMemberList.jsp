@@ -60,7 +60,7 @@
 <body>
 	<div class="main_content">
 		<div class="contentTit">
-			<h2>회원 정보</h2>
+			<h2>회 원</h2>
 		</div>
 		<form id="f_test" name="f_test">
 			<input type="hidden" id="mt_number" name="mt_number" /> <input

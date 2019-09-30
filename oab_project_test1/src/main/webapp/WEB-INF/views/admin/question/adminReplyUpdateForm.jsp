@@ -42,7 +42,7 @@
 
 	<div class="main_content">
 		<div class="contentTit">
-			<h3>1:1문의 답글 수정하기</h3>
+			<h3>1:1문의 답글 수정</h3>
 		</div>
 
 		<div class="contentTB">

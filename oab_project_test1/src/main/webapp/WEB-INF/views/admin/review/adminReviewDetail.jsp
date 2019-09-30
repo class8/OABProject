@@ -38,7 +38,7 @@
 	<div class="main_content">
 
 		<div class="contentTit">
-			<h2>상세보기</h2>
+			<h2>포토후기 상세보기</h2>
 		</div>
 
 		<form name="f_data" id="f_data" method="post">

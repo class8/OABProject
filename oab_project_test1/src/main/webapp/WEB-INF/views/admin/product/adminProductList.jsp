@@ -15,7 +15,7 @@
 	src="/resources/admin/include/js/product/adminProductList.js"></script>
 <script type="text/javascript">
 	$(function() {
-		
+
 		/* 검색후 검색 대상과 검색 단어 출력 */
 		var word = "<c:out value='${data.keyword}'/>";
 		var value = "";
@@ -53,7 +53,8 @@
 <body>
 	<div class="main_content">
 		<div class="contentTit">
-			<h2>상품 정보</h2>
+			<h2>상 품</h2>
+			<input type="button" value="상품등록" id="productWrite">
 		</div>
 
 		<%--================== 상세 페이지 이동을 위한 FORM ===================== --%>
@@ -170,11 +171,6 @@
 				</table>
 			</form>
 
-			<%-- ================= 글쓰기 버튼 출력 시작 ==================== --%>
-			<div class="contentBtn">
-				<input type="button" value="상품등록" id="productWrite">
-			</div>
-			<%-- ================= 글쓰기 버튼 출력 종료 ==================== --%>
 		</div>
 		<%--============================ 검색기능 종료 ============================== --%>
 	</div>

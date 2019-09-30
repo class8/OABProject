@@ -107,7 +107,7 @@
 		#{qt_writer},
 		#{qt_file,
 		jdbcType=VARCHAR},
-		0,
+		#{qt_number},
 		0,
 		0
 		)

@@ -120,7 +120,7 @@
 	<div class="main_content">
 
 		<div class="contentTit">
-			<h2>공 지 사 항</h2>
+			<h2>공지사항</h2>
 			<input type="button" value="글 쓰 기" id="insertFormBtn">
 		</div>
 

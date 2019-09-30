@@ -29,7 +29,7 @@
 
 	<div class="main_content">
 		<div>
-			<h2>상품 정보 수정</h2>
+			<h2>상품 수정</h2>
 		</div>
 
 		<div class="contentTB_D">

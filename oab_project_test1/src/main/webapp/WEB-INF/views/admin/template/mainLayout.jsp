@@ -16,6 +16,7 @@
 	href="/resources/admin/include/css/header.css" />
 <link rel="stylesheet" type="text/css"
 	href="/resources/admin/include/css/content.css" />
+	<link rel="shortcut icon" href="/resources/images/favicon.ico">
 </head>
 <c:if test="${adminLogin.adminID != null}">
 	<body>

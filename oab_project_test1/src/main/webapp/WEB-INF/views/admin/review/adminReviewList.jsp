@@ -103,7 +103,7 @@
 
 	<div class="main_content">
 		<div class="productTitle">
-			<h2>후기 갤러리</h2>
+			<h2>포토 후기</h2>
 		</div>
 		<%--================== 상세 페이지 이동을 위한 FORM ===================== --%>
 		<form name="detailForm" id="detailForm">

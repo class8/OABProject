@@ -48,7 +48,7 @@
 	<div class="main_content">
 
 		<div class="contentTit">
-			<h3>수정</h3>
+			<h3>공지사항 수정</h3>
 		</div>
 
 		<div class="contentTB_D">

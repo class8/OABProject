@@ -58,7 +58,7 @@ return true;
 }
 </script>
 <body>
-	<h2>상품 등록 폼</h2>
+	<h2>상품 등록</h2>
 	<form id="productWriteForm" name="productWriteForm"
 		enctype="multipart/form-data">
 		<table class="contentTB_D">

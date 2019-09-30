@@ -9,7 +9,7 @@
 	<h3 align="center">PRODUCT</h3>
 	<ul>
 
-		<li><a href="#">상품 관리</a></li>
+		<li><a href="#">상 품</a></li>
 
 	</ul>
 </div>

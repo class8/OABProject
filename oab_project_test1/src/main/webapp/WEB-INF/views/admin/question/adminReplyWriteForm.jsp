@@ -45,7 +45,7 @@
 	<div class="main_content">
 
 		<div class="contentTit">
-			<h2>원글 정보</h2>
+			<h2>1:1문의 답글 작성</h2>
 		</div>
 
 		<div class="contentTB_D">
@@ -96,7 +96,7 @@
 					name="qt_step" id="qt_step" value="${question.qt_step}" /> <input
 					type="hidden" name="qt_level" id="qt_level"
 					value="${question.qt_level}" /> <input type="hidden"
-					name="qt_root" id="qt_root" value="${question.qt_number}" /><input
+					name="qt_root" id="qt_root" value="${question.qt_root}" /><input
 					type="hidden" name="mt_id" id="mt_id" value="${question.mt_id }">
 				<table id="replyWrite">
 
