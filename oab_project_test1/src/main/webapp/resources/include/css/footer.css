@@ -1,30 +1,72 @@
-.footer_body{
+.footer_body {
 	width: 100%;
 	height: 30%;
 	margin-left: 5%;
+	background-color: #393939;
 }
-.footer_logo{
+
+.footer_logo {
 	width: 20%;
 	height: 100%;
 	float: left;
-	font-size: 20px;
 }
-.footer_menuList{
+
+.footer_menuList {
 	width: 80%;
-	height: 100%;
+	height: auto;
 	float: left;
-	font-size: 20px;
-}
-.footer_menuList ul li{
-	float: left;
-	margin: 2% 5% 2% 5%;
-}
-.footer_text{
-	width: 80%;
-	height: 100%;
-	float: left;
-	font-size: 20px;
-}
-.footer_menu a{
+	margin-top: 20px;
+	margin-bottom: 10px;
 	text-decoration: none;
+	direction: none;
+	font-size: 16px;
+	color: #fff;
+	line-height: 150%;
+	font-size: 21px;
+	border: 0;
+}
+
+.footer_menuList ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	color: #fff;
+}
+
+.footer_menuList ul li {
+	text-decoration: none;
+	float: left;
+	word-spacing: 5;
+	color: #fff;
+	border: 0;
+}
+
+.linka {
+	text-decoration: none;
+	float: left;
+	color: #fff;
+}
+
+.footer_menuList ul li a:link {
+	text-decoration: none;
+	color: #fff;
+}
+
+.footer_menuList ul li a:hover {
+	color: #42c8c5
+}
+
+.footer_text {
+	width: 80%;
+	height: 100%;
+	float: left;
+	font-size: 90%;
+	background-color: #393939;
+	line-height: 120%;
+	color: #fff;
+}
+
+.footer_menu a {
+	text-decoration: none;
+	color: #fff;
 }
