@@ -24,33 +24,50 @@
 <nav class="header_menu">
 	<h2>메인메뉴</h2>
 	<ul class="navi">
-		<li><a href="/greeting/greetingPage">OAB소개</a>
+		<li><a href="/greeting/greetingPage"> <img
+				src="/resources/images/icon/greeting.PNG" class="icon"> OAB소개
+		</a>
 			<ul>
-				<li><a href="/greeting/greetingPage">인사말</a></li>
-				<li><a href="/notice/noticeList">공지사항</a></li>
-				<li><a href="/branch/branchPage">지점안내</a></li>
-			</ul>
-		</li>
-		<li><a href="/product/productList">상품</a>
+				<li><a href="/notice/noticeList"><img
+						src="/resources/images/icon/notice.PNG" class="icon">공지사항</a></li>
+				<li><a href="/branch/branchPage"><img
+						src="/resources/images/icon/branch.PNG" class="icon">지점안내</a></li>
+			</ul></li>
+		<li><a href="/product/productList"><img
+				src="/resources/images/icon/tent.PNG" class="icon">대여서비스</a>
 			<ul>
-				<li><a href="/product/productList">상품소개</a></li>
-				<li><a href="/review/reviewList">포토후기</a></li>
-			</ul>
-		</li>
-		<li><a href="/member/info/memberUserInfo">마이페이지</a>
+				<li><a href="/product/productList"> <img
+						src="/resources/images/icon/tent.PNG" class="icon"> 대여상품
+				</a></li>
+				<li><a href="/review/reviewList"> <img
+						src="/resources/images/icon/photo.PNG" class="icon"> 포토후기
+				</a></li>
+			</ul></li>
+		<li><a href="/member/info/memberUserInfo"> <img
+				src="/resources/images/icon/mypage.PNG" class="icon"> 마이페이지
+		</a>
 			<ul>
-				<li><a href="/member/info/memberUserInfo">내 이용정보</a></li>
-				<li><a href="/member/memberModify">내 정보수정</a></li>
-				<li><a href="/member/memberSecede">회원 탈퇴</a></li>
-			</ul>
-		</li>
-		<li><a href="/faq/faqPage">고객센터</a>
+				<li><a href="/member/info/memberUserInfo"> <img
+						src="/resources/images/icon/mypage.PNG" class="icon"> 내 이용정보
+				</a></li>
+				<li><a href="/member/memberModify"><img
+						src="/resources/images/icon/member.PNG" class="icon">내 정보수정</a></li>
+				<li><a href="/member/memberSecede"><img
+						src="/resources/images/icon/secede.PNG" class="icon">회원 탈퇴</a></li>
+			</ul></li>
+		<li><a href="/faq/faqPage"><img
+				src="/resources/images/icon/faq.PNG" class="icon">고객센터</a>
 			<ul>
-				<li><a href="/faq/faqPage">자주묻는질문</a></li>
-				<li><a href="/question/questionWrite">1:1 문의</a></li>
-				<li><a href="/question/questionList">내가 한 문의</a></li>
-				<li><a href="/login/find">ID/PW찾기</a></li>
-			</ul>
-		</li>
+				<li><a href="/faq/faqPage"><img
+						src="/resources/images/icon/faq.PNG" class="icon">자주묻는질문</a></li>
+				<li><a href="/question/questionWrite"><img
+						src="/resources/images/icon/question.PNG" class="icon">1:1
+						문의</a></li>
+				<li><a href="/question/questionList"><img
+						src="/resources/images/icon/question.PNG" class="icon">내가 한
+						문의</a></li>
+				<li><a href="/login/find"><img
+						src="/resources/images/icon/find.PNG" class="icon">ID/PW찾기</a></li>
+			</ul></li>
 	</ul>
 </nav>
