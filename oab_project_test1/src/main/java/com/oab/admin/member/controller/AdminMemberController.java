@@ -50,7 +50,7 @@ public class AdminMemberController {
 
 		result = adminMemberService.adminMemberDisabledUpdate(amvo);
 		if (result == 1) {
-			url = "/admin/member/adminMemberList";
+			url = "/admin/member/adminMemberList?page=1";
 		}
 		return "redirect:" + url;
 	}

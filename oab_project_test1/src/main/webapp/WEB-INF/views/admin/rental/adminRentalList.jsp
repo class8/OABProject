@@ -7,6 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<style type="text/css">
+
+</style>
 <script type="text/javascript"
 	src="/resources/admin/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
@@ -62,47 +65,49 @@
 		//상태변경하는select
 		//document.getElementById("updateStatus").style.display="none";
 		$(".updateRental").click(
-				function() {
-					var rent_number = $(this).parents("tr").attr("data-num");
-					var rest_number = $(this).parents("tr").attr(
-							"data-restnumber");
-					var rent_expretrun = $(this).parents("tr").attr(
-							"data-rent_expretrun");
-					var rent_status = $(this).parents("tr").attr(
-							"data-rent_status");
-					$("#rent_status").val(rent_status);
-					$("#rent_expretrun").val(rent_expretrun);
-					$("#rent_number").val(rent_number);
-					$("#rest_number").val(rest_number);
-				});
+	            function() {
+	            	$(".dataBg_color").css("background-color","#ffffff");
+	               var rent_number = $(this).parents("tr").attr("data-num");
+	               var rest_number = $(this).parents("tr").attr(
+	                     "data-restnumber");
+	               var rent_expretrun = $(this).parents("tr").attr(
+	                     "data-rent_expretrun");
+	               var rent_status = $(this).parents("tr").attr(
+	                     "data-rent_status");
+	               $("#rent_status").val(rent_status);
+	               $("#rent_expretrun").val(rent_expretrun);
+	               $("#rent_number").val(rent_number);
+	               $("#rest_number").val(rest_number);
+	               $(this).parents("tr").css("background-color","#e1c4c4");
+	            });
 
-		$("#rentalCancel").click(function() {
-			if ($("#rent_status").val() == '') {
-				alert("상태를 변경할 리스트를 선택해주세요.");
-			} else if ($("#rent_status").val() == '반납완료') {
-				alert("반납완료인 예약건을 취소할수 없습니다.");
-			} else if (confirm("대여취소 하시겠습니까?")) {
-				$("#rentalListVerification").attr({
-					"method" : "post",
-					"action" : "/admin/rental/adminRentalDelete"
-				});
-				$("#rentalListVerification").submit();
-			}
-		});
+	      $("#rentalCancel").click(function() {
+	         if ($("#rent_status").val() == '') {
+	            alert("상태를 변경할 리스트를 선택해주세요.");
+	         } else if ($("#rent_status").val() == '반납완료') {
+	            alert("반납완료인 예약건을 취소할수 없습니다.");
+	         } else if (confirm("대여취소 하시겠습니까?")) {
+	               $("#rentalListVerification").attr({
+	                  "method" : "post",
+	                  "action" : "/admin/rental/adminRentalDelete"
+	               });
+	               $("#rentalListVerification").submit();
+	         }
+	      });
 
-		$("#rentalSuccess").click(function() {
-			if ($("#rent_status").val() == '') {
-				alert("상태를 변경할 리스트를 선택해주세요.");
-			} else if ($("#rent_status").val() == '반납완료') {
-				alert("반납완료인 예약건을 반납완료 시킬수 없습니다.");
-			} else if (confirm("반납완료 하시겠습니까?")) {
-				$("#rentalListVerification").attr({
-					"method" : "post",
-					"action" : "/admin/rental/adminRentalModify"
-				});
-				$("#rentalListVerification").submit();
-			}
-		});
+	      $("#rentalSuccess").click(function() {
+	         if ($("#rent_status").val() == '') {
+	            alert("상태를 변경할 리스트를 선택해주세요.");
+	         } else if ($("#rent_status").val() == '반납완료') {
+	            alert("반납완료인 예약건을 반납완료 시킬수 없습니다.");
+	         } else if(confirm("반납완료 하시겠습니까?")) {
+	            $("#rentalListVerification").attr({
+	               "method" : "post",
+	               "action" : "/admin/rental/adminRentalModify"
+	            });
+	            $("#rentalListVerification").submit();
+	         }
+	      });
 
 	});
 
@@ -145,7 +150,7 @@
 				type="hidden" id="rent_number" name="rent_number"> <input
 				type="hidden" id="rest_number" name="rest_number"> <input
 				type="hidden" id="rest_status" name="rest_status" value="예약완료">
-			<input type="hidden" id="rent_status">
+				<input type="hidden" id="rent_status">
 		</form>
 
 		<div id="rentalUpdate">
@@ -160,16 +165,15 @@
 					<col width="50px" />
 					<col width="80px" />
 					<col width="100px" />
-					<col width="90px" />
-					<col width="90px" />
-					<col width="90px" />
+					<col width="100px" />
+					<col width="100px" />
+					<col width="100px" />
+					<col width="100px" />
 					<col width="80px" />
-					<col width="70px" />
 					<col width="100px" />
 					<col width="100px" />
-					<col width="140px" />
+					<col width="170px" />
 					<col width="120px" />
-					<col width="100px" />
 					<col width="100px" />
 					<col width="100px" />
 				</colgroup>
@@ -221,10 +225,13 @@
 								varStatus="status">
 								<tr data-num="${rentalList.rent_number}"
 									data-restnumber="${rentalList.rest_number}"
-									data-rent_expretrun="${rentalList.rent_expretrun}"
-									data-rent_status="${rentalList.rent_status }" id="list_th">
-									<td><input type="radio" class="updateRental"
-										name="updateRental"></td>
+									data-rent_expretrun="${rentalList.rent_expretrun}" 
+									data-rent_status="${rentalList.rent_status }" id="list_th" class="dataBg_color">
+									<td>
+									<c:if test="${rentalList.rent_status }"></c:if>
+									<input type="radio" class="updateRental"
+										name="updateRental">
+									</td>
 									<td>${rentalList.rest_bnumber}</td>
 									<td>${rentalList.mt_id}</td>
 									<td>${rentalList.rest_name}</td>

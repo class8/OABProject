@@ -61,33 +61,28 @@
 		});
 		//상태변경하는select
 		//document.getElementById("updateStatus").style.display="none";
-		$(".updateRest_status").click(
-				function() {
-					var rest_number = $(this).parents("tr").attr("data-num");
-					var rest_statusCheck = $(this).parents("tr").attr(
-							"data-rest_status");
-					$("#rest_number").val(rest_number);
-					$("#rest_statusCheck").val(rest_statusCheck)
-				});
+		$(".updateRest_status").click(function() {
+			$(".dataBg_color").css("background-color","#ffffff");
+			var rest_number = $(this).parents("tr").attr("data-num");
+			var rest_statusCheck = $(this).parents("tr").attr("data-rest_status");
+	         $("#rest_number").val(rest_number);
+	         $("#rest_statusCheck").val(rest_statusCheck);
+	         $(this).parents("tr").css("background-color","#e1c4c4");
+		});
 
-		$("#statusSelect")
-				.click(
-						function() {
-							if ($("#rest_statusCheck").val() == null
-									|| $("#rest_statusCheck").val() == '') {
-								alert("상태를 변경할 리스트를 선택하세요.");
-							} else {
-								var rest_status = $("#selectBox").val()
-								$("#rest_status").val(rest_status);
-								$("#reservationStatusUpdate")
-										.attr(
-												{
-													"method" : "post",
-													"action" : "/admin/reservation/adminReservationStatusUpdate"
-												});
-								$("#reservationStatusUpdate").submit();
-							}
-						});
+		$("#statusSelect").click(function() {
+		if ($("#rest_statusCheck").val() == null || $("#rest_statusCheck").val() == '') {
+	       alert("상태를 변경할 리스트를 선택하세요.");
+        }else{
+			var rest_status = $("#selectBox").val()
+			$("#rest_status").val(rest_status);
+			$("#reservationStatusUpdate").attr({
+				"method" : "post",
+				"action" : "/admin/reservation/adminReservationStatusUpdate"
+			});
+			$("#reservationStatusUpdate").submit();
+		}
+		});
 	});
 
 	function goPage(page) {
@@ -130,7 +125,7 @@
 				type="hidden" id="rest_status" name="rest_status"> <input
 				type="hidden" id="url" name="url"
 				value="/admin/reservation/adminReservationCancelList?page=1&order_by=rest_status&order_sc=ASC">
-			<input type="hidden" id="rest_statusCheck">
+				<input type="hidden" id="rest_statusCheck">
 		</form>
 
 		<div id="updateStatus">
@@ -238,9 +233,7 @@
 						<c:when test="${not empty adminReservationCancelList}">
 							<c:forEach var="reservationCancel"
 								items="${adminReservationCancelList}" varStatus="status">
-								<tr data-num="${reservationCancel.rest_number}"
-									data-rest_status="${reservationCancel.rest_status}"
-									id="list_th">
+								<tr data-num="${reservationCancel.rest_number}" data-rest_status="${reservationCancel.rest_status}" id="list_th" class="dataBg_color">
 									<td><input type="radio" class="updateRest_status"
 										name="updateRest_status"></td>
 									<td>${reservationCancel.rest_bnumber}</td>

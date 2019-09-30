@@ -14,6 +14,8 @@
 	src="/resources/admin/include/js/product/adminProductModify.js"></script>
 <script type="text/javascript">
 	$(function() {
+		
+		$("input[type=image]").attr("disabled",true);
 		// 취소 버튼 클릭 시 디테일 페이지 이동 처리 이벤트 
 		$("#productModifyCancel")
 				.click(
@@ -29,7 +31,6 @@
 
 	<div class="main_content">
 		<div>
-			<h2>상품 수정</h2>
 		</div>
 
 		<div class="contentTB_D">
@@ -68,7 +69,7 @@
 						<tr id="P_update">
 							<th>상품 썸네일</th>
 							<td colspan="3"><input type="image" id="old_thumb"
-								src="/uploadStorage/thumb/${modifyData.pt_thumb}" height="100px">
+								src="/uploadStorage/thumb/${modifyData.pt_thumb}" height="100px" >
 								<input type="file" id="file" name="file" onchange="filetest()"></td>
 						</tr>
 						<tr id="P_update">

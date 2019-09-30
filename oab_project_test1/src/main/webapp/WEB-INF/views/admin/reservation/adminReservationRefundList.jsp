@@ -62,10 +62,12 @@
 		//상태변경하는select
 		//document.getElementById("updateStatus").style.display="none";
 		$(".updateRest_status").click(function() {
+			$(".dataBg_color").css("background-color","#ffffff");
 			var rest_number = $(this).parents("tr").attr("data-num");
 			var rest_statusCheck = $(this).parents("tr").attr("data-rest_status");
 		    $("#rest_statusCheck").val(rest_statusCheck);
 			$("#rest_number").val(rest_number);
+			 $(this).parents("tr").css("background-color","#e1c4c4");
 		});
 
 		$("#statusSelect").click(function() {
@@ -115,7 +117,7 @@
 	<div class="main_content">
 
 		<div class="contentTit">
-			<h2>환 불</h2>
+			<h2>환불</h2>
 		</div>
 		<form id="reservationStatusUpdate">
 			<input type="hidden" id="rest_statusCheck">
@@ -232,7 +234,7 @@
 						<c:when test="${not empty adminReservationRefundList}">
 							<c:forEach var="reservationRefund"
 								items="${adminReservationRefundList}" varStatus="status">
-								<tr data-num="${reservationRefund.rest_number}" data-rest_status="${reservationRefund.rest_status}" id="list_th">
+								<tr data-num="${reservationRefund.rest_number}" data-rest_status="${reservationRefund.rest_status}" id="list_th" class="dataBg_color">
 									<td><input type="radio" class="updateRest_status"
 										name="updateRest_status"></td>
 									<td>${reservationRefund.rest_bnumber}</td>

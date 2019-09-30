@@ -93,7 +93,7 @@ public class AdminProductController {
 
 		result = adminProductService.adminProductWrite(pvo);
 		if (result == 1) {
-			url = "/admin/product/adminProductList";
+			url = "/admin/product/adminProductList?page=1";
 		} else {
 			log.info("확인해");
 			url = "/admin/product/adminProductWrite";
