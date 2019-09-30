@@ -79,17 +79,38 @@
 			alert("포토후기의 내용 입력은 필수입니다");
 			$("#revt_content").focus();
 			return false;
-		} else if ($("#file").select().val() == '') {
+		} else if ($("#revt_thumbnail").select().val() == '') {
 			alert("썸네일 사진은 필수 등록입니다.");
 			return false;
-		}else if (jQuery.inArray(pt_thumbCheck, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1
-			|| jQuery.inArray(pt_image1Check, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1
-			|| jQuery.inArray(pt_image2Check, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1
-			|| jQuery.inArray(pt_image3Check, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
-		alert('파일은 gif, png, jpg, jpeg 만 업로드를 할 수 있습니다.');
+		} else if (extension_check($("#revt_thumbnail"))) {
 			return false;
-		} else
-			return true;
+		} else if (extension_check($("#revt_image1"))) {
+			return false;
+		} else if (extension_check($("#revt_image2"))) {
+			return false;
+		} else if (extension_check($("#revt_image3"))) {
+			return false;
+		}
+		return true;
+	}
+
+	//확장자 체크 함수
+	function extension_check(file) {
+		//입력한 파일이 공백이 아닐경우 작동
+		if (file.val() != '') {
+			// .뒤로 자르기
+			var extension = file.val().split('.').pop().toLowerCase();
+			// 자른 확장자명이 없을경우 -1 있으면 배열의 인덱스값 반환(0~3)
+			// 입력한 파일의 확장자명이 배열중에 없으면 true
+			if (jQuery.inArray(extension, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
+				alert('파일은 gif, png, jpg, jpeg 만 업로드를 할 수 있습니다.');
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return false;
+	}
 </script>
 </head>
 <body>
@@ -136,8 +157,8 @@
 						</tr>
 						<tr>
 							<td class="ac">텍스트 *</td>
-							<!-- 	<td><input type="text" name="qt_textcontent"
-							id="qt_textcontent"></td> -->
+							<!--    <td><input type="text" name="qt_textcontent"
+                     id="qt_textcontent"></td> -->
 							<td><textarea name="revt_content" id="revt_content"></textarea></td>
 						</tr>
 						<tr>

@@ -15,9 +15,16 @@
 	src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 	$(function() {
+
+		// 해당 1:1문의 글이 자신이 쓴 글일 경우에만 삭제버튼을 보여줌 
+		if ($("#qt_writer").val() == "관리자") {
+			document.getElementById("delete_questionBtn").style.display = "none";
+		} else {
+			document.getElementById("delete_questionBtn").style.display = "block";
+		}
+
 		/* 목록 버튼을 누르면 리스트로 돌아갈 수 있게 만들기 */
 		$("#back_questionListBtn").click(function() {
-
 			location.href = "questionList"; //주소값
 		});
 	});
@@ -46,37 +53,45 @@
 
 	//삭제버튼
 	$(function() {
-		$("#delete_questionBtn")
-				.click(
-						function() {
+		$("#delete_questionBtn").click(
+				function() {
 
-							var qt_writerPwCheck = $("#qt_writerPwCheck").val(); //삭제 시 비밀번호 확인을 위한 비밀번호
-							var qt_pw = $("#qt_pw").val(); //원글의 비밀번호
+					var qt_writerPwCheck = $("#qt_writerPwCheck").val(); //삭제 시 비밀번호 확인을 위한 비밀번호
+					var qt_pw = $("#qt_pw").val(); //원글의 비밀번호
 
-							if (!($("#qt_writerPwCheck").val())) { //비밀번호란이 공백일경우
-								alert("비밀번호를 입력해주세요");
-								$("#qt_writerPwCheck").val("");
-								$("#qt_writerPwCheck").focus();
-							}
+					if ($("#qt_status").val() == "미답변") {
 
-							else if ($("#qt_pw").val() != $("#qt_writerPwCheck")
-									.val()) { //입력한 비밀번호와 DB의 비밀번호가 틀리다면
-								alert("입력하신 비밀번호가 일치하지 않습니다.");
-								$("#qt_writerPwCheck").val("");
+						if (!($("#qt_writerPwCheck").val())) { //비밀번호란이 공백일경우
+							alert("비밀번호를 입력해주세요");
+							$("#qt_writerPwCheck").val("");
+							$("#qt_writerPwCheck").focus();
+						}
 
-							} else if (confirm("[${detail.qt_title}]"
-									+ " 작성하신 문의 글을 정말 삭제하시겠습니까?")) { //입력한 비밀번호가 맞을경우
+						else if ($("#qt_pw").val() != $("#qt_writerPwCheck")
+								.val()) { //입력한 비밀번호와 DB의 비밀번호가 틀리다면
+							alert("입력하신 비밀번호가 일치하지 않습니다.");
+							$("#qt_writerPwCheck").val("");
 
-								$("#qt_data").attr("action",
-										"/question/questionDelete");
-								$("#qt_data").submit();
-							}
-						});
+						} else if (confirm("[${detail.qt_title}]"
+								+ " 작성하신 문의 글을 정말 삭제하시겠습니까?")) { //입력한 비밀번호가 맞을경우
+
+							$("#qt_data").attr("action",
+									"/question/questionDelete");
+							$("#qt_data").submit();
+						}
+
+					} else {
+						alert("답변이 완료된 문의글은 삭제할 수 없습니다.");
+					}
+				});
+
 	});
 </script>
 </head>
 <body>
 
+	<input type="hidden" id="qt_writer" value="${detail.qt_writer}">
+	<input type="hidden" id="qt_status" value="${detail.qt_status}">
 
 	<div class="contentContainer">
 		<div class="contentsTit">

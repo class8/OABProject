@@ -38,7 +38,7 @@
 				and rnum BETWEEN #{start_row} AND #{end_row}
 			</if>
 		</if>
-		order by qt_number desc
+		order by qt_root, qt_step, qt_level asc
 
 	</select>
 	<!-- 페이지 -->
