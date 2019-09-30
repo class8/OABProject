@@ -213,11 +213,8 @@ public class MemberController {
 		System.out.println("memberUserInfo 호출 성공");
 		// 페이지 세팅
 		Paging.setPage(uvo);
-		// 전체 레코드수 구현
-		LoginVO test1 = (LoginVO)session.getAttribute("login");
-		uvo.setMt_id(test1.getMt_id());
-		int total = memberService.UserInfoListTotal(uvo);
-		int count = memberService.UserInfoListCnt(uvo);
+		
+	
 		
 		// 글번호 재설정
 		/*
@@ -237,6 +234,13 @@ public class MemberController {
 
 		// 구매한 예약 목록
 		List<UserInfoVO> userInfo = memberService.memberUserInfo(uvo);
+		// 전체 레코드수 구현
+		/*
+		 * LoginVO test1 = (LoginVO)session.getAttribute("login");
+		 * uvo.setMt_id(test1.getMt_id());
+		 */
+		int total = memberService.UserInfoListTotal(uvo);
+		int count = memberService.UserInfoListCnt(uvo);
 
 		System.out.println(userInfo.size());
 
