@@ -82,8 +82,10 @@
 		SELECT nvl(count(rest_bnumber),0) as cnt
 		from (SELECT list.* , ROWNUM
 		AS RNUM FROM
-		( select * from RESERVATION_TBL )
+		( select * from RESERVATION_TBL)
 		list)
+		
+		WHERE mt_id = #{mt_id}
 		
 	</select>
 	

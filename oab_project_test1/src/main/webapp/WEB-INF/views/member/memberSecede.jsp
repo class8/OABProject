@@ -70,6 +70,7 @@
 		}
 
 	});
+
 	$(function() {
 		$("#SecedeReset").click(function() {
 			location.href = "/";
@@ -109,7 +110,7 @@
 
 		<div>
 			<div class="form-group">
-				<label for="mt_id" id="mt_id" class="col-sm-2 control-label">아 이 디 </label>
+				<label for="mt_id" class="col-sm-2 control-label">아 이 디 </label>
 				<div class="col-sm-4">
 					<input type="text" id="mt_id" name="mt_id" class="form-control"
 						placeholder="ID">
@@ -117,15 +118,16 @@
 				<p class="form-control-static error"></p>
 			</div>
 			<div class="form-group">
-				<label for="mt_pw" id="mt_pw" class="col-sm-2 control-label">비밀번호 </label>
-				<div class="col-sm-4">
-					<input type="password" id="mt_pw" name="mt_pw" class="form-control"
-						placeholder="Password">
-				</div>
-				<p class="form-control-static error"></p>
+			<label for="mt_pw" class="col-sm-2 control-label">비밀번호 </label>
+			<div class="col-sm-4">
+				<input type="password" id="mt_pw" name="mt_pw" class="form-control"
+					placeholder="Password">
 			</div>
-			<br> <input type="button" value="탈 &nbsp;&nbsp;퇴" id="memberSecede" /> <br><input
-				type="button" value="취 &nbsp;&nbsp;소" id="SecedeReset">
+			<p class="form-control-static error"></p>
+		</div>
+			<br> <input type="button" value="탈 &nbsp;&nbsp;퇴"
+				id="memberSecede" /> <br> <input type="button"
+				value="취 &nbsp;&nbsp;소" id="SecedeReset">
 		</div>
 	</form>
 

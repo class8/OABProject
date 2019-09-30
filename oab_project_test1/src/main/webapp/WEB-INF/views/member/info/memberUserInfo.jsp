@@ -21,7 +21,7 @@
 		$(".check").click(function() {
 			var index = $(".check").index($(".check:checked")); //선택상품 인덱스값
 			var test = $(".rest_status:eq(" + index + ")").text(); //선택상품의 상태값
-			if (test != '예약취소' && test != '환불요청') {
+			if (test != '예약취소' && test != '환불요청' && test != '예약종료') {
 				rest_number = $(this).parents("tr").attr("data-num");
 				$("#rest_number").val(rest_number);
 				//alert($("#rest_number").val());

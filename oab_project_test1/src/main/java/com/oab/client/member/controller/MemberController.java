@@ -214,6 +214,8 @@ public class MemberController {
 		// 페이지 세팅
 		Paging.setPage(uvo);
 		// 전체 레코드수 구현
+		LoginVO test1 = (LoginVO)session.getAttribute("login");
+		uvo.setMt_id(test1.getMt_id());
 		int total = memberService.UserInfoListTotal(uvo);
 		int count = memberService.UserInfoListCnt(uvo);
 		
