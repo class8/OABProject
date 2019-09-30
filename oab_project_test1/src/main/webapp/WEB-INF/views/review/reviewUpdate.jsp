@@ -23,37 +23,34 @@
 			location.href = "/review/reviewList";
 		});
 	});
-	
+
 	// 삭제버튼 클릭 시 처리 이벤트 
 	$("#reviewDeleteBtn").click(function() {
 
 		if (confirm("${update.revt_title}" + "게시글이 삭제 됩니다.")) {
-
 			$(".revt-data").attr({
 				"method" : "post",
-				"action" : "/admin/question/questionDelete"
+				"action" : "/review/reviewDelete"
 			});
-
 			$("#revt-data").submit();
 		}
 	});
-	
 </script>
 </head>
 <body>
 	<c:if test="${login.mt_id != null }">
-
-		<label>현재 접속 중 아이디 : ${login.mt_id}</label>
-
 		<div class="reviewContentContainer">
-
 			<div class="contentsTit">
-				<h3>포토후기 작성</h3>
+				<h3>포토후기 수정페이지</h3>
 				<hr>
 			</div>
 			<div class="ContentTB">
-				<form name="revt-data" id="reviewUpdateForm" enctype="multipart/form-data">
-				<input type="hidden" id="revt_number" value="${update.revt_number }">
+				<form name="revt-data" id="reviewUpdateForm"
+					enctype="multipart/form-data">
+					<input type="hidden" id="revt_number"
+						value="${updateData.revt_number }"> <input type="hidden"
+						id="old_pw" value="${updateData.revt_pw }">
+					<p>${updateData.revt_pw }</p>
 					<table id="reviewUpdate">
 						<colgroup>
 							<col width="20%" />
@@ -62,7 +59,7 @@
 						<tr>
 							<td class="ac">작성자 *</td>
 							<td><input type="text" name="revt_writer" id="revt_writer"
-								readonly="readonly" value="${update.revt_writer}"></td>
+								readonly="readonly" value="${updateData.revt_writer}"></td>
 						</tr>
 						<tr>
 							<td><input type="hidden" name="mt_id" id="mt_id"
@@ -71,17 +68,19 @@
 						<tr>
 							<td class="ac">비밀번호 *</td>
 							<td><input type="password" name="check_pw" id="check_pw"
+								value="${updateDatae.revt_pw }"
 								placeholder="비밀번호는 숫자로 5자리까지 입력이 가능합니다." maxlength="5"
 								onkeyPress="InpuOnlyNumber(this);"></td>
 						</tr>
 						<tr>
 							<td class="ac">이용지점 선택 *</td>
-							<td><input type="text" name="revt_branch" id="revt_branch" readonly="readonly" value="${revt_branch}"></td>
+							<td><input type="text" name="revt_branch" id="revt_branch"
+								readonly="readonly" value="${updateData.revt_branch}"></td>
 						</tr>
 						<tr>
 							<td class="ac">제목 *</td>
 							<td><input type="text" name="revt_title" id="revt_title"
-								value="${update.revt_title }"></td>
+								value="${updateData.revt_title }"></td>
 						</tr>
 						<tr>
 							<td class="ac">텍스트 *</td>
@@ -91,20 +90,21 @@
 						</tr>
 						<tr>
 							<td class="ac">썸네일 *</td>
-							<td><input type="file" name="revt_file" id="revt_tumbnail">
-								<p id="file_guide">5Mbyte 미만의 파일만 가능합니다.</td>
+							<td><input type="file" name="revt_file" id="old_thumbnail">
+								<p id="file_guide" value="${updateData.revt_thumbnail}">5Mbyte
+									미만의 파일만 가능합니다.</td>
 						</tr>
 						<tr>
 							<td class="ac">이미지파일 1</td>
-							<td><input type="file" name="revt_file1" id="revt_image1"></td>
+							<td><input type="file" name="revt_file1" id="old_imagel"></td>
 						</tr>
 						<tr>
 							<td class="ac">이미지파일2</td>
-							<td><input type="file" name="revt_file2" id="revt_image2"></td>
+							<td><input type="file" name="revt_file2" id="old_image2"></td>
 						</tr>
 						<tr>
 							<td class="ac">이미지파일3</td>
-							<td><input type="file" name="revt_file3" id="revt_image3"></td>
+							<td><input type="file" name="revt_file3" id="old_image3"></td>
 						</tr>
 					</table>
 				</form>

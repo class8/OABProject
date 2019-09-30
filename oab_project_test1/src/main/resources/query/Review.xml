@@ -119,8 +119,8 @@
 		SET
 		revt_number = #{revt_number},
 		mt_id =#{mt_id},
-		pt_name = #{pt_name},
-		revt_title = #{revt_title},
+		revt_title =
+		#{revt_title},
 		revt_writer = #{revt_writer},
 		revt_content =
 		#{revt_content},
@@ -136,7 +136,8 @@
 		#{revt_readcnt},
 		revt_branch = #{revt_branch}
 		WHERE
-		revt_number = #{revt_number}
+		revt_number =
+		#{revt_number}
 	</update>
 
 	<!-- 게시판 삭제 -->

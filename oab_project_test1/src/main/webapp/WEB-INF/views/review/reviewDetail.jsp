@@ -32,8 +32,7 @@
 		}
 		/* 버튼을 클릭하면 업데이트로 이동하기*/
 		$("#Update_reviewBtn").click(function() {
-
-			alert($("#revt_number").val());
+			//alert($("#revt_number").val());
 			$("#revt_data").attr({
 				"method" : "get",
 				"action" : "/review/reviewUpdateForm"
@@ -50,7 +49,6 @@
 	<div class="contentContainer">
 		<div class="contentsTit">
 			<h3>포토후기</h3>
-			<label>현재 접속 중 아이디 : ${login.mt_id}</label>
 			<hr>
 		</div>
 		<form name="revt_data" id="revt_data">
