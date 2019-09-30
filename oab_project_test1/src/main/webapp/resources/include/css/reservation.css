@@ -1,29 +1,132 @@
-.reservation_calendar {
+/* .reservation_calendar {
 	margin-left:2%;
 	width: 48%;
 	height: 100%;
 	float: left;
+} */
+.product_calendar {
+	margin-left: 2%;
+	width: 48%;
+	float: left;
+}
+
+.product_info {
+	min-height: 500px;
+}
+
+.pt_name {
+	text-align: center;
+}
+
+.pt_explain {
+	text-align: center;
+}
+
+.add_choice {
+	width: 100%;
+	text-align: center;
+}
+
+.product_info table {
+	width: 100%;
+}
+
+.product_article .product_thumb img {
+	width: 100%;
+	opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.product_article .product_thumb img:hover {
+	opacity: .7;
+}
+
+.product_images {
+	
+}
+
+.image {
+	float: left;
+	width: 33%;
+}
+
+.image img {
+	width: 100%;
+	opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.image img:hover {
+	opacity: .7;
 }
 
 .reservation_select {
-	margin-left:2%;
+	margin-left: 2%;
 	width: 48%;
 	height: 100%;
 	float: left;
 }
 
 .reservation_select table {
+	width: 100%;
 	align-content: center;
 }
 
 .reservation_select tr {
-	border: 1px solid black;
 	font-size: 28px;
-	height: 50px;
 }
 
 .reservation_select td {
 	height: 50px;
-	font-size: 14px;
+	font-size: 16px;
+}
+
+select {
+	width: 155px;
+}
+
+.choice_item {
+	width: 50%;
+}
+
+.select input[type=button] {
+	width: 30px;
+	height: 30px;
+	background-color: #8080c0;
+	border: none;
+	color: #fff;
 	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 18px;
+	margin: 4px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.total_price {
+	border-top: 2px solid gray;
+}
+
+.rest_total, .price {
+	text-align: right;
+	width: 200px;
+	border: none;
+}
+
+.btn input[type=button] {
+	width: 600px;
+	background-color: #f8585b;
+	border: none;
+	color: #fff;
+	padding: 15px 0;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 15px;
+	margin: 4px;
+	cursor: pointer;
+	border-radius: 10px;
 }

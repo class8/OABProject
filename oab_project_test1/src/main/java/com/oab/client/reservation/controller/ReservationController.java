@@ -45,13 +45,13 @@ public class ReservationController {
 	 * 예약하기 화면 출력하기
 	 **************************************/
 	@RequestMapping(value = "/reservationReg", method = RequestMethod.GET)
-	public String reservationReg(@ModelAttribute ProductVO pvo, Model model) {
+	public String reservationReg(@ModelAttribute ProductVO pvo, Model model, @RequestParam(value = "pt_num", required = false, defaultValue = "0") int pt_num) {
 		log.info("reservationReg 호출 성공");
 
-		List<ProductVO> setList = productService.setList(pvo);
+		ProductVO product = productService.productDetail(pt_num);
 		List<ProductVO> addList = productService.addList(pvo);
 
-		model.addAttribute("setList", setList);
+		model.addAttribute("product", product);
 		model.addAttribute("addList", addList);
 		model.addAttribute("data", pvo);
 
@@ -77,9 +77,10 @@ public class ReservationController {
 		System.out.println("예약삽입 컨트롤러 호출 성공");
 		LoginVO login = (LoginVO) session.getAttribute("login");
 		rvo.setMt_id(login.getMt_id());
+		//묶음번호
 		int bnumber = reservationService.reservationBnumber();
 		rvo.setRest_bnumber(bnumber);
-
+		
 		int result = 0;
 		String url = "";
 		result = reservationService.reservationInsert(rvo, pt_num, pt_cnt, price);

@@ -133,22 +133,27 @@
 		</where>
 	</select>
 
-	<!-- 세트 전체 조회 -->
+	<!-- 메인화면 신상품 조회 -->
 	<select id="mainList" resultType="product">
-		select list.* from(
-		SELECT *
-		from
-		product_tbl
-		where pt_status='대여가능' and
-		pt_type='세트상품'
-		order
-		by pt_regdate desc
+		select list.*, rownum from(
+		<include refid="productCommon"></include>
+		and pt_type='세트상품'
+		order by pt_regdate desc
 		)list
 		<where>
-   <![CDATA[rownum < 4]]>
-			<!-- SELECT * from (SELECT list.*, ROWNUM AS RNUM FROM ( SELECT * from 
-				product_tbl where pt_status='대여가능' order by pt_regdate desc ) list ) -->
+			rownum BETWEEN 1 AND 2
 		</where>
+	</select>
+
+	<!-- 예약하기 페이지 상품조회 -->
+	<select id="productDetail" parameterType="int"
+		resultType="product">
+		SELECT *
+		from product_tbl
+		where
+		pt_status = '대여가능'
+		and
+		pt_number = ${pt_num}
 	</select>
 
 </mapper>

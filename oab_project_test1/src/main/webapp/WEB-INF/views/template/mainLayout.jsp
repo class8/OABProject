@@ -7,43 +7,56 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Matthew Howell" />
+<meta name="description" content="fullPage continuous scrolling demo." />
+<meta name="keywords"
+	content="fullpage,jquery,demo,scroll,loop,continuous" />
+<meta name="Resource-type" content="Document" />
 <title><tiles:getAsString name="title" /></title>
 <link href="/resources/include/css/reset.css" rel="stylesheet">
-<link href="/resources/include/css/mainLayout.css" rel="stylesheet">
 <link href="/resources/include/css/header.css" rel="stylesheet">
 <link href="/resources/include/css/footer.css" rel="stylesheet">
+<link href="/resources/include/css/mainLayout.css" rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="/resources/include/js/mainLayout.js"></script>
 </head>
 <body>
 	<div class="wrapper">
-		<header class="header">
-			<tiles:insertAttribute name="header" />
-		</header>
+
 		<div class="main_content">
-			<article class="main_image">
-				<h2>메인이미지</h2>
-				<img class="main_img" src="/resources/images/main_img.png">
-			</article>
-			<div class="main_items">
-				<h2>추천상품리스트</h2>
-				<div class="main_items_title">신상품 리스트</div>
-				<!--  -->
-				<c:if test="${not empty setList}">
-					<c:forEach var="product" items="${setList}" varStatus="status">
-						<article class="main_item">
-							<p>${product.pt_name}</p>
-							<a href="/product/productSetList"> <img
-								class="product_thumbnail"
-								src="/uploadStorage/thumb/${product.pt_thumb}">
-							</a>
-						</article>
-					</c:forEach>
-				</c:if>
-				<!--  -->
+			<header class="header">
+				<tiles:insertAttribute name="header" />
+			</header>
+			<!--  -->
+			<div class="container">
+				<section class="background">
+					<div class="content-wrapper">
+						<p class="content-title">이미지1</p>
+					</div>
+				</section>
+				<section class="background">
+					<div class="content-wrapper">
+						<p class="content-title">이미지2</p>
+					</div>
+				</section>
+				<section class="background">
+					<div class="content-wrapper">
+						<p class="content-title">이미지3</p>
+					</div>
+				</section>
+				<section class="background">
+					<div class="content-wrapper">
+						<footer class="footer">
+							<tiles:insertAttribute name="footer" />
+						</footer>
+					</div>
+				</section>
 			</div>
+			<!--  -->
 		</div>
-		<footer class="footer">
-			<tiles:insertAttribute name="footer" />
-		</footer>
 	</div>
 </body>
 </html>

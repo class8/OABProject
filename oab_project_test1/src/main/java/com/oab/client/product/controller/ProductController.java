@@ -30,10 +30,10 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	@RequestMapping(value = "/productSetList", method = RequestMethod.GET)
+	@RequestMapping(value = "/productList", method = RequestMethod.GET)
 	public String productSetList(@ModelAttribute ProductVO pvo, Model model) {
 		// 페이지 세팅
-		pvo.setPageSize("6");
+		pvo.setPageSize("9");
 		Paging.setPage(pvo);
 
 		// 레코드수
@@ -57,7 +57,7 @@ public class ProductController {
 		model.addAttribute("total", total);
 		model.addAttribute("data", pvo);
 
-		return "product/productSetList";
+		return "product/productList";
 	}
 
 	@RequestMapping(value = "/productAddList", method = RequestMethod.GET)

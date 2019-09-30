@@ -19,4 +19,5 @@ public interface ProductDao {
 
 	public List<ProductVO> mainList();
 
+	public ProductVO productDetail(int pt_num);
 }

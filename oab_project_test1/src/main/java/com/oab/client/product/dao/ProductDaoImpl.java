@@ -50,9 +50,15 @@ public class ProductDaoImpl implements ProductDao {
 		return session.selectList("addList", pvo);
 	}
 
-	// 글 목록 구현
+	// 메인페이지 신상품 구현
 	@Override
 	public List<ProductVO> mainList() {
 		return session.selectList("mainList");
+	}
+
+	// 예약하기 상품 구현
+	@Override
+	public ProductVO productDetail(int pt_num) {
+		return session.selectOne("productDetail", pt_num);
 	}
 }

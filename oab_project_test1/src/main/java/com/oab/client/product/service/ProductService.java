@@ -18,5 +18,7 @@ public interface ProductService {
 	public List<ProductVO> addList(ProductVO pvo);
 
 	public List<ProductVO> mainList();
+	
+	public ProductVO productDetail(int pt_num);
 
 }

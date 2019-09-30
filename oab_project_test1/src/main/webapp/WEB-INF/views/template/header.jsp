@@ -24,28 +24,27 @@
 <nav class="header_menu">
 	<h2>메인메뉴</h2>
 	<ul class="navi">
-		<li>OAB텐트 소개
+		<li><a href="/greeting/greetingPage">OAB소개</a>
 			<ul>
 				<li><a href="/greeting/greetingPage">인사말</a></li>
 				<li><a href="/notice/noticeList">공지사항</a></li>
 				<li><a href="/branch/branchPage">지점안내</a></li>
 			</ul>
 		</li>
-		<li>이용안내
+		<li><a href="/product/productList">상품</a>
 			<ul>
-				<li><a href="/product/productSetList">상품소개</a></li>
-				<li><a href="/reservation/reservationReg">예약하기</a></li>
+				<li><a href="/product/productList">상품소개</a></li>
 				<li><a href="/review/reviewList">포토후기</a></li>
 			</ul>
 		</li>
-		<li>마이페이지
+		<li><a href="/member/info/memberUserInfo">마이페이지</a>
 			<ul>
 				<li><a href="/member/info/memberUserInfo">내 이용정보</a></li>
 				<li><a href="/member/memberModify">내 정보수정</a></li>
 				<li><a href="/member/memberSecede">회원 탈퇴</a></li>
 			</ul>
 		</li>
-		<li>고객센터
+		<li><a href="/faq/faqPage">고객센터</a>
 			<ul>
 				<li><a href="/faq/faqPage">자주묻는질문</a></li>
 				<li><a href="/question/questionWrite">1:1 문의</a></li>

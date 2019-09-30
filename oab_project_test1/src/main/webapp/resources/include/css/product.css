@@ -68,6 +68,18 @@ ul {
 .product_article .product_thumb img {
 	width: 98%;
 	height: 300px;
+	opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.product_article .product_thumb img:hover {
+	opacity: .8;
+	-webkit-transform: scale(1.03);
+	transform: scale(1.03);
 }
 
 .product_article .product_images img {
@@ -96,3 +108,4 @@ ul {
 .paginate a.on {
 	color: #FF3300;
 }
+/**/

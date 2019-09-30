@@ -12,6 +12,16 @@ $(function() {
 			$("#reservation_form").submit();
 		}
 	});
+	$(".rest_payoption").click(function() {
+		var option_val = $(".rest_payoption:checked").val();
+		if(option_val.match('계좌이체')){
+			$(".pay").html("예금주명:홍길동<br>은행명:국민은행<br>계좌번호:123-45678-9101112<br>위 계좌로 송금하시면 확인후 예약완료 처리됩니다.");
+			$(".pay").attr({"style" : "border: 1px solid black;"});
+		}else{
+			$(".pay").html("");
+			$(".pay").attr({"style" : "border: none;"});
+		}
+	});
 });
 
 //등록 필수입력 체크
@@ -42,41 +52,6 @@ function FormCheck() {
 }
 //////////////////////////////////////////////////////////////
 $(function() {
-	//세트상품을 선택하여 값이 변할경우 이벤트
-	$(".set_choice").change(function() {
-		//선택항목에 넣을 선택값 변수
-		var q = $(".set_choice .item").index($(".set_choice .item:selected")); //선택상품 인덱스값
-		var str = $(".set_number:eq("+q+")").val(); //선택 상품의 상품번호
-		//기존 선택항목에 있는지 검증하여 없을경우에만 실행
-		if(!compareTo(arr, str)){
-			//인덱스에 맞는 가격값
-			var price = parseInt($(".set_price:eq("+q+")").val()); //선택상품 가격
-			
-			//선택항목에 label추가
-			var choice_item = ("<label class='choice_item'>"+$(".set_choice").val()+" </label>");
-			
-			//선택값 옆에 -버튼,수량,+버튼추가
-			var btn_minus = ("<input class='btn_minus' type='button' value='-'></input>");
-			var cnt_num = ("<input type='text' name='num' value='1' class='num' readonly style='width:30px'>");
-			var btn_plus = ("<input class='btn_plus' type='button' value='+'></input>");
-
-			//선택한 상품번호
-			var pt_num = ("<input name='pt_num' class='pt_num' type='hidden' value='"+str+"'></input>");
-			var pt_cnt = ("<input name='pt_cnt' class='pt_cnt' type='hidden' value='1'></input>");
-			
-			var total = ("<input type='text' name='price' value='"+price+"' class='price' readonly style='width:100px'>");
-			//X종료버튼 추가
-			var cancel = ("<input class='btn_close' type='button' value='X'></input></div>");
-
-			$(".select_product").append("<div class='select'><br>"+choice_item+btn_minus+cnt_num+btn_plus+pt_num+pt_cnt+total+cancel+"</div>");
-			
-			//검증시 사용하는 선택한 항목 배열에 값 추가
-			arr.push(str);
-			}
-		calculation_total();
-		// select 선택값을 '세트상품선택'으로 하고 선택할수 없도록
-		$(".set_choice").val('세트상품선택').attr("disabled hidden");
-	});
 	//추가상품을 선택하여 값이 변할경우 이벤트
 	$(".add_choice").change(function() {
 		//선택항목에 넣을 선택값 변수
@@ -88,22 +63,22 @@ $(function() {
 			var price = parseInt($(".add_price:eq("+q+")").val()); //추가상품 가격
 			
 			//선택항목에 label추가
-			var choice_item = ("<label class='choice_item'>"+$(".add_choice").val()+" </label>");
+			var choice_item = ("<label class='choice_item'>"+$(".add_choice").val()+"</label>");
 			
 			//선택값 옆에 -버튼,수량,+버튼추가
-			var btn_minus = ("<input class='btn_minus' type='button' value='-'></input>");
-			var cnt_num = ("<input type='text' name='num' value='1' class='num' readonly style='width:30px'>");
-			var btn_plus = ("<input class='btn_plus' type='button' value='+'></input>");
+			var btn_minus = (" <input class='btn_minus' type='button' value='-'></input>");
+			var cnt_num = (" <input type='text' name='num' value='1' class='num' readonly style='width:30px'>");
+			var btn_plus = (" <input class='btn_plus' type='button' value='+'></input>");
 
 			//선택한 상품번호
-			var pt_num = ("<input name='pt_num' class='pt_num' type='hidden' value='"+str+"'></input>");
-			var pt_cnt = ("<input name='pt_cnt' class='pt_cnt' type='hidden' value='1'></input>");
+			var pt_num = (" <input name='pt_num' class='pt_num' type='hidden' value='"+str+"'></input>");
+			var pt_cnt = (" <input name='pt_cnt' class='pt_cnt' type='hidden' value='1'></input>");
 			
-			var total = ("<input type='text' name='price' value='"+price+"' class='price' readonly style='width:100px'>");
+			var total = (" <input type='text' name='price' value='"+price+"' class='price' readonly style='width:100px'>");
 			//X종료버튼 추가
-			var cancel = ("<input class='btn_close' type='button' value='X'></input></div>");
+			var cancel = (" <input class='btn_close' type='button' value='x'></input></div>");
 
-			$(".select_product").append("<div class='select'><br>"+choice_item+btn_minus+cnt_num+btn_plus+pt_num+pt_cnt+total+cancel+"</div>");
+			$(".select_product").append("<div class='select'>"+choice_item+btn_minus+cnt_num+btn_plus+pt_num+pt_cnt+total+"원"+cancel+"</div>");
 			
 			//검증시 사용하는 선택한 항목 배열에 값 추가
 			arr.push(str);
@@ -119,6 +94,7 @@ $(function() {
 			 sum += Number($(this).val());
 		 });
 		 $(".rest_total").val(sum); //총액
+		 
 	}
 	$(document).on("click",".btn_plus",function(){ 
 		    var n = $('.btn_plus').index(this); //인덱스

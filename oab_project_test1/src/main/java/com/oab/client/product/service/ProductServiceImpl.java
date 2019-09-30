@@ -81,13 +81,22 @@ public class ProductServiceImpl implements ProductService {
 		myList = productDao.addList(pvo);
 		return myList;
 	}
-	
-	// 세트 목록 구현
-		@Override
-		public List<ProductVO> mainList() {
-			List<ProductVO> mainList = null;
-		
-			mainList = productDao.mainList();
-			return mainList;
-		}
+
+	// 메인페이지 신상품 목록 구현
+	@Override
+	public List<ProductVO> mainList() {
+		List<ProductVO> mainList = null;
+
+		mainList = productDao.mainList();
+		return mainList;
+	}
+
+	// 예약하기 페이지 상품 구현
+	@Override
+	public ProductVO productDetail(int pt_num) {
+		ProductVO detail = null;
+
+		detail = productDao.productDetail(pt_num);
+		return detail;
+	}
 }
