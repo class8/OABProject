@@ -173,7 +173,7 @@
 
 	<update id="memberSecede" parameterType="member">
 		update MEMBER_TBL set
-		mt_DISABLED = 'disable'
+		mt_DISABLED = 'disabled'
 		where mt_id=#{mt_id}
 	</update>
 

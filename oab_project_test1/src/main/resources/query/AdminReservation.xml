@@ -104,7 +104,7 @@
 		select * 
 		from reservation_tbl
 		<where>
-			rest_status='예약완료'
+			rest_status='예약완료' or rest_status='예약종료'
 			<if test="search == 'rest_number'">
 				<![CDATA[and rest_number = #{keyword} ]]>
 				<include refid="adminRest_bname"></include>

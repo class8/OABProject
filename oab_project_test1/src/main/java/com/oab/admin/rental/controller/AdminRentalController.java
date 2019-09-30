@@ -72,7 +72,7 @@ public class AdminRentalController {
 	public String adminRentalDelete(@ModelAttribute RentalVO arvo) {
 		int result = 0;
 		int result_reservationn = 0;
-		String url = "/admin/rental/adminRentalList";
+		String url = "/admin/rental/adminRentalList?page=1&order_by=rent_status&order_sc=ASC";
 		arvo.getRest_number();
 		result_reservationn = adminReservationService.adminReservationStatusUpdate(arvo);
 		result = adminRentalService.adminRentalDelete(arvo.getRent_number());
@@ -135,6 +135,6 @@ public class AdminRentalController {
 		} else {
 			System.out.println("rental 수정 실패");
 		}
-		return "redirect:/admin/rental/adminRentalList";
+		return "redirect:/admin/rental/adminRentalList?page=1&order_by=rent_status&order_sc=ASC";
 	}
 }

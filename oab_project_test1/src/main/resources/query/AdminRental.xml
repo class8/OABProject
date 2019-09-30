@@ -39,15 +39,23 @@
 		FROM(SELECT list.* , ROWNUM AS RNUM 
 		FROM(
 		select * from rental_tbl
-		<choose>
+		)list) r , member_tbl m , product_tbl p , reservation_tbl re
+		WHERE r.mt_id = m.mt_id and r.pt_number = p.pt_number and r.rest_number = re.rest_number
+		<include refid="adminRentalCommon"></include>
+		<if test="start_row != null and start_row != ''">
+			<if test="end_row != null and end_row != ''">
+			and	rnum BETWEEN #{start_row} AND #{end_row}
+			</if>
+		</if>
+			<choose>
 			<when test="order_by=='rent_status'">
-				ORDER BY rent_status
+				ORDER BY r.rent_status
 			</when>
 			<when test="order_by=='rent_expretrun'">
-				ORDER BY RENT_EXPRETRUN
+				ORDER BY r.RENT_EXPRETRUN
 			</when>
 			<when test="order_by=='rent_actretrun'">
-				ORDER BY RENT_ACTRETRUN
+				ORDER BY r.RENT_ACTRETRUN
 			</when>
 		</choose>
 		<choose>
@@ -58,14 +66,6 @@
 				DESC
 			</when>
 		</choose>
-		)list) r , member_tbl m , product_tbl p , reservation_tbl re
-		WHERE r.mt_id = m.mt_id and r.pt_number = p.pt_number and r.rest_number = re.rest_number
-		<include refid="adminRentalCommon"></include>
-		<if test="start_row != null and start_row != ''">
-			<if test="end_row != null and end_row != ''">
-			and	rnum BETWEEN #{start_row} AND #{end_row}
-			</if>
-		</if>
 	</select>
 	
 	<select id="adminRentalListCnt" parameterType="adminRental" resultType="int">
