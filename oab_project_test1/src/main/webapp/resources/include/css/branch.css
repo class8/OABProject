@@ -1,16 +1,29 @@
 @charset "UTF-8";
 
+body {
+	width: 100%;
+}
+
+#oab_branch {
+	margin-top: 15px;
+	font-size: 25pt;
+	text-align: center;
+	line-height: 180%;
+}
+
 section {
 	padding: 0;
-	margin: 0;
+	margin: 30, 0, 0, 0;
+	width: 90%;
 	text-align: center;
 	text-decoration: none;
+	color: #393939;
 }
 
 #branch_text1 {
-	margin-top: 20px;
-	margin-bottom: 50px;
-	font-size: 16pt;
+	margin-top: 30px;
+	margin-bottom: 40px;
+	text-align: right;
 }
 
 .article1 {
@@ -33,22 +46,20 @@ section {
 
 /* 점포명 */
 #branch_title {
-	margin-top : 30px;
-	font-size: 25px;
+	margin-top: 30px;
+	font-size: 23px;
+	color: #4762cd;
 	margin-left: 360px;
-
 }
 
 /* 점포 소개 */
 #branch_content {
-	
 	margin-top: 30px;
 	font-size: 15px;
-	text-align : right;
-	margin-right: 20px;
+	text-align: right;
+	margin-right: 5px;
 	/* 줄간격 */
 	line-height: 180%
-	
 }
 
 #branch_img {
