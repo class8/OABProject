@@ -24,25 +24,25 @@
 	});
 
 	//업데이트 버튼 누르면 넘어가야한다
-	$(function() {
+	/* 	$(function() {
 
-		//해당 포토후기에 에 포함된 회원만 
-		if ($("#log_hidden").val() == $("#revt_hidden").val()) {
-			document.getElementById("Update_reviewBtn").style.display = "block";
-		} else {
-			document.getElementById("Update_reviewBtn").style.display = "none";
-		}
-		/* 버튼을 클릭하면 업데이트로 이동하기*/
-		$("#Update_reviewBtn").click(function() {
-			//alert($("#revt_number").val());
-			$("#revt_data").attr({
-				"method" : "get",
-				"action" : "/review/reviewUpdateForm"
-			});
-			$("#revt_data").submit();
-		})
+	 //해당 포토후기에 에 포함된 회원만 
+	 if ($("#log_hidden").val() == $("#revt_hidden").val()) {
+	 document.getElementById("Update_reviewBtn").style.display = "block";
+	 } else {
+	 document.getElementById("Update_reviewBtn").style.display = "none";
+	 }
+	 /* 버튼을 클릭하면 업데이트로 이동하기*/
+	//$("#Update_reviewBtn").click(function() {
+	//alert($("#revt_number").val());
+	/* $("#revt_data").attr({
+		"method" : "get",
+		"action" : "/review/reviewUpdateForm"
 	});
-
+	$("#revt_data").submit();
+	})
+	});
+	 */
 	//삭제를 위한 처리다 이녀석들아
 	$(function() {
 		if ($("#log_hidden").val() == $("#revt_hidden").val()) {
@@ -134,9 +134,8 @@
 				</div>
 				<div id="buttoncss">
 					<p class="but">
-						<input type="button" value="목록" id="back_reviewListBtn">
-						<input type="button" value="업데이트" id="Update_reviewBtn">
-						<input type="button" value="삭제" id="reviewDeleteBtn">
+						<input type="button" value="목록" id="back_reviewListBtn"> <input
+							type="button" value="삭제" id="reviewDeleteBtn">
 					</p>
 				</div>
 			</div>

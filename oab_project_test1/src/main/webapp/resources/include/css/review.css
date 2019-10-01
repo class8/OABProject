@@ -65,10 +65,30 @@
 
 /* 버튼 CSS */
 .buttoncss {
-	margin-top: 70px;
+	margin-top: px;
 	margin: 0;
 	text-align: center;
 	margin-right: 50px;
+}
+
+#reviewInsertBtn {
+	width: 230px;
+	height: 34px;
+	text-align: center;
+	margin-top: 10px;
+	margin-left: 25px;
+	background-color: #deefef;
+	border: none;
+}
+
+#reviewListBackBtn {
+	width: 230px;
+	height: 34px;
+	text-align: center;
+	margin-top: 10px;
+	margin-left: 25px;
+	background-color: #deefef;
+	border: none;
 }
 
 #pleaseLogin {
@@ -82,6 +102,10 @@
 
 #textlogin {
 	color: blue;
+}
+
+#file_guide {
+	font-size: 90%;
 }
 
 /* 페이징 css */

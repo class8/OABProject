@@ -47,12 +47,12 @@ public class ReviewController {
 		int total = reviewService.reviewListCnt(rvo);
 		System.out.println("total = " + total);
 
+		List<ReviewVO> reviewList = reviewService.reviewList(rvo);
+		// 세트 레코드수 구현
 		// 글 번호를 재설정한다
 		int count = total - (Util.nvl(rvo.getPage()) - 1) * Util.nvl(rvo.getPageSize());
 		System.out.println("count = " + count);
 
-		List<ReviewVO> reviewList = reviewService.reviewList(rvo);
-		// 세트 레코드수 구현
 		total = reviewService.reviewListCnt(rvo);
 
 		model.addAttribute("reviewList", reviewList); // 값을 반환한다

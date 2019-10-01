@@ -114,7 +114,6 @@
 </script>
 </head>
 <body>
-	<%=request.getRealPath("/")%>
 	<c:if test="${login.mt_id != null }">
 		<div class="reviewContentContainer">
 			<div class="contentsTit">
@@ -160,7 +159,7 @@
 							<td><textarea name="revt_content" id="revt_content"></textarea></td>
 						</tr>
 						<tr>
-							<td class="ac">썸네일 *</td>
+							<td class="ac">썸네일 * </td>
 							<td><input type="file" name="revt_file" id="revt_thumbnail">
 								<p id="file_guide">5Mbyte 미만의 파일만 가능합니다.</td>
 						</tr>

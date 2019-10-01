@@ -149,10 +149,31 @@ ul, li {
 
 #buttoncss {
 	width: 100%;
+	margin-top : 20px;
 	text-align: center;
 }
 
 .but {
 	text-align: center;
 	float: center;
+}
+
+#back_reviewListBtn {
+	width: 230px;
+	height: 34px;
+	text-align: center;
+	margin-top: 10px;
+	margin-left: 25px;
+	background-color: #deefef;
+	border: none;
+}
+
+#reviewDeleteBtn {
+	width: 230px;
+	height: 34px;
+	text-align: center;
+	margin-top: 10px;
+	margin-left: 118px;
+	background-color: #deefef;
+	border: none;
 }
