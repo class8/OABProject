@@ -12,10 +12,6 @@
 <head>
 <meta charset="UTF-8">
 <title>사용자 공지사항 글 목록</title>
-<link href="/resources/include/css/reset.css" rel="stylesheet">
-<link href="/resources/include/css/contentLayout.css" rel="stylesheet">
-<link href="/resources/include/css/header.css" rel="stylesheet">
-<link href="/resources/include/css/footer.css" rel="stylesheet">
 <link href="/resources/include/css/clientNotice.css" rel="stylesheet">
 
 <script type="text/javascript"
@@ -113,7 +109,7 @@
 								<tr class="tac" data-num="${notice.nt_number}">
 
 									<td>${notice.nt_number}</td>
-									<td class="goDetail tal">${notice.nt_title }</td>
+									<td class="goDetail tal" id="noticeTit">${notice.nt_title }</td>
 									<td id="nt_regdate_1">${notice.nt_regdate }</td>
 									<td class="writer">${notice.nt_writer }</td>
 								</tr>
@@ -124,7 +120,7 @@
 
 							<tr>
 
-								<td colspan="5" class="tac">등록된 게시물이 없습니다. 게시물을 등록해주세요</td>
+								<td colspan="5" class="tac">등록된 게시물이 없습니다. 관리자님 게시물을 등록해주세요</td>
 
 							</tr>
 

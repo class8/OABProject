@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* 사용자 공지사항 css 2019.08.30 작성자 김은수 */
+/* 사용자 공지사항 css 2019.10.01 작성자 김은수 */
 .contentTit {
 	margin-top: 30px;
 	font-size: 25pt;
@@ -42,6 +42,10 @@
 	margin-top: 50px;
 }
 
+#noticeTit:hover {
+	color: #4762cd;
+}
+
 .contentTB th, .contentTB td {
 	padding: 8px;
 	border-bottom: 1px solid #c0c0c0;
@@ -56,6 +60,6 @@
 /* 페이징 css */
 #noticePage {
 	margin: auto;
-	margin-top : 40px;
+	margin-top: 40px;
 	text-align: center;
 }
