@@ -18,11 +18,14 @@
 	<!-- 1:1문의 리스트 가져오기 -->
 	<select id="mainQuestionList" parameterType="int"
 		resultType="adminQuestion">
-		SELECT qt_number, mt_id, qt_title, qt_content, qt_status, qt_pw,
+		SELECT qt_number, mt_id, qt_title, qt_content, qt_status,
+		qt_pw,
 		TO_CHAR(qt_regdate,
-		'YYYY-MM-DD') AS qt_regdate, qt_writer, substr(qt_file,21) as qt_file,
+		'YYYY-MM-DD') AS qt_regdate, qt_writer,
+		substr(qt_file,21) as qt_file,
 		qt_root, qt_step, qt_level
-		from question_tbl where QT_STATUS = '미답변'
+		from
+		question_tbl where QT_STATUS = '미답변'
 	</select>
 
 	<!-- 예약 리스트 가져오기 -->
@@ -31,5 +34,14 @@
 		select *
 		from
 		reservation_tbl where REST_STATUS = '예약대기'
+	</select>
+
+	<!-- 대기 리스트 가져오기 -->
+	<select id="mainRentalList" parameterType="int"
+		resultType="Rental">
+		select r.rent_status, r.mt_id, re.rest_name, re.rest_total, re.rest_bname,
+		r.rent_actrent,
+		r.rent_expretrun from rental_tbl r, reservation_tbl re where
+		RENT_STATUS = '대여중'
 	</select>
 </mapper>

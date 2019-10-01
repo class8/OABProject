@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.oab.admin.login.service.AdminLoginService;
 import com.oab.admin.login.vo.AdminLoginVO;
 import com.oab.client.question.vo.QuestionVO;
+import com.oab.client.rental.vo.RentalVO;
 import com.oab.client.reservation.vo.ReservationVO;
 
 @Controller
@@ -38,7 +39,7 @@ public class AdminLoginController {
 	// 로그인 처리 메서드 로그인,로그인 실패 시 처리 내용 포함
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView adminLoginProc(@ModelAttribute("AdminLoginVO") AdminLoginVO aLvo, QuestionVO qvo,
-			ReservationVO rvo, Model model, HttpSession session) {
+			ReservationVO rvo, Model model, RentalVO Rvo, HttpSession session) {
 		// 메소드가 post로 값이 전달됬을때 실행되는 이유는 login.js에서 loginform을 post방식으로 넘겨주기 때문.
 		// loginform을 get 방식으로 넘겨주면 이메소드 또한 method = RequestMethod.get 가 되어야한다.
 		System.out.println("로그인 메서드 호출 성공");
@@ -64,6 +65,11 @@ public class AdminLoginController {
 			// 예약리스트
 			List<ReservationVO> mainReservationList = adminLoginService.mainReservationList();
 			model.addAttribute("mainReservationList", mainReservationList);
+			model.addAttribute("data");
+
+			// 대여 리스트
+			List<RentalVO> mainRentalList = adminLoginService.mainRentalList();
+			model.addAttribute("mainRentalList", mainRentalList);
 			model.addAttribute("data");
 
 			mav.setViewName("admin/template/mainLayout");

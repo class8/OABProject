@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.oab.admin.login.dao.AdminLoginDao;
 import com.oab.admin.login.vo.AdminLoginVO;
 import com.oab.client.question.vo.QuestionVO;
+import com.oab.client.rental.vo.RentalVO;
 import com.oab.client.reservation.vo.ReservationVO;
 
 @Service
@@ -45,6 +46,15 @@ public class AdminLoginServiceImpl implements AdminLoginService {
 
 		mainReservationList = adminLoginDao.mainReservationList();
 		return mainReservationList;
+	}
+
+	@Override
+	public List<RentalVO> mainRentalList() {
+
+		List<RentalVO> mainRentalList = null;
+
+		mainRentalList = adminLoginDao.mainRentalList();
+		return mainRentalList;
 	}
 
 }
