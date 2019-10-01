@@ -12,13 +12,14 @@
 	font-size: 25pt;
 	text-align: center;
 }
+
 .pTag {
 	margin-left: 100px;
 	margin-bottom: 10px;
 }
 
 #Question_Q {
-	color: green;
+	color: #4762cd;
 	font-size: 23px;
 }
 
@@ -26,14 +27,18 @@
 	font-size: 20px;
 	/* 줄간격 */
 	line-height: 200%;
-	color : #000000;
+	color: #000000;
 	margin-left: 100px;
+}
+
+.question_title:hover {
+	color: #4762cd;
 }
 
 /* 안에 적혀 있는 내용 */
 .question_text {
 	margin-top: 20px;
-	margin-bottom : 20px;
+	margin-bottom: 20px;
 	line-height: 200%;
 	margin-left: 150px;
 }
