@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<link
-	href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
-	rel="stylesheet">
 <nav class="aside">
 	<ul class="aside_ul">
 		<li><span>고객센터</span>

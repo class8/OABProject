@@ -2,9 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<link
-	href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
-	rel="stylesheet">
 <div class="header_logo">
 	<h2>메인로고</h2>
 	<a href="/"><img src="/resources/images/main_logo.png"></a>

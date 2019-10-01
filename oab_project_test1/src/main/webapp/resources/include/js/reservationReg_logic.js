@@ -157,7 +157,7 @@ function compareTo(arr, str){
 function onlyNumber(event) {
 	event = event || window.event;
 	var keyID = (event.which) ? event.which : event.keyCode;
-	if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 )
+	if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) || keyID == 8 || keyID == 9 || keyID == 46 || keyID == 37 || keyID == 39 )
 	{
 		return;
 	}
@@ -180,7 +180,7 @@ function removeChar(event) {
 function onlyString(event) {
 	event = event || window.event;
 	var keyID = (event.which) ? event.which : event.keyCode;
-	if( ( keyID >=65 && keyID <= 90 ) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 )
+	if( ( keyID >=65 && keyID <= 90 ) || keyID == 8 || keyID == 9 || keyID == 46 || keyID == 37 || keyID == 39 )
 	{
 		return;
 	}
@@ -189,3 +189,9 @@ function onlyString(event) {
 		return false;
 	}
 }
+//즉시실행
+(function (){
+			var str = $(".pt_num").val();
+			//검증시 사용하는 선택한 항목 배열에 값 추가
+			arr.push(str);
+}());

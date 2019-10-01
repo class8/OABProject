@@ -1,3 +1,7 @@
+@font-face{
+	font-family: "Jua";
+	src: url("/resources/include/fonts/Jua-Regular.ttf") format("truetype");
+}
 /* 상단에 위치한 로그인, 로그아웃, 회원가입 */
 .header_logo a img {
 	width: 50%;
@@ -100,6 +104,6 @@
 
 /* 아이콘 크기 */
 .icon {
-	width: 25px;
-	height: 25px;
+	width: 30px;
+	height: 30px;
 }
