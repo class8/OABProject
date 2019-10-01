@@ -60,10 +60,10 @@ public class AdminRentalController {
 
 		if (result == 1 && result_reservation == 1) {
 			System.out.println("rental 등록 성공");
-			url = "/admin/reservation/adminReservationCompleteList";
+			url = "/admin/reservation/adminReservationCompleteList?page=1&order_by=rest_status&order_sc=DESC";
 		} else {
 			System.out.println("rental 등록 실패");
-			url = "/admin/reservation/adminReservationCompleteList";
+			url = "/admin/reservation/adminReservationCompleteList?page=1&order_by=rest_status&order_sc=DESC";
 		}
 		return "redirect:" + url;
 	}

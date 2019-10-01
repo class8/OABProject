@@ -35,12 +35,12 @@
 	<select id="adminRentalList" parameterType="adminRental" resultType="adminRental">
 		SELECT r.rent_number,re.rest_bnumber,re.rest_number, re.rest_bname, re.rest_name,re.rest_phone,re.rest_total,re.rest_bnumber,re.rest_count,r.rent_status,r.rent_overtime
 		,to_char(r.rent_actrent,'YYYY-MM-DD HH24:MI') as rent_actrent , to_char(r.RENT_EXPRETRUN,'YYYY-MM-DD HH24:MI') as RENT_EXPRETRUN
-		,p.pt_name, m.mt_id, r.rent_addcost ,to_char(r.rent_actretrun,'YYYY-MM-DD HH24:MI') as rent_actretrun
+		,p.pt_name, re.mt_id, r.rent_addcost ,to_char(r.rent_actretrun,'YYYY-MM-DD HH24:MI') as rent_actretrun
 		FROM(SELECT list.* , ROWNUM AS RNUM 
 		FROM(
 		select * from rental_tbl
-		)list) r , member_tbl m , product_tbl p , reservation_tbl re
-		WHERE r.mt_id = m.mt_id and r.pt_number = p.pt_number and r.rest_number = re.rest_number
+		)list) r , product_tbl p , reservation_tbl re
+		WHERE r.pt_number = p.pt_number and r.rest_number = re.rest_number
 		<include refid="adminRentalCommon"></include>
 		<if test="start_row != null and start_row != ''">
 			<if test="end_row != null and end_row != ''">
@@ -49,7 +49,7 @@
 		</if>
 			<choose>
 			<when test="order_by=='rent_status'">
-				ORDER BY r.rent_status
+				ORDER BY r.rent_status, re.rest_bnumber
 			</when>
 			<when test="order_by=='rent_expretrun'">
 				ORDER BY r.RENT_EXPRETRUN

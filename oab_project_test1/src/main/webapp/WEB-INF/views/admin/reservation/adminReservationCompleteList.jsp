@@ -78,6 +78,8 @@
 		$("#statusSelect").click(function() {
 			if ($("#rest_statusCheck").val() == null || $("#rest_statusCheck").val() == '') {
 	            alert("상태를 변경할 리스트를 선택하세요.");
+	         }else if ($("#rest_statusCheck").val() == '예약종료') {
+		            alert("이미 예약종료 된 건이기에 상태변경이 불가능합니다.");
 	         }else{
 	        	 
 			var rest_status = $("#selectBox").val()
@@ -93,6 +95,8 @@
 		$("#rentalBtn").click(function() {
 			if ($("#rest_statusCheck").val() == null || $("#rest_statusCheck").val() == '') {
 	            alert("상태를 변경할 리스트를 선택하세요.");
+	         }else if ($("#rest_statusCheck").val() == '예약종료') {
+	            alert("이미 예약종료 된 건이기에 대여 시킬수 없습니다.");
 	         }else{
 	        	 
 			$("#rentalInsert").attr({
@@ -153,7 +157,7 @@
 			<input type="hidden" id="rest_number" name="rest_number"> <input
 				type="hidden" id="rest_status" name="rest_status"> <input
 				type="hidden" id="url" name="url"
-				value="/admin/reservation/adminReservationCompleteList?page=1&order_by=rest_status&order_sc=ASC">
+				value="/admin/reservation/adminReservationCompleteList?page=1&order_by=rest_status&order_sc=DESC">
 		</form>
 
 		<div id="updateStatus">
@@ -163,8 +167,6 @@
 			</select> <input type="button" value="선택" id="statusSelect"> <input
 				type="button" value="대여" id="rentalBtn" class="change2">
 		</div>
-
-
 		<div class="contentTB">
 			<table>
 				<colgroup>

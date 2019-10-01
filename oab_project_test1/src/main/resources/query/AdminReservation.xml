@@ -129,7 +129,7 @@
 		<include refid="adminReservationCompleteCommon"></include>
 		<choose>
 			<when test="order_by=='rest_status'">
-				ORDER BY rest_status
+				ORDER BY rest_status, rest_bnumber
 			</when>
 			<when test="order_by=='rest_bnumber'">
 				ORDER BY rest_bnumber

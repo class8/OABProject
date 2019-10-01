@@ -35,7 +35,7 @@
 		where mt_id=#{mt_id}
 		<if test="start_row != null and start_row != ''">
 			<if test="end_row != null and end_row != ''">
-				and rnum BETWEEN #{start_row} AND #{end_row}
+				and rownum BETWEEN #{start_row} AND #{end_row}
 			</if>
 		</if>
 		order by qt_root, qt_step, qt_level asc
@@ -64,8 +64,7 @@
 		'YYYY-MM-DD') as qt_regdate, qt_writer , qt_file
 		FROM
 		QUESTION_TBL
-		WHERE qt_number
-		=#{qt_number}
+		WHERE qt_number=#{qt_number}
 
 	</select>
 

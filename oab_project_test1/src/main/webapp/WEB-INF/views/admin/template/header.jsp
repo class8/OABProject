@@ -29,13 +29,13 @@
 					<ul id="sub_menu">
 						<li><a href="/admin/member/adminMemberList?page=1">회 원 </a></li>
 						<li><a
-							href="/admin/reservation/adminReservationWaitingList?page=1&order_by=rest_status&order_sc=ASC">예
+							href="/admin/reservation/adminReservationWaitingList?page=1&order_by=rest_status&order_sc=DESC">예
 								약 </a></li>
 						<li><a
 							href="/admin/reservation/adminReservationRefundList?page=1&order_by=rest_status&order_sc=DESC">환
 								불 </a></li>
 						<li><a
-							href="/admin/rental/adminRentalList?page=1&order_by=rent_status&order_sc=ASC">대여/반납
+							href="/admin/rental/adminRentalList?page=1&order_by=rent_status&order_sc=DESC">대여/반납
 						</a></li>
 					</ul></li>
 				<li><a href="#">통 계</a>

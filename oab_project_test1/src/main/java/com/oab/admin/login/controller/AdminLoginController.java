@@ -108,4 +108,11 @@ public class AdminLoginController {
 
 	}
 
+	// 로그인 화면을 보여주기 위한 메서드
+		@RequestMapping(value = "/error", method = RequestMethod.GET)
+		public String error() {
+			System.out.println("에러 페이지 호출 성공");
+			return "admin/error/adminerror";
+		}
+	
 }
