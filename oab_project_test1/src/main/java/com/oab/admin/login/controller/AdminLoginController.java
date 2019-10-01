@@ -98,6 +98,11 @@ public class AdminLoginController {
 		List<ReservationVO> mainReservationList = adminLoginService.mainReservationList();
 		model.addAttribute("mainReservationList", mainReservationList);
 		model.addAttribute("data");
+		
+		// 대여 리스트
+		List<RentalVO> mainRentalList = adminLoginService.mainRentalList();
+		model.addAttribute("mainRentalList", mainRentalList);
+		model.addAttribute("data");
 
 		return "admin/template/mainLayout";
 
