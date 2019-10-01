@@ -146,8 +146,8 @@
 				</tbody>
 			</table>
 			<div class="buttoncss">
-				<input type="button" value="목록" id="back_questionListBtn"> <input
-					type="button" value="삭제" id="delete_questionBtn">
+				<input type="button" value="목록" id="back_questionListBtn"> 
+				<input type="button" value="삭제" id="delete_questionBtn">
 			</div>
 		</div>
 		<%-- =========== 상세 정보 보여주기 종료 =========== --%>

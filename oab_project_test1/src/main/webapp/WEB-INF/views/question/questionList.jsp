@@ -68,15 +68,13 @@
 					</form>
 					<table summary="문의사항 리스트" id="questionListTable">
 						<colgroup>
-							<col width="10%" />
-							<col width="60%" />
+							<col width="70%" />
 							<col width="10%" />
 							<col width="10%" />
 							<col width="10%" />
 						</colgroup>
 						<thead>
 							<tr>
-								<th data-value="qt_number" class="order">글 번 호</th>
 								<th data-value="qt_title" class="order">글 제 목</th>
 								<th data-value="qt_regdate" class="order">작 성 일</th>
 								<th class="qt_writer">작 성 자</th>
@@ -89,8 +87,8 @@
 								<c:when test="${not empty questionList }">
 									<c:forEach var="question" items="${questionList}"
 										varStatus="status">
+										<input type="hidden" value="${question.qt_number}">
 										<tr class="tac" data-num="${question.qt_number}">
-											<td>${question.qt_number}</td>
 											<td class="goDetail tal" id="qt_title">${question.qt_title }</td>
 											<td id="nt_regdate_1">${question.qt_regdate }</td>
 											<td class="writer">${question.qt_writer }</td>
