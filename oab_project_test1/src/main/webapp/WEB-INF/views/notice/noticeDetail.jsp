@@ -42,49 +42,13 @@
 }
 
 #back_noticeListBtn {
-	margin-top: 20px;
-	text-align: right;
-	margin-bottom: 10px;
-	display: inline-block;;
-	vertical-align: middle;
-	background-color: #42c8c5;
-	color: #fff;
+	width: 230px;
+	height: 34px;
+	text-align: center;
+	margin-top: 30px;
+	margin-left: 25px;
+	background-color: #deefef;
 	border: none;
-	position: relative;
-	height: 30px;
-	font-size: 12pt;
-	padding: 0 2em;
-	cursor: pointer;
-	transition: 800ms ease all;
-	outline: none;
-}
-
-#back_noticeListBtn:hover {
-	background-color: #fff;
-	color: #42c8c5;
-}
-
-#back_noticeListBtn:before, #back_noticeListBtn:after {
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	height: 2px;
-	width: 0;
-	background: #42c8c5;
-	transition: 400ms ease all;
-}
-
-#back_noticeListBtn:after {
-	right: inherit;
-	top: inherit;
-	left: 0;
-	bottom: 0;
-}
-
-#back_noticeListBtn:hover:before, #back_noticeListBtn:hover:after {
-	width: 100%;
-	transition: 800ms ease all;
 }
 </style>
 <script type="text/javascript"
