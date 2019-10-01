@@ -64,7 +64,7 @@ div#listHeader {
    cursor: pointer;
    transition: 800ms ease all;
    outline: none;
-   margin-right: 170px;
+   margin-right: 50px;
 }
 #memberUserInfoPaging {
 	margin-top: 50px;

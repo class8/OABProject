@@ -57,7 +57,7 @@ $(function() {
 			}
 			$("#memberForm").attr({
 				"method" : "post",
-				"action" : "/member/MemberModify"
+				"action" : "/member/memberModify"
 			});
 			$("#memberForm").submit();
 		}

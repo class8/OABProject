@@ -14,12 +14,61 @@
 	src="/resources/admin/include/js/jquery-1.12.4.min.js"></script>
 <style type="text/css">
 .content article {
-	margin: 20% 20% 20% 20%;
+	margin-left: 400px;
+	margin-bottom: 20px;
 	font-weight: bold;
+	float: center;
+}
+
+#join {
+	margin-left: 400px;
+	margin-bottom: 20px;
+}
+
+#login {
+	margin-left: 500px;
+	margin-bottom: 20px;
 }
 
 .buttons {
-	margin: 10% 10% 10% 10%;
+	margin-left: 100px;
+}
+
+.return_login {
+	width: 230px;
+	height: 34px;
+	text-align: center;
+	margin-top: 10px;
+	margin-right: 20px;
+	background-color: #deefef;
+	border: none;
+}
+
+.return_main {
+	width: 230px;
+	height: 34px;
+	text-align: center;
+	margin-top: 10px;
+	margin-right: 20px;
+	background-color: #deefef;
+	border: none;
+}
+
+.return_back {
+	width: 230px;
+	height: 34px;
+	text-align: center;
+	margin-top: 10px;
+	margin-right: 20px;
+	background-color: #deefef;
+	border: none;
+}
+
+.error_container {
+	margin-left: 400px;
+	margin-bottom: 20px;
+	font-weight: bold;
+	float: center;
 }
 </style>
 <script type="text/javascript">
@@ -39,12 +88,14 @@
 <body>
 	<c:if test="${code==1}">
 		<div class="content">
-			<article>
+			<img id="login" src="/resources/images/login_img.png">
+			<article id="join">
 				OAB 한강 텐트 사이트에 회원 가입해 주셔서 감사합니다.<br />
 				<div class="buttons">
 					<button class="return_login">로그인 페이지로</button>
-					<br> <br>
+					<br>
 					<button class="return_main">메인페이지로</button>
+					<br>
 					<button class="return_back">이전으로</button>
 				</div>
 			</article>
