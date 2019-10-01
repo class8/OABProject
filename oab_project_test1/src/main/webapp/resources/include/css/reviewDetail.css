@@ -33,7 +33,7 @@ ul, li {
 #slide {
 	height: 400px;
 	width: 700px;
-	margin-left : 80px;
+	margin-left: 80px;
 	position: relative;
 	overflow: hidden;
 	float: left;
@@ -148,7 +148,11 @@ ul, li {
 }
 
 #buttoncss {
-	float: left;
-	margin-top: 30px;
-	margin-left: 80px;
+	width: 100%;
+	text-align: center;
+}
+
+.but {
+	text-align: center;
+	float: center;
 }

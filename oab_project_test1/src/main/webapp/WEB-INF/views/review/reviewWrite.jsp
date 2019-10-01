@@ -114,7 +114,7 @@
 </script>
 </head>
 <body>
-
+	<%=request.getRealPath("/")%>
 	<c:if test="${login.mt_id != null }">
 		<div class="reviewContentContainer">
 			<div class="contentsTit">

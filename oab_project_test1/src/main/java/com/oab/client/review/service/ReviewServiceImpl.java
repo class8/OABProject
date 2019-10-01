@@ -47,7 +47,7 @@ public class ReviewServiceImpl implements ReviewService {
 		return myReviewList;
 	}
 
-	//포토후기 페이징
+	// 포토후기 페이징
 	@Override
 	public int reviewListCnt(ReviewVO rvo) {
 		return reviewDao.reviewListCnt(rvo);
@@ -61,26 +61,26 @@ public class ReviewServiceImpl implements ReviewService {
 		return detail;
 	}
 
-	//포토후기 업로드하기
+	// 포토후기 업로드하기
 	@Override
 	public int reviewUpdate(ReviewVO rvo) {
-		int result =0;
+		int result = 0;
 		try {
 			result = reviewDao.reviewUpdate(rvo);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			result = 0;
 		}
 		return result;
 	}
 
-	//포토후기 삭제하기
+	// 포토후기 삭제하기
 	@Override
-	public int reviewDelete(ReviewVO rvo) {
-		int result =0;
+	public int reviewDelete(int revt_number) {
+		int result = 0;
 		try {
-			result = reviewDao.reviewDelete(rvo);
-		}catch(Exception e) {
+			result = reviewDao.reviewDelete(revt_number);
+		} catch (Exception e) {
 			e.printStackTrace();
 			result = 0;
 		}

@@ -114,6 +114,14 @@
 	</insert>
 
 	<!-- 게시판 내용 수정하기 -->
+	<!-- <update id="reviewUpdate" parameterType="review"> UPDATE REVIEW_TBL 
+		SET revt_number = #{revt_number}, mt_id =#{mt_id}, revt_title = #{revt_title}, 
+		revt_writer = #{revt_writer}, revt_content = #{revt_content}, revt_regdate 
+		= sysdate, revt_thumbnail = #{revt_thumbnail}, revt_image1 = #{revt_image1 
+		, jdbcType=VARCHAR }, revt_image2 = #{revt_image2 , jdbcType=VARCHAR }, revt_image3 
+		= #{revt_image3 , jdbcType=VARCHAR }, revt_pw = #{revt_pw}, revt_readcnt 
+		= #{revt_readcnt}, revt_branch = #{revt_branch} WHERE revt_number = #{revt_number} 
+		</update> -->
 	<update id="reviewUpdate" parameterType="review">
 		UPDATE REVIEW_TBL
 		SET
@@ -125,16 +133,23 @@
 		revt_content =
 		#{revt_content},
 		revt_regdate = sysdate,
-		revt_thumbnail =
-		#{revt_thumbnail},
-		revt_image1 = #{revt_image1 , jdbcType=VARCHAR },
-		revt_image2 = #{revt_image2 , jdbcType=VARCHAR },
-		revt_image3 =
-		#{revt_image3 , jdbcType=VARCHAR },
+		<if test="revt_thumbnail != '' and revt_thumbnail != null">
+			revt_thumbnail = #{revt_thumbnail},
+		</if>
+		<if test="revt_image1 != '' and revt_image1 == null">
+			revt_image1 = #{revt_image1, jdbcType=VARCHAR},
+		</if>
+		<if test="revt_image2 != '' and revt_image2 == null">
+			revt_image2 = #{revt_image2, jdbcType=VARCHAR },
+		</if>
+		<if test="revt_image1 != '' and revt_image1 == null">
+			revt_image3 = #{revt_image3, jdbcType=VARCHAR},
+		</if>
 		revt_pw = #{revt_pw},
 		revt_readcnt =
 		#{revt_readcnt},
-		revt_branch = #{revt_branch}
+		revt_branch =
+		#{revt_branch}
 		WHERE
 		revt_number =
 		#{revt_number}
@@ -144,7 +159,9 @@
 
 	<delete id="reviewDelete" parameterType="review">
 		<!-- Board-boardDelete -->
-		DELETE FROM REVIEW_TBL WHERE revt_number = #{revt_number}
+		DELETE FROM
+		REVIEW_TBL
+		WHERE revt_number = #{revt_number}
 	</delete>
 
 </mapper>

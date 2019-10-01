@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.oab.client.common.file.FileUploadUtil;
 import com.oab.client.common.page.Paging;
@@ -53,7 +54,7 @@ public class ReviewController {
 		List<ReviewVO> reviewList = reviewService.reviewList(rvo);
 		// 세트 레코드수 구현
 		total = reviewService.reviewListCnt(rvo);
-		
+
 		model.addAttribute("reviewList", reviewList); // 값을 반환한다
 		model.addAttribute("count", count);
 		model.addAttribute("total", total);
@@ -158,14 +159,23 @@ public class ReviewController {
 	// 포토후기 수정하기 구현
 	@RequestMapping(value = "/reviewUpdate", method = RequestMethod.POST)
 	public String reviewUpdate(@ModelAttribute ReviewVO rvo, Model model, HttpSession session,
-			HttpServletRequest request) throws IllegalStateException, IOException, Exception {
+			HttpServletRequest request, MultipartFile file) throws IllegalStateException, IOException, Exception {
 
 		System.out.println("후기 게시판 게시글 등록 메소드 호출 성공");
 		// 이미지 파일 업로드
 
 		int result = 0;
+		System.out.println("result"); // 번호
 		String url = "";
 		LoginVO login = (LoginVO) session.getAttribute("login"); // 로그인한 사람만
+
+		// 새로운 파일이 등록되었는지 확인한다
+		/*
+		 * if (file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+		 * // new file(fileUpload())
+		 * 
+		 * }
+		 */
 
 		// 포토 후기 이미지 파일 수정을 위해서!
 		if (rvo.getRevt_file() != null) {
@@ -192,49 +202,34 @@ public class ReviewController {
 		} else {
 			model.addAttribute("code", 1);
 			url = "/review/reviewUpdate"; // 등록이 안 될 시
-			System.out.println("실패");
+			System.out.println("수정에 실패했습니다");
 		}
 		return "redirect:" + url;
 
 	}
 
 	// 포토후기 삭제하기
-	@RequestMapping()
-	public String reviewDelete(@ModelAttribute ReviewVO rvo, Model model, HttpSession session,
-			HttpServletRequest request) throws IOException {
+	@RequestMapping(value = "/reviewDelete", method = RequestMethod.GET)
+	public String reviewDelete(@ModelAttribute ReviewVO rvo, Model model, HttpServletRequest request)
+			throws IOException {
 
 		System.out.println("후기 게시판 삭제 메소드 호출 성공");
 		// 이미지 파일 업로드
 
 		int result = 0;
 		String url = "";
-		LoginVO login = (LoginVO) session.getAttribute("login"); // 로그인한 사람만
 
-		// 포토 후기 이미지 파일 수정을 위해서!
-		if (rvo.getRevt_file() != null) {
-			String revt_thumbnail = FileUploadUtil.fileUpload(rvo.getRevt_file(), request, "revt_thumbnail");
-			rvo.setRevt_thumbnail(revt_thumbnail);
-		}
-		if (rvo.getRevt_file1() != null && !(rvo.getRevt_file1().equals(""))) {
-			String revt_image1 = FileUploadUtil.fileUpload(rvo.getRevt_file1(), request, "revt_image1");
-			rvo.setRevt_image1(revt_image1);
-		}
-		if (rvo.getRevt_file2() != null && !(rvo.getRevt_file2().equals(""))) {
-			String revt_image2 = FileUploadUtil.fileUpload(rvo.getRevt_file2(), request, "revt_image2");
-			rvo.setRevt_image2(revt_image2);
-		}
-		if (rvo.getRevt_file3() != null && !(rvo.getRevt_file3().equals(""))) {
-			String revt_image3 = FileUploadUtil.fileUpload(rvo.getRevt_file3(), request, "revt_image3");
-			rvo.setRevt_image3(revt_image3);
-		}
-
-		result = reviewService.reviewDelete(rvo);
+		result = reviewService.reviewDelete(rvo.getRevt_number());
+		System.out.println(result);
+		System.out.println("삭제중입니다");
 
 		if (result == 1) {
-			url = "/review/reviewList"; // 삭제완료
+			url = "/review/reviewList";
 		} else {
-			model.addAttribute("code", 1);
-			url = "/review/reviewUpdate"; // 삭제 안 되면
+			// model.addAttribute("code", 1);
+			// 삭제가 되지 않을시
+			url = "/review/reviewUpdate?revt_number=" + rvo.getRevt_number() + "&page=" + rvo.getPage() + "&pageSize="
+					+ rvo.getPageSize();
 			System.out.println("포토후기 삭제 불가");
 		}
 		return "redirect:" + url;

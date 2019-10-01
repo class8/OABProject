@@ -17,12 +17,14 @@ $(function() {
 	// 수정 버튼 클릭 시 처리 이벤트
 	$("#reviewUpdateBtn").click(function() {
 		alert("제발!")
+		alert($("#revt_number").val());
 		if (updateFormCheck()) {
 			// 입력값 체크
 			$("#reviewUpdateForm").attr({
 				"method" : "POST",
 				"action" : "/review/reviewUpdate"
 			});
+
 			$("#reviewUpdateForm").submit();
 			alert("수정이 완료 되었습니다. 감사합니다.");
 		}
@@ -79,20 +81,10 @@ function filetest() {
 // 수정시 필수 입력체크
 function updateFormCheck() {
 
-	var value = $('#revt_writer').val();
 	var value = $('#old_pw').val();
 	var value = $('#check_pw').val();
-	var value = $('#revt_branch').val();
-	var value = $('#revt_title').val();
 	var value = $('#revt_content').val();
-	/*
-	 * // 파일의 확장자 명을 막기 위해서 var pt_thumbCheck =
-	 * $("#revt_thumbnail").val().split('.').pop() .toLowerCase(); var
-	 * pt_image1Check = $("#revt_image1").val().split('.').pop().toLowerCase();
-	 * var pt_image2Check =
-	 * $("#revt_image2").val().split('.').pop().toLowerCase(); var
-	 * pt_image3Check = $("#revt_image3").val().split('.').pop().toLowerCase();
-	 */
+
 	if ($("#revt_writer").val() == null || $("#revt_writer").val() == '') {
 		alert("작성자 명은 필수입니다");
 		$("#revt_writer").focus();
@@ -115,26 +107,16 @@ function updateFormCheck() {
 		alert("포토후기의 내용 입력은 필수입니다");
 		$("#revt_content").focus();
 		return false;
-
 	} else if ($("#old_thumbnail").select().val() == '') {
 		alert("썸네일 사진은 필수 등록입니다.");
-		return false;
-	} else if (extension_check($("#old_thumbnail"))) {
-		return false;
-	} else if (extension_check($("#old_imagel"))) {
-		return false;
-	} else if (extension_check($("#old_image2"))) {
-		return false;
-	} else if (extension_check($("#old_image3"))) {
 		return false;
 	} else if ($("#old_pw").val() != $("#check_pw").val()) {
 		alert("포토후기 작성 시 입력했던 비밀번호와 일치 하지 않습니다.");
 		$("#check_pw").focus();
-	} else
-		(confirm("[${updateData.revt_title}]" + " 작성하신 문의글이 수정됩니다."))
-	{ // 입력한
+	} else {
 		return true;
 	}
+
 	// 확장자 체크 함수
 	function extension_check(file) {
 		// 입력한 파일이 공백이 아닐경우 작동
@@ -147,7 +129,7 @@ function updateFormCheck() {
 				alert('파일은 gif, png, jpg, jpeg 만 업로드를 할 수 있습니다.');
 				return true;
 			} else {
-				return false;
+				return true;
 			}
 		}
 		return false;

@@ -24,7 +24,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		return session.insert("reviewInsert", rvo);
 	}
 
-	//페이징 처리
+	// 페이징 처리
 	@Override
 	public int reviewListCnt(ReviewVO rvo) {
 		return (Integer) session.selectOne("reviewListCnt");
@@ -36,16 +36,16 @@ public class ReviewDaoImpl implements ReviewDao {
 		return (ReviewVO) session.selectOne("reviewDetail", rvo);
 	}
 
-	//포토후기업데이트
+	// 포토후기업데이트
 	@Override
 	public int reviewUpdate(ReviewVO rvo) {
 		return session.update("reviewUpdate", rvo);
 	}
 
-	//포토후기 삭제하기
+	// 포토후기 삭제하기
 	@Override
-	public int reviewDelete(ReviewVO rvo) {
-		return session.delete("reviewDelete", rvo);
+	public int reviewDelete(int revt_number) {
+		return session.delete("reviewDelete", revt_number);
 	}
 
 }
