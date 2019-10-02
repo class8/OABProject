@@ -86,4 +86,16 @@ public class ReviewServiceImpl implements ReviewService {
 		}
 		return result;
 	}
+
+	@Override
+	public int reviewReadCntUpdate(ReviewVO rvo) {
+		int result = 0;
+		try {
+			result = reviewDao.reviewReadCntUpdate(rvo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		return result;
+	}
 }

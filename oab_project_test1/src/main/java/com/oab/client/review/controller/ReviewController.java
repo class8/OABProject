@@ -129,7 +129,7 @@ public class ReviewController {
 		detail = reviewService.reviewDetail(rvo);
 
 		if (detail != null && (!detail.equals(""))) {
-
+			reviewService.reviewReadCntUpdate(rvo);
 			detail.setRevt_readcnt(detail.getRevt_readcnt());
 		}
 

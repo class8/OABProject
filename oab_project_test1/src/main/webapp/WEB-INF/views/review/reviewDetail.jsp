@@ -133,6 +133,7 @@
 							id="check_pw" name="check_pw" onkeyPress="InpuOnlyNumber(this);">
 					</p>
 					<p>${detail.revt_content }</p>
+					<p>조회수: ${detail.revt_readcnt }</p>
 				</div>
 				<div id="buttoncss">
 					<p class="but">

@@ -164,4 +164,11 @@
 		WHERE revt_number = #{revt_number}
 	</delete>
 
+	<!-- 포토후기 조회수 증가 -->
+	<update id="reviewReadCntUpdate" parameterType="review">
+		update review_tbl
+		set revt_readcnt = revt_readcnt + 1
+		where revt_number = #{revt_number}
+	</update>
+
 </mapper>

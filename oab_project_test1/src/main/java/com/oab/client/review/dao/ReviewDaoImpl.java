@@ -48,4 +48,10 @@ public class ReviewDaoImpl implements ReviewDao {
 		return session.delete("reviewDelete", revt_number);
 	}
 
+	// 조회수 증가
+	@Override
+	public int reviewReadCntUpdate(ReviewVO rvo) {
+		return session.update("reviewReadCntUpdate", rvo);
+	}
+
 }

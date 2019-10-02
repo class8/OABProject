@@ -17,5 +17,8 @@ public interface ReviewService {
 	public int reviewUpdate(ReviewVO rvo); // 포토후기 수정하기
 
 	public int reviewDelete(int revt_number); // 포토후기 삭제하기
+	
+	public int reviewReadCntUpdate(ReviewVO rvo); // 조회수 증가
+
 
 }

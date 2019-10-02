@@ -18,4 +18,6 @@ public interface ReviewDao {
 
 	public int reviewDelete(int revt_number); // 포토후기 삭제
 
+	public int reviewReadCntUpdate(ReviewVO rvo); // 조회수 증가
+
 }
