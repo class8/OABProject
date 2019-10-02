@@ -19,10 +19,8 @@
 		/* 버튼을 클릭하면 리스트로 다시 이동*/
 		$("#back_reviewListBtn").click(function() {
 			location.href = "/review/reviewList";
-		})
-
-	});
-
+		});
+		
 	//업데이트 버튼 누르면 넘어가야한다
 	/* 	$(function() {
 
@@ -105,13 +103,17 @@
 						id="pos4">
 					<ul>
 						<li><img class="review_thumbnail"
-							src="/uploadStorage/revt_thumbnail/${detail.revt_thumbnail}"></li>
+							src="/uploadStorage/revt_thumbnail/${detail.revt_thumbnail}"
+							onerror="this.style.display='none'"></li>
 						<li><img class="review_thumbnail"
-							src="/uploadStorage/revt_image1/${detail.revt_image1}"></li>
+							src="/uploadStorage/revt_image1/${detail.revt_image1}"
+							onerror="this.style.display='none'"></li>
 						<li><img class="review_thumbnail"
-							src="/uploadStorage/revt_image2/${detail.revt_image2}"></li>
+							src="/uploadStorage/revt_image2/${detail.revt_image2}"
+							onerror="this.style.display='none'"></li>
 						<li><img class="review_thumbnail"
-							src="/uploadStorage/revt_image3/${detail.revt_image3}"></li>
+							src="/uploadStorage/revt_image3/${detail.revt_image3}"
+							onerror="this.style.display='none'"></li>
 					</ul>
 
 					<!-- 버튼 -->

@@ -64,19 +64,19 @@ ul, li {
 }
 
 #slide li:nth-child(1) {
-	background: #faa;
+	background: #ffffff;
 }
 
 #slide li:nth-child(2) {
-	background: #ffa;
+	background: #ffffff;
 }
 
 #slide li:nth-child(3) {
-	background: #faF;
+	background: #ffffff;
 }
 
 #slide li:nth-child(4) {
-	background: #aaf;
+	background: #ffffff;
 }
 
 #slide input {
@@ -121,19 +121,19 @@ ul, li {
 }
 
 #pos1:checked ~.pos>label:nth-child(1) {
-	background: #666;
+	background: #4762cd;
 }
 
 #pos2:checked ~.pos>label:nth-child(2) {
-	background: #666;
+	background: #4762cd;
 }
 
 #pos3:checked ~.pos>label:nth-child(3) {
-	background: #666;
+	background: #4762cd;
 }
 
 #pos4:checked ~.pos>label:nth-child(4) {
-	background: #666;
+	background: #4762cd;
 }
 
 .detail_content {
