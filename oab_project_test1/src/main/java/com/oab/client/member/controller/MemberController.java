@@ -135,7 +135,7 @@ public class MemberController {
 			return mav;
 		}
 		if (memberService.memberUpdate(mvo)) {
-			mav.setViewName("redirect:/login/login");
+			mav.setViewName("intro");
 			return mav;
 		} else {
 			mav.addObject("errCode", 2);

@@ -32,7 +32,7 @@
 <script type="text/javascript">
 	function errCodeCheck() {
 		var errCode = '<c:out value="${errCode}" />';
-		
+
 		if (errCode != "") {
 			switch (parseInt(errCode)) {
 			case 1:
@@ -45,11 +45,11 @@
 		}
 	}
 
-/* 	loginmt_id = "${member.mt_id}";
-	function emailCheck() {
-		var mt_email = "${mt_email[1]}";
-		$("#mt_email").val(mt_email).prop("selected", "true");
-	} */
+	/* 	loginmt_id = "${member.mt_id}";
+	 function emailCheck() {
+	 var mt_email = "${mt_email[1]}";
+	 $("#mt_email").val(mt_email).prop("selected", "true");
+	 } */
 </script>
 <link type="text/css" rel="stylesheet"
 	href="/resources/include/css/memberModify.css">
@@ -61,110 +61,108 @@
 				<input type="hidden" id="mt_id" name="mt_id" value="${member.mt_id}">
 				<div class="form-group form-group-sm">
 					<label for="mt_id" class="col-sm-2 control-label">사용자 ID</label>
-					<div class="col-sm-3"><input type="text" id="mt_id" name="mt_id" maxlength="20"
-							class="form-control" value="${member.mt_id}" readonly="readonly"/>
-				</div>
-				</div>
-				<div class="form-group form-group-sm">
-					<label for="oldmt_pw" class="col-sm-2 control-label">기존 비밀
-						번호</label>
-					<div class="col-sm-3">
-						<input type="password" id="oldmt_pw" name="oldmt_pw"
-							maxlength="20" class="form-control" placeholder="기존 비밀번호 입력">
+					<div class="col-sm-3">${member.mt_id}</div>
 					</div>
-					<div class="col-sm-5">
-						<p class="error"></p>
-					</div>
-				</div>
-				<div class="form-group form-group-sm">
-					<label for="mt_pw" class="col-sm-2 control-label">변경할 비밀
-						번호</label>
-					<div class="col-sm-3">
-						<input type="password" id="mt_pw" name="mt_pw" maxlength="20"
-							class="form-control" placeholder="변경할 비밀번호 입력">
-					</div>
-					<div class="col-sm-5">
-						<p class="error"></p>
-					</div>
-				</div>
-				<div class="form-group form-group-sm">
-					<label for="mt_pwCheck" class="col-sm-2 control-label">변경
-						비밀번호확인</label>
-					<div class="col-sm-3">
-						<input type="password" id="mt_pwCheck" name="mt_pwCheck"
-							maxlength="20" class="form-control" placeholder="변경할 비밀번호 입력 확인">
-					</div>
-					<div class="col-sm-5">
-						<p class="error"></p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="mt_phone" class="userPhone">핸드폰 번호</label>
-					<div>
-						<input type="text" id="mt_phone" name="mt_phone" maxlength="11"
-							class="form-control" placeholder="Phone Number"
-							value="${member.mt_phone }" />
-					</div>
-					<div class="col-sm-5">
-						<p class="error"></p>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="mt_email" class="userEmail">이메일</label>
-					<div>
-						<input type="text" id="mt_email" name="mt_email" maxlength="60"
-							class="form-control" placeholder="@ 포함 영문/숫자 10~50자 입력"
-							required="required" value="${member.mt_email}" />
-					</div>
-
-					<div class="col-sm-5">
-						<p class="error"></p>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="mt_birth" class="userBirth">생년월일</label>
-					<div>
-						<input type="text" id="mt_birth" name="mt_birth" maxlength="6"
-							class="form-control" placeholder="주민등록번호 앞 6자리"
-							value="${member.mt_birth}" />
-					</div>
-					<div class="col-sm-5">
-						<p class="error"></p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="mt_name" class="userName">회원이름</label>
-					<div>
-						<input type="text" id="mt_name" name="mt_name" maxlength="10"
-							class="form-control" placeholder="Name" value="${member.mt_name}" />
-					</div>
-					<div class="col-sm-5">
-						<p class="error"></p>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="mt_gender" class="userGender">성별</label>
-					<div>
-						<input type="radio" name="mt_gender" value="Female">여성 <input
-							type="radio" name="mt_gender" value="male">남 성 <input
-							type="radio" name="mt_gender" value="neutral" checked="checked">선택안함
-					</div>
-					<div class="col-sm-5">
-						<p class="error"></p>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-6">
-						<input type="button" value="확인" id="modify"
-							class="btn btn-default" /> <br><input type="button" value="재작성"
-							id="modifyReset" class="btn btn-default" /> 
-					</div>
-				</div>
-			</form>
+		
+		<div class="form-group form-group-sm">
+			<label for="oldmt_pw" class="col-sm-2 control-label">기존 비밀 번호</label>
+			<div class="col-sm-3">
+				<input type="password" id="oldmt_pw" name="oldmt_pw" maxlength="20"
+					class="form-control" placeholder="기존 비밀번호 입력">
+			</div>
+			<div class="col-sm-5">
+				<p class="error"></p>
+			</div>
 		</div>
+		<div class="form-group form-group-sm">
+			<label for="mt_pw" class="col-sm-2 control-label">변경할 비밀 번호</label>
+			<div class="col-sm-3">
+				<input type="password" id="mt_pw" name="mt_pw" maxlength="20"
+					class="form-control" placeholder="변경할 비밀번호 입력">
+			</div>
+			<div class="col-sm-5">
+				<p class="error"></p>
+			</div>
+		</div>
+		<div class="form-group form-group-sm">
+			<label for="mt_pwCheck" class="col-sm-2 control-label">변경
+				비밀번호확인</label>
+			<div class="col-sm-3">
+				<input type="password" id="mt_pwCheck" name="mt_pwCheck"
+					maxlength="20" class="form-control" placeholder="변경할 비밀번호 입력 확인">
+			</div>
+			<div class="col-sm-5">
+				<p class="error"></p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="mt_phone" class="userPhone">핸드폰 번호</label>
+			<div>
+				<input type="text" id="mt_phone" name="mt_phone" maxlength="11"
+					class="form-control" placeholder="Phone Number"
+					value="${member.mt_phone }" />
+			</div>
+			<div class="col-sm-5">
+				<p class="error"></p>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="mt_email" class="userEmail">이메일</label>
+			<div>
+				<input type="text" id="mt_email" name="mt_email" maxlength="60"
+					class="form-control" placeholder="@ 포함 영문/숫자 10~50자 입력"
+					required="required" value="${member.mt_email}" />
+			</div>
+
+			<div class="col-sm-5">
+				<p class="error"></p>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="mt_birth" class="userBirth">생년월일</label>
+			<div>
+				<input type="text" id="mt_birth" name="mt_birth" maxlength="6"
+					class="form-control" placeholder="주민등록번호 앞 6자리"
+					value="${member.mt_birth}" />
+			</div>
+			<div class="col-sm-5">
+				<p class="error"></p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="mt_name" class="userName">회원이름</label>
+			<div>
+				<input type="text" id="mt_name" name="mt_name" maxlength="10"
+					class="form-control" placeholder="Name" value="${member.mt_name}" />
+			</div>
+			<div class="col-sm-5">
+				<p class="error"></p>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="mt_gender" class="userGender">성별</label>
+			<div>
+				<input type="radio" name="mt_gender" value="Female">여성 <input
+					type="radio" name="mt_gender" value="male">남 성 <input
+					type="radio" name="mt_gender" value="neutral" checked="checked">선택안함
+			</div>
+			<div class="col-sm-5">
+				<p class="error"></p>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-6">
+				<input type="button" value="확인" id="modify" class="btn btn-default" />
+				<br>
+				<input type="button" value="재작성" id="modifyReset"
+					class="btn btn-default" />
+			</div>
+		</div>
+		</form>
+	</div>
 	</div>
 </body>
 </html>
