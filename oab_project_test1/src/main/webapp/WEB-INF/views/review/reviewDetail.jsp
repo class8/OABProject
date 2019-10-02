@@ -15,32 +15,6 @@
 <script type="text/javascript"
 	src="/resources/include/js/client_review.js"></script>
 <script type="text/javascript">
-	$(function() {
-		/* 버튼을 클릭하면 리스트로 다시 이동*/
-		$("#back_reviewListBtn").click(function() {
-			location.href = "/review/reviewList";
-		});
-		
-	//업데이트 버튼 누르면 넘어가야한다
-	/* 	$(function() {
-
-	 //해당 포토후기에 에 포함된 회원만 
-	 if ($("#log_hidden").val() == $("#revt_hidden").val()) {
-	 document.getElementById("Update_reviewBtn").style.display = "block";
-	 } else {
-	 document.getElementById("Update_reviewBtn").style.display = "none";
-	 }
-	 /* 버튼을 클릭하면 업데이트로 이동하기*/
-	//$("#Update_reviewBtn").click(function() {
-	//alert($("#revt_number").val());
-	/* $("#revt_data").attr({
-		"method" : "get",
-		"action" : "/review/reviewUpdateForm"
-	});
-	$("#revt_data").submit();
-	})
-	});
-	 */
 	//삭제를 위한 처리다 이녀석들아
 	$(function() {
 		if ($("#log_hidden").val() == $("#revt_hidden").val()) {
@@ -130,7 +104,8 @@
 					<p>작성일 : ${detail.revt_regdate }</p>
 					<p>
 						작성자 : ${detail.revt_writer } | 비밀번호 : <input type="password"
-							id="check_pw" name="check_pw" onkeyPress="InpuOnlyNumber(this);">
+							id="check_pw" name="check_pw" maxlength="5"
+							onkeyPress="InpuOnlyNumber(this);">
 					</p>
 					<p>${detail.revt_content }</p>
 					<p>조회수: ${detail.revt_readcnt }</p>
