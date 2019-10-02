@@ -12,8 +12,9 @@ div table {
 }
 
 .contentContainer {
-	float: left;
-	width: 50%;
+	float: right;
+	width: 40%;
+	margin-right: 100px;
 }
 
 div .form-group {

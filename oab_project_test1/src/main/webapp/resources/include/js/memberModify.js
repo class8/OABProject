@@ -3,7 +3,7 @@ $(function() {
 	errCodeCheck();
 	/*emailCheck();*/
 
-	var message = [ "기존 비밀번호를 입력해 주세요.", "영문,숫자,특수문자만 가능. 8 ~ 15자 입력해 주세요.",
+	var message = [ "기존 비밀번호를 입력해 주세요.", "영문,숫자,특수문자만 가능. 8 ~ 20자 입력해 주세요.",
 			"비밀번호와 비밀번호 확인란은 값이 일치해야 합니다.", "- 포함 입력해 주세요. 예시) 010-0000-0000" ];
 	$('.error').each(function(index) {
 		$('.error').eq(index).html(message[index]);
