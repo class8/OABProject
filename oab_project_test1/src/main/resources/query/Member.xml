@@ -143,7 +143,7 @@
       'YYYY/MM/DD') AS
       rent_actretrun, re.RENT_STATUS
       FROM(SELECT list.* , ROWNUM AS RNUM FROM(select * from
-      RENTAL_TBL where mt_id = #{mt_id} order by rest_bnumber desc)
+      RENTAL_TBL where mt_id = #{mt_id} order by rest_number desc)
       list) re, RESERVATION_TBL r, member_tbl m
       WHERE r.rest_number = re.rest_number and r.mt_id= m.mt_id and r.mt_id =
       #{mt_id}
