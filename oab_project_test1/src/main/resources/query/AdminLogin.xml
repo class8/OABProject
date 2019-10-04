@@ -39,9 +39,9 @@
 	<!-- 대기 리스트 가져오기 -->
 	<select id="mainRentalList" parameterType="int"
 		resultType="Rental">
-		select r.rent_status, r.mt_id, re.rest_name, re.rest_total, re.rest_bname,
-		r.rent_actrent,
-		r.rent_expretrun from rental_tbl r, reservation_tbl re where
-		RENT_STATUS = '대여중'
+		select r.rent_number, re.rest_number, r.rent_status, r.mt_id, re.rest_total, re.rest_name, re.rest_bname, r.rent_actrent, 
+    r.rent_expretrun 
+    from rental_tbl r, reservation_tbl re 
+    where r.rest_number = re.rest_number and rent_status = '대여중'
 	</select>
 </mapper>
