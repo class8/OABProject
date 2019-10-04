@@ -194,7 +194,7 @@
 										<option selected disabled hidden>추가상품선택</option>
 										<c:forEach var="addItem" items="${addList}" varStatus="status">
 											<option class="item">${status.count + (param.page-1) * data.pageSize}.
-												${addItem.pt_name}</option>
+												${addItem.pt_name} (${addItem.pt_price}원)</option>
 										</c:forEach>
 									</select>
 									<c:forEach var="addItem" items="${addList}" varStatus="status">

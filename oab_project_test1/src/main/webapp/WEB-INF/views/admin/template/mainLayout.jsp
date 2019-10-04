@@ -77,7 +77,7 @@
 				</table>
 			</div>
 
-			<div class="rental">
+			<%-- <div class="rental">
 				<h3>대여 현황</h3>
 				<table summary="공지사항 리스트">
 					<colgroup>
@@ -131,7 +131,7 @@
 					</tbody>
 				</table>
 			</div>
-
+ --%>
 			<div class="question" id="list">
 				<h3>1:1 문의 현황</h3>
 				<table summary="공지사항 리스트">

@@ -17,6 +17,8 @@
 				<a href="/login/logout"><span>로그아웃</span></a>
 			</c:when>
 		</c:choose>
+			|
+				<a href="/member/join"><span>회원가입</span></a>
 	</div>
 </nav>
 <nav class="header_menu">
