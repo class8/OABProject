@@ -47,14 +47,6 @@ public class QuestionController {
 		// 페이지 셋팅
 		Paging.setPage(qvo);
 
-		// 전체 레코드 수를 구현한다
-		int total = questionService.questionListCnt(qvo);
-		log.info("total = " + total);
-
-		// 글 번호를 재 설정 해야 합니다
-		int count = total - (Util.nvl(qvo.getPage()) - 1) * Util.nvl(qvo.getPageSize());
-		log.info("count = " + count);
-
 		if (login == null) {
 			mav.setViewName("login/login");
 			return mav;// 로그인이 안되어있다면 로그인하라고 로그인화면을 보여줌
@@ -65,6 +57,14 @@ public class QuestionController {
 
 		// 반환한다
 		List<QuestionVO> questionList = questionService.questionList(qvo);
+		// 전체 레코드 수를 구현한다
+		int total = questionService.questionListCnt(qvo);
+		log.info("total = " + total);
+		System.out.println(total);
+		// 글 번호를 재 설정 해야 합니다
+		int count = total - (Util.nvl(qvo.getPage()) - 1) * Util.nvl(qvo.getPageSize());
+		System.out.println("count = " + count);
+		log.info("count = " + count);
 
 		model.addAttribute("questionList", questionList); // 값을 가져온다
 		model.addAttribute("count", count);

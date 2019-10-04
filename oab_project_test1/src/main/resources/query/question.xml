@@ -31,8 +31,9 @@
 		FROM (select list.* ,
 		rownum as rnum
 		from(select * from
-		QUESTION_TBL where mt_id=#{mt_id} order by qt_root, qt_step, qt_level asc) list)
-		
+		QUESTION_TBL where mt_id=#{mt_id} order by qt_root,
+		qt_step, qt_level asc) list)
+
 		<if test="start_row != null and start_row != ''">
 			<if test="end_row != null and end_row != ''">
 				where rnum BETWEEN #{start_row} AND #{end_row}
@@ -45,10 +46,11 @@
 		resultType="int">
 		<!-- Board - boardListCnt -->
 		SELECT nvl(count(qt_number),0) as cnt
-		from QUESTION_TBL
-
+		from (SELECT list.* , ROWNUM
+		AS RNUM FROM
+		( select * from QUESTION_TBL where mt_id = '${mt_id}')
+		list)
 	</select>
-
 	<!-- 게시물의 상세보기를 위한 select문입니다. -->
 
 	<select id="questionDetail" parameterType="int"
