@@ -22,7 +22,7 @@
 			alias="common" />
 		<typeAlias type="com.oab.admin.login.vo.AdminLoginVO"
 			alias="admin" />
-		<typeAlias type="com.oab.admin.notice.vo.AdminNoticeVO"
+		<typeAlias type="com.oab.client.notice.vo.NoticeVO"
 			alias="adminNotice" />
 		<typeAlias type="com.oab.client.question.vo.QuestionVO"
 			alias="question" />

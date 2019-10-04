@@ -10,10 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.oab.admin.notice.controller.AdminNoticeController;
-import com.oab.admin.notice.service.AdminNoticeService;
-import com.oab.admin.notice.vo.AdminNoticeVO;
 import com.oab.admin.question.service.AdminQuestionService;
 import com.oab.client.common.page.Paging;
 import com.oab.client.common.util.Util;
@@ -23,7 +19,7 @@ import com.oab.client.question.vo.QuestionVO;
 @RequestMapping(value = "/admin/question")
 public class AdminQuestionContorller {
 
-	private Logger log = LoggerFactory.getLogger(AdminNoticeController.class);
+	private Logger log = LoggerFactory.getLogger(AdminQuestionContorller.class);
 
 	@Autowired
 	private AdminQuestionService adminQuestionService;

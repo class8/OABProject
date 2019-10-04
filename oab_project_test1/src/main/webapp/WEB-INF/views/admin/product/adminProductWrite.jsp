@@ -117,8 +117,8 @@
       </table>
    </form>
    <div>
-      <input type="button" id="productWrite" name="productWrite" value="등록" />
       <input type="button" id="productWriteCancel" value="취소">
+      <input type="button" id="productWrite" name="productWrite" value="등록" />
    </div>
 </body>
 </html>
