@@ -31,26 +31,21 @@
 		FROM (select list.* ,
 		rownum as rnum
 		from(select * from
-		QUESTION_TBL) list)
-		where mt_id=#{mt_id}
+		QUESTION_TBL where mt_id=#{mt_id} order by qt_root, qt_step, qt_level asc) list)
+		
 		<if test="start_row != null and start_row != ''">
 			<if test="end_row != null and end_row != ''">
-				and rownum BETWEEN #{start_row} AND #{end_row}
+				where rnum BETWEEN #{start_row} AND #{end_row}
 			</if>
 		</if>
-		order by qt_root, qt_step, qt_level asc
 
 	</select>
 	<!-- 페이지 -->
 	<select id="questionListCnt" parameterType="question"
 		resultType="int">
 		<!-- Board - boardListCnt -->
-		SELECT NVL(count(1), 0)
-
-		FROM (
-		<include refid="questionCommon"></include>
-		ORDER BY qt_number desc
-		) list
+		SELECT nvl(count(qt_number),0) as cnt
+		from QUESTION_TBL
 
 	</select>
 

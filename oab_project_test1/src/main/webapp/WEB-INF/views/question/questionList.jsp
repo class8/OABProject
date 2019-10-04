@@ -34,15 +34,13 @@
 	});
 	/* 검색과 한 페이지에 보여줄 레코드 수 처리 및 페이징을 위한 실직적인 처리 함수 */
 	function goPage(page) {
-		if ($("#search").val() == "all") {
-			$("#keyword").val("");
-		}
+	
 		$("#page").val(page);
 		$("#question_search").attr({
 			"method" : "get",
 			"action" : "/question/questionList"
 		});
-		$("#notice_search").submit();
+		$("#question_search").submit();
 	}
 </script>
 </head>
@@ -65,6 +63,7 @@
 				<div id="questionList">
 					<form id="question_search" name="question_search">
 						<input type="hidden" id="page" name="page" value="${data.page}">
+						<input type="hidden" name="pageSize" value="${data.pageSize}">
 					</form>
 					<table summary="문의사항 리스트" id="questionListTable">
 						<colgroup>
@@ -102,7 +101,7 @@
 				</div>
 				<%-- ================= 페이지 네비게이션 시작 ==================== --%>
 				<div id="questionPage">
-					<tag:paging page="${param.page}" total="${total}" list_size="10"></tag:paging>
+					<tag:paging page="${param.page}" total="${total}" list_size="${data.pageSize}"></tag:paging>
 				</div>
 				<%-- ================= 페이지 네비게이션 종료 ==================== --%>
 			</c:if>
