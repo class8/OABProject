@@ -77,7 +77,7 @@
 				</table>
 			</div>
 
-			<%-- <div class="rental">
+			<div class="rental">
 				<h3>대여 현황</h3>
 				<table summary="공지사항 리스트">
 					<colgroup>
@@ -105,18 +105,18 @@
 					<!-- 데이터 출력  -->
 					<tbody>
 						<c:choose>
-							<c:when test="${not empty asd}">
-								<c:forEach var="reserv" items="${List }" varStatus="status"
+							<c:when test="${not empty mainRentalList}">
+								<c:forEach var="rental" items="${mainRentalList }" varStatus="status"
 									begin="0" end="4">
 
-									<tr id="list" class="tac" data-num="${umber }">
-										<td>${reserv.rest_status }</td>
-										<td>${reserv.mt_id }</td>
-										<td>${reserv.rest_name }</td>
-										<td>${reserv.rest_total }</td>
-										<td>${reserv.rest_bname }</td>
-										<td>${reserv.rest_exprent }</td>
-										<td>${reserv.rest_regdate }</td>
+									<tr id="list" class="tac" data-num="${rental.rent_number }">
+										<td>${rental.rent_status }</td>
+										<td>${rental.mt_id }</td>
+										<td>${rental.rest_name }</td>
+										<td>${rental.rest_total }</td>
+										<td>${rental.rest_bname }</td>
+										<td>${rental.rent_actrent }</td>
+										<td>${rental.rent_expretrun }</td>
 									</tr>
 								</c:forEach>
 							</c:when>
@@ -131,7 +131,7 @@
 					</tbody>
 				</table>
 			</div>
- --%>
+
 			<div class="question" id="list">
 				<h3>1:1 문의 현황</h3>
 				<table summary="공지사항 리스트">
