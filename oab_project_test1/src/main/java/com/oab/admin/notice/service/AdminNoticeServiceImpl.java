@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.oab.admin.notice.dao.AdminNoticeDao;
-import com.oab.admin.notice.vo.AdminNoticeVO;
+import com.oab.client.notice.vo.NoticeVO;
 
 @Service
 @Transactional
@@ -18,15 +18,15 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 	// 전체 레코드 수 구현
 	@Override
-	public int adminNoticeListCnt(AdminNoticeVO nvo) {
+	public int adminNoticeListCnt(NoticeVO nvo) {
 		return adminNoticeDao.adminNoticeListCnt(nvo);
 	}
 
 	// 글 목록 구현
 	@Override
-	public List<AdminNoticeVO> adminNoticeList(AdminNoticeVO nvo) {
+	public List<NoticeVO> adminNoticeList(NoticeVO nvo) {
 
-		List<AdminNoticeVO> myList = null;
+		List<NoticeVO> myList = null;
 
 		/*
 		 * // 정렬에 대한 기본 값 설정 if (nvo.getOrder_by() == null) {
@@ -40,7 +40,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 	// 글 입력 구현
 	@Override
-	public int adminNoticeInsert(AdminNoticeVO nvo) {
+	public int adminNoticeInsert(NoticeVO nvo) {
 
 		int result = 0;
 		try {
@@ -56,15 +56,15 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 	// 글 상세 구현
 	@Override
-	public AdminNoticeVO adminNoticeDetail(AdminNoticeVO nvo) {
-		AdminNoticeVO detail = null;
+	public NoticeVO adminNoticeDetail(NoticeVO nvo) {
+		NoticeVO detail = null;
 		detail = adminNoticeDao.adminNoticeDetail(nvo);
 		return detail;
 	}
 
 	// 글 수정 구현
 	@Override
-	public int adminNoticeUpdate(AdminNoticeVO nvo) {
+	public int adminNoticeUpdate(NoticeVO nvo) {
 
 		int result = 0;
 		try {
@@ -94,7 +94,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	}
 
 	@Override
-	public int adminReadCntUpdate(AdminNoticeVO nvo) {
+	public int adminReadCntUpdate(NoticeVO nvo) {
 		int result = 0;
 		try {
 			result = adminNoticeDao.adminReadCntUpdate(nvo);

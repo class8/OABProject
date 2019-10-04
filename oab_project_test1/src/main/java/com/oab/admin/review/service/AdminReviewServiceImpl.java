@@ -57,17 +57,4 @@ public class AdminReviewServiceImpl implements AdminReviewService {
 		return result;
 	}
 
-	@Override // 포토후기 작성
-	public int reviewInsert(ReviewVO rvo) {
-		int result = 0;
-		try {
-			result = adminReviewDao.reviewInsert(rvo);
-		} catch (Exception e) {
-			e.printStackTrace();
-			result = 0;
-		}
-		return result;
-
-	}
-
 }

@@ -2,22 +2,22 @@ package com.oab.admin.notice.dao;
 
 import java.util.List;
 
-import com.oab.admin.notice.vo.AdminNoticeVO;
+import com.oab.client.notice.vo.NoticeVO;
 
 public interface AdminNoticeDao {
 
-	public List<AdminNoticeVO> adminNoticeList(AdminNoticeVO nvo);
+	public List<NoticeVO> adminNoticeList(NoticeVO nvo);
 
-	public int adminNoticeListCnt(AdminNoticeVO nvo);
+	public int adminNoticeListCnt(NoticeVO nvo);
 
-	public int adminNoticeInsert(AdminNoticeVO nvo);
+	public int adminNoticeInsert(NoticeVO nvo);
 
-	public AdminNoticeVO adminNoticeDetail(AdminNoticeVO nvo);
+	public NoticeVO adminNoticeDetail(NoticeVO nvo);
 
-	public int adminNoticeUpdate(AdminNoticeVO nvo);
+	public int adminNoticeUpdate(NoticeVO nvo);
 
 	public int adminNoticeDelete(int nt_number);
 
-	public int adminReadCntUpdate(AdminNoticeVO nvo);
+	public int adminReadCntUpdate(NoticeVO nvo);
 
 }

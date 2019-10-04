@@ -14,5 +14,4 @@ public interface AdminReviewService {
 
 	public int adminReviewDelete(int revt_number);
 	
-	public int reviewInsert(ReviewVO rvo);
 }

@@ -38,9 +38,4 @@ public class AdminReviewDaoImpl implements AdminReviewDao {
 		return session.delete("adminReviewDelete", revt_number);
 	}
 
-	@Override // 추가
-	public int reviewInsert(ReviewVO rvo) {
-		return session.insert("reviewInsert", rvo);
-	}
-
 }

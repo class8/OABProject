@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.oab.admin.notice.vo.AdminNoticeVO;
 import com.oab.admin.review.service.AdminReviewService;
 import com.oab.client.common.file.FileUploadUtil;
 import com.oab.client.common.page.Paging;
@@ -103,47 +102,6 @@ public class AdminReviewController {
 		// 로그인, 이용내역이 있어야 작성이 가능합니다.
 		System.out.println("review Write Method 호출 성공");
 		return "admin/review/adminReviewWriteForm";
-
-	}
-
-	// 후기 게시판 등록 구현하기
-	@RequestMapping(value = "/reviewInsert", method = RequestMethod.POST, produces = "text/plain; charset=UTF-8") // 주소값
-	public String reviewInsert(@ModelAttribute ReviewVO rvo, Model model, HttpSession session,
-			HttpServletRequest request) throws IllegalStateException, IOException, Exception { // 받아와야하는 매개변수
-		System.out.println("후기 게시판 게시글 등록 메소드 호출 성공");
-		// 이미지 파일 업로드
-
-		int result = 0;
-		String url = "";
-
-		// 상품 등록을 위한 것들
-		if (rvo.getRevt_file() != null) {
-			String revt_thumbnail = FileUploadUtil.fileUpload(rvo.getRevt_file(), request, "revt_thumbnail");
-			rvo.setRevt_thumbnail(revt_thumbnail);
-		}
-		if (rvo.getRevt_file1() != null && !(rvo.getRevt_file1().equals(""))) {
-			String revt_image1 = FileUploadUtil.fileUpload(rvo.getRevt_file1(), request, "revt_image1");
-			rvo.setRevt_image1(revt_image1);
-		}
-		if (rvo.getRevt_file2() != null && !(rvo.getRevt_file2().equals(""))) {
-			String revt_image2 = FileUploadUtil.fileUpload(rvo.getRevt_file2(), request, "revt_image2");
-			rvo.setRevt_image2(revt_image2);
-		}
-		if (rvo.getRevt_file3() != null && !(rvo.getRevt_file3().equals(""))) {
-			String revt_image3 = FileUploadUtil.fileUpload(rvo.getRevt_file3(), request, "revt_image3");
-			rvo.setRevt_image3(revt_image3);
-		}
-
-		result = adminReviewService.reviewInsert(rvo);
-
-		if (result == 1) {
-			url = "/admin/review/reviewList"; // 작성완료
-		} else {
-			model.addAttribute("code", 1);
-			url = "/admin/review/reviewWrite"; // 등록이 안 될 시
-			System.out.println("실패");
-		}
-		return "redirect:" + url;
 
 	}
 

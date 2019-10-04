@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.oab.admin.notice.service.AdminNoticeService;
-import com.oab.admin.notice.vo.AdminNoticeVO;
 import com.oab.client.common.page.Paging;
 import com.oab.client.common.util.Util;
+import com.oab.client.notice.vo.NoticeVO;
 
 import org.slf4j.LoggerFactory;
 
@@ -22,29 +22,23 @@ import org.slf4j.Logger;
 @RequestMapping(value = "/admin/notice")
 public class AdminNoticeController {
 
-	private Logger log = LoggerFactory.getLogger(AdminNoticeController.class);
-
 	@Autowired
 	private AdminNoticeService adminNoticeService;
 
 	// 글목록 구현하기
 	@RequestMapping(value = "/noticeList", method = RequestMethod.GET)
-	public String noticeList(@ModelAttribute AdminNoticeVO nvo, Model model) {
-
-		log.info("noticeList Controller 호출 성공");
+	public String noticeList(@ModelAttribute NoticeVO nvo, Model model) {
 
 		// 페이지 세팅
 		Paging.setPage(nvo);
 
 		// 전체 레코드 수 구현
 		int total = adminNoticeService.adminNoticeListCnt(nvo);
-		log.info("total = " + total);
 
 		// 글 번호 재설정
 		int count = total - (Util.nvl(nvo.getPage()) - 1) * Util.nvl(nvo.getPageSize());
-		log.info("count = " + count);
 
-		List<AdminNoticeVO> noticeList = adminNoticeService.adminNoticeList(nvo);
+		List<NoticeVO> noticeList = adminNoticeService.adminNoticeList(nvo);
 
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("count", count);
@@ -64,9 +58,7 @@ public class AdminNoticeController {
 
 	// 글쓰기 구현하기
 	@RequestMapping(value = "/noticeInsert", method = RequestMethod.POST)
-	public String noticeInsert(@ModelAttribute AdminNoticeVO nvo, Model model) {
-
-		log.info("noticeInsert 호출 성공");
+	public String noticeInsert(@ModelAttribute NoticeVO nvo, Model model) {
 
 		int result = 0;
 		String url = "";
@@ -85,11 +77,9 @@ public class AdminNoticeController {
 
 	// 글 상세보기 구현
 	@RequestMapping(value = "/noticeDetail", method = RequestMethod.GET)
-	public String noticeDetail(@ModelAttribute AdminNoticeVO nvo, Model model) {
+	public String noticeDetail(@ModelAttribute NoticeVO nvo, Model model) {
 
-		log.info("noticeDetail 호출 성공");
-
-		AdminNoticeVO detail = new AdminNoticeVO();
+		NoticeVO detail = new NoticeVO();
 		detail = adminNoticeService.adminNoticeDetail(nvo);
 
 		if (detail != null && (!detail.equals(""))) {
@@ -105,11 +95,9 @@ public class AdminNoticeController {
 	// 글 수정 폼 출력하기
 
 	@RequestMapping(value = "/updateForm", method = RequestMethod.POST)
-	public String updateForm(@ModelAttribute AdminNoticeVO nvo, Model model) {
+	public String updateForm(@ModelAttribute NoticeVO nvo, Model model) {
 
-		log.info("updateForm 호출 성공");
-
-		AdminNoticeVO updateData = new AdminNoticeVO();
+		NoticeVO updateData = new NoticeVO();
 		updateData = adminNoticeService.adminNoticeDetail(nvo);
 
 		model.addAttribute("updateData", updateData);
@@ -118,9 +106,7 @@ public class AdminNoticeController {
 
 	// 글 수정 구현하기
 	@RequestMapping(value = "/noticeUpdate", method = RequestMethod.POST)
-	public String noticeUpdate(@ModelAttribute AdminNoticeVO nvo, Model model) {
-
-		System.out.println("noticeUpdate 호출성공");
+	public String noticeUpdate(@ModelAttribute NoticeVO nvo, Model model) {
 
 		int result = 0;
 		String url = "";
@@ -138,9 +124,7 @@ public class AdminNoticeController {
 
 	// 글 삭제 구현하기
 	@RequestMapping(value = "/noticeDelete", method = RequestMethod.POST)
-	public String noticeDelete(@ModelAttribute AdminNoticeVO nvo, Model model) {
-
-		log.info("noticeDelete 호출 성공");
+	public String noticeDelete(@ModelAttribute NoticeVO nvo, Model model) {
 
 		// 아래 변수에는 입력 성공에 대한 상태값을 담습니다.
 		int result = 0;
