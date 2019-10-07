@@ -20,6 +20,7 @@
 
 		<nav class="nav_topmenu">
 			<ul id="main_menu">
+				<li><a href="/admin/login">HOME</a>
 				<li><a href="/admin/product/adminProductList?page=1">상 품 </a>
 					<ul id="sub_menu">
 						<li><a href="/admin/product/adminProductList?page=1">상 품
@@ -37,16 +38,6 @@
 						<li><a
 							href="/admin/rental/adminRentalList?page=1&order_by=rent_status&order_sc=DESC">대여/반납
 						</a></li>
-					</ul></li>
-				<li><a href="#">통 계</a>
-					<ul id="sub_menu">
-						<li><a href="#">일별 매출</a></li>
-						<li><a href="#">월별 매출</a></li>
-						<li><a href="#">상품별 월 매출</a></li>
-						<li><a href="#">상품별 일 매출</a></li>
-						<li><a href="#">이용 회원별 년 매출</a></li>
-						<li><a href="#">이용 회원별 월 매출</a></li>
-						<li><a href="#">이용 회원 통계</a></li>
 					</ul></li>
 				<li><a href="/admin/question/questionList">고객센터 </a>
 					<ul id="sub_menu">

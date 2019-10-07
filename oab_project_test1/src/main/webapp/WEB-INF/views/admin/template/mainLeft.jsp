@@ -8,10 +8,9 @@
 
 		<h3 align="center">ADMIN MAIMPAGE</h3>
 		<ul>
-
+			<li><a href="/admin/login">HOME</a></li>
 			<li><a href="/admin/product/adminProductList?page=1">상 품</a></li>
 			<li><a href="/admin/member/adminMemberList?page=1">회 원</a></li>
-			<li><a href="#">통 계</a></li>
 			<li><a href="/admin/question/questionList">고객센터</a></li>
 
 		</ul>
