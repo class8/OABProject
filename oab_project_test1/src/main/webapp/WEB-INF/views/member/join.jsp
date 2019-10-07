@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport"
-   content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 <title>Join Member!</title>
@@ -22,32 +22,32 @@
       <![endif]-->
 
 <script type="text/javascript"
-   src="/resources/include/js/jquery-1.12.4.min.js"></script>
+	src="/resources/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript" src="/resources/include/js/join.js"></script>
+
 <script type="text/javascript">
-   function errCodeCheck() {
-      var errCode = '<c:out value="${errCode}" />';
-      if (errCode != '') {
-         switch (parseInt(errCode)) {
-         case 1:
-            alert("이미 가입된 회원입니다!");
-            break;
-         case 2:
-            alert("회원가입 처리가 실패하였습니다. 잠시 후 다시 시도해 주십시오.");
-            break;
-         }
-      }
-   }
+	function errCodeCheck() {
+		var errCode = '<c:out value="${errCode}" />';
+		if (errCode != '') {
+			switch (parseInt(errCode)) {
+			case 1:
+				swal ('오류' , '이미 가입된 회원입니다!','error');
+				break;
+			case 2:
+				swal ('오류' , '회원가입 처리가 실패하였습니다. 잠시 후 다시 시도해 주십시오.','error');
+				break;
+			}
+		}
+	}
 </script>
 
 <link type="text/css" rel="stylesheet"
-   href="/resources/include/css/join.css">
-
+	href="/resources/include/css/join.css">
 </head>
 <body>
-   <form id="memberForm" class="joinform" name="form">
-      <div id="mainsize">
+	<form id="memberForm" class="joinform" name="form">
+		<div id="mainsize">
 			<div>
 				<table>
 					<tr>
@@ -87,113 +87,113 @@
 				</table>
 			</div>
 			<div class="contentContainer">
-         <div class="well">
-            <div class="form-group">
-               <label for="mt_id" class="userId">사용자 ID</label>
-               <div>
-                  <input type="text" id="mt_id" name="mt_id" maxlength="12"
-                     class="userid" placeholder="User ID" /> <input type="button"
-                     id="idConfirmBtn" value="아이디 중복체크"
-                     class="form-control btn-primary" />
-               </div>
+				<div class="well">
+					<div class="form-group">
+						<label for="mt_id" class="userId">사용자 ID</label>
+						<div>
+							<input type="text" id="mt_id" name="mt_id" maxlength="12"
+								class="userid" placeholder="User ID" /> <input type="button"
+								id="idConfirmBtn" value="아이디 중복체크"
+								class="form-control btn-primary" />
+						</div>
 
-               <div class="col-sm-5">
-                  <p class="error"></p>
-               </div>
-            </div>
+						<div class="col-sm-5">
+							<p class="error"></p>
+						</div>
+					</div>
 
-            <div class="form-group">
-               <label for="mt_pw" class="userPw">비밀번호</label>
-               <div>
-                  <input type="password" id="mt_pw" name="mt_pw" maxlength="15"
-                     class="form-control" placeholder="Password" />
-               </div>
-               <div class="col-sm-5">
-                  <p class="error"></p>
-               </div>
-            </div>
+					<div class="form-group">
+						<label for="mt_pw" class="userPw">비밀번호</label>
+						<div>
+							<input type="password" id="mt_pw" name="mt_pw" maxlength="15"
+								class="form-control" placeholder="Password" />
+						</div>
+						<div class="col-sm-5">
+							<p class="error"></p>
+						</div>
+					</div>
 
-            <div class="form-group">
-               <label for="mt_pwCheck" class="userPwCheck">비밀번호 확인</label>
-               <div>
-                  <input type="password" id="mt_pwCheck" name="mt_pwCheckpw"
-                     maxlength="15" class="form-control"
-                     placeholder="Password Confirm" />
-               </div>
-               <div class="col-sm-5">
-                  <p class="error"></p>
-               </div>
-            </div>
+					<div class="form-group">
+						<label for="mt_pwCheck" class="userPwCheck">비밀번호 확인</label>
+						<div>
+							<input type="password" id="mt_pwCheck" name="mt_pwCheckpw"
+								maxlength="15" class="form-control"
+								placeholder="Password Confirm" />
+						</div>
+						<div class="col-sm-5">
+							<p class="error"></p>
+						</div>
+					</div>
 
-            <div class="form-group">
-               <label for="mt_phone" class="userPhone">핸드폰 번호</label>
-               <div>
-                  <input type="text" id="mt_phone" name="mt_phone" maxlength="11"
-                     class="form-control" placeholder="Phone Number" />
-               </div>
-               <div class="col-sm-5">
-                  <p class="error"></p>
-               </div>
-            </div>
+					<div class="form-group">
+						<label for="mt_phone" class="userPhone">핸드폰 번호</label>
+						<div>
+							<input type="text" id="mt_phone" name="mt_phone" maxlength="11"
+								class="form-control" placeholder="Phone Number" />
+						</div>
+						<div class="col-sm-5">
+							<p class="error"></p>
+						</div>
+					</div>
 
-            <div class="form-group">
-               <label for="mt_email" class="userEmail">이메일</label>
-               <div>
-                  <input type="text" id="mt_email" name="mt_email" maxlength="60"
-                     class="form-control" placeholder="@ 포함 영문/숫자 10~50자 입력"
-                     required="required" />
-               </div>
+					<div class="form-group">
+						<label for="mt_email" class="userEmail">이메일</label>
+						<div>
+							<input type="text" id="mt_email" name="mt_email" maxlength="60"
+								class="form-control" placeholder="@ 포함 영문/숫자 10~50자 입력"
+								required="required" />
+						</div>
 
-               <div class="col-sm-5">
-                  <p class="error"></p>
-               </div>
-            </div>
+						<div class="col-sm-5">
+							<p class="error"></p>
+						</div>
+					</div>
 
-            <div class="form-group">
-               <label for="mt_Birth" class="userBirth">생년월일</label>
-               <div>
-                  <input type="text" id="mt_birth" name="mt_birth" maxlength="6"
-                     class="form-control" placeholder="주민등록번호 앞 6자리" />
-               </div>
-               <div class="col-sm-5">
-                  <p class="error"></p>
-               </div>
-            </div>
+					<div class="form-group">
+						<label for="mt_Birth" class="userBirth">생년월일</label>
+						<div>
+							<input type="text" id="mt_birth" name="mt_birth" maxlength="6"
+								class="form-control" placeholder="주민등록번호 앞 6자리" />
+						</div>
+						<div class="col-sm-5">
+							<p class="error"></p>
+						</div>
+					</div>
 
-            <div class="form-group">
-               <label for="mt_Name" class="userName">회원이름</label>
-               <div>
-                  <input type="text" id="mt_name" name="mt_name" maxlength="10"
-                     class="form-control" placeholder="Name" />
-               </div>
-               <div class="col-sm-5">
-                  <p class="error"></p>
-               </div>
-            </div>
+					<div class="form-group">
+						<label for="mt_Name" class="userName">회원이름</label>
+						<div>
+							<input type="text" id="mt_name" name="mt_name" maxlength="10"
+								class="form-control" placeholder="Name" />
+						</div>
+						<div class="col-sm-5">
+							<p class="error"></p>
+						</div>
+					</div>
 
 
-            <div class="form-group">
-               <label for="mt_gender" class="userGender">성별</label>
-               <div id="gender">
-                  <input type="radio" name="mt_gender" value="Female">여성 <input
-                     type="radio" name="mt_gender" value="male">남 성 <input
-                     type="radio" name="mt_gender" value="neutral" checked="checked">선택안함
-               </div>
-               <div class="col-sm-5">
-                  <p class="error"></p>
-               </div>
-            </div>
-            <div>
-               <div>
-                  <input type="button" value="확인" id="joinInsert"
-                     class="btn btn-default" /><br> <input type="button" value="재작성"
-                     id="joinReset" class="btn btn-default" /> 
-               </div>
-            </div>
-         </div>
-      </div>
-      
-  </div>
-   </form>
+					<div class="form-group">
+						<label for="mt_gender" class="userGender">성별</label>
+						<div id="gender">
+							<input type="radio" name="mt_gender" value="Female">여성 <input
+								type="radio" name="mt_gender" value="male">남 성 <input
+								type="radio" name="mt_gender" value="neutral" checked="checked">선택안함
+						</div>
+						<div class="col-sm-5">
+							<p class="error"></p>
+						</div>
+					</div>
+					<div>
+						<div>
+							<input type="button" value="확인" id="joinInsert"
+								class="btn btn-default" /><br> <input type="button"
+								value="재작성" id="joinReset" class="btn btn-default" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</form>
 </body>
 </html>

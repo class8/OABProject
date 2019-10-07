@@ -52,15 +52,15 @@
 									console.log("result:" + result);
 									if (result == 'SUCCESS') {
 										location.reload();
-										alert("취소/환불신청을 완료 하였습니다.");
+										swal ('오류' , '취소/환불신청을 완료 하였습니다.','error');
 									}
 								}
 							});
 						}
 					} else if ($("#rest_number").val() == -1) {
-						alert("선택하신 예약번호는 이미 취소/환불 요청중입니다.");
+						swal ('오류' , '선택하신 예약번호는 이미 취소/환불 요청중입니다.','error');
 					} else if ($("#rest_number").val() == -2) {
-						alert("취소/환불을 원하는 내역을 선택해주세요.");
+						swal ('오류' , '취소/환불을 원하는 내역을 선택해주세요.','error');
 					}
 				});
 

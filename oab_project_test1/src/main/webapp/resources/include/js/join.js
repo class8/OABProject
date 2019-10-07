@@ -4,7 +4,7 @@
 // 비밀번호와 비밀번호 확인 일치 여부 확인
 function passwordCheck() {
 	if ($("#mt_pw").val() != $("#mt_pwCheck").val()) {
-		alert("비밀번호와 비밀번호 확인이 일치하지 않습니다");
+		swal ('오류' , '비밀번호와 비밀번호 확인이 일치하지 않습니다.','error');
 		$("#mt_pwCheck").focus();
 		$("#mt_pwCheck").val("");
 		return false;
@@ -17,7 +17,7 @@ function idPwdCheck() {
 	var mt_Id = $("#mt_id").val();
 	var mt_Pw = $("#mt_pw").val();
 	if (mt_Pw.indexOf(mt_Id) > -1) {
-		alert("비밀번호에 아이디를 포함할 수 없습니다.");
+		swal ('오류' , '비밀번호에 아이디를 포함 할 수 없습니다.','error');
 		$("#mt_pw").val("");
 		$("#mt_pw").focus();
 		return false;
@@ -55,7 +55,7 @@ $(function() {
 				type : "post",
 				data : "mt_id=" + $("#mt_id").val(),
 				error : function() {
-					alert('사이트 접속에 문제로 정상 작동하지 못하였습니다. 잠시 후 다시 시도해 주세요.');
+					swal ('오류' , '사이트 접속에 문제로 정상 작동하지 못하였습니다. 잠시 후 다시 시도해 주세요.','error');
 				},
 				success : function(resultData) {
 					console.log("resultData : " + resultData);
@@ -105,7 +105,7 @@ $(function() {
 		else if (!formCheck($('#mt_name'), $('.error:eq(6)'), "이름을"))
 			return;
 		else if (idConfirm != 2) {
-			alert("아이디 중복 체크 진행해 주세요.");
+			swal ('오류' , '아이디 중복체크를 해주세요.','error');
 			return;
 		} else {
 
@@ -117,7 +117,7 @@ $(function() {
 			if (num == 1) {
 				document.form.submit();
 			} else {
-				alert("개인정보 약관에 동의하셔야 합니다.");
+				swal ('오류' , '개인정보 약관에 동의하셔야 합니다.','error');
 				return true;
 			}
 			$("#mt_birth").val($("#mt_birth").val());

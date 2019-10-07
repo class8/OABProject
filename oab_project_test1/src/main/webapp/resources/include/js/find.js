@@ -19,7 +19,7 @@ function idcheck() {
 		type : "post",
 		data : "mt_email=" + $("#mt_email").val(),
 		error : function() {
-			alert('사이트 접속에 문제로 정상 작동하지 못하였습니다. 잠시 후 다시 시도해 주세요.');
+			swal ('오류' , '사이트 접속에 문제로 정상 작동하지 못하였습니다. 잠시 후 다시 시도해 주세요.','error');
 		},
 		success : function(resultData) {
 			console.log("resultData : " + resultData);
@@ -31,7 +31,7 @@ function idcheck() {
 				// $("#mt_id").parents(".MS_input_txt1").find(".error").html("기존
 				// 아이디를 입력해주세요 아이디가 잘못되었습니다.");
 				$("#mt_email").val("");
-				alert("가입시 입력한 이메일을 입력해주세요.");
+				swal ('오류' , '가입시 입력한 이메일을 입력해주세요.','error');
 				$("#mt_email").focus();
 			}
 		}
@@ -60,7 +60,7 @@ function check() {
 		type : "post",
 		data : "mt_id=" + $("#mt_id").val(),
 		error : function() {
-			alert('사이트 접속에 문제로 정상 작동하지 못하였습니다. 잠시 후 다시 시도해 주세요.');
+			swal ('오류' , '사이트 접속에 문제로 정상 작동하지 못하였습니다. 잠시 후 다시 시도해 주세요.','error');
 		},
 		success : function(resultData) {
 			console.log("resultData : " + resultData);
@@ -72,7 +72,7 @@ function check() {
 				// $("#mt_id").parents(".MS_input_txt1").find(".error").html("기존
 				// 아이디를 입력해주세요 아이디가 잘못되었습니다.");
 				$("#mt_id").val("");
-				alert("기존 아이디를 입력해주세요 아이디가 잘못되었습니다.");
+				swal ('오류' , '기존 아이디를 입력해주세요 아이디가 잘못되었습니다.','error');
 				$("#mt_id").focus();
 			}
 		}

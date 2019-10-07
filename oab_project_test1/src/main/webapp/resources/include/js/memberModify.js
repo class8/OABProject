@@ -71,7 +71,7 @@ $(function() {
 
 function passwordCheck() {
 	if ($("#mt_pw").val() != $("#mt_pwCheck").val()) {
-		alert("패스워드 입력이 일치하지 않습니다");
+		swal ('오류' , '패스워드 입력이 일치하지 않습니다.','error');
 		$("#mt_pw").val("");
 		$("#mt_pwCheck").val("");
 		$("#mt_pw").focus();
@@ -85,7 +85,7 @@ function idPwdCheck() {
 	var mt_pw = $("#mt_pw").val();
 	if (mt_pw.indexOf(mt_id) > 0) {
 		alert(mt_pw.indexOf(mt_id));
-		alert("비밀번호에 아이디를 포함할 수 없습니다.");
+		swal ('오류' , '비밀번호에 아이디를 포함할 수 없습니다.','error');
 		$("#mt_pw").val("");
 		$("#mt_pw").focus();
 		return false;

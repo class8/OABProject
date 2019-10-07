@@ -33,7 +33,7 @@
 			if (num == 1) {
 				//document.deleteform.submit();
 			} else {
-				alert("회원 탈퇴 이용약관에 동의하셔야 합니다.");
+				swal ('오류' , '회원 탈퇴 이용약관에 동의하셔야 합니다.','error');
 				return true;
 
 			}
@@ -54,7 +54,7 @@
 					success : function(result) {
 						console.log("result:" + result);
 						if (result == 'SUCCESS') {
-							alert("고객님의 회원 탈퇴 처리가 완료되었습니다.");
+							swal ('오류' , '고객님의 회원 탈퇴 처리가 완료되었습니다.','error');
 
 							$("#delete").attr({
 								"method" : "POST",
