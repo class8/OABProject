@@ -23,32 +23,44 @@
 			document.getElementById("reviewDeleteBtn").style.display = "none";
 		}
 
-		$("#reviewDeleteBtn").click(
-				function() {
-					/* 버튼 클릭하면 삭제기능 시작하기 */
-					var qt_writerPwCheck = $("#check_pw").val(); //삭제 시 비밀번호 확인을 위한 비밀번호
-					var qt_pw = $("#revt_pw").val(); //원글의 비밀번호
-
-					if (!($("#check_pw").val())) {
-						alert("비밀번호를 입력해주세요");
-						$("#check_pw").val("");
-						$("#check_pw").focus();
-					} else if ($("#revt_pw").val() != $("#check_pw").val()) {
-						alert("입력하신 비밀번호가 일치하지 않습니다.");
-						$("#check_pw").val("");
-
-					} else if (confirm("[${detail.revt_title}]"
-							+ " 작성하신 문의 글을 정말 삭제하시겠습니까?")) {
-						$("#revt_data").attr("action", "/review/reviewDelete");
-						$("#revt_data").submit();
-					}
-
-					else {
-						alert("삭제가 불가능합니다.");
-					}
-
+		$("#reviewDeleteBtn").click(function() {
+			if(detailCheck()){
+				swal({
+				     title: "삭제",
+				     text: "[${detail.revt_title}]"+" 작성하신 후기글을 정말 삭제하시겠습니까?",
+				     icon: "info",
+				     buttons: ["아니오", "예"],
+				}
+				).then((예) => {
+				     if (예) {
+				    	 swal('삭제', '[${detail.revt_title}]'+'글이 삭제되었습니다.', 'success').then((OK)=>{
+				    	 	$("#revt_data").attr("action", "/review/reviewDelete");
+							$("#revt_data").submit();
+				    	   	 });
+				     }
 				});
-
+			/* if (confirm("[${detail.revt_title}]"
+					+ " 작성하신 문의 글을 정말 삭제하시겠습니까?")) {
+				$("#revt_data").attr("action", "/review/reviewDelete");
+				$("#revt_data").submit();
+			}
+			else {
+				alert("삭제가 불가능합니다.");
+			} */
+			}
+		});
+		function detailCheck() {
+			if (!($("#check_pw").val())) {
+				swal('오류', '비밀번호를 입력해주세요.', 'error');
+				$("#check_pw").val("");
+				$("#check_pw").focus();
+			} else if ($("#revt_pw").val() != $("#check_pw").val()) {
+				swal('오류', '입력하신 비밀번호가 일치하지 않습니다.', 'error');
+				$("#check_pw").val("");
+			}else{
+				return true;	
+			}
+		}
 	});
 </script>
 </head>

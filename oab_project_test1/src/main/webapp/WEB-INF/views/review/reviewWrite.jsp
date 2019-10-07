@@ -28,24 +28,34 @@
 				.click(
 						function() {
 							if (reviewCheck()) {
-								$("#reviewWriteForm").attr({ // 속성의 값을 가져오는 것
+								/*  */
+									swal({
+				     title: "등록",
+				     text: "작성하신 후기글을 등록하시겠습니까?",
+				     icon: "info",
+				     buttons: ["아니오", "예"],
+				}
+				).then((예) => {
+				     if (예) {
+				    	 swal('등록', '후기글이 등록되었습니다.', 'success').then((OK)=>{
+				    		 $("#reviewWriteForm").attr({ // 속성의 값을 가져오는 것
 									"method" : "POST",
 									"action" : "/review/reviewInsert"
 								});
-
 								$("#reviewWriteForm").submit();
-								alert("포토후기가 작성 되었습니다. 고객님의 아름다운 한강을 위해 오늘도 노력하는 OAB가 되도록 하겠습니다.");
-								// 알림창!
+				    	   	 });
+				     }
+				});
 							}
 						});
 	});
 	function reviewCheck() {
 
-		var value = $('#revt_writer').val();
+		/* var value = $('#revt_writer').val();
 		var value = $('#revt_pw').val();
 		var value = $('#revt_branch').val();
 		var value = $('#revt_title').val();
-		var value = $('#revt_content').val();
+		var value = $('#revt_content').val(); */
 		// 파일의 확장자 명을 막기 위해서
 		var pt_thumbCheck = $("#revt_thumbnail").val().split('.').pop()
 				.toLowerCase();
@@ -57,30 +67,30 @@
 				.toLowerCase();
 
 		if ($("#revt_writer").val() == null || $("#revt_writer").val() == '') {
-			alert("작성자 명은 필수입니다");
+			swal('오류', '작성자 명은 필수입니다.', 'error');
 			$("#revt_writer").focus();
 			return false;
 		} else if ($("#revt_pw").val() == null || $("#revt_pw").val() == '') {
-			alert("포토후기의 비밀번호 입력은 필수입니다");
+			swal('오류', '포토후기의 비밀번호 입력은 필수입니다.', 'error');
 			$("#revt_pw").focus();
 			return false;
 		} else if ($("#revt_branch").val() == null
 				|| $("#revt_branch").val() == '') {
-			alert("포토후기의 이용지점 입력은 필수입니다");
+			swal('오류', '포토후기의 이용지점 입력은 필수입니다.', 'error');
 			$("#revt_branch").focus();
 			return false;
 		} else if ($("#revt_title").val() == null
 				|| $("#revt_title").val() == '') {
-			alert("포토후기의 제목 입력은 필수입니다");
+			swal('오류', '포토후기의 제목 입력은 필수입니다.', 'error');
 			$("#revt_title").focus();
 			return false;
 		} else if ($("#revt_content").val() == null
 				|| $("#revt_content").val() == '') {
-			alert("포토후기의 내용 입력은 필수입니다");
+			swal('오류', '포토후기의 내용 입력은 필수입니다.', 'error');
 			$("#revt_content").focus();
 			return false;
 		} else if ($("#revt_thumbnail").select().val() == '') {
-			alert("썸네일 사진은 필수 등록입니다.");
+			swal('오류', '썸네일 사진은 필수 등록입니다.', 'error');
 			return false;
 		} else if (extension_check($("#revt_thumbnail"))) {
 			return false;
@@ -103,7 +113,7 @@
 			// 자른 확장자명이 없을경우 -1 있으면 배열의 인덱스값 반환(0~3)
 			// 입력한 파일의 확장자명이 배열중에 없으면 true
 			if (jQuery.inArray(extension, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
-				alert('파일은 gif, png, jpg, jpeg 만 업로드를 할 수 있습니다.');
+				swal('오류', '파일은 gif, png, jpg, jpeg 만 업로드를 할 수 있습니다.', 'error');
 				return true;
 			} else {
 				return false;

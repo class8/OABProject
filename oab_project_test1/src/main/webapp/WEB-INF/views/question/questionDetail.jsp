@@ -17,7 +17,7 @@
 	$(function() {
 
 		// 해당 1:1문의 글이 자신이 쓴 글일 경우에만 삭제버튼을 보여줌 
-		if ($("#qt_writer").val() == "관리자") {
+		if ($("#qt_writer").val() == "관리자"||$("#qt_status").val() == "답변완료") {
 			document.getElementById("delete_questionBtn").style.display = "none";
 		} else {
 			document.getElementById("delete_questionBtn").style.display = "block";
@@ -53,39 +53,43 @@
 
 	//삭제버튼
 	$(function() {
-		$("#delete_questionBtn").click(
-				function() {
-
-					var qt_writerPwCheck = $("#qt_writerPwCheck").val(); //삭제 시 비밀번호 확인을 위한 비밀번호
-					var qt_pw = $("#qt_pw").val(); //원글의 비밀번호
-
+		$("#delete_questionBtn").click(function() {
 					if ($("#qt_status").val() == "미답변") {
-
-						if (!($("#qt_writerPwCheck").val())) { //비밀번호란이 공백일경우
-							alert("비밀번호를 입력해주세요");
-							$("#qt_writerPwCheck").val("");
-							$("#qt_writerPwCheck").focus();
+						if(questioncheck()){
+						
+						swal({
+						     title: "삭제",
+						     text: "[${detail.qt_title}]"+" 작성하신 문의글을 정말 삭제하시겠습니까?",
+						     icon: "info",
+						     buttons: ["아니오", "예"],
 						}
-
-						else if ($("#qt_pw").val() != $("#qt_writerPwCheck")
-								.val()) { //입력한 비밀번호와 DB의 비밀번호가 틀리다면
-							alert("입력하신 비밀번호가 일치하지 않습니다.");
-							$("#qt_writerPwCheck").val("");
-
-						} else if (confirm("[${detail.qt_title}]"
-								+ " 작성하신 문의 글을 정말 삭제하시겠습니까?")) { //입력한 비밀번호가 맞을경우
-
-							$("#qt_data").attr("action",
-									"/question/questionDelete");
-							$("#qt_data").submit();
-						}
-
-					} else {
-						alert("답변이 완료된 문의글은 삭제할 수 없습니다.");
+						).then((예) => {
+						     if (예) {
+						    	 swal('삭제', '[${detail.qt_title}]'+'글이 삭제되었습니다.', 'success').then((OK)=>{
+						    		 $("#qt_data").attr("action",
+										"/question/questionDelete");
+								$("#qt_data").submit();
+						    	   	 });
+						     }
+						});
+					} 
 					}
 				});
 
 	});
+	function questioncheck(){
+		if (!($("#qt_writerPwCheck").val())) { //비밀번호란이 공백일경우
+			swal('오류', '비밀번호를 입력해주세요.', 'error');
+			$("#qt_writerPwCheck").val("");
+			$("#qt_writerPwCheck").focus();
+		}
+		else if ($("#qt_pw").val() != $("#qt_writerPwCheck").val()) { //입력한 비밀번호와 DB의 비밀번호가 틀리다면
+			swal('오류', '입력하신 비밀번호가 일치하지 않습니다.', 'error');
+			$("#qt_writerPwCheck").val("");
+		}else{
+			return true;
+		}
+	}
 </script>
 </head>
 <body>
@@ -146,8 +150,8 @@
 				</tbody>
 			</table>
 			<div class="buttoncss">
-				<input type="button" value="목록" id="back_questionListBtn"> 
-				<input type="button" value="삭제" id="delete_questionBtn">
+				<input type="button" value="목록" id="back_questionListBtn"> <input
+					type="button" value="삭제" id="delete_questionBtn">
 			</div>
 		</div>
 		<%-- =========== 상세 정보 보여주기 종료 =========== --%>

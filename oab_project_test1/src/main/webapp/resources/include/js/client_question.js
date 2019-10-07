@@ -4,12 +4,24 @@ $(function() {
 	//저장 버튼 클릭 시 처리 이벤트 
 	$("#questionInsertBtn").click(function() {
 	if(qtCheck()){
-		$("#questionwriteForm").attr({ // 속성의 값을 가져오는 것
-			"method" : "POST",
-			"action" : "/question/questionInsert"
+		
+		swal({
+		     title: "등록",
+		     text: "작성하신 문의글을 등록하시겠습니까?",
+		     icon: "info",
+		     buttons: ["아니오", "예"],
+		}
+		).then((예) => {
+		     if (예) {
+		    	 swal('등록', '문의글이 등록되었습니다.', 'success').then((OK)=>{
+		    		 $("#questionwriteForm").attr({ // 속성의 값을 가져오는 것
+		    				"method" : "POST",
+		    				"action" : "/question/questionInsert"
+		    			});
+		    			$("#questionwriteForm").submit();
+		    	   	 });
+		     }
 		});
-		$("#questionwriteForm").submit();
-		alert("문의사항이 작성 되었습니다. 신속하고 정확한 답변으로 서비스하겠습니다. 감사합니다."); // 알림창으로 줄건지
 	}
 	});
 });
@@ -39,19 +51,19 @@ function qtCheck() {
 	var qt_content = document.getElementById('qt_content');
 
 	if (qt_writer.value == '' || qt_writer.value == null) {
-		alert('이름은 필수 사항입니다');
+		swal('오류', '이름은 필수 사항입니다.', 'error');
 		return false;
 	}
 	if (qt_pw.value == '' || qt_pw.value == null) {
-		alert('게시글의 비밀번호는 필수 사항입니다');
+		swal('오류', '게시글의 비밀번호는 필수 사항입니다.', 'error');
 		return false;
 	}
 	if (qt_title.value == '' || qt_title.value == null) {
-		alert('게시글의 제목은 필수 사항입니다');
+		swal('오류', '게시글의 제목은 필수 사항입니다.', 'error');
 		return false;
 	}
 	if (qt_content.value == '' || qt_content.value == null) {
-		alert('문의 내용 작성은 필수 사항입니다');
+		swal('오류', '문의 내용 작성은 필수 사항입니다.', 'error');
 		return false;
 	}
 	return true;
