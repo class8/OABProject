@@ -42,6 +42,6 @@
 		select r.rent_number, re.rest_number, r.rent_status, r.mt_id, re.rest_total, re.rest_name, re.rest_bname, r.rent_actrent, 
     r.rent_expretrun 
     from rental_tbl r, reservation_tbl re 
-    where r.rest_number = re.rest_number and rent_status = '대여중'
+    where r.rest_number = re.rest_number and rent_status = '대여중' order by r.rent_actrent desc
 	</select>
 </mapper>
