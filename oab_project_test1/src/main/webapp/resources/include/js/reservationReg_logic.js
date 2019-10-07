@@ -29,22 +29,22 @@ function FormCheck() {
 	var expPhone = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/; //연락처 정규식
 	
 	if($(".rest_name").val() == null || $(".rest_name").val() ==''){
-		alert("이름을 입력해주세요.");
+		swal ('오류' , '이름을 입력해주세요.','error');
 		$(".rest_name").focus();
 		return false;
 	}else if($(".rest_phone").val() == null || $(".rest_phone").val() ==''){
-		alert("연락처를 입력해주세요.");
+		swal ('오류' , '연락처를 입력해주세요.','error');
 		$(".rest_phone").focus();
 		return false;
 	}else if(!/^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/.test($(".rest_phone").val())){
-		alert("연락처 형식이 다릅니다.");
+		swal ('오류' , '연락처 형식이 다릅니다.','error');
 		$(".rest_phone").focus();
 		return false;
 	}else if(arr.length==0){
-		alert("상품을 선택하세요.");
+		swal ('오류' , '상품을 선택하세요.','error');
 		return false;
 	}else if(!$(".agree").prop("checked")){
-		alert("약관동의를 체크해주세요.");
+		swal ('오류' , '약관동의를 체크해주세요.','error');
 		$(".agree").focus();
 		return false;
 	}

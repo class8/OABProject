@@ -17,6 +17,8 @@
 <!--  -->
 <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css'
 	rel='stylesheet'>
+
+<!--  -->
 <!-- <link
 	href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
 	rel='stylesheet' /> -->
@@ -331,7 +333,7 @@
 							</c:if>
 							<c:if test="${login.mt_id == null }">
 								<input type="button" value="예약신청"
-									onclick="alert('예약은 로그인후에 가능합니다.')">
+									onclick="swal ('오류' , '예약신청은 로그인후에 가능합니다.','error')">
 							</c:if>
 						</div>
 					</td>

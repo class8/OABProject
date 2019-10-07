@@ -15,6 +15,7 @@
 <link rel="stylesheet" type="text/css"
 	href="/resources/include/css/common.css" />
 <link rel="shortcut icon" href="/resources/images/favicon.ico">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 	<div class="wrapper">
