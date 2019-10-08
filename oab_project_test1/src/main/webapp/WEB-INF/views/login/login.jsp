@@ -25,6 +25,10 @@
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript" src="/resources/include/js/login.js"></script>
 <script type="text/javascript">
+if("${logincheck}"){
+	   alert("${logincheck}");
+	   location.href="/login/login";
+	}
 	function errCodeCheck() {
 		var errCode = '<c:out value="${errCode}" />';
 		if (errCode != "") {

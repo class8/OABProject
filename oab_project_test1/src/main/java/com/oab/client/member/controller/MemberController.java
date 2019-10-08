@@ -208,7 +208,7 @@ public class MemberController {
 
 	// 내 이용 내역 리스트 출력
 	@RequestMapping(value = "/info/memberUserInfo", method = RequestMethod.GET)
-	public ModelAndView memberUserInfo(@ModelAttribute("UseInfoVO") UserInfoVO uvo, Model model, HttpSession session) {
+	public ModelAndView memberUserInfoChk(@ModelAttribute("UseInfoVO") UserInfoVO uvo, Model model, HttpSession session, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 
 		System.out.println("memberUserInfo 호출 성공");

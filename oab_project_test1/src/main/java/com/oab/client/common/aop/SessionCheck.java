@@ -84,11 +84,12 @@ public class SessionCheck {
 			} catch (Exception e) {
 				
 				if( pjp.getSignature().toString().contains("ModelAndView") ) {
-					mav.setViewName("login/login");
-					return mav;
-				}
-				
-				return "login/login";
+		               request.setAttribute("logincheck", "로그인이 필요한 이용 입니다.");
+		               mav.setViewName("login/login");
+		               return mav;
+		            }
+		            request.setAttribute("logincheck", "로그인이 필요한 이용 입니다.");
+		            return "login/login";
 			}
 		}
 		result = pjp.proceed();
