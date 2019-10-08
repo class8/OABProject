@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +31,7 @@ public class AdminRentalController {
 	private AdminReservationService adminReservationService;
 
 	@RequestMapping(value = "/adminRentalList", method = RequestMethod.GET)
-	public String adminRentalList(@ModelAttribute RentalVO arvo, Model model) {
+	public String adminRentalList_Chk(@ModelAttribute RentalVO arvo, Model model,HttpServletRequest request) {
 
 		Paging.setPage(arvo);
 
@@ -49,7 +51,7 @@ public class AdminRentalController {
 	}
 
 	@RequestMapping(value = "/adminRentalInsert", method = RequestMethod.POST)
-	public String adminRentalInsert(@ModelAttribute RentalVO arvo, Model model) {
+	public String adminRentalInsert_Chk(@ModelAttribute RentalVO arvo, Model model,HttpServletRequest request) {
 		System.out.println("rental 등록 메서드 호출 성공");
 		int result = 0;
 		int result_reservation = 0;
@@ -69,7 +71,7 @@ public class AdminRentalController {
 	}
 
 	@RequestMapping(value = "/adminRentalDelete", method = RequestMethod.POST)
-	public String adminRentalDelete(@ModelAttribute RentalVO arvo) {
+	public String adminRentalDelete_Chk(@ModelAttribute RentalVO arvo,HttpServletRequest request) {
 		int result = 0;
 		int result_reservationn = 0;
 		String url = "/admin/rental/adminRentalList?page=1&order_by=rent_status&order_sc=ASC";
@@ -85,7 +87,7 @@ public class AdminRentalController {
 	}
 
 	@RequestMapping(value = "/adminRentalModify", method = RequestMethod.POST)
-	public String adminRentalModify(@ModelAttribute RentalVO arvo) {
+	public String adminRentalModify_Chk(@ModelAttribute RentalVO arvo,HttpServletRequest request) {
 		int result = 0;
 		String rent_expretrun = arvo.getRent_expretrun();
 

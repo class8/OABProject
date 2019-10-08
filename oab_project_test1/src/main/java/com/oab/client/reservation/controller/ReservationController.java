@@ -68,7 +68,7 @@ public class ReservationController {
 	 * @throws IllegalAccessException
 	 **************************************/
 	@RequestMapping(value = "/reservationReg", method = RequestMethod.POST)
-	public String reservationInsert(@ModelAttribute ReservationVO rvo, Model model, HttpServletRequest request,
+	public String reservationInsertChk(@ModelAttribute ReservationVO rvo, Model model, HttpServletRequest request,
 			HttpSession session, @RequestParam(value = "pt_num", required = false, defaultValue = "0") String[] pt_num,
 			@RequestParam(value = "pt_cnt", required = false, defaultValue = "0") String[] pt_cnt,
 			@RequestParam(value = "price", required = false, defaultValue = "0") String[] price, RedirectAttributes redirectAttributes)
@@ -95,7 +95,7 @@ public class ReservationController {
 	}
 
 	@RequestMapping(value = "/reservationResult")
-	public String reservationResult() {
+	public String reservationResultChk(HttpServletRequest request) {
 		return "reservation/reservationResult";
 	}
 

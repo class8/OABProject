@@ -2,6 +2,7 @@ package com.oab.client.member.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -99,7 +100,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/memberModify", method = RequestMethod.GET)
-	public ModelAndView memberModify(HttpSession session) {
+	public ModelAndView memberModifyChk(HttpSession session,HttpServletRequest request) {
 		log.info("modify.do get 방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
 
@@ -117,7 +118,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/memberModify", method = RequestMethod.POST)
-	public ModelAndView memberModifyProcess(@ModelAttribute("MemberVO") MemberVO mvo, HttpSession session) {
+	public ModelAndView memberModifyProcessChk(@ModelAttribute("MemberVO") MemberVO mvo, HttpSession session,HttpServletRequest request) {
 		log.info("modify.do post 방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
 
@@ -147,7 +148,7 @@ public class MemberController {
 
 	// 회원 탈퇴
 	@RequestMapping(value = "/memberSecede", method = RequestMethod.GET)
-	public ModelAndView memberSeceUpdate(HttpSession session) {
+	public ModelAndView memberSeceUpdateChk(HttpSession session,HttpServletRequest request) {
 		log.info("memberSecede.do get 방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
 
@@ -166,7 +167,7 @@ public class MemberController {
 
 	// 회원 비활성화 (강좌상태 'ABLE' -> 'DISABLE')
 	@RequestMapping(value = "/memberSecede/{mt_id}", method = { RequestMethod.PUT, RequestMethod.PATCH })
-	public ResponseEntity<String> memberSecede(@PathVariable("mt_id") String mt_id, @RequestBody MemberVO mvo) {
+	public ResponseEntity<String> memberSecedeChk(@PathVariable("mt_id") String mt_id, @RequestBody MemberVO mvo,HttpServletRequest request) {
 		System.out.println("memberSecede 호출 성공");
 		System.out.println(mvo.getMt_id());
 

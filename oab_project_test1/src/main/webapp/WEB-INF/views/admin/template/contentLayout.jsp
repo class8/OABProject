@@ -13,7 +13,6 @@
 <link rel="stylesheet" type="text/css"
 	href="/resources/admin/include/css/content.css" />
 </head>
-<c:if test="${adminLogin.adminID != null}">
 	<body>
 		<div class="wrapper">
 			<header class="header" id="headertop">
@@ -26,9 +25,5 @@
 				<tiles:insertAttribute name="body" />
 			</div>
 		</div>
-</c:if>
-<c:if test="${adminLogin.adminID == null}">
-	<h1>권한이 없습니다.</h1>
-</c:if>
 </body>
 </html>

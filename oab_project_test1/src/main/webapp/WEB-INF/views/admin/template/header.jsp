@@ -6,7 +6,6 @@
 	src="/resources/admin/include/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"
 	src="/resources/admin/include/js/adminLogin.js"></script>
-<c:if test="${adminLogin.adminID != null}">
 	<div class="header">
 
 		<div id="logo">
@@ -49,4 +48,3 @@
 			</ul>
 		</nav>
 	</div>
-</c:if>

@@ -2,6 +2,8 @@ package com.oab.admin.question.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +19,16 @@ import com.oab.client.question.vo.QuestionVO;
 
 @Controller
 @RequestMapping(value = "/admin/question")
-public class AdminQuestionContorller {
+public class AdminQuestionController {
 
-	private Logger log = LoggerFactory.getLogger(AdminQuestionContorller.class);
+	private Logger log = LoggerFactory.getLogger(AdminQuestionController.class);
 
 	@Autowired
 	private AdminQuestionService adminQuestionService;
 
 	// 문의 글 목록 구현하기
 	@RequestMapping(value = "/questionList", method = RequestMethod.GET)
-	public String adminQuestionList(@ModelAttribute QuestionVO qvo, Model model) {
+	public String adminQuestionList_Chk(@ModelAttribute QuestionVO qvo, Model model,HttpServletRequest request) {
 
 		System.out.println("1:1 문의 컨트롤러 호출 성공");
 
@@ -53,7 +55,7 @@ public class AdminQuestionContorller {
 
 	// 상세보기 구현하기
 	@RequestMapping(value = "/questionDetail", method = RequestMethod.GET)
-	public String adminQuestionDetail(@ModelAttribute QuestionVO qvo, Model model) {
+	public String adminQuestionDetail_Chk(@ModelAttribute QuestionVO qvo, Model model,HttpServletRequest request) {
 
 		System.out.println("문의 디테일 호출 성공");
 
@@ -71,7 +73,7 @@ public class AdminQuestionContorller {
 
 	// 글 삭제 구현하기
 	@RequestMapping(value = "/questionDelete", method = RequestMethod.POST)
-	public String adminQuestionDelete(@ModelAttribute QuestionVO qvo, Model model) {
+	public String adminQuestionDelete_Chk(@ModelAttribute QuestionVO qvo, Model model,HttpServletRequest request) {
 
 		System.out.println("문의 삭제 호출 성공");
 
@@ -92,7 +94,7 @@ public class AdminQuestionContorller {
 
 	// 댓글 폼 출력하기
 	@RequestMapping(value = "/replyWriteForm", method = RequestMethod.POST)
-	public String adminReplyWriteForm(@ModelAttribute QuestionVO qvo, Model model) {
+	public String adminReplyWriteForm_Chk(@ModelAttribute QuestionVO qvo, Model model,HttpServletRequest request) {
 		System.out.println("글쓰기 폼 호출 성공");
 
 		QuestionVO question = new QuestionVO();
@@ -105,7 +107,7 @@ public class AdminQuestionContorller {
 
 	// 댓글쓰기 구현하기
 	@RequestMapping(value = "/replyInsert", method = RequestMethod.POST)
-	public String adminReplyInsert(@ModelAttribute QuestionVO qvo, Model model) {
+	public String adminReplyInsert_Chk(@ModelAttribute QuestionVO qvo, Model model,HttpServletRequest request) {
 
 		log.info("replyInsert 호출 성공");
 
@@ -129,7 +131,7 @@ public class AdminQuestionContorller {
 
 	// 댓글 수정 폼 불러 오기
 	@RequestMapping(value = "/replyUpdateForm", method = RequestMethod.POST)
-	public String updateForm(@ModelAttribute QuestionVO qvo, Model model) {
+	public String updateForm_Chk(@ModelAttribute QuestionVO qvo, Model model,HttpServletRequest request) {
 
 		log.info("replyUpdateForm 호출 성공");
 
@@ -142,7 +144,7 @@ public class AdminQuestionContorller {
 
 	// 글 수정 구현하기
 	@RequestMapping(value = "/replyUpdate", method = RequestMethod.POST)
-	public String noticeUpdate(@ModelAttribute QuestionVO qvo, Model model) {
+	public String noticeUpdate_Chk(@ModelAttribute QuestionVO qvo, Model model,HttpServletRequest request) {
 
 		System.out.println("replyUpdate 호출성공");
 

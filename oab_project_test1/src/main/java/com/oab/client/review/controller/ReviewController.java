@@ -65,7 +65,7 @@ public class ReviewController {
 
 	// 후기 게시판 작성 폼 출력하기
 	@RequestMapping(value = "/reviewWrite", method = RequestMethod.GET)
-	public String reviewWrite(HttpSession session) {
+	public String reviewWriteChk(HttpSession session,HttpServletRequest request) {
 
 		// 로그인, 이용내역이 있어야 작성이 가능합니다.
 		System.out.println("review Write Method 호출 성공");
@@ -75,7 +75,7 @@ public class ReviewController {
 
 	// 후기 게시판 등록 구현하기
 	@RequestMapping(value = "/reviewInsert", method = RequestMethod.POST, produces = "text/plain; charset=UTF-8") // 주소값
-	public String reviewInsert(@ModelAttribute ReviewVO rvo, Model model, HttpSession session,
+	public String reviewInsertChk(@ModelAttribute ReviewVO rvo, Model model, HttpSession session,
 			HttpServletRequest request) throws IllegalStateException, IOException, Exception { // 받아와야하는 매개변수
 		System.out.println("후기 게시판 게시글 등록 메소드 호출 성공");
 		// 이미지 파일 업로드
@@ -140,7 +140,7 @@ public class ReviewController {
 
 	// 포토후기 수정 폼 출력하기
 	@RequestMapping(value = "/reviewUpdateForm", method = RequestMethod.GET)
-	public String reviewUpdateForm(@ModelAttribute ReviewVO rvo, Model model, HttpSession session) {
+	public String reviewUpdateFormChk(@ModelAttribute ReviewVO rvo, Model model, HttpSession session,HttpServletRequest request) {
 
 		System.out.println("포토 후기 수정 폼 호출 성공");
 		log.info("revt_number = " + rvo.getRevt_number());
@@ -158,7 +158,7 @@ public class ReviewController {
 
 	// 포토후기 수정하기 구현
 	@RequestMapping(value = "/reviewUpdate", method = RequestMethod.POST)
-	public String reviewUpdate(@ModelAttribute ReviewVO rvo, Model model, HttpSession session,
+	public String reviewUpdateChk(@ModelAttribute ReviewVO rvo, Model model, HttpSession session,
 			HttpServletRequest request, MultipartFile file) throws IllegalStateException, IOException, Exception {
 
 		System.out.println("후기 게시판 게시글 등록 메소드 호출 성공");
@@ -210,7 +210,7 @@ public class ReviewController {
 
 	// 포토후기 삭제하기
 	@RequestMapping(value = "/reviewDelete", method = RequestMethod.GET)
-	public String reviewDelete(@ModelAttribute ReviewVO rvo, Model model, HttpServletRequest request)
+	public String reviewDeleteChk(@ModelAttribute ReviewVO rvo, Model model, HttpServletRequest request)
 			throws IOException {
 
 		System.out.println("후기 게시판 삭제 메소드 호출 성공");

@@ -87,7 +87,7 @@ public class AdminLoginController {
 	}
 
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String mainPage(QuestionVO qvo, ReservationVO rvo, Model model) {
+	public String mainPage_Chk(QuestionVO qvo, ReservationVO rvo, Model model,HttpServletRequest request) {
 
 		// 1:1 문의 리스트
 		List<QuestionVO> mainQuestionList = adminLoginService.mainQuestionList();

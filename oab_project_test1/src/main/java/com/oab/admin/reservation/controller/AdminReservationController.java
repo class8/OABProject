@@ -2,6 +2,8 @@ package com.oab.admin.reservation.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +28,7 @@ public class AdminReservationController {
 	
 	//예약대기 리스트
 	@RequestMapping(value = "/adminReservationWaitingList" , method = RequestMethod.GET)
-	public String adminReservationWaitingList(@ModelAttribute ReservationVO rvo , Model model) {
+	public String adminReservationWaitingList_Chk(@ModelAttribute ReservationVO rvo , Model model,HttpServletRequest request) {
 		System.out.println("예약 정보 리스트 Controller 호출 성공");
 		
 		//페이징 세팅
@@ -50,7 +52,7 @@ public class AdminReservationController {
 	
 	//예약완료 리스트
 	@RequestMapping(value = "/adminReservationCompleteList" , method = RequestMethod.GET)
-	public String adminReservationCompleteList(@ModelAttribute ReservationVO rvo , Model model) {
+	public String adminReservationCompleteList_Chk(@ModelAttribute ReservationVO rvo , Model model,HttpServletRequest request) {
 		System.out.println("예약 완료 리스트 Controller 호출 성공");
 		
 		//페이징 세팅
@@ -75,7 +77,7 @@ public class AdminReservationController {
 	
 	//예약취소 리스트
 	@RequestMapping(value = "/adminReservationCancelList" , method = RequestMethod.GET)
-	public String adminReservationCancelList(@ModelAttribute ReservationVO rvo , Model model) {
+	public String adminReservationCancelList_Chk(@ModelAttribute ReservationVO rvo , Model model,HttpServletRequest request) {
 		System.out.println("예약 완료 리스트 Controller 호출 성공");
 		
 		//페이징 세팅
@@ -101,7 +103,7 @@ public class AdminReservationController {
 	
 	//예약 환불요청 완료 리스트
 	@RequestMapping(value = "/adminReservationRefundList" , method = RequestMethod.GET)
-	public String adminReservationRefundList(@ModelAttribute ReservationVO rvo , Model model) {
+	public String adminReservationRefundList_Chk(@ModelAttribute ReservationVO rvo , Model model,HttpServletRequest request) {
 		System.out.println("예약 완료 리스트 Controller 호출 성공");
 		
 		//페이징 세팅
@@ -127,7 +129,7 @@ public class AdminReservationController {
 	
 	//예약 상태 변경하는 메소드
 	@RequestMapping(value = "/adminReservationStatusUpdate" , method = RequestMethod.POST)
-	public String adminReservationStatusUpdate(@ModelAttribute ReservationVO rvo , Model model , @RequestParam(value = "url", required = false, defaultValue = "/admin/reservation/adminReservationWaitingList") String url) {
+	public String adminReservationStatusUpdate_Chk(@ModelAttribute ReservationVO rvo , Model model , @RequestParam(value = "url", required = false, defaultValue = "/admin/reservation/adminReservationWaitingList") String url,HttpServletRequest request) {
 		int result = 0;
 		String getURL = "";
 		result = adminReservationService.adminReservationStatusUpdate(rvo);

@@ -18,7 +18,6 @@
 	href="/resources/admin/include/css/content.css" />
 	<link rel="shortcut icon" href="/resources/images/favicon.ico">
 </head>
-<c:if test="${adminLogin.adminID != null}">
 	<body>
 		<div class="main_content">
 
@@ -187,5 +186,4 @@
 			</div>
 		</div>
 	</body>
-</c:if>
 </html>

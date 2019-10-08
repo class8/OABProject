@@ -35,7 +35,7 @@ public class QuestionController {
 
 	// 문의 게시글 목록을 구현한다
 	@RequestMapping(value = "/questionList", method = RequestMethod.GET)
-	public ModelAndView questionList(@ModelAttribute("QuestionVO") QuestionVO qvo, Model model, HttpSession session) {
+	public ModelAndView questionListChk(@ModelAttribute("QuestionVO") QuestionVO qvo, Model model, HttpSession session,HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("리스트 호출 성공");
 		log.info("questionList 호출 성공");
@@ -77,7 +77,7 @@ public class QuestionController {
 
 	// 문의 게시판 글쓰기 폼 출력
 	@RequestMapping(value = "/questionWrite")
-	public String writeForm() {
+	public String writeFormChk(HttpServletRequest request) {
 		log.info("questionWriteForm 호출 성공");
 		System.out.println("1");
 		return "question/questionWrite"; // 반환
@@ -86,7 +86,7 @@ public class QuestionController {
 
 	// 문의게시글작성
 	@RequestMapping(value = "/questionInsert", method = RequestMethod.POST)
-	public String questionInsert(@ModelAttribute QuestionVO qvo, Model model, HttpSession session,
+	public String questionInsertChk(@ModelAttribute QuestionVO qvo, Model model, HttpSession session,
 			HttpServletRequest request) throws IllegalStateException, IOException {
 		System.out.println("2");
 		// 파일명이 제대로 들어오는지 확인한다
@@ -120,7 +120,7 @@ public class QuestionController {
 
 	// 상세보기 구현하기
 	@RequestMapping(value = "/questionDetail", method = RequestMethod.GET)
-	public String QuestionDetail(@ModelAttribute QuestionVO qvo, Model model, HttpSession session) {
+	public String QuestionDetailChk(@ModelAttribute QuestionVO qvo, Model model, HttpSession session,HttpServletRequest request) {
 
 		System.out.println("questionDetail 호출 성공");
 		log.info("qt_number = " + qvo.getQt_number());
@@ -142,7 +142,7 @@ public class QuestionController {
 
 	// 문의 글 삭제 구현
 	@RequestMapping(value = "/questionDelete")
-	public String questionDelete(@ModelAttribute QuestionVO qvo, Model model, HttpSession session,
+	public String questionDeleteChk(@ModelAttribute QuestionVO qvo, Model model, HttpSession session,
 			HttpServletRequest request) throws IOException {
 
 		System.out.println("1");

@@ -1,6 +1,5 @@
 package com.oab.admin.review.controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,11 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.oab.admin.review.service.AdminReviewService;
-import com.oab.client.common.file.FileUploadUtil;
 import com.oab.client.common.page.Paging;
 import com.oab.client.common.util.Util;
-import com.oab.client.login.vo.LoginVO;
-import com.oab.client.product.vo.ProductVO;
 import com.oab.client.review.vo.ReviewVO;
 
 @Controller
@@ -32,7 +28,7 @@ public class AdminReviewController {
 	 * 글목록 구현하기
 	 **************************************/
 	@RequestMapping(value = "/reviewList", method = RequestMethod.GET)
-	public String productList(@ModelAttribute ReviewVO rvo, Model model) {
+	public String productList_Chk(@ModelAttribute ReviewVO rvo, Model model,HttpServletRequest request) {
 
 		System.out.println("reviewList 호출 성공");
 
@@ -59,7 +55,7 @@ public class AdminReviewController {
 
 	// 후기 상세보기
 	@RequestMapping(value = "/reviewDetail", method = RequestMethod.GET)
-	public String adminReviewDetail(@ModelAttribute ReviewVO rvo, Model model) {
+	public String adminReviewDetail_Chk(@ModelAttribute ReviewVO rvo, Model model,HttpServletRequest request) {
 
 		System.out.println("상세보기 호출 성공");
 
@@ -77,7 +73,7 @@ public class AdminReviewController {
 
 	// 삭제하기
 	@RequestMapping(value = "/reviewDelete", method = RequestMethod.POST)
-	public String adminReviewDelete(@ModelAttribute ReviewVO rvo, Model model) {
+	public String adminReviewDelete_Chk(@ModelAttribute ReviewVO rvo, Model model,HttpServletRequest request) {
 
 		// 아래 변수에는 입력 성공에 대한 상태값을 담습니다.
 		int result = 0;
@@ -97,7 +93,7 @@ public class AdminReviewController {
 
 	// 후기 게시판 작성 폼 출력하기
 	@RequestMapping(value = "/writeForm")
-	public String writeForm(HttpSession session) {
+	public String writeForm_Chk(HttpSession session,HttpServletRequest request) {
 
 		// 로그인, 이용내역이 있어야 작성이 가능합니다.
 		System.out.println("review Write Method 호출 성공");

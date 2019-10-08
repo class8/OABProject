@@ -16,6 +16,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 
 @Controller
@@ -27,7 +29,7 @@ public class AdminNoticeController {
 
 	// 글목록 구현하기
 	@RequestMapping(value = "/noticeList", method = RequestMethod.GET)
-	public String noticeList(@ModelAttribute NoticeVO nvo, Model model) {
+	public String noticeList_Chk(@ModelAttribute NoticeVO nvo, Model model,HttpServletRequest request) {
 
 		// 페이지 세팅
 		Paging.setPage(nvo);
@@ -51,14 +53,14 @@ public class AdminNoticeController {
 
 	// 글쓰기 폼 출력하기
 	@RequestMapping(value = "/writeForm")
-	public String writeForm() {
+	public String writeForm_Chk(HttpServletRequest request) {
 
 		return "admin/notice/adminNoticeWriteForm";
 	}
 
 	// 글쓰기 구현하기
 	@RequestMapping(value = "/noticeInsert", method = RequestMethod.POST)
-	public String noticeInsert(@ModelAttribute NoticeVO nvo, Model model) {
+	public String noticeInsert_Chk(@ModelAttribute NoticeVO nvo, Model model,HttpServletRequest request) {
 
 		int result = 0;
 		String url = "";
@@ -77,7 +79,7 @@ public class AdminNoticeController {
 
 	// 글 상세보기 구현
 	@RequestMapping(value = "/noticeDetail", method = RequestMethod.GET)
-	public String noticeDetail(@ModelAttribute NoticeVO nvo, Model model) {
+	public String noticeDetail_Chk(@ModelAttribute NoticeVO nvo, Model model,HttpServletRequest request) {
 
 		NoticeVO detail = new NoticeVO();
 		detail = adminNoticeService.adminNoticeDetail(nvo);
@@ -95,7 +97,7 @@ public class AdminNoticeController {
 	// 글 수정 폼 출력하기
 
 	@RequestMapping(value = "/updateForm", method = RequestMethod.POST)
-	public String updateForm(@ModelAttribute NoticeVO nvo, Model model) {
+	public String updateForm_Chk(@ModelAttribute NoticeVO nvo, Model model,HttpServletRequest request) {
 
 		NoticeVO updateData = new NoticeVO();
 		updateData = adminNoticeService.adminNoticeDetail(nvo);
@@ -106,7 +108,7 @@ public class AdminNoticeController {
 
 	// 글 수정 구현하기
 	@RequestMapping(value = "/noticeUpdate", method = RequestMethod.POST)
-	public String noticeUpdate(@ModelAttribute NoticeVO nvo, Model model) {
+	public String noticeUpdate_Chk(@ModelAttribute NoticeVO nvo, Model model,HttpServletRequest request) {
 
 		int result = 0;
 		String url = "";
@@ -124,7 +126,7 @@ public class AdminNoticeController {
 
 	// 글 삭제 구현하기
 	@RequestMapping(value = "/noticeDelete", method = RequestMethod.POST)
-	public String noticeDelete(@ModelAttribute NoticeVO nvo, Model model) {
+	public String noticeDelete_Chk(@ModelAttribute NoticeVO nvo, Model model,HttpServletRequest request) {
 
 		// 아래 변수에는 입력 성공에 대한 상태값을 담습니다.
 		int result = 0;

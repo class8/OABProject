@@ -2,6 +2,8 @@ package com.oab.admin.member.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +25,7 @@ public class AdminMemberController {
 
 	// 회원 전체 리스트 구현
 	@RequestMapping(value = "/adminMemberList", method = RequestMethod.GET)
-	public String adminMemberList(@ModelAttribute MemberVO amvo, Model model) {
+	public String adminMemberList_Chk(@ModelAttribute MemberVO amvo, Model model,HttpServletRequest request) {
 
 		// 페이징
 		Paging.setPage(amvo);
@@ -44,7 +46,7 @@ public class AdminMemberController {
 	}
 
 	@RequestMapping(value = "/adminMemberDisabledUpdate", method = RequestMethod.POST)
-	public String adminMemberDisabledUpdate(@ModelAttribute MemberVO amvo, Model model) {
+	public String adminMemberDisabledUpdate_Chk(@ModelAttribute MemberVO amvo, Model model,HttpServletRequest request) {
 		int result = 0;
 		String url = "";
 

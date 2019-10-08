@@ -3,7 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:if test="${adminLogin.adminID != null}">
 <div class="left">
 
 	<h3 align="center">MEMBER</h3>
@@ -16,4 +15,3 @@
 		<li><a href="/admin/rental/adminRentalList?page=1&order_by=rent_status&order_sc=DESC">대여/반납</a></li>
 	</ul>
 </div>
-</c:if>
