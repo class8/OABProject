@@ -11,7 +11,9 @@
 	font-size: 25pt;
 	text-align: center;
 }
-
+.img{
+	text-align: center;
+}
 .ContentTB {
 	/* 줄간격 */
 	line-height: 250%;

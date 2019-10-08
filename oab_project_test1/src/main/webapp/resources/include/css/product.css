@@ -1,5 +1,9 @@
 @charset "UTF-8";
 /* 게시판 전체 적용 내용*/
+@font-face{
+	font-family: "NotoSansKR";
+	src: url("/resources/include/fonts/NotoSansKR-Medium.otf") format("opentype");
+}
 caption {
 	display: none;
 }
@@ -34,7 +38,7 @@ ul {
 /* 검색 부분 */
 #productSearch table {
 	width: 96%;
-	margin-top: 10px;
+	margin: 2% 2% 2% 2%;
 }
 
 #productSearch #search {
@@ -50,7 +54,14 @@ ul {
 	width: 50%;
 	text-align: right;
 }
-
+.productTitle{
+	margin-top: 30px;
+	font-size: 25pt;
+	text-align: center;
+}
+.productTitle h3{
+	font-family: "NotoSansKR", sans-serif;
+}
 /* 리스트 부분 */
 #productList {
 	width: 100%;
@@ -61,10 +72,8 @@ ul {
 	margin: 2% 2% 2% 2%;
 	width: 29%;
 	float: left;
-	font-size: 18px;
 	text-align: center;
 }
-
 .product_article .product_thumb img {
 	width: 98%;
 	height: 300px;
@@ -86,6 +95,10 @@ ul {
 	width: 29%;
 	height: 100px;
 }
+.product_article p{
+	font-family: "NotoSansKR", sans-serif;
+	font-size: 20px;
+}
 /* 페이징 출력 div 부분 */
 #productContainer #productPage {
 	width: 98%;
@@ -105,6 +118,9 @@ ul {
 	vertical-align: bottom;
 }
 
+.paginate a {
+	font-size: 24px;
+}
 .paginate a.on {
 	color: #FF3300;
 }
