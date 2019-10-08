@@ -27,50 +27,50 @@
 			var check = document.deleteform.check.checked;
 			var num = 0;
 
-			if (check == true) {
-				num = 1;
+			if(check == true){
+				swal({
+			     title: "탈퇴",
+			     text: "정말 탈퇴하시겠습니까?",
+			     icon: "info",
+			     buttons: ["아니오", "예"],
+			}).then((예) => {
+				 var mt_id = $("#mt_id").val();
+
+					$.ajax({
+						url : "/member/memberSecede/" + mt_id,
+						type : "put",
+						headers : {
+							"Content-Type" : "application/json",
+							"X-HTTP-Method-Override" : "put"
+						},
+						data : JSON.stringify({
+							mt_id : mt_id
+						}),
+						dataType : "text",
+						success : function(result) {
+							if (result == 'SUCCESS') {
+		    					 swal('탈퇴', '고객님의 회원 탈퇴 처리가 완료되었습니다.', 'success').then((OK)=>{
+						    		 $("#delete").attr({
+											"method" : "POST",
+											"action" : "/login/logout"
+										});
+
+										$("#delete").submit();
+		    					 });
+			     }
 			}
-			if (num == 1) {
-				//document.deleteform.submit();
-			} else {
-				swal ('오류' , '회원 탈퇴 이용약관에 동의하셔야 합니다.','error');
-				return true;
+		}); 
+		});
+			
+	
+	}else {
+		swal ('오류' , '회원 탈퇴 이용약관에 동의하셔야 합니다.','error');
+		return true;
 
-			}
-			if (confirm("정말 탈퇴하시겠습니까?")) {
-				var mt_id = $("#mt_id").val();
-
-				$.ajax({
-					url : "/member/memberSecede/" + mt_id,
-					type : "put",
-					headers : {
-						"Content-Type" : "application/json",
-						"X-HTTP-Method-Override" : "put"
-					},
-					data : JSON.stringify({
-						mt_id : mt_id
-					}),
-					dataType : "text",
-					success : function(result) {
-						console.log("result:" + result);
-						if (result == 'SUCCESS') {
-							swal ('오류' , '고객님의 회원 탈퇴 처리가 완료되었습니다.','error');
-
-							$("#delete").attr({
-								"method" : "POST",
-								"action" : "/login/logout"
-							});
-							$("#delete").submit();
-						}
-					}
-
-				});
-			}
-
+	}
 		}
-
-	});
-
+});
+			    
 	$(function() {
 		$("#SecedeReset").click(function() {
 			location.href = "/";
@@ -118,13 +118,13 @@
 				<p class="form-control-static error"></p>
 			</div>
 			<div class="form-group">
-			<label for="mt_pw" class="col-sm-2 control-label">비밀번호 </label>
-			<div class="col-sm-4">
-				<input type="password" id="mt_pw" name="mt_pw" class="form-control"
-					placeholder="Password">
+				<label for="mt_pw" class="col-sm-2 control-label">비밀번호 </label>
+				<div class="col-sm-4">
+					<input type="password" id="mt_pw" name="mt_pw" class="form-control"
+						placeholder="Password">
+				</div>
+				<p class="form-control-static error"></p>
 			</div>
-			<p class="form-control-static error"></p>
-		</div>
 			<br> <input type="button" value="탈 &nbsp;&nbsp;퇴"
 				id="memberSecede" /> <br> <input type="button"
 				value="취 &nbsp;&nbsp;소" id="SecedeReset">

@@ -35,8 +35,13 @@
 				"#refund",
 				function() {
 					if ($("#rest_number").val() != -2
-							&& $("#rest_number").val() != -1) {
-						if (confirm("체크하신 예약건을 취소/환불요청하시겠습니까?")) {
+							&& $("#rest_number").val() != -1){
+						swal({
+						     title: "취소",
+						     text: "체크하신 예약건을 취소/환불요청하시겠습니까?",
+						     icon: "info",
+						     buttons: ["아니오", "예"],
+						}).then((예) => {
 							$.ajax({
 								url : "/member/UserInfoUpdate/" + rest_number,
 								type : "put",
@@ -51,18 +56,23 @@
 								success : function(result) {
 									console.log("result:" + result);
 									if (result == 'SUCCESS') {
-										location.reload();
-										swal ('오류' , '취소/환불신청을 완료 하였습니다.','error');
+										
+										swal ('성공' , '취소/환불신청을 완료 하였습니다.','success').then((OK)=>{
+											location.reload();
+		    					 });
 									}
 								}
+							
 							});
-						}
-					} else if ($("#rest_number").val() == -1) {
+						
+						});
+					}else if ($("#rest_number").val() == -1) {
 						swal ('오류' , '선택하신 예약번호는 이미 취소/환불 요청중입니다.','error');
 					} else if ($("#rest_number").val() == -2) {
 						swal ('오류' , '취소/환불을 원하는 내역을 선택해주세요.','error');
 					}
 				});
+					
 
 		$("#pageSize").change(function() {
 			goPage(1);
@@ -90,86 +100,86 @@
 
 	<!-- <div class="well">
       <form class="form-inline" id="f_search" name="f_search"> -->
-      <div id="memberUserform">
-	<form id="pagemoveform">
-		<input type="hidden" id="page" name="page" value="${data.page}">
-		<input type="hidden" id="pageSize" name="pageSize"
-			value="${data.pageSize}">
+	<div id="memberUserform">
+		<form id="pagemoveform">
+			<input type="hidden" id="page" name="page" value="${data.page}">
+			<input type="hidden" id="pageSize" name="pageSize"
+				value="${data.pageSize}">
 
-	</form>
+		</form>
 
-	<div id="listHeader">
-		<p id="list1">내 이용 리스트</p>
-		<button type="button" class="btntest" id="refund">취소/환불요청</button>
-		<p id="list2">예약 목록(전체 예약 건:${total})</p>
-		<a class="style1" href="/member/info/memberUserInfo">이용 리스트</a> 
-		<a class="style2" href="/member/info/memberRentalInfo">대여/반납 리스트</a>
-	</div>
+		<div id="listHeader">
+			<p id="list1">내 이용 리스트</p>
+			<button type="button" class="btntest" id="refund">취소/환불요청</button>
+			<p id="list2">예약 목록(전체 예약 건:${total})</p>
+			<a class="style1" href="/member/info/memberUserInfo">이용 리스트</a> <a
+				class="style2" href="/member/info/memberRentalInfo">대여/반납 리스트</a>
+		</div>
 
-	<div class="table-responsive">
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th></th>
-					<th class="tac" data-value="rest_number">예약번호</th>
-					<th class="tac" data-value="pt_name">상품명</th>
-					<th class="tac" data-value="rest_count">결제수량</th>
-					<th class="tac" data-value="rest_payoption">결제 방법</th>
-					<th class="tac" data-value="rest_total">금액</th>
-					<th class="tac" data-value="rest_regdate">예약 등록일</th>
-					<th class="tac" data-value="rest_status">예약 상태</th>
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th></th>
+						<th class="tac" data-value="rest_number">예약번호</th>
+						<th class="tac" data-value="pt_name">상품명</th>
+						<th class="tac" data-value="rest_count">결제수량</th>
+						<th class="tac" data-value="rest_payoption">결제 방법</th>
+						<th class="tac" data-value="rest_total">금액</th>
+						<th class="tac" data-value="rest_regdate">예약 등록일</th>
+						<th class="tac" data-value="rest_status">예약 상태</th>
 
-				</tr>
-				<c:choose>
-					<c:when test="${not empty UserInfo}">
-						<c:set var="sum" value="0" />
-						<c:forEach var="info" items="${UserInfo}" varStatus="status">
-							<c:set var="i" value="${status.index}" />
-							<c:set var="max" value="${count-1}" />
-							<c:set var="pid" value="${info.rest_bnumber}" />
-							<c:if test="${i>=max }">
-								<c:set var="nid" value="0" />
-							</c:if>
-							<c:if test="${i<max}">
-								<c:set var="nid" value="${UserInfo.get(i+1).rest_bnumber }" />
-							</c:if>
+					</tr>
+					<c:choose>
+						<c:when test="${not empty UserInfo}">
+							<c:set var="sum" value="0" />
+							<c:forEach var="info" items="${UserInfo}" varStatus="status">
+								<c:set var="i" value="${status.index}" />
+								<c:set var="max" value="${count-1}" />
+								<c:set var="pid" value="${info.rest_bnumber}" />
+								<c:if test="${i>=max }">
+									<c:set var="nid" value="0" />
+								</c:if>
+								<c:if test="${i<max}">
+									<c:set var="nid" value="${UserInfo.get(i+1).rest_bnumber }" />
+								</c:if>
 
-							<tr class="tac" data-num="${info.rest_number}">
-								<%-- <td>${status.index}</td>
+								<tr class="tac" data-num="${info.rest_number}">
+									<%-- <td>${status.index}</td>
 								<td>pid${pid }</td>
 								<td>nid${nid}</td>
 								<td>size${data.pageSize }</td>
 								<td>count${count}</td>
 								<td>total${total}</td> --%>
-								<td><input type="radio" name="check" class="check"></td>
-								<td>${info.rest_bnumber}</td>
-								<td>${info.pt_name}</td>
-								<td>${info.rest_count}</td>
-								<td>${info.rest_payoption}</td>
-								<td><fmt:formatNumber value="${info.rest_total}"
-										type="number" pattern="#,##0" />원</td>
-								<td>${info.rest_regdate}</td>
-								<td><p class="rest_status">${info.rest_status}</p></td>
-								<td>${info.rent_status}</td>
-								<c:set var="sum" value="${sum+info.rest_total }" />
-							</tr>
-							<c:if test="${pid != nid }">
-								<tr>
-									<td colspan="8" class="b">주문금액: ${sum}</td>
+									<td><input type="radio" name="check" class="check"></td>
+									<td>${info.rest_bnumber}</td>
+									<td>${info.pt_name}</td>
+									<td>${info.rest_count}</td>
+									<td>${info.rest_payoption}</td>
+									<td><fmt:formatNumber value="${info.rest_total}"
+											type="number" pattern="#,##0" />원</td>
+									<td>${info.rest_regdate}</td>
+									<td><p class="rest_status">${info.rest_status}</p></td>
+									<td>${info.rent_status}</td>
+									<c:set var="sum" value="${sum+info.rest_total }" />
 								</tr>
-								<c:set var="sum" value="0" />
-								<c:set var="pid" value="${nid}" />
-							</c:if>
-						</c:forEach>
-					</c:when>
-				</c:choose>
-		</table>
-		<%-- ============= 페이지 네비게이션 시작 ============ --%>
-		<div id="memberUserInfoPaging">
-			<tag:paging page="${param.page}" total="${total}"
-				list_size="${data.pageSize}" />
+								<c:if test="${pid != nid }">
+									<tr>
+										<td colspan="8" class="b">주문금액: ${sum}</td>
+									</tr>
+									<c:set var="sum" value="0" />
+									<c:set var="pid" value="${nid}" />
+								</c:if>
+							</c:forEach>
+						</c:when>
+					</c:choose>
+			</table>
+			<%-- ============= 페이지 네비게이션 시작 ============ --%>
+			<div id="memberUserInfoPaging">
+				<tag:paging page="${param.page}" total="${total}"
+					list_size="${data.pageSize}" />
+			</div>
 		</div>
 	</div>
-</div>
 </body>
 </html>
