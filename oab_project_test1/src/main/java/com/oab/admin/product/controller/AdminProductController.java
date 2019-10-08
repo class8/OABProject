@@ -31,7 +31,7 @@ public class AdminProductController {
 
 	// 상품 전체 목록 구현
 	@RequestMapping(value = "/adminProductList", method = RequestMethod.GET)
-	public String adminProductList(@ModelAttribute ProductVO pvo, Model model) {
+	public String adminProductList_Chk(@ModelAttribute ProductVO pvo, Model model,HttpServletRequest request) {
 		System.out.println("productList 호출");
 
 		// 페이지 세팅
@@ -54,14 +54,14 @@ public class AdminProductController {
 
 	// 상품 등록 폼 출력
 	@RequestMapping(value = "/productWriteForm")
-	public String adminProductWrite(HttpSession session) {
+	public String adminProductWrite_Chk(HttpSession session,HttpServletRequest request) {
 		System.out.println("productWrite Method 호출 성공");
 		return "admin/product/adminProductWrite";
 	}
 
 	// 상품 등록 구현하기
 	@RequestMapping(value = "/adminProductWrite", method = RequestMethod.POST, produces = "text/plain; charset=UTF-8")
-	public String adminProductInsert(@ModelAttribute ProductVO pvo, Model model, HttpServletRequest request)
+	public String adminProductInsert_Chk(@ModelAttribute ProductVO pvo, Model model, HttpServletRequest request)
 			throws IllegalStateException, IOException, Exception {
 		log.info("상품 등록 메서드 호출 성공");
 
@@ -103,7 +103,7 @@ public class AdminProductController {
 
 	// 상품상세보기
 	@RequestMapping(value = "/adminProductDetail", method = RequestMethod.GET)
-	public String adminProductDetail(@ModelAttribute ProductVO pvo, Model model) {
+	public String adminProductDetail_Chk(@ModelAttribute ProductVO pvo, Model model,HttpServletRequest request) {
 		log.info("adminProductDetail 호출 성공");
 		log.info("pt_number = " + pvo.getPt_number());
 
@@ -120,7 +120,7 @@ public class AdminProductController {
 
 	// 상품 수정 폼 출력하기
 	@RequestMapping(value = "/productModifyForm")
-	public String adminProductUpdateForm(@ModelAttribute ProductVO pvo, Model model) {
+	public String adminProductUpdateForm_Chk(@ModelAttribute ProductVO pvo, Model model,HttpServletRequest request) {
 		log.info("adminProductUpdateForm 호출 성공");
 		log.info("pt_number =" + pvo.getPt_number());
 
@@ -133,7 +133,7 @@ public class AdminProductController {
 
 	// 상품 수정하기 구현
 	@RequestMapping(value = "/adminProductModify", method = RequestMethod.POST)
-	public String adminproductUpdate(@ModelAttribute ProductVO pvo, HttpServletRequest request)
+	public String adminproductUpdate_Chk(@ModelAttribute ProductVO pvo, HttpServletRequest request)
 			throws IllegalStateException, IOException {
 
 		int result = 0;
@@ -167,7 +167,7 @@ public class AdminProductController {
 
 	// 상품 삭제 구현하기
 	@RequestMapping(value = "/adminProductDelete")
-	public String adminProductDelete(@ModelAttribute ProductVO pvo, HttpServletRequest request) throws IOException {
+	public String adminProductDelete_Chk(@ModelAttribute ProductVO pvo, HttpServletRequest request) throws IOException {
 		int result = 0;
 		String url = "";
 
