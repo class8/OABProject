@@ -15,53 +15,52 @@
 <script type="text/javascript"
 	src="/resources/include/js/client_review.js"></script>
 <script type="text/javascript">
-	//삭제를 위한 처리다 이녀석들아
-	$(function() {
-		if ($("#log_hidden").val() == $("#revt_hidden").val()) {
-			document.getElementById("reviewDeleteBtn").style.display = "block";
-		} else {
-			document.getElementById("reviewDeleteBtn").style.display = "none";
-		}
+   //삭제를 위한 처리
+   $(function() {
+      if ($("#log_hidden").val() == $("#revt_hidden").val()) {
+         document.getElementById("reviewDeleteBtn").style.display = "inline";
+      } else {
+         document.getElementById("reviewDeleteBtn").style.display = "none";
+      }
 
-		$("#reviewDeleteBtn").click(function() {
-			if(detailCheck()){
-				swal({
-				     title: "삭제",
-				     text: "[${detail.revt_title}]"+" 작성하신 후기글을 정말 삭제하시겠습니까?",
-				     icon: "info",
-				     buttons: ["아니오", "예"],
-				}
-				).then((예) => {
-				     if (예) {
-				    	 swal('삭제', '[${detail.revt_title}]'+'글이 삭제되었습니다.', 'success').then((OK)=>{
-				    	 	$("#revt_data").attr("action", "/review/reviewDelete");
-							$("#revt_data").submit();
-				    	   	 });
-				     }
-				});
-			/* if (confirm("[${detail.revt_title}]"
-					+ " 작성하신 문의 글을 정말 삭제하시겠습니까?")) {
-				$("#revt_data").attr("action", "/review/reviewDelete");
-				$("#revt_data").submit();
-			}
-			else {
-				alert("삭제가 불가능합니다.");
-			} */
-			}
-		});
-		function detailCheck() {
-			if (!($("#check_pw").val())) {
-				swal('오류', '비밀번호를 입력해주세요.', 'error');
-				$("#check_pw").val("");
-				$("#check_pw").focus();
-			} else if ($("#revt_pw").val() != $("#check_pw").val()) {
-				swal('오류', '입력하신 비밀번호가 일치하지 않습니다.', 'error');
-				$("#check_pw").val("");
-			}else{
-				return true;	
-			}
-		}
-	});
+      $("#reviewDeleteBtn").click(function() {
+         if(detailCheck()){
+            swal({
+                 title: "삭제",
+                 text: "[${detail.revt_title}]"+" 작성하신 후기글을 정말 삭제하시겠습니까?",
+                 icon: "info",
+                 buttons: ["아니오", "예"],
+            }
+            ).then((예) => { if (예) {
+                    swal('삭제', '[${detail.revt_title}]'+'글이 삭제되었습니다.', 'success').then((OK)=>{
+                       $("#revt_data").attr("action", "/review/reviewDelete");
+                     $("#revt_data").submit();
+                          });
+                 }
+            });
+         /* if (confirm("[${detail.revt_title}]"
+               + " 작성하신 문의 글을 정말 삭제하시겠습니까?")) {
+            $("#revt_data").attr("action", "/review/reviewDelete");
+            $("#revt_data").submit();
+         }
+         else {
+            alert("삭제가 불가능합니다.");
+         } */
+         }
+      });
+      function detailCheck() {
+         if (!($("#check_pw").val())) {
+            swal('오류', '비밀번호를 입력해주세요.', 'error');
+            $("#check_pw").val("");
+            $("#check_pw").focus();
+         } else if ($("#revt_pw").val() != $("#check_pw").val()) {
+            swal('오류', '입력하신 비밀번호가 일치하지 않습니다.', 'error');
+            $("#check_pw").val("");
+         }else{
+            return true;   
+         }
+      }
+   });
 </script>
 </head>
 <body>
@@ -123,10 +122,8 @@
 					<p>조회수: ${detail.revt_readcnt }</p>
 				</div>
 				<div id="buttoncss">
-					<p class="but">
-						<input type="button" value="목록" id="back_reviewListBtn"> <input
-							type="button" value="삭제" id="reviewDeleteBtn">
-					</p>
+					<input type="button" value="목록" id="back_reviewListBtn"> <input
+						type="button" value="삭제" id="reviewDeleteBtn">
 				</div>
 			</div>
 
