@@ -120,7 +120,7 @@
       r.REST_STATUS
       FROM
       (SELECT list.* , ROWNUM AS RNUM FROM
-      (select * from RESERVATION_TBL where mt_id = #{mt_id} order by rest_bnumber desc)
+      (select * from RESERVATION_TBL where mt_id = #{mt_id} order by REST_REGDATE desc)
       list) r, product_tbl p 
       WHERE r.pt_number = p.pt_number
       <if test="start_row != null and start_row != ''">
