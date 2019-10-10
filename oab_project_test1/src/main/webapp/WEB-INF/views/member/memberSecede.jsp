@@ -14,6 +14,29 @@
 <!-- <script type="text/javascript"
 	src="/resources/include/js/memberSecede.js"></script> -->
 <script type="text/javascript">
+var idConfirm = 1;
+function check1() {
+	$.ajax({
+		url : "/member/Confirm",
+		type : "post",
+		data : "mt_id=" + $("#mt_id").val(),
+		error : function() {
+			swal ('오류' , '사이트 접속에 문제로 정상 작동하지 못하였습니다. 잠시 후 다시 시도해 주세요.','error');
+		},
+		success : function(resultData) {
+			console.log("resultData : " + resultData);
+			if (resultData == "1") {
+				$("#mt_id").val("");
+				swal ('오류' , '기존 아이디를 입력해주세요 아이디가 잘못되었습니다.','error');
+				$("#mt_id").focus();
+
+			} else if (resultData == "2") {
+				idConfirm = 2;
+			}
+		}
+	});
+
+}
 	$(document).on("click", "#memberSecede", function() {
 
 		// 입력값 체크
@@ -32,8 +55,10 @@
 			     title: "탈퇴",
 			     text: "정말 탈퇴하시겠습니까?",
 			     icon: "info",
-			     buttons: ["아니오", "예"],
+			     buttons: ["아니요","예"],
 			}).then((예) => {
+				if(예==true){
+					
 				 var mt_id = $("#mt_id").val();
 
 					$.ajax({
@@ -60,13 +85,14 @@
 			     }
 			}
 		}); 
+				}
 		});
 			
 	
 	}else {
-		swal ('오류' , '회원 탈퇴 이용약관에 동의하셔야 합니다.','error');
-		return true;
-
+		swal ('오류' , '회원 탈퇴 이용약관에 동의하셔야 합니다.','error')
+	
+		return false;
 	}
 		}
 });
@@ -121,7 +147,7 @@
 				<label for="mt_pw" class="col-sm-2 control-label">비밀번호 </label>
 				<div class="col-sm-4">
 					<input type="password" id="mt_pw" name="mt_pw" class="form-control"
-						placeholder="Password">
+						placeholder="Password" value="" onfocus="check1()">
 				</div>
 				<p class="form-control-static error"></p>
 			</div>

@@ -2,13 +2,17 @@ package com.oab.client.member.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.oab.client.member.vo.MemberVO;
 import com.oab.client.rental.vo.RentalVO;
 import com.oab.client.reservation.vo.UserInfoVO;
 
 public interface MemberService {
-
+	
 	public int mt_IdConfirm(String mt_id);
+
+	public int Confirm(String mt_id, HttpSession session);
 
 	public int mt_EmailConfirm(String mt_email);
 

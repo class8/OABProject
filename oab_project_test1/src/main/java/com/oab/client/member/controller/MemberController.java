@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.oab.client.common.page.Paging;
+import com.oab.client.common.util.BCrypt;
 import com.oab.client.common.util.Util;
 import com.oab.client.login.service.LoginService;
 import com.oab.client.login.vo.LoginVO;
@@ -54,6 +55,16 @@ public class MemberController {
 	public String joinForm(Model model) {
 		log.info("join.do get 방식에 의한 메서드 호출 성공");
 		return "member/join";
+	}
+	// 사용자 아이디 중복 체크 메서드
+	@ResponseBody
+	@RequestMapping(value = "/Confirm", method = RequestMethod.POST)
+	public String Confirm(@RequestParam("mt_id") String mt_id, HttpSession session) {
+		LoginVO login = (LoginVO) session.getAttribute("login");
+		String id = "";
+		id = login.getMt_id();
+		int result = memberService.Confirm(mt_id, session);
+		return result + "";
 	}
 
 	// 사용자 아이디 중복 체크 메서드
@@ -104,7 +115,6 @@ public class MemberController {
 	public ModelAndView memberModifyChk(HttpSession session, HttpServletRequest request) {
 		log.info("modify.do get 방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
-
 		LoginVO login = (LoginVO) session.getAttribute("login");
 
 		if (login == null) {
