@@ -108,7 +108,7 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public List<RentalVO> memberrentalInfo(RentalVO revo) {
+	public List<RentalVO> memberRentalInfo(RentalVO revo) {
 		// TODO Auto-generated method stub
 		return session.selectList("RentalInfo", revo);
 	}
@@ -118,5 +118,11 @@ public class MemberDaoImpl implements MemberDao {
 		// TODO Auto-generated method stub
 		return (Integer) session.selectOne("RentalInfoListCnt");
 	}
+
+	@Override
+	public int RentalInfoListTotal(RentalVO revo) {
+		return (Integer) session.selectOne("RentalInfoListCnt");
+	}
+
 
 }

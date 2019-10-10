@@ -31,8 +31,9 @@
 	href="/resources/include/css/memberRentalInfo.css">
 </head>
 <body>
-	<input type="hidden" id="rest_number" name="rest_number"
-		value="${Reninfo.rest_number}" />
+
+		<input type="hidden" id="rent_number" name="rent_number"
+		value="${Reninfo.rent_number}" />
 	<div id="rental">
 		<p class="sub-header">내 대여 /반납리스트</p>
 		<div id="link">

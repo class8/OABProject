@@ -37,9 +37,9 @@ import lombok.extern.java.Log;
 @RequestMapping(value = "/member")
 
 public class MemberController {
-	
+
 	private Logger log = LoggerFactory.getLogger(MemberController.class);
-	
+
 	@Autowired
 	private MemberService memberService;
 
@@ -72,6 +72,7 @@ public class MemberController {
 		return result + "";
 	}
 
+
 	// 회원가입 처리
 	@RequestMapping(value = "/join", method = RequestMethod.POST, produces = "text/plain; charset=UTF-8")
 	public ModelAndView memberInsert(@ModelAttribute MemberVO mvo) {
@@ -100,7 +101,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/memberModify", method = RequestMethod.GET)
-	public ModelAndView memberModifyChk(HttpSession session,HttpServletRequest request) {
+	public ModelAndView memberModifyChk(HttpSession session, HttpServletRequest request) {
 		log.info("modify.do get 방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
 
@@ -118,7 +119,8 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/memberModify", method = RequestMethod.POST)
-	public ModelAndView memberModifyProcessChk(@ModelAttribute("MemberVO") MemberVO mvo, HttpSession session,HttpServletRequest request) {
+	public ModelAndView memberModifyProcessChk(@ModelAttribute("MemberVO") MemberVO mvo, HttpSession session,
+			HttpServletRequest request) {
 		log.info("modify.do post 방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
 
@@ -148,7 +150,7 @@ public class MemberController {
 
 	// 회원 탈퇴
 	@RequestMapping(value = "/memberSecede", method = RequestMethod.GET)
-	public ModelAndView memberSeceUpdateChk(HttpSession session,HttpServletRequest request) {
+	public ModelAndView memberSeceUpdateChk(HttpSession session, HttpServletRequest request) {
 		log.info("memberSecede.do get 방식에 의한 메서드 호출 성공");
 		ModelAndView mav = new ModelAndView();
 
@@ -167,7 +169,8 @@ public class MemberController {
 
 	// 회원 비활성화 (강좌상태 'ABLE' -> 'DISABLE')
 	@RequestMapping(value = "/memberSecede/{mt_id}", method = { RequestMethod.PUT, RequestMethod.PATCH })
-	public ResponseEntity<String> memberSecedeChk(@PathVariable("mt_id") String mt_id, @RequestBody MemberVO mvo,HttpServletRequest request) {
+	public ResponseEntity<String> memberSecedeChk(@PathVariable("mt_id") String mt_id, @RequestBody MemberVO mvo,
+			HttpServletRequest request) {
 		System.out.println("memberSecede 호출 성공");
 		System.out.println(mvo.getMt_id());
 
@@ -208,21 +211,14 @@ public class MemberController {
 
 	// 내 이용 내역 리스트 출력
 	@RequestMapping(value = "/info/memberUserInfo", method = RequestMethod.GET)
-	public ModelAndView memberUserInfoChk(@ModelAttribute("UseInfoVO") UserInfoVO uvo, Model model, HttpSession session, HttpServletRequest request) {
+	public ModelAndView memberUserInfoChk(@ModelAttribute("UseInfoVO") UserInfoVO uvo, Model model, HttpSession session,
+			HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 
 		System.out.println("memberUserInfo 호출 성공");
 		// 페이지 세팅
 		Paging.setPage(uvo);
-		
-	
-		
-		// 글번호 재설정
-		/*
-		 * int count = total - (Util.nvl(uvo.getPage()) - 1) *
-		 * Util.nvl(uvo.getPageSize());
-		 */
-		
+
 		String id = "";
 		LoginVO login = (LoginVO) session.getAttribute("login");
 		if (login == null) {
@@ -236,17 +232,11 @@ public class MemberController {
 		// 구매한 예약 목록
 		List<UserInfoVO> userInfo = memberService.memberUserInfo(uvo);
 		// 전체 레코드수 구현
-		/*
-		 * LoginVO test1 = (LoginVO)session.getAttribute("login");
-		 * uvo.setMt_id(test1.getMt_id());
-		 */
+
 		int total = memberService.UserInfoListTotal(uvo);
 		int count = memberService.UserInfoListCnt(uvo);
 
-		System.out.println(userInfo.size());
-
 		model.addAttribute("UserInfo", userInfo);
-
 		model.addAttribute("total", total);
 		model.addAttribute("count", count);
 		model.addAttribute("data", uvo);
@@ -257,18 +247,14 @@ public class MemberController {
 
 	// 내 대여/반납 리스트 출력
 	@RequestMapping(value = "/info/memberRentalInfo", method = RequestMethod.GET)
-	public ModelAndView memberrentalInfo(@ModelAttribute("RentalVO") RentalVO revo, Model model, HttpSession session) {
+	public ModelAndView memberRentalInfo(@ModelAttribute("RentalVO") RentalVO revo, Model model, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 
 		System.out.println("memberrentalInfo 호출 성공");
 
 		// 페이지 세팅
 		Paging.setPage(revo);
-		System.out.println("1234");
-		// 전체 레코드수 구현
-		int total = memberService.RentalInfoListCnt(revo);
-		// 렌탈 글번호 재설정
-		int count = total - (Util.nvl(revo.getPage()) - 1) * Util.nvl(revo.getPageSize());
+
 		String id = "";
 		LoginVO login = (LoginVO) session.getAttribute("login");
 		if (login == null) {
@@ -279,7 +265,10 @@ public class MemberController {
 		id = login.getMt_id();
 		revo.setMt_id(id);
 		// 대여 반납 목록
-		List<RentalVO> rentalInfo = memberService.memberrentalInfo(revo);
+		List<RentalVO> rentalInfo = memberService.memberRentalInfo(revo);
+		// 전체 레코드수 구현
+		int total = memberService.RentalInfoListTotal(revo);
+		int count = memberService.RentalInfoListCnt(revo);
 
 		model.addAttribute("RentalInfo", rentalInfo);
 		model.addAttribute("total", total);

@@ -95,11 +95,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<UserInfoVO> memberUserInfo(UserInfoVO uvo) {
 		// TODO Auto-generated method stub
-		 List<UserInfoVO> uList = null;
+		List<UserInfoVO> uList = null;
 
-		 uList = memberDao.memberUserInfo(uvo);
-	      return uList;
-	   }
+		uList = memberDao.memberUserInfo(uvo);
+		return uList;
+	}
 
 	@Override
 	public int UserInfoUpdate(UserInfoVO uvo) {
@@ -113,13 +113,12 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
-	
 	@Override
 	public int UserInfoListCnt(UserInfoVO uvo) {
 		// TODO Auto-generated method stub
 		return memberDao.UserInfoListCnt(uvo);
 	}
-	
+
 	@Override
 	public int UserInfoListTotal(UserInfoVO uvo) {
 		// TODO Auto-generated method stub
@@ -127,11 +126,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<RentalVO> memberrentalInfo(RentalVO revo) {
+	public List<RentalVO> memberRentalInfo(RentalVO revo) {
 		List<RentalVO> reList = null;
 
-		reList = memberDao.memberrentalInfo(revo);
-	      return reList;
+		reList = memberDao.memberRentalInfo(revo);
+		return reList;
 	}
 
 	@Override
@@ -149,6 +148,11 @@ public class MemberServiceImpl implements MemberService {
 			result = 2;
 		}
 		return result;
+	}
+
+	@Override
+	public int RentalInfoListTotal(RentalVO revo) {
+		return memberDao.RentalInfoListTotal(revo);
 	}
 
 }

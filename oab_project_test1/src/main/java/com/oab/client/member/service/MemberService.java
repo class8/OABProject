@@ -9,6 +9,7 @@ import com.oab.client.reservation.vo.UserInfoVO;
 public interface MemberService {
 
 	public int mt_IdConfirm(String mt_id);
+
 	public int mt_EmailConfirm(String mt_email);
 
 	public MemberVO memberSelect(String mt_id);
@@ -24,11 +25,13 @@ public interface MemberService {
 	public int UserInfoUpdate(UserInfoVO uvo);
 
 	public int UserInfoListCnt(UserInfoVO uvo);
-	
+
 	public int UserInfoListTotal(UserInfoVO uvo);
-		
-	public List<RentalVO> memberrentalInfo(RentalVO revo);
-	
+
+	public List<RentalVO> memberRentalInfo(RentalVO revo);
+
 	public int RentalInfoListCnt(RentalVO revo);
+	
+	public int RentalInfoListTotal(RentalVO revo);
 
 }
