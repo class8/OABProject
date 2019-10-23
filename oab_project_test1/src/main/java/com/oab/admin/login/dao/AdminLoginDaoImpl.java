@@ -1,5 +1,5 @@
 package com.oab.admin.login.dao;
-
+//개발자 : 최대근
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;

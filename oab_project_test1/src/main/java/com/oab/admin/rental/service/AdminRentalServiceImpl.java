@@ -1,5 +1,5 @@
 package com.oab.admin.rental.service;
-
+//개발자 : 최대근
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;

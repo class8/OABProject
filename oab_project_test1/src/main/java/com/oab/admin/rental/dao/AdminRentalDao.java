@@ -1,5 +1,5 @@
 package com.oab.admin.rental.dao;
-
+//개발자 : 최대근
 import java.util.List;
 
 import com.oab.client.rental.vo.RentalVO;

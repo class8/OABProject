@@ -1,5 +1,5 @@
 package com.oab.admin.login.vo;
-
+//개발자 : 최대근
 public class AdminLoginVO {
 	private String adminID = "";
 	private String adminPW = "";

@@ -1,5 +1,5 @@
 package com.oab.admin.member.service;
-
+//개발자 : 최대근
 import java.util.List;
 
 import com.oab.client.member.vo.MemberVO;

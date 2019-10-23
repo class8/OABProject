@@ -1,5 +1,5 @@
 /**
- * 
+ * 개발자 : 최대근
  */
 $(function(){
 	if($("#old_image1").val().length == 0){

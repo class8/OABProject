@@ -1,3 +1,4 @@
+//개발자 : 최대근
 $(function() {
 	// 로그인 버튼 클릭시 처리 이벤트
 	$("#loginBtn").click(function() {
